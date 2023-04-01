@@ -1,0 +1,18 @@
+export enum AUTH {
+  AUTHORIZATION = 'AUTHORIZATION',
+  WELCOME = 'WELCOME',
+  PUBLIC_OFFER = 'PUBLIC_OFFER',
+  REGISTRATION = 'REGISTRATION',
+}
+export enum MAIN {
+  HOME = 'HOME',
+  CALENDAR_SETTING = 'CALENDAR_SETTING',
+}
+export enum DRAWER {
+  DRAWER = 'DRAWER',
+}
+export const ROUTES = {
+  AUTH,
+  MAIN,
+  DRAWER,
+} as const;

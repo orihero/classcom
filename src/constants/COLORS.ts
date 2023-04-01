@@ -1,0 +1,10 @@
+export const COLORS = {
+  WHITE: '#FFF',
+  WHITE_ONE: '#F8F9FA',
+  BLUE: '#2F6C9F',
+  GREY_BLACK: '#333333',
+  GREY: '#797979',
+  GREY_ONE: '#CBCBCB',
+  LIGHT_BLUE: '#70A2CB',
+  GREEN: '#58AF23',
+};
