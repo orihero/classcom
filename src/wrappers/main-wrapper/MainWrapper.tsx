@@ -1,11 +1,17 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
-import {mainWrapperStyles} from './MainWrapper.styles';
 import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
+import {ROUTES} from '../../navigation/routes';
 import {Assets} from '../../utils/requireAssets';
-import {useNavigation, DrawerActions} from '@react-navigation/native';
+import {mainWrapperStyles} from './MainWrapper.styles';
 
 const MainWrapper = (props: PropsWithChildren<any>) => {
+  const navigation = useNavigation();
+  const onBellPress = () => {
+    navigation.navigate(ROUTES.MAIN.NOTIFICATIONS);
+  };
+
   return (
     <View style={mainWrapperStyles.container}>
       <SafeAreaView>
@@ -19,7 +25,7 @@ const MainWrapper = (props: PropsWithChildren<any>) => {
             source={Assets.images.classPhoto}
           />
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onBellPress}>
             <BellIcon />
           </TouchableOpacity>
         </View>

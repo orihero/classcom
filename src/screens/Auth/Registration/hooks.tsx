@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {ROUTES} from '../../../navigation/ROUTES';
+import {ROUTES} from '../../../navigation/routes';
 import {useState} from 'react';
 export const RegistrationHooks = () => {
   const [shouldShow, setShouldShow] = useState(true);

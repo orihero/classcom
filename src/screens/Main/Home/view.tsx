@@ -1,7 +1,6 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import MainWrapper from '../../../wrappers/main-wrapper/MainWrapper';
 import Schedule from '../../../components/ schedule';
+import MainWrapper from '../../../wrappers/main-wrapper/MainWrapper';
 
 const HomeScreen = () => {
   return (
