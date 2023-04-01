@@ -1,12 +1,13 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthorizationScreen from '../screens/Auth/Authorization/view';
-import RegistrationScreen from '../screens/Auth/Registration/view';
 import PublicOfferScreen from '../screens/Auth/Public-offer/view';
+import RegistrationScreen from '../screens/Auth/Registration/view';
 import WelcomeScreen from '../screens/Auth/Welcome/view';
-import {ROUTES} from './ROUTES';
-import HomeScreen from '../screens/Main/Home/view';
 import CalendarSettingScreen from '../screens/Main/Calendar-setting/view';
-
+import HomeScreen from '../screens/Main/Home/view';
+import NotificationScreen from '../screens/Main/Notifications/view';
+import {ROUTES} from './routes';
 
 export type RootNavigatorParamList = {
   [ROUTES.AUTH.AUTHORIZATION]: undefined;
@@ -15,19 +16,19 @@ export type RootNavigatorParamList = {
   [ROUTES.AUTH.WELCOME]: undefined;
   [ROUTES.MAIN.HOME]: undefined;
   [ROUTES.MAIN.CALENDAR_SETTING]: undefined;
+  [ROUTES.MAIN.NOTIFICATIONS]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 const RootNavigator = () => {
   return (
-    
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={ROUTES.AUTH.AUTHORIZATION}
         component={AuthorizationScreen}
       />
-     
+
       <Stack.Screen
         name={ROUTES.AUTH.REGISTRATION}
         component={RegistrationScreen}
@@ -41,6 +42,10 @@ const RootNavigator = () => {
       <Stack.Screen
         name={ROUTES.MAIN.CALENDAR_SETTING}
         component={CalendarSettingScreen}
+      />
+      <Stack.Screen
+        name={ROUTES.MAIN.NOTIFICATIONS}
+        component={NotificationScreen}
       />
     </Stack.Navigator>
   );

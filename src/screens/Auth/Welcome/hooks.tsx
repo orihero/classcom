@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {ROUTES} from '../../../navigation/ROUTES';
+import {ROUTES} from '../../../navigation/routes';
 export const WelcomeHooks = () => {
   const navigation = useNavigation();
   const onPress = () => {
