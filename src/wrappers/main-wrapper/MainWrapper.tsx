@@ -6,14 +6,18 @@ import {Assets} from '../../utils/requireAssets';
 import {useNavigation, DrawerActions} from '@react-navigation/native';
 
 const MainWrapper = (props: PropsWithChildren<any>) => {
+  const drawer = useNavigation();
+  const onPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
   return (
     <View style={mainWrapperStyles.container}>
       <SafeAreaView>
         <View style={mainWrapperStyles.headerContainer}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onPress}>
             <MenuIcon />
           </TouchableOpacity>
-
+          
           <Image
             style={mainWrapperStyles.image}
             source={Assets.images.classPhoto}
