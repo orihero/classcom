@@ -5,6 +5,7 @@ import PublicOfferScreen from '../screens/Auth/Public-offer/view';
 import RegistrationScreen from '../screens/Auth/Registration/view';
 import WelcomeScreen from '../screens/Auth/Welcome/view';
 import CalendarSettingScreen from '../screens/Main/Calendar-setting/view';
+import CreateTestScreen from '../screens/Main/CreateTest/view';
 import HomeScreen from '../screens/Main/Home/view';
 import NotificationScreen from '../screens/Main/Notifications/view';
 import {ROUTES} from './routes';
@@ -17,13 +18,16 @@ export type RootNavigatorParamList = {
   [ROUTES.MAIN.HOME]: undefined;
   [ROUTES.MAIN.CALENDAR_SETTING]: undefined;
   [ROUTES.MAIN.NOTIFICATIONS]: undefined;
+  [ROUTES.MAIN.CREATE_TEST]: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      initialRouteName={ROUTES.MAIN.CREATE_TEST}
+      screenOptions={{headerShown: false}}>
       <Stack.Screen
         name={ROUTES.AUTH.AUTHORIZATION}
         component={AuthorizationScreen}
@@ -46,6 +50,10 @@ const RootNavigator = () => {
       <Stack.Screen
         name={ROUTES.MAIN.NOTIFICATIONS}
         component={NotificationScreen}
+      />
+      <Stack.Screen
+        name={ROUTES.MAIN.CREATE_TEST}
+        component={CreateTestScreen}
       />
     </Stack.Navigator>
   );

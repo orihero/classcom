@@ -5,7 +5,16 @@ import {ArrowLeftIcon} from '../../assets/icons/index';
 import {COLORS} from '../../constants/COLORS';
 import {defaultWrapperStyles} from './DefaultWrapper.styles';
 
-const DefaultWrapper = (props: PropsWithChildren<any>) => {
+export interface DefaultWrapperProps {
+  title: string;
+  hasUser?: boolean;
+}
+
+const DefaultWrapper = ({
+  children,
+  hasUser,
+  title,
+}: PropsWithChildren<DefaultWrapperProps>) => {
   const navigation = useNavigation();
   const onArrowLeftPress = () => {
     navigation.goBack();
@@ -18,12 +27,16 @@ const DefaultWrapper = (props: PropsWithChildren<any>) => {
           <TouchableOpacity onPress={onArrowLeftPress}>
             <ArrowLeftIcon fill={COLORS.WHITE} />
           </TouchableOpacity>
-          <Text style={defaultWrapperStyles.titleText}>Уведомления</Text>
+          <Text style={defaultWrapperStyles.titleText}>{title}</Text>
+          <View style={{width: 20}} />
         </View>
+        {hasUser && (
+          <Text style={defaultWrapperStyles.userText}>
+            Ройтман Рафаэль Евгеньевич
+          </Text>
+        )}
       </SafeAreaView>
-      <View style={defaultWrapperStyles.childrenContainer}>
-        {props.children}
-      </View>
+      <View style={defaultWrapperStyles.childrenContainer}>{children}</View>
     </View>
   );
 };
