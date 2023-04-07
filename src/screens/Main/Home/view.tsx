@@ -11,9 +11,9 @@ import {
   SettingBlueIcon,
   SettingGreyIcon,
 } from '../../../assets/icons';
-import Schedule from '../../../components/ schedule';
 import {styles} from './styles';
 import Button from '../../../components/button';
+import Schedule from '../../../components/schedule';
 
 const HomeScreen = () => {
   const [state, setState] = useState(0);

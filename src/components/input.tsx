@@ -1,15 +1,16 @@
+import React from 'react';
 import {
-  View,
+  StyleProp,
+  StyleSheet,
   Text,
   TextInput,
-  StyleProp,
   TextStyle,
-  ViewStyle,
-  StyleSheet,
   TouchableOpacity,
+  View,
+  ViewStyle,
 } from 'react-native';
+import {EyesIcon} from '../assets/icons';
 import {COLORS} from '../constants/COLORS';
-import {EyesIcon, LockIcon, UserIcon} from '../assets/icons';
 
 interface IProps {
   name?: string;
@@ -23,6 +24,7 @@ interface IProps {
   inputStyle?: StyleProp<TextStyle>;
   eyes?: boolean;
   icon?: any;
+  dark?: boolean;
 }
 
 const Input = ({
@@ -37,12 +39,13 @@ const Input = ({
   eyes,
   name,
   icon,
+  dark,
 }: IProps) => {
   return (
     <View style={{marginHorizontal: 20}}>
-      <Text style={styles.text}>{name}</Text>
+      <Text style={[styles.text, dark && styles.darkText]}>{name}</Text>
       <View style={[styles.container, containerStyle]}>
-        {icon}
+        {icon && icon}
         <TextInput
           multiline={multiline}
           value={value}
@@ -87,5 +90,8 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.GREY,
     marginVertical: 13,
+  },
+  darkText: {
+    color: COLORS.GREY_BLACK,
   },
 });

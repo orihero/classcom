@@ -67,7 +67,7 @@ export function ArrowLeftIcon(props: SvgProps) {
     <Svg width={20} height={19} viewBox="0 0 20 19" fill="none" {...props}>
       <Path
         d="M10.626.345c.235.23.359.522.37.878.01.355-.103.648-.338.878L4.366 8.246h14.35c.364 0 .669.12.915.361.246.24.369.538.369.893s-.123.653-.369.894c-.246.24-.551.36-.915.36H4.366l6.292 6.145c.236.23.348.523.338.878a1.232 1.232 0 01-.37.878c-.235.23-.535.345-.899.345s-.663-.115-.899-.345L.353 10.378a.854.854 0 01-.273-.391A1.51 1.51 0 010 9.5c0-.167.027-.324.08-.47.054-.147.145-.282.273-.408L8.828.345c.236-.23.535-.345.9-.345.363 0 .663.115.898.345z"
-        fill="#333"
+        fill={props.fill ? props.fill : '#333'}
       />
     </Svg>
   );
@@ -182,12 +182,14 @@ export function BellIcon(props: SvgProps) {
     </Svg>
   );
 }
-export function CalendarIcon(props: SvgProps) {
+export function CalendarIcon(props: SvgProps & {size?: number}) {
+  const width = props.size ?? 18;
+  const height = props.size ?? 18 + 2;
   return (
-    <Svg width={18} height={20} viewBox="0 0 18 20" fill="none" {...props}>
+    <Svg {...{width, height}} viewBox="0 0 18 20" fill="none" {...props}>
       <Path
         d="M1.083 7.623h15.942M13.023 11.116h.008M9.054 11.116h.008M5.077 11.116h.008M13.023 14.592h.008M9.054 14.592h.008M5.077 14.592h.008M12.667 1v2.943M5.441 1v2.943"
-        stroke="#fff"
+        stroke={props.stroke ?? '#fff'}
         strokeWidth={1.2}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -195,7 +197,7 @@ export function CalendarIcon(props: SvgProps) {
       <Path
         clipRule="evenodd"
         d="M12.84 2.413H5.268C2.641 2.413 1 3.876 1 6.566v8.094c0 2.732 1.64 4.229 4.267 4.229h7.566c2.635 0 4.267-1.472 4.267-4.161V6.566c.008-2.69-1.624-4.153-4.26-4.153z"
-        stroke="#fff"
+        stroke={props.stroke ?? '#fff'}
         strokeWidth={1.2}
         strokeLinecap="round"
         strokeLinejoin="round"

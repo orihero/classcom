@@ -7,6 +7,8 @@ export enum AUTH {
 export enum MAIN {
   HOME = 'HOME',
   CALENDAR_SETTING = 'CALENDAR_SETTING',
+  NOTIFICATIONS = 'NOTIFICATIONS',
+  CREATE_TEST = 'CREATE_TEST',
 }
 export enum DRAWER {
   DRAWER = 'DRAWER',
