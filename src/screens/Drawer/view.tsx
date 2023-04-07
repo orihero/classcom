@@ -2,7 +2,6 @@ import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 import {
   BookIcon,
-  CalendarBlueIcon,
   CalendarDrawerIcon,
   ChartIcon,
   ExitIcon,
@@ -15,8 +14,21 @@ import {
 } from '../../assets/icons';
 import {styles} from './styles';
 import DrawerButton from '../../components/drawer-button';
+import {DrawerHook} from './hooks';
 
 const DrawerScreen = () => {
+  const {
+    onElectronicPress,
+    onHomePress,
+    onPaymentPress,
+    onProgramPress,
+    onSettingPress,
+    onStatisticPress,
+    onSupportPress,
+    onTestingPress,
+    onThematicPress,
+  } = DrawerHook();
+
   return (
     <View style={styles.container}>
       <View style={styles.userContainer}>
@@ -25,52 +37,52 @@ const DrawerScreen = () => {
 
       <View style={styles.screenContainer}>
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onHomePress}
           icon={<HomeIcon />}
           text="Главная страница"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onElectronicPress}
           icon={<BookIcon />}
           text="Электронные ресурсы"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onThematicPress}
           icon={<CalendarDrawerIcon />}
           text="Тематический план"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onTestingPress}
           icon={<TestingIcon />}
           text="Тестирование"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onProgramPress}
           icon={<NoteIcon />}
           text="О программе"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onStatisticPress}
           icon={<ChartIcon />}
           text="Статистика"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onPaymentPress}
           icon={<PayIcon />}
           text="Оплата"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onSupportPress}
           icon={<SupportIcon />}
           text="Служба поддержки"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={onSettingPress}
           icon={<SettingDrawerIcon />}
           text="Настройки"
         />
         <DrawerButton
-          onPress={() => console.log('Press')}
+          onPress={() => console.log('Logout')}
           icon={<ExitIcon />}
           text="Выйти"
         />

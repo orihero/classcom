@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/native';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
@@ -7,6 +7,10 @@ import {Assets} from '../../utils/requireAssets';
 import {mainWrapperStyles} from './MainWrapper.styles';
 
 const MainWrapper = (props: PropsWithChildren<any>) => {
+  const drawer = useNavigation();
+  const onPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
   const navigation = useNavigation();
   const onBellPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
@@ -16,7 +20,7 @@ const MainWrapper = (props: PropsWithChildren<any>) => {
     <View style={mainWrapperStyles.container}>
       <SafeAreaView>
         <View style={mainWrapperStyles.headerContainer}>
-          <TouchableOpacity onPress={onBellPress}>
+          <TouchableOpacity onPress={onPress}>
             <MenuIcon />
           </TouchableOpacity>
 

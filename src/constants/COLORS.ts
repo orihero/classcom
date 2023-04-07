@@ -7,4 +7,5 @@ export const COLORS = {
   GREY_ONE: '#CBCBCB',
   LIGHT_BLUE: '#70A2CB',
   GREEN: '#58AF23',
+  ORANGE:'#E3643C',
 };

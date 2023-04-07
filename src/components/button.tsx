@@ -12,7 +12,7 @@ import {COLORS} from '../constants/COLORS';
 
 interface IProps {
   text: string;
-  onPress: () => void;
+  onPress?: () => void;
   loading?: boolean;
   loadingColor?: string;
   style?: StyleProp<ViewStyle>;

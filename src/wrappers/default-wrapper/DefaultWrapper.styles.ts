@@ -14,7 +14,7 @@ export const defaultWrapperStyles = StyleSheet.create({
   },
   childrenContainer: {
     paddingTop: 15,
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: COLORS.WHITE_ONE,
     flex: 1,
     marginTop: 20,
     borderTopLeftRadius: 30,

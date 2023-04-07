@@ -32,17 +32,15 @@ const Tabs = [
 const windowWidth = Dimensions.get('window').width;
 
 interface TabProps extends Props {
-  titleList: string[];
-  iconActive: any[];
-  iconNoActive: any[];
+  content: Array<{
+    title: string;
+    content: () => JSX.Element;
+    iconActive: JSX.Element;
+    iconPassive: JSX.Element;
+  }>;
 }
-const TopTabs = ({
-  First,
-  Second,
-  titleList,
-  iconNoActive,
-  iconActive,
-}: TabProps) => {
+
+const TopTabs = ({content}: TabProps) => {
   const [active, setActive] = useState(0);
   const onTabPress = (i: number) => () => {
     setActive(i);
@@ -52,7 +50,12 @@ const TopTabs = ({
       <View style={styles.ShopContainer}>
         <View style={styles.header}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={{width: windowWidth, alignItems: 'center'}}>
+            <View
+              style={{
+                width: windowWidth,
+                alignItems: 'center',
+                paddingBottom: 15,
+              }}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -60,7 +63,7 @@ const TopTabs = ({
                   borderColor: '#CECECE',
                   width: windowWidth / 1.2,
                 }}>
-                {Tabs.map((e, i) => {
+                {content.map((e, i) => {
                   return (
                     <TouchableOpacity
                       style={{
@@ -69,24 +72,24 @@ const TopTabs = ({
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderBottomWidth: 4,
-                        borderColor: active === i ? COLORS.BLUE:COLORS.WHITE,
+                        borderColor: active === i ? COLORS.BLUE : COLORS.WHITE,
                         paddingVertical: 12,
                       }}
                       activeOpacity={0.7}
                       onPress={onTabPress(i)}
                       key={i}>
-                      <View style={{marginRight: 10,}}>
+                      <View style={{marginRight: 10}}>
                         {active ? (
-                          <View>{iconActive[i]}</View>
+                          <View>{e.iconActive}</View>
                         ) : (
-                          <View>{iconNoActive[i]}</View>
+                          <View>{e.iconPassive}</View>
                         )}
                       </View>
                       <Text
                         style={
                           active === i ? styles.textHeader : styles.headerText
                         }>
-                        {titleList[i]}
+                        {e.title}
                       </Text>
                     </TouchableOpacity>
                   );
@@ -97,12 +100,13 @@ const TopTabs = ({
         </View>
         <View style={styles.content}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={{}}>
-              {Tabs.map((e, i) => {
-                const Content = e.content;
-                return i === active ? (
-                  <Content First={First} Second={Second} />
-                ) : null;
+            <View>
+              {content.map((e, i) => {
+                const Content: () => JSX.Element = e.content;
+                if (i === active) {
+                  return <Content key={i} />;
+                }
+                return <></>;
               })}
             </View>
           </ScrollView>

@@ -3,7 +3,7 @@ import React from 'react';
 import {COLORS} from '../constants/COLORS';
 
 interface Props {
-  number?: String;
+  number?: string;
 }
 
 const Schedule = ({number}: Props) => {
