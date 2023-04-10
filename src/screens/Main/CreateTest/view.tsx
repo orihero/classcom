@@ -8,7 +8,7 @@ const CreateTestScreen = () => {
   return (
     <DefaultWrapper hasUser title="Создать тест">
       <View style={createTestScreenStyles.container}>
-        <Input dark name="Наименование" />
+        <Input dark title="Наименование" />
       </View>
     </DefaultWrapper>
   );

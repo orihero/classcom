@@ -28,12 +28,12 @@ const AuthorizationScreen = () => {
       </View>
 
       <View style={styles.registerContainer}>
-        <Input placeholder="Логин" icon={<UserIcon />} name="Логин" />
+        <Input placeholder="Логин" icon={<UserIcon />} title="Логин" />
         <Input
           placeholder="Пароль"
           icon={<LockIcon />}
           eyes={true}
-          name="Пароль"
+          title="Пароль"
         />
 
         <TouchableOpacity activeOpacity={0.7}>

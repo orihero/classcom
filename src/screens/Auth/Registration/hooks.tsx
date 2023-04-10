@@ -1,25 +1,31 @@
 import {useNavigation} from '@react-navigation/native';
-import {ROUTES} from '../../../navigation/routes';
 import {useState} from 'react';
 export const RegistrationHooks = () => {
   const [shouldShow, setShouldShow] = useState(true);
   const [drop, setDrop] = useState('Математика');
   const [state, setState] = useState(true);
   const navigation = useNavigation();
+  const [values, setValues] = useState({});
   const goBack = () => {
     navigation.goBack();
   };
-  const onPublicPress = () => {
-    navigation.navigate(ROUTES.AUTH.PUBLIC_OFFER as never);
-  };
+  const onRegisterPress = () => {};
+
+  const onInputChange =
+    (key: string = '') =>
+    (value: string) => {
+      setValues({...values, [key]: value});
+    };
+
   return {
     goBack,
-    onPublicPress,
+    onRegisterPress,
     shouldShow,
     setDrop,
     setShouldShow,
     drop,
     state,
     setState,
+    onInputChange,
   };
 };

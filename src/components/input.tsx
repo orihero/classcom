@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -14,9 +14,10 @@ import {COLORS} from '../constants/COLORS';
 
 interface IProps {
   name?: string;
+  title?: string;
   multiline?: boolean;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: (key?: string) => (value: string) => void;
   placeholder?: string;
   placeholderColor?: string;
   disablePlaceholder?: boolean;
@@ -37,26 +38,32 @@ const Input = ({
   containerStyle,
   inputStyle,
   eyes,
-  name,
+  title,
   icon,
   dark,
+  name,
 }: IProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
+  const onEyePress = () => {
+    setIsPasswordVisible(e => !e);
+  };
   return (
     <View style={{marginHorizontal: 20}}>
-      <Text style={[styles.text, dark && styles.darkText]}>{name}</Text>
+      <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
         <TextInput
           multiline={multiline}
           value={value}
-          onChangeText={onChange}
+          onChangeText={onChange && onChange(name)}
           placeholder={!disablePlaceholder ? placeholder : undefined}
           placeholderTextColor={placeholderColor}
           textAlignVertical={'center'}
           style={[styles.input, inputStyle]}
+          secureTextEntry={isPasswordVisible}
         />
         {eyes ? (
-          <TouchableOpacity activeOpacity={0.6}>
+          <TouchableOpacity activeOpacity={0.6} onPress={onEyePress}>
             <EyesIcon />
           </TouchableOpacity>
         ) : null}

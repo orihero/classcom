@@ -26,13 +26,14 @@ import Button from '../../../components/button';
 const RegistrationScreen = () => {
   const {
     goBack,
-    onPublicPress,
+    onRegisterPress,
     drop,
     setDrop,
     setShouldShow,
     shouldShow,
     state,
     setState,
+    onInputChange,
   } = RegistrationHooks();
 
   return (
@@ -46,16 +47,40 @@ const RegistrationScreen = () => {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{marginBottom: 40}}>
-          <Input name="Имя" placeholder="Имя" icon={<UserIcon />} />
-          <Input name="Фамилия" placeholder="Фамилия" icon={<UserIcon />} />
-          <Input name="Логин" placeholder="Логин" icon={<UserIcon />} />
           <Input
-            name="Номер телефона"
+            name="firstName"
+            title="Имя"
+            placeholder="Имя"
+            onChange={onInputChange}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="lastName"
+            title="Фамилия"
+            placeholder="Фамилия"
+            onChange={onInputChange}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="login"
+            title="Логин"
+            placeholder="Логин"
+            onChange={onInputChange}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="phone"
+            title="Номер телефона"
             placeholder="Номер телефона"
+            onChange={onInputChange}
             icon={<PhoneIcon />}
           />
-          <Input name="Область" placeholder="Область" icon={<LocationIcon />} />
-          <Input name="Район" placeholder="Район" icon={<LocationIcon />} />
+          <Input
+            title="Область"
+            placeholder="Область"
+            icon={<LocationIcon />}
+          />
+          <Input title="Район" placeholder="Район" icon={<LocationIcon />} />
 
           <View style={{marginHorizontal: 20}}>
             <Text style={styles.text}>Предмет</Text>
@@ -98,13 +123,13 @@ const RegistrationScreen = () => {
           </View>
 
           <Input
-            name="Новый пароль"
+            title="Новый пароль"
             placeholder="Новый пароль"
             icon={<LockIcon />}
             eyes={true}
           />
           <Input
-            name="Подтвердите пароль"
+            title="Подтвердите пароль"
             placeholder="Подтвердите пароль"
             icon={<LockIcon />}
           />
@@ -121,7 +146,7 @@ const RegistrationScreen = () => {
             </View>
           </View>
 
-          <Button onPress={onPublicPress} text="Зарегестрироваться" />
+          <Button onPress={onRegisterPress} text="Зарегестрироваться" />
         </View>
       </ScrollView>
     </View>
