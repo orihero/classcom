@@ -15,6 +15,7 @@ interface DropDownProps {
   iconActive?: any;
   iconNoActive?: any;
   dropDown: any;
+  text?: string;
   dropDownInner: any;
   container?: StyleProp<ViewStyle>;
   containerInner?: StyleProp<ViewStyle>;
@@ -27,10 +28,12 @@ const DropDownAnimated = ({
   dropDownInner,
   container,
   containerInner,
+  text,
 }: DropDownProps) => {
   const [state, setState] = useState(true);
   return (
     <View>
+      <Text style={styles.text}>{text}</Text>
       <TouchableOpacity
         activeOpacity={0.7}
         style={[container]}
@@ -49,4 +52,11 @@ const DropDownAnimated = ({
 
 export default DropDownAnimated;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: COLORS.GREY,
+    marginLeft: 20,
+  },
+});

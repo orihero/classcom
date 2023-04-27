@@ -1,4 +1,12 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+  StyleProp,
+  TextStyle,
+} from 'react-native';
 import React from 'react';
 import {COLORS} from '../constants/COLORS';
 
@@ -8,6 +16,9 @@ interface PlaneProps {
   authorTitle?: string;
   nameTitle?: string;
   lessonTitle?: string;
+  disable?: boolean;
+  textStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
   onPress?: () => void;
 }
 
@@ -17,15 +28,19 @@ const PlaneButton = ({
   authorTitle,
   nameTitle,
   lessonTitle,
+  disable,
+  style,
+  textStyle,
   onPress,
 }: PlaneProps) => {
   return (
     <TouchableOpacity
+      disabled={disable}
       onPress={onPress}
       activeOpacity={0.7}
-      style={styles.container}>
+      style={[styles.container, style]}>
       <View style={styles.first}>
-        <Text style={styles.textName}>{testingTitle}</Text>
+        <Text style={[styles.textName, textStyle]}>{testingTitle}</Text>
         <TouchableOpacity>
           <Text style={styles.textDelete}>{deleteTitle}</Text>
         </TouchableOpacity>
@@ -33,8 +48,8 @@ const PlaneButton = ({
       <View style={styles.second}>
         <Text style={styles.text}>{authorTitle}</Text>
         <View style={styles.box}>
-          <Text style={styles.title}>{nameTitle}</Text>
-          <Text style={styles.lessonName}>{lessonTitle}</Text>
+          <Text style={[styles.title, textStyle]}>{nameTitle}</Text>
+          <Text style={[styles.lessonName, textStyle]}>{lessonTitle}</Text>
         </View>
       </View>
     </TouchableOpacity>

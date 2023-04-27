@@ -2,9 +2,16 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {COLORS} from '../../../../constants/COLORS';
 
-const Thematic = () => {
+interface props {
+  onPress?: () => void;
+}
+
+const Thematic = ({onPress}: props) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={styles.container}>
       <View style={styles.firstContainer}>
         <Text style={styles.title}>Предмет</Text>
         <Text style={styles.language}>Русский язык</Text>
