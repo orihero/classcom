@@ -24,10 +24,17 @@ interface IProps {
 
 const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={loading ? undefined : onPress}>
       <View style={[styles.container, style]}>
         {loading ? (
-          <Lottie source={animation} autoPlay loop={false} />
+          <Lottie
+            style={{transform: [{scale: 3}], height: 16}}
+            source={animation}
+            autoPlay
+            loop={true}
+          />
         ) : (
           <Text style={[styles.text, textStyle]}>{text}</Text>
         )}
@@ -52,8 +59,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
     elevation: 10,
+    alignItems: 'center',
   },
   text: {
     fontSize: 15,

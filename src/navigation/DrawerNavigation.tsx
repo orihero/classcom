@@ -1,30 +1,27 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {StyleSheet} from 'react-native';
-import {useDispatch} from 'react-redux';
-import HomeScreen from '../screens/Main/Home/view';
 import DrawerScreen from '../screens/Drawer/view';
 import CalendarSettingScreen from '../screens/Main/Calendar-setting/view';
-import {ROUTES} from './routes';
-import NotificationScreen from '../screens/Main/Notifications/view';
 import CreateTestScreen from '../screens/Main/CreateTest/view';
 import ElectronicResourceScreen from '../screens/Main/Electronic-resources/view';
+import HomeScreen from '../screens/Main/Home/view';
+import NotificationScreen from '../screens/Main/Notifications/view';
 import PlateScreen from '../screens/Main/Plate/view';
-import ProgramScreen from '../screens/Main/program/view';
 import SettingScreen from '../screens/Main/Setting/view';
 import StatisticScreen from '../screens/Main/Statistics/view';
 import SupportScreen from '../screens/Main/Support/view';
 import TestingScreen from '../screens/Main/Testing/view';
 import ThematicPlanScreen from '../screens/Main/Thematic-plan/view';
+import ProgramScreen from '../screens/Main/program/view';
+import {ROUTES} from './routes';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
-  let dispatch = useDispatch();
-
   return (
     <Drawer.Navigator
-      drawerContent={() => <DrawerScreen />}
+      drawerContent={DrawerScreen}
       screenOptions={{
         headerShown: false,
         drawerPosition: 'left',

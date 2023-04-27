@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
+import {SafeAreaView, View} from 'react-native';
 import {
   BookIcon,
   CalendarDrawerIcon,
@@ -12,9 +12,9 @@ import {
   SupportIcon,
   TestingIcon,
 } from '../../assets/icons';
-import {styles} from './styles';
 import DrawerButton from '../../components/drawer-button';
 import {DrawerHook} from './hooks';
+import {styles} from './styles';
 
 const DrawerScreen = () => {
   const {
@@ -27,6 +27,7 @@ const DrawerScreen = () => {
     onSupportPress,
     onTestingPress,
     onThematicPress,
+    onLogout,
   } = DrawerHook();
 
   return (
@@ -81,11 +82,7 @@ const DrawerScreen = () => {
           icon={<SettingDrawerIcon />}
           text="Настройки"
         />
-        <DrawerButton
-          onPress={() => console.log('Logout')}
-          icon={<ExitIcon />}
-          text="Выйти"
-        />
+        <DrawerButton onPress={onLogout} icon={<ExitIcon />} text="Выйти" />
       </View>
     </View>
   );

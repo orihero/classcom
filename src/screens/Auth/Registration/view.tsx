@@ -1,40 +1,40 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  LayoutAnimation,
-} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
 import {
-  ArrowDown,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import {
   ArrowLeftIcon,
-  ArrowUp,
   CheckIcon,
-  LocationIcon,
   LockIcon,
   PhoneIcon,
-  StudentIcon,
   UserIcon,
 } from '../../../assets/icons';
-import Input from '../../../components/input';
-import {RegistrationHooks} from './hooks';
 import Button from '../../../components/button';
+import Input from '../../../components/input';
+import Select from '../../../components/select';
+import {useCoursesHook} from '../../general-hooks/courses-hook';
+import {useRegionsHook} from '../../general-hooks/regions-hook';
+import {RegistrationHooks} from './hooks';
+import {styles} from './styles';
 
 const RegistrationScreen = () => {
   const {
     goBack,
     onRegisterPress,
-    drop,
-    setDrop,
-    setShouldShow,
-    shouldShow,
     state,
     setState,
     onInputChange,
+    values,
+    loading,
+    validationErrors,
   } = RegistrationHooks();
+
+  const {regions, districts} = useRegionsHook(values['regionId']);
+  const {courses} = useCoursesHook();
 
   return (
     <View style={styles.container}>
@@ -53,6 +53,7 @@ const RegistrationScreen = () => {
             placeholder="Имя"
             onChange={onInputChange}
             icon={<UserIcon />}
+            errors={validationErrors}
           />
           <Input
             name="lastName"
@@ -60,6 +61,7 @@ const RegistrationScreen = () => {
             placeholder="Фамилия"
             onChange={onInputChange}
             icon={<UserIcon />}
+            errors={validationErrors}
           />
           <Input
             name="login"
@@ -67,6 +69,7 @@ const RegistrationScreen = () => {
             placeholder="Логин"
             onChange={onInputChange}
             icon={<UserIcon />}
+            errors={validationErrors}
           />
           <Input
             name="phone"
@@ -74,69 +77,54 @@ const RegistrationScreen = () => {
             placeholder="Номер телефона"
             onChange={onInputChange}
             icon={<PhoneIcon />}
+            errors={validationErrors}
           />
-          <Input
+          <Select
+            items={regions}
+            name="regionId"
+            value={values['regionId']}
             title="Область"
             placeholder="Область"
-            icon={<LocationIcon />}
+            onChange={onInputChange}
+            errors={validationErrors}
           />
-          <Input title="Район" placeholder="Район" icon={<LocationIcon />} />
-
-          <View style={{marginHorizontal: 20}}>
-            <Text style={styles.text}>Предмет</Text>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={styles.animated}
-              onPress={() => {
-                LayoutAnimation.configureNext(
-                  LayoutAnimation.Presets.easeInEaseOut,
-                );
-                setShouldShow(!shouldShow);
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <StudentIcon style={{marginRight: 10}} />
-                <Text style={styles.textSubject}>{drop}</Text>
-              </View>
-              {!shouldShow ? <ArrowDown /> : <ArrowUp />}
-            </TouchableOpacity>
-            <View style={{}}>
-              {!shouldShow ? (
-                <View style={styles.animatedTwo}>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setDrop('Английский')}>
-                    <Text style={styles.textSubject}>Английский</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setDrop('Математика')}>
-                    <Text style={styles.textSubject}>Математика</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => setDrop('Русский')}>
-                    <Text style={styles.textSubject}>Русский</Text>
-                  </TouchableOpacity>
-                </View>
-              ) : null}
-            </View>
-          </View>
-
+          <Select
+            items={districts}
+            name="districtId"
+            value={values['districtId']}
+            title="Район"
+            placeholder="Район"
+            onChange={onInputChange}
+            errors={validationErrors}
+          />
+          <Select
+            items={courses}
+            name="courseId"
+            value={values['courseId']}
+            title="Предмет"
+            placeholder="Предмет"
+            onChange={onInputChange}
+            errors={validationErrors}
+          />
           <Input
+            name="password"
             title="Новый пароль"
             placeholder="Новый пароль"
             icon={<LockIcon />}
-            eyes={true}
+            eyes
+            onChange={onInputChange}
+            errors={validationErrors}
           />
           <Input
             title="Подтвердите пароль"
             placeholder="Подтвердите пароль"
             icon={<LockIcon />}
+            eyes
           />
 
           <View style={styles.checkContainer}>
             <TouchableOpacity
-              onPress={() => setState(false)}
+              onPress={() => setState(e => !e)}
               activeOpacity={0.7}
               style={styles.checkButton}>
               {!state ? <CheckIcon /> : <View />}
@@ -146,7 +134,11 @@ const RegistrationScreen = () => {
             </View>
           </View>
 
-          <Button onPress={onRegisterPress} text="Зарегестрироваться" />
+          <Button
+            loading={loading}
+            onPress={onRegisterPress}
+            text="Зарегестрироваться"
+          />
         </View>
       </ScrollView>
     </View>

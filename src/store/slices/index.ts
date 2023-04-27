@@ -1,4 +1,4 @@
 import {combineReducers} from '@reduxjs/toolkit';
-import userSlice from './user.slice';
+import profileSlice from './profile.slice';
 
-export const rootReducer = combineReducers({user: userSlice});
+export const rootReducer = combineReducers({profile: profileSlice});

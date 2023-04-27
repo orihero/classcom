@@ -1,8 +1,17 @@
 import {useNavigation} from '@react-navigation/native';
 import {ROUTES} from '../../navigation/routes';
+import {useDispatch} from 'react-redux';
+import {loggedOut} from '../../store/slices/profile.slice';
 
 export const DrawerHook = () => {
   const navigation = useNavigation();
+
+  const dispatch = useDispatch();
+
+  const onLogout = () => {
+    dispatch(loggedOut());
+  };
+
   const onHomePress = () => {
     navigation.navigate(ROUTES.MAIN.HOME as never);
   };
@@ -40,5 +49,6 @@ export const DrawerHook = () => {
     onSupportPress,
     onTestingPress,
     onThematicPress,
+    onLogout,
   };
 };

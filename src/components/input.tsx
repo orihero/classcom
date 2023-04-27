@@ -26,6 +26,7 @@ interface IProps {
   eyes?: boolean;
   icon?: any;
   dark?: boolean;
+  errors?: any;
 }
 
 const Input = ({
@@ -42,6 +43,7 @@ const Input = ({
   icon,
   dark,
   name,
+  errors,
 }: IProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
   const onEyePress = () => {
@@ -68,6 +70,9 @@ const Input = ({
           </TouchableOpacity>
         ) : null}
       </View>
+      {!!errors && !!name && !!errors[name] && (
+        <Text style={styles.error}>{errors[name || '']}</Text>
+      )}
     </View>
   );
 };
@@ -100,5 +105,8 @@ const styles = StyleSheet.create({
   },
   darkText: {
     color: COLORS.GREY_BLACK,
+  },
+  error: {
+    color: COLORS.ORANGE,
   },
 });
