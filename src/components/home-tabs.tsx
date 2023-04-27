@@ -99,17 +99,17 @@ const TopTabs = ({content}: TabProps) => {
           </ScrollView>
         </View>
         <View style={styles.content}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View>
+          {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+            <View style={{flex: 1,}}>
               {content.map((e, i) => {
                 const Content: () => JSX.Element = e.content;
                 if (i === active) {
                   return <Content key={i} />;
                 }
-                return <></>;
+                // return <></>;
               })}
             </View>
-          </ScrollView>
+          {/* </ScrollView> */}
         </View>
       </View>
     </View>

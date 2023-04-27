@@ -4,16 +4,16 @@ import {StyleSheet} from 'react-native';
 import DrawerScreen from '../screens/Drawer/view';
 import CalendarSettingScreen from '../screens/Main/Calendar-setting/view';
 import CreateTestScreen from '../screens/Main/CreateTest/view';
-import ElectronicResourceScreen from '../screens/Main/Electronic-resources/view';
 import HomeScreen from '../screens/Main/Home/view';
 import NotificationScreen from '../screens/Main/Notifications/view';
-import PlateScreen from '../screens/Main/Plate/view';
-import SettingScreen from '../screens/Main/Setting/view';
-import StatisticScreen from '../screens/Main/Statistics/view';
-import SupportScreen from '../screens/Main/Support/view';
-import TestingScreen from '../screens/Main/Testing/view';
-import ThematicPlanScreen from '../screens/Main/Thematic-plan/view';
-import ProgramScreen from '../screens/Main/program/view';
+import ElectronicResourcesStack from './navigation-stack/Electronic-resources-stack.';
+import PaymentStack from './navigation-stack/Payment-stack';
+import ProgramStack from './navigation-stack/Program-stack';
+import SettingStack from './navigation-stack/Setting-stack';
+import StatisticStack from './navigation-stack/Statistics-stack';
+import SupportStack from './navigation-stack/Support-stack';
+import TestingStack from './navigation-stack/Testing-stack';
+import ThematicPlanStack from './navigation-stack/Thematic-plan-stack';
 import {ROUTES} from './routes';
 
 const Drawer = createDrawerNavigator();
@@ -36,35 +36,58 @@ const DrawerNavigator = () => {
         name={ROUTES.MAIN.CALENDAR_SETTING}
         component={CalendarSettingScreen}
       />
+
       <Drawer.Screen
         name={ROUTES.MAIN.NOTIFICATIONS}
         component={NotificationScreen}
       />
+
       <Drawer.Screen
         name={ROUTES.MAIN.CREATE_TEST}
         component={CreateTestScreen}
       />
+
       <Drawer.Screen
-        name={ROUTES.DRAWER.ELECTRONIC_RESOURCES}
-        component={ElectronicResourceScreen}
+        name={ROUTES.STACK.ELECTRONIC_STACK}
+        component={ElectronicResourcesStack}
       />
-      <Drawer.Screen name={ROUTES.DRAWER.PAYMENT} component={PlateScreen} />
-      <Drawer.Screen name={ROUTES.DRAWER.PROGRAM} component={ProgramScreen} />
-      <Drawer.Screen name={ROUTES.DRAWER.SETTING} component={SettingScreen} />
+
       <Drawer.Screen
-        name={ROUTES.DRAWER.STATISTIC}
-        component={StatisticScreen}
+        name={ROUTES.STACK.PAYMENT_STACK}
+        component={PaymentStack}
       />
-      <Drawer.Screen name={ROUTES.DRAWER.SUPPORT} component={SupportScreen} />
-      <Drawer.Screen name={ROUTES.DRAWER.TESTING} component={TestingScreen} />
+
       <Drawer.Screen
-        name={ROUTES.DRAWER.THEMATIC_PLANE}
-        component={ThematicPlanScreen}
+        name={ROUTES.STACK.PROGRAM_STACK}
+        component={ProgramStack}
+      />
+
+      <Drawer.Screen
+        name={ROUTES.STACK.SETTING_STACK}
+        component={SettingStack}
+      />
+
+      <Drawer.Screen
+        name={ROUTES.STACK.STATISTICS_STACK}
+        component={StatisticStack}
+      />
+
+      <Drawer.Screen
+        name={ROUTES.STACK.SUPPORT_STACK}
+        component={SupportStack}
+      />
+
+      <Drawer.Screen
+        name={ROUTES.STACK.TESTING_STACK}
+        component={TestingStack}
+      />
+
+      <Drawer.Screen
+        name={ROUTES.STACK.THEMATIC_STACK}
+        component={ThematicPlanStack}
       />
     </Drawer.Navigator>
   );
 };
 
 export default DrawerNavigator;
-
-const styles = StyleSheet.create({});

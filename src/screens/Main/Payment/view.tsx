@@ -36,7 +36,7 @@ const content = [
     title: 'Активные',
   },
 ];
-const PlateScreen = () => {
+const PaymentScreen = () => {
   return (
     <DefaultWrapper hasUser title="Оплата">
       <TopTabs content={content} />
@@ -44,4 +44,4 @@ const PlateScreen = () => {
   );
 };
 
-export default PlateScreen;
+export default PaymentScreen;
