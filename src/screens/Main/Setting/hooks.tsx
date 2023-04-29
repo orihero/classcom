@@ -1,7 +1,22 @@
-import {useNavigation} from '@react-navigation/native';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import {REQUESTS} from '../../../api/requests';
+import {AccountResource} from '../../../api/types';
 export const SettingHooks = () => {
-  const navigation = useNavigation();
   const [range, setRange] = useState(0);
-  return {range, setRange};
+  const [account, setAccount] = useState<AccountResource[] | null>([]);
+
+  useEffect(() => {
+    const effect = async () => {
+      try {
+        const res = await REQUESTS.general.getAccount();
+        setAccount(res.data);
+      } catch (error) {
+        // console.log('====================================ACCounT');
+        // console.log('ERROR', JSON.stringify(error, null, 4));
+        // console.log('====================================LEEEEE');
+      }
+    };
+    effect();
+  }, []);
+  return {range, setRange, account};
 };

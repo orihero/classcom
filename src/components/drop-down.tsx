@@ -58,5 +58,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.GREY,
     marginLeft: 20,
+    marginVertical: 15,
   },
 });

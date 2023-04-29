@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView, Text, View, Image} from 'react-native';
 import {
   BookIcon,
   CalendarDrawerIcon,
@@ -15,6 +15,7 @@ import {
 import DrawerButton from '../../components/drawer-button';
 import {DrawerHook} from './hooks';
 import {styles} from './styles';
+import {Assets} from '../../utils/requireAssets';
 
 const DrawerScreen = () => {
   const {
@@ -28,12 +29,16 @@ const DrawerScreen = () => {
     onTestingPress,
     onThematicPress,
     onLogout,
+    account,
   } = DrawerHook();
+  console.log(account, 'asdasdasdsa');
 
   return (
     <View style={styles.container}>
       <View style={styles.userContainer}>
         <SafeAreaView />
+        <Image source={Assets.images.user} style={styles.image} />
+        <Text style={styles.userText}>{account?.firstName}</Text>
       </View>
 
       <View style={styles.screenContainer}>

@@ -97,3 +97,44 @@ export interface IThematicPlanResource {
   subjects: any[];
   activated: string;
 }
+export interface AccountResource {
+  id: number;
+  login: string;
+  firstName: string;
+  lastName: string;
+  patronymic: any;
+  dob: any;
+  dobPlace: any;
+  address: any;
+  jobPlace: any;
+  achievements: any;
+  awards: any;
+  moderatorCategoryId: any;
+  educationDegreeId: any;
+  textSize: any;
+  themeColor: any;
+  sendPush: boolean;
+  email: any;
+  phone: any;
+  imageUrl: any;
+  activated: boolean;
+  langKey: string;
+  bio: any;
+  createdBy: any;
+  createdDate: string;
+  lastModifiedBy: any;
+  lastModifiedDate: any;
+  authorities: string[];
+  courseId: number;
+  courseCode: string;
+  courseName: string;
+  schoolId: any;
+  schoolName: any;
+  regionId: any;
+  regionName: any;
+  districtId: any;
+  districtName: any;
+  tg: any;
+  moderator: boolean;
+  moderatorBalance: number;
+}

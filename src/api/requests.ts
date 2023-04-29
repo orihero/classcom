@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
 import {
+  AccountResource,
   ICourseResponse,
   IDistrictResponse,
   IELectronicResourceResponse,
@@ -53,5 +54,6 @@ export const REQUESTS = {
       axiosInstance.get<ICourseResponse[]>('/register-shared/courses'),
     getThematicPlans: () =>
       axiosInstance.get<IThematicPlanResource[]>('/calendar-thematic-plans'),
+    getAccount: () => axiosInstance.get<AccountResource[]>('/account'),
   },
 };

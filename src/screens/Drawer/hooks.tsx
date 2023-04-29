@@ -2,9 +2,13 @@ import {useNavigation} from '@react-navigation/native';
 import {ROUTES} from '../../navigation/routes';
 import {useDispatch} from 'react-redux';
 import {loggedOut} from '../../store/slices/profile.slice';
+import {useEffect, useState} from 'react';
+import {REQUESTS} from '../../api/requests';
+import {AccountResource} from '../../api/types';
 
 export const DrawerHook = () => {
   const navigation = useNavigation();
+  const [account, setAccount] = useState<AccountResource[] | null>([]);
 
   const dispatch = useDispatch();
 
@@ -39,6 +43,19 @@ export const DrawerHook = () => {
   const onTestingPress = () => {
     navigation.navigate(ROUTES.STACK.TESTING_STACK as never);
   };
+  useEffect(() => {
+    const effect = async () => {
+      try {
+        const res = await REQUESTS.general.getAccount();
+        setAccount(res.data);
+      } catch (error) {
+        // console.log('====================================ACCounT');
+        // console.log('ERROR', JSON.stringify(error, null, 4));
+        // console.log('====================================LEEEEE');
+      }
+    };
+    effect();
+  }, []);
   return {
     onHomePress,
     onElectronicPress,
@@ -50,5 +67,6 @@ export const DrawerHook = () => {
     onTestingPress,
     onThematicPress,
     onLogout,
+    account,
   };
 };

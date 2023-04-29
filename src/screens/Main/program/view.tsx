@@ -11,8 +11,10 @@ import {
   StarIcon,
 } from '../../../assets/icons';
 import InfoButton from '../../../components/Info-button';
+import {ProgramHooks} from './hooks';
 
 const ProgramScreen = () => {
+  const {onModeratrosPress} = ProgramHooks();
   return (
     <DefaultWrapper hasIcon title="О программе">
       <View style={styles.checkBox}>
@@ -22,7 +24,7 @@ const ProgramScreen = () => {
       <Text style={styles.text}>Версия приложение 1.0.0</Text>
       <View style={styles.programContainer}>
         <InfoButton
-          onPress={() => console.log('Qisee')}
+          onPress={onModeratrosPress}
           icon={<PenIcon />}
           title="Модераторы"
         />

@@ -19,8 +19,8 @@ import Active_Button from './components/Active-button';
 import Button from '../../../components/button';
 
 const SettingScreen = () => {
-  const {range, setRange} = SettingHooks();
-
+  const {range, setRange, account} = SettingHooks();
+  console.log(account?.firstName, 'Accccccccccccc');
   return (
     <DefaultWrapper title="Настройки" hasUser>
       <View style={styles.imageContainer}>
@@ -31,10 +31,26 @@ const SettingScreen = () => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{marginBottom: 40}}>
-          <Input name="Имя" placeholder="Рафаэль" icon={<UserIcon />} />
-          <Input name="Фамилия" placeholder="Ройтман" icon={<UserIcon />} />
-          <Input name="Логин" placeholder="" icon={<UserIcon />} />
-          <Input name="Номер телефона" placeholder="" icon={<PhoneIcon />} />
+          <Input
+            name="Имя"
+            placeholder={account?.firstName}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="Фамилия"
+            placeholder={account?.lastName}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="Логин"
+            placeholder={account?.login}
+            icon={<UserIcon />}
+          />
+          <Input
+            name="Номер телефона"
+            placeholder={account?.phone}
+            icon={<PhoneIcon />}
+          />
 
           <DropDownAnimated
             text="Язык"
