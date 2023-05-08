@@ -34,6 +34,9 @@ export enum SUPPORT {
 export enum PROGRAM {
   MODERATORS = 'MODERATORS',
 }
+export enum HOME {
+  SETTING_CALENDAR = 'SETTING_CALENDAR',
+}
 export enum STACK {
   ELECTRONIC_STACK = 'ELECTRONIC_STACK',
   THEMATIC_STACK = 'THEMATIC_STACK',
@@ -54,4 +57,5 @@ export const ROUTES = {
   TESTING,
   SUPPORT,
   PROGRAM,
+  HOME,
 } as const;
