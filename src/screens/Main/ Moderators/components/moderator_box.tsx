@@ -1,25 +1,26 @@
-import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Assets} from '../../../../utils/requireAssets';
+import {IModerator} from '../../../../api/types';
 import {COLORS} from '../../../../constants/COLORS';
 
 interface Props {
-  name?: string;
-  title?: string;
   onPress?: () => void;
+  item?: IModerator;
 }
 
-const ModeratorBox = ({name, title, onPress}: Props) => {
+const ModeratorBox = ({onPress, item}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
       style={styles.container}>
-      <Image style={styles.image} source={Assets.images.user} />
+      <Image style={styles.image} source={{uri: item?.imageUrl}} />
       <View style={{marginLeft: 10}}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.name}>
+          {item?.firstName} {item?.lastName}
+        </Text>
+        <Text style={styles.title}>Категория: {item?.categoryName}</Text>
       </View>
     </TouchableOpacity>
   );

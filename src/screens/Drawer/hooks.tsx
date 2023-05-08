@@ -1,14 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
-import {ROUTES} from '../../navigation/routes';
-import {useDispatch} from 'react-redux';
-import {loggedOut} from '../../store/slices/profile.slice';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import {REQUESTS} from '../../api/requests';
-import {AccountResource} from '../../api/types';
+import {ROUTES} from '../../navigation/routes';
+import {loggedOut} from '../../store/slices/profile.slice';
+import {userLoaded, userSelector} from '../../store/slices/user.slice';
 
 export const DrawerHook = () => {
   const navigation = useNavigation();
-  const [account, setAccount] = useState<AccountResource[] | null>([]);
+  const account = useSelector(userSelector);
 
   const dispatch = useDispatch();
 
@@ -47,15 +47,11 @@ export const DrawerHook = () => {
     const effect = async () => {
       try {
         const res = await REQUESTS.general.getAccount();
-        setAccount(res.data);
-      } catch (error) {
-        // console.log('====================================ACCounT');
-        // console.log('ERROR', JSON.stringify(error, null, 4));
-        // console.log('====================================LEEEEE');
-      }
+        dispatch(userLoaded(res.data));
+      } catch (error) {}
     };
     effect();
-  }, []);
+  }, [dispatch]);
   return {
     onHomePress,
     onElectronicPress,

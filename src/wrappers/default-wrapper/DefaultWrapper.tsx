@@ -46,7 +46,7 @@ const DefaultWrapper = ({
         </View>
         {hasUser && (
           <Text style={defaultWrapperStyles.userText}>
-            {account?.firstName}
+            {account?.firstName} {account.lastName}
           </Text>
         )}
       </SafeAreaView>

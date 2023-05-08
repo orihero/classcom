@@ -9,9 +9,6 @@ import {useElectronicResourcesHooks} from './hooks';
 
 const ElectronicResourceScreen = () => {
   const {eResources} = useElectronicResourcesHooks();
-  console.log('====================================');
-  console.log('RESOURCES', eResources);
-  console.log('====================================');
   return (
     <DefaultWrapper title={'Электронные ресурсы'}>
       <View style={{marginTop: 15}}>

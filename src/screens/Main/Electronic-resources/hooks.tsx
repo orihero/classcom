@@ -11,11 +11,7 @@ export const useElectronicResourcesHooks = () => {
       try {
         const res = await REQUESTS.general.getElectronicResource();
         setEResources(res.data);
-      } catch (error) {
-        console.log('====================================');
-        console.log('ERROR', JSON.stringify(error, null, 4));
-        console.log('====================================');
-      }
+      } catch (error) {}
     };
     effect();
   }, []);

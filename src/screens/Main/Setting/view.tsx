@@ -20,7 +20,6 @@ import Button from '../../../components/button';
 
 const SettingScreen = () => {
   const {range, setRange, account} = SettingHooks();
-  console.log(account?.firstName, 'Accccccccccccc');
   return (
     <DefaultWrapper title="Настройки" hasUser>
       <View style={styles.imageContainer}>

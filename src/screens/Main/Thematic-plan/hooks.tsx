@@ -18,12 +18,12 @@ export const useThematicPlanHooks = () => {
     } catch (error) {}
   };
 
-  const onThematicInnerPress = () => {
-    navigation.navigate(ROUTES.THEMATIC.THEMATIC_INNER as never);
+  const onThematicInnerPress = (item: IThematicPlanResource) => {
+    navigation.navigate(ROUTES.THEMATIC.THEMATIC_INNER as never, {item});
   };
 
   useEffect(() => {
     effect();
-  });
+  }, []);
   return {thematicPlans, onThematicInnerPress};
 };

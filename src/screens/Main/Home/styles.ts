@@ -1,4 +1,4 @@
-import { COLORS } from './../../../constants/COLORS';
+import {COLORS} from './../../../constants/COLORS';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
@@ -6,16 +6,16 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   box: {
-    flexDirection:'row',
-    justifyContent:'space-between',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingHorizontal: 40,
     borderBottomWidth: 1,
-    borderColor:COLORS.GREY_ONE,
+    borderColor: COLORS.GREY_ONE,
     paddingVertical: 10,
   },
   text: {
     fontSize: 15,
-    fontWeight:'400',
-    color:COLORS.GREY_ONE,
+    fontWeight: '400',
+    color: COLORS.GREY_ONE,
   },
 });

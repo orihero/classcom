@@ -1,12 +1,14 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {COLORS} from '../../../../constants/COLORS';
+import {IThematicPlanResource} from '../../../../api/types';
 
 interface props {
   onPress?: () => void;
+  content: IThematicPlanResource;
 }
 
-const Thematic = ({onPress}: props) => {
+const Thematic = ({onPress, content}: props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -14,16 +16,16 @@ const Thematic = ({onPress}: props) => {
       style={styles.container}>
       <View style={styles.firstContainer}>
         <Text style={styles.title}>Предмет</Text>
-        <Text style={styles.language}>Русский язык</Text>
+        <Text style={styles.language}>{content.courseName}</Text>
       </View>
       <View style={styles.secondContainer}>
         <View>
           <Text style={styles.title}>Четверть</Text>
-          <Text style={styles.text}>IV</Text>
+          <Text style={styles.text}>{content.quarter}</Text>
         </View>
         <View style={styles.box}>
           <Text style={styles.title}>Класс</Text>
-          <Text style={styles.textNumber}>9</Text>
+          <Text style={styles.textNumber}>{content.klass}</Text>
         </View>
       </View>
     </TouchableOpacity>

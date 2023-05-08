@@ -29,10 +29,6 @@ export const RegistrationHooks = () => {
     navigation.goBack();
   };
 
-  console.log('====================================');
-  console.log({validationErrors});
-  console.log('====================================');
-
   const onRegisterPress = async () => {
     setLoading(true);
     // try {

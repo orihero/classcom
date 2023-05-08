@@ -97,7 +97,7 @@ export interface IThematicPlanResource {
   subjects: any[];
   activated: string;
 }
-export interface AccountResource {
+export interface IAccountResponse {
   id: number;
   login: string;
   firstName: string;
@@ -138,3 +138,26 @@ export interface AccountResource {
   moderator: boolean;
   moderatorBalance: number;
 }
+
+interface IPaginatedContent<Content> {
+  content: Content[];
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  sort: any;
+  first: boolean;
+  numberOfElements: number;
+  size: number;
+  number: number;
+}
+
+export interface IModerator {
+  id: number;
+  firstName: string;
+  lastName: string;
+  activated: boolean;
+  imageUrl: string;
+  categoryName: any;
+}
+
+export type IModeratorsResponse = IPaginatedContent<IModerator>;

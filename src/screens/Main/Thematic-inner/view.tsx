@@ -5,8 +5,11 @@ import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import DropDownAnimated from '../../../components/drop-down';
 import PlaneButton from '../../../components/plane-button';
 import Button from '../../../components/button';
+import {useThematicInnerHooks} from './hooks';
 
 const ThematicInnerScreen = () => {
+  const {thematicDetails} = useThematicInnerHooks();
+
   return (
     <DefaultWrapper title="Тематический план">
       <ScrollView>

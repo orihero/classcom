@@ -1,5 +1,5 @@
-import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
+import {ScrollView, View} from 'react-native';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import Thematic from './components/Thematic-Plane';
 import {useThematicPlanHooks} from './hooks';
@@ -11,12 +11,15 @@ const ThematicPlanScreen = () => {
       <View style={{}}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{marginBottom: 30}}>
-            <Thematic onPress={onThematicInnerPress} />
-            <Thematic />
-            <Thematic />
-            <Thematic />
-            <Thematic />
-            <Thematic />
+            {thematicPlans.map(e => {
+              return (
+                <Thematic
+                  onPress={() => onThematicInnerPress(e)}
+                  content={e}
+                  key={e.id}
+                />
+              );
+            })}
           </View>
         </ScrollView>
       </View>

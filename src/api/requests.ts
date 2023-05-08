@@ -1,11 +1,12 @@
 import axios, {AxiosResponse} from 'axios';
 import {
-  AccountResource,
+  IAccountResponse,
   ICourseResponse,
   IDistrictResponse,
   IELectronicResourceResponse,
   ILoginRequest,
   ILoginResponse,
+  IModeratorsResponse,
   IRegionResponse,
   IRegisterRequest,
   IThematicPlanResource,
@@ -19,13 +20,11 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use(e => {
+  //@ts-ignore
   e.headers = {
     ...e.headers,
     Authorization: 'Bearer ' + store.getState().profile.id_token,
   };
-  console.log('====================================');
-  console.log(e, 'HEADERS');
-  console.log('====================================');
   return e;
 });
 
@@ -54,6 +53,9 @@ export const REQUESTS = {
       axiosInstance.get<ICourseResponse[]>('/register-shared/courses'),
     getThematicPlans: () =>
       axiosInstance.get<IThematicPlanResource[]>('/calendar-thematic-plans'),
-    getAccount: () => axiosInstance.get<AccountResource[]>('/account'),
+    getAccount: () => axiosInstance.get<IAccountResponse>('/account'),
+    getModerators: () =>
+      axiosInstance.get<IModeratorsResponse>('v2/users/mobile/moderators'),
+    getWeeklySchedule: () => axiosInstance.get(),
   },
 };
