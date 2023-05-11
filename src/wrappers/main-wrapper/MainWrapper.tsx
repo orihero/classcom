@@ -74,6 +74,7 @@ const MainWrapper = ({
             setDatePickerShown(false);
           }}
           modal={true}
+          mode="date"
         />
         <View>
           <Text style={mainWrapperStyles.textData}>{dateInRussain(date)}</Text>

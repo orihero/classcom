@@ -27,7 +27,7 @@ export const getWeekDays = (current: Date = new Date(Date.now())) => {
   return arr;
 };
 
-export const calculateWeekId = (date: Date) => {
+export const calculateWeekId = (date: Date = new Date(Date.now())) => {
   const d = new Date(
     Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
   );

@@ -1,3 +1,5 @@
+type Modify<T, R> = Omit<T, keyof R> & R;
+
 export interface IRegisterRequest {
   achievements: string;
   activated: boolean;
@@ -159,5 +161,45 @@ export interface IModerator {
   imageUrl: string;
   categoryName: any;
 }
+
+export interface IScheduleResponse {
+  [key: string]: ISchedule | undefined;
+}
+
+export interface ISchedule {
+  id: number;
+  scheduleDate: string;
+  ownerId: number;
+  ownerLogin: string;
+  lessonsMap: ILessonsMap;
+  shift: number;
+  today: boolean;
+}
+
+export interface ILesson {
+  id: number;
+  klassNumber: string;
+  klassLetter: string;
+  startTime: string;
+  endTime: string;
+  sorder: number;
+  subjectDTO: any;
+  subjectId: any;
+  subjectName: any;
+  courseId: number;
+  courseName: string;
+}
+export interface ILessonsMap {
+  [key: string]: ILesson;
+}
+
+export type IScheduleTemplate = Omit<ISchedule, 'lessonsMap'> & {
+  lessonTemplatesMap: ILessonsMap;
+};
+
+export type IScheduleTemplateResponse = Modify<
+  ISchedule,
+  {[key: string]: IScheduleTemplate}
+>;
 
 export type IModeratorsResponse = IPaginatedContent<IModerator>;

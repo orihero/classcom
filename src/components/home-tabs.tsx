@@ -1,29 +1,46 @@
+import React from 'react';
 import {
-  View,
+  Dimensions,
+  ScrollView,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  ScrollView,
-  Dimensions,
+  View,
 } from 'react-native';
-import React, {useState} from 'react';
+import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
+import {COLORS} from '../constants/COLORS';
 
 const windowWidth = Dimensions.get('window').width;
 
 interface TabProps {
   content: Array<{
     title: string;
-    content: () => JSX.Element;
+    content: (props: {
+      date: Date;
+      data: IScheduleResponse | IScheduleTemplateResponse;
+    }) => JSX.Element;
     iconActive: JSX.Element;
     iconPassive: JSX.Element;
   }>;
   shift: number;
+  setShift: (shift: number) => void;
+  data: Array<IScheduleResponse | IScheduleTemplateResponse>;
+  date: Date;
+  activeTab: number;
+  setActiveTab: (e: number) => void;
 }
 
-const TopTabs = ({content}: TabProps) => {
-  const [active, setActive] = useState(0);
-  const [shift, setShift] = useState(0);
+const TopTabs = ({
+  content,
+  data,
+  setShift,
+  shift,
+  date,
+  activeTab,
+  setActiveTab,
+}: TabProps) => {
   const onTabPress = (i: number) => () => {
-    setActive(i);
+    setActiveTab(i);
   };
   return (
     <View style={{flex: 1}}>
@@ -52,14 +69,15 @@ const TopTabs = ({content}: TabProps) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         borderBottomWidth: 4,
-                        borderColor: active === i ? COLORS.BLUE : COLORS.WHITE,
+                        borderColor:
+                          activeTab === i ? COLORS.BLUE : COLORS.WHITE,
                         paddingVertical: 12,
                       }}
                       activeOpacity={0.7}
                       onPress={onTabPress(i)}
                       key={i}>
                       <View style={{marginRight: 10}}>
-                        {active ? (
+                        {activeTab ? (
                           <View>{e.iconActive}</View>
                         ) : (
                           <View>{e.iconPassive}</View>
@@ -67,7 +85,9 @@ const TopTabs = ({content}: TabProps) => {
                       </View>
                       <Text
                         style={
-                          active === i ? styles.textHeader : styles.headerText
+                          activeTab === i
+                            ? styles.textHeader
+                            : styles.headerText
                         }>
                         {e.title}
                       </Text>
@@ -80,22 +100,22 @@ const TopTabs = ({content}: TabProps) => {
         </View>
         <View style={styles.shiftTab}>
           <TouchableOpacity
-            onPress={() => setShift(0)}
-            style={[
-              styles.tab,
-              shift === 0 ? null : {borderColor: COLORS.WHITE},
-            ]}>
-            <Text style={shift === 0 ? styles.textHeader : styles.headerText}>
-              1-смена
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
             onPress={() => setShift(1)}
             style={[
               styles.tab,
               shift === 1 ? null : {borderColor: COLORS.WHITE},
             ]}>
             <Text style={shift === 1 ? styles.textHeader : styles.headerText}>
+              1-смена
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setShift(2)}
+            style={[
+              styles.tab,
+              shift === 2 ? null : {borderColor: COLORS.WHITE},
+            ]}>
+            <Text style={shift === 2 ? styles.textHeader : styles.headerText}>
               2-смена
             </Text>
           </TouchableOpacity>
@@ -103,9 +123,12 @@ const TopTabs = ({content}: TabProps) => {
         <View style={styles.content}>
           <View style={{flex: 1}}>
             {content.map((e, i) => {
-              const Content: () => JSX.Element = e.content;
-              if (i === active) {
-                return <Content key={i} />;
+              const Content: (props: {
+                data: IScheduleResponse | IScheduleTemplateResponse;
+                date: Date;
+              }) => JSX.Element = e.content;
+              if (i === activeTab) {
+                return <Content data={data[i]} date={date} key={i} />;
               }
             })}
           </View>
@@ -116,9 +139,6 @@ const TopTabs = ({content}: TabProps) => {
 };
 
 export default TopTabs;
-
-import {StyleSheet} from 'react-native';
-import {COLORS} from '../constants/COLORS';
 
 export const styles = StyleSheet.create({
   container: {

@@ -9,6 +9,8 @@ import {
   IModeratorsResponse,
   IRegionResponse,
   IRegisterRequest,
+  IScheduleResponse,
+  IScheduleTemplateResponse,
   IThematicPlanResource,
 } from './types';
 import {store} from '../store/configureStore';
@@ -56,6 +58,13 @@ export const REQUESTS = {
     getAccount: () => axiosInstance.get<IAccountResponse>('/account'),
     getModerators: () =>
       axiosInstance.get<IModeratorsResponse>('v2/users/mobile/moderators'),
-    getWeeklySchedule: () => axiosInstance.get(),
+    getWeeklySchedule: (weekId: number | string, shift: number | string) =>
+      axiosInstance.get<IScheduleResponse>(
+        `/schedules/weekSchedules?weekID=${weekId}&shift=${shift}`,
+      ),
+    getWeeklyScheduleTemplate: () =>
+      axiosInstance.get<IScheduleTemplateResponse>(
+        `/schedules/scheduleTemplates`,
+      ),
   },
 };

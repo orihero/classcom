@@ -3,21 +3,24 @@ import React from 'react';
 import {COLORS} from '../constants/COLORS';
 
 interface Props {
-  number?: string;
+  number: string;
+  time: string;
+  title: string;
+  classNumber: string;
 }
 
-const Schedule = ({number}: Props) => {
+const Schedule = ({number, classNumber, time, title}: Props) => {
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Text style={styles.number}>{number}</Text>
         <View style={styles.timeBox}>
-          <Text style={styles.timeText}>9:00-9:45</Text>
+          <Text style={styles.timeText}>{time}</Text>
         </View>
-        <Text style={styles.itemText}>Математика.</Text>
+        <Text style={styles.itemText}>{title}</Text>
       </View>
       <View style={styles.classBox}>
-        <Text style={styles.classText}>9A</Text>
+        <Text style={styles.classText}>{classNumber}</Text>
       </View>
     </View>
   );

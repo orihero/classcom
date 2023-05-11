@@ -31,8 +31,6 @@ const DrawerScreen = () => {
     onLogout,
     account,
   } = DrawerHook();
-  console.log(account, 'asdasdasdsa');
-
   return (
     <View style={styles.container}>
       <View style={styles.userContainer}>

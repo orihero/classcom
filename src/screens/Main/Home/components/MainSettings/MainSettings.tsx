@@ -1,15 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Text, View} from 'react-native';
+import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
 import Schedule from '../../../../../components/schedule';
 import {styles} from '../../styles';
 
-const MainSettings = () => {
-  const [scheduleTemplates, setscheduleTemplates] = useState([]);
-  const effect = async () => {};
-  useEffect(() => {
-    effect();
-  }, []);
+const MainSettings = ({
+  data,
+  date,
+}: {
+  data: IScheduleTemplateResponse;
+  date: Date;
+}) => {
+  const lesson = (data || {})[date.getDay() + 1]?.lessonTemplatesMap;
 
   return (
     <>
@@ -22,9 +25,25 @@ const MainSettings = () => {
       </View>
 
       <View style={{marginBottom: 40}}>
-        <Schedule number={'1.'} />
-        <Schedule number={'2.'} />
-        <Schedule number={'3.'} />
+        {lesson &&
+          Object.keys(lesson).map((e, i) => {
+            const el = lesson[e];
+            if (!el) {
+              return null;
+            }
+            return (
+              <Schedule
+                key={i}
+                number={e + '.'}
+                classNumber={el.klassNumber + el.klassLetter}
+                time={`${el?.startTime
+                  ?.split(':')
+                  .slice(0, 2)
+                  .join(':')}-${el?.endTime?.split(':').slice(0, 2).join(':')}`}
+                title={el.courseName}
+              />
+            );
+          })}
       </View>
 
       <Button
