@@ -1,21 +1,21 @@
-import {
-  View,
-  Text,
-  Image,
-  SafeAreaView,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
-import {Assets} from '../../../utils/requireAssets';
-import Input from '../../../components/input';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {LockIcon, UserIcon} from '../../../assets/icons';
 import Button from '../../../components/button';
+import Input from '../../../components/input';
+import {Assets} from '../../../utils/requireAssets';
 import {AuthorizationHooks} from './hooks';
+import {styles} from './styles';
 
 const AuthorizationScreen = () => {
-  const {onRegisterPress} = AuthorizationHooks();
+  const {onRegisterPress, onInputChange, onLogin, loading} =
+    AuthorizationHooks();
 
   return (
     <View style={styles.container}>
@@ -28,12 +28,20 @@ const AuthorizationScreen = () => {
       </View>
 
       <View style={styles.registerContainer}>
-        <Input placeholder="Логин" icon={<UserIcon />} name="Логин" />
         <Input
+          name="username"
+          title="Логин"
+          placeholder="Логин"
+          icon={<UserIcon />}
+          onChange={onInputChange}
+        />
+        <Input
+          name="password"
+          title="Пароль"
           placeholder="Пароль"
           icon={<LockIcon />}
-          eyes={true}
-          name="Пароль"
+          eyes
+          onChange={onInputChange}
         />
 
         <TouchableOpacity activeOpacity={0.7}>
@@ -41,8 +49,9 @@ const AuthorizationScreen = () => {
         </TouchableOpacity>
 
         <Button
+          loading={loading}
           style={{marginVertical: 30}}
-          onPress={() => console.log('onPress')}
+          onPress={onLogin}
           text="Войти"
         />
 

@@ -8,8 +8,9 @@ export const defaultWrapperStyles = StyleSheet.create({
   },
   headerContainer: {
     flexDirection: 'row',
-    marginHorizontal: 20,
+    marginHorizontal: 30,
     marginVertical: 15,
+    justifyContent: 'space-between',
   },
   childrenContainer: {
     paddingTop: 15,
@@ -24,5 +25,12 @@ export const defaultWrapperStyles = StyleSheet.create({
     fontWeight: '700',
     color: COLORS.WHITE,
     marginLeft: 15,
+  },
+  userText: {
+    fontSize: 15,
+    fontWeight: '500',
+    color: COLORS.LIGHT_BLUE,
+    marginTop: 10,
+    marginHorizontal: 30,
   },
 });

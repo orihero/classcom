@@ -1,21 +1,23 @@
+import React, {useState} from 'react';
 import {
-  View,
+  StyleProp,
+  StyleSheet,
   Text,
   TextInput,
-  StyleProp,
   TextStyle,
-  ViewStyle,
-  StyleSheet,
   TouchableOpacity,
+  View,
+  ViewStyle,
 } from 'react-native';
+import {EyesIcon} from '../assets/icons';
 import {COLORS} from '../constants/COLORS';
-import {EyesIcon, LockIcon, UserIcon} from '../assets/icons';
 
 interface IProps {
   name?: string;
+  title?: string;
   multiline?: boolean;
   value?: string;
-  onChange?: (value: string) => void;
+  onChange?: (key?: string) => (value: string) => void;
   placeholder?: string;
   placeholderColor?: string;
   disablePlaceholder?: boolean;
@@ -23,6 +25,8 @@ interface IProps {
   inputStyle?: StyleProp<TextStyle>;
   eyes?: boolean;
   icon?: any;
+  dark?: boolean;
+  errors?: any;
 }
 
 const Input = ({
@@ -35,29 +39,40 @@ const Input = ({
   containerStyle,
   inputStyle,
   eyes,
-  name,
+  title,
   icon,
+  dark,
+  name,
+  errors,
 }: IProps) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
+  const onEyePress = () => {
+    setIsPasswordVisible(e => !e);
+  };
   return (
     <View style={{marginHorizontal: 20}}>
-      <Text style={styles.text}>{name}</Text>
+      <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
-        {icon}
+        {icon && icon}
         <TextInput
           multiline={multiline}
           value={value}
-          onChangeText={onChange}
+          onChangeText={onChange && onChange(name)}
           placeholder={!disablePlaceholder ? placeholder : undefined}
           placeholderTextColor={placeholderColor}
           textAlignVertical={'center'}
           style={[styles.input, inputStyle]}
+          secureTextEntry={isPasswordVisible}
         />
         {eyes ? (
-          <TouchableOpacity activeOpacity={0.6}>
+          <TouchableOpacity activeOpacity={0.6} onPress={onEyePress}>
             <EyesIcon />
           </TouchableOpacity>
         ) : null}
       </View>
+      {!!errors && !!name && !!errors[name] && (
+        <Text style={styles.error}>{errors[name || '']}</Text>
+      )}
     </View>
   );
 };
@@ -87,5 +102,11 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.GREY,
     marginVertical: 13,
+  },
+  darkText: {
+    color: COLORS.GREY_BLACK,
+  },
+  error: {
+    color: COLORS.ORANGE,
   },
 });

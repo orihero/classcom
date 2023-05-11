@@ -1,18 +1,20 @@
+import Lottie from 'lottie-react-native';
+import React from 'react';
 import {
-  View,
-  Text,
   StyleProp,
-  ViewStyle,
-  TextStyle,
   StyleSheet,
+  Text,
+  TextStyle,
   TouchableOpacity,
-  ActivityIndicator,
+  View,
+  ViewStyle,
 } from 'react-native';
+import animation from '../assets/animations/loading-white.json';
 import {COLORS} from '../constants/COLORS';
 
 interface IProps {
   text: string;
-  onPress: () => void;
+  onPress?: () => void;
   loading?: boolean;
   loadingColor?: string;
   style?: StyleProp<ViewStyle>;
@@ -20,20 +22,19 @@ interface IProps {
   lineStyle?: StyleProp<ViewStyle>;
 }
 
-const Button = ({
-  text,
-  onPress,
-  loading,
-  loadingColor = COLORS.WHITE,
-  style,
-  textStyle,
-  lineStyle,
-}: IProps) => {
+const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={loading ? undefined : onPress}>
       <View style={[styles.container, style]}>
         {loading ? (
-          <ActivityIndicator size={'small'} color={loadingColor} />
+          <Lottie
+            style={{transform: [{scale: 3}], height: 16}}
+            source={animation}
+            autoPlay
+            loop={true}
+          />
         ) : (
           <Text style={[styles.text, textStyle]}>{text}</Text>
         )}
@@ -46,19 +47,20 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
+    paddingHorizontal: 10,
     backgroundColor: COLORS.BLUE,
     marginHorizontal: 20,
     paddingVertical: 17,
     borderRadius: 8,
-    shadowColor:'rgba(47, 108, 159, 0.35)',
+    shadowColor: 'rgba(47, 108, 159, 0.35)',
     shadowOffset: {
       width: 5,
       height: 5,
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
     elevation: 10,
+    alignItems: 'center',
   },
   text: {
     fontSize: 15,
