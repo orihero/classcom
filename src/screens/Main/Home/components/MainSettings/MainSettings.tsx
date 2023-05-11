@@ -4,6 +4,8 @@ import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
 import Schedule from '../../../../../components/schedule';
 import {styles} from '../../styles';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTES} from '../../../../../navigation/routes';
 
 const MainSettings = ({
   data,
@@ -13,7 +15,10 @@ const MainSettings = ({
   date: Date;
 }) => {
   const lesson = (data || {})[date.getDay() + 1]?.lessonTemplatesMap;
-
+  const navigation = useNavigation();
+  const onSettingCalendarPress = () => {
+    navigation.navigate(ROUTES.HOME.SETTING_CALENDAR as never);
+  };
   return (
     <>
       <View style={{marginVertical: 20}}></View>
@@ -47,6 +52,7 @@ const MainSettings = ({
       </View>
 
       <Button
+        onPress={onSettingCalendarPress}
         style={{paddingVertical: 8, paddingHorizontal: 30}}
         text="Настройка календарно-тематического плана"
       />

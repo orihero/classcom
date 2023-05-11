@@ -15,6 +15,7 @@ import SupportStack from './navigation-stack/Support-stack';
 import TestingStack from './navigation-stack/Testing-stack';
 import ThematicPlanStack from './navigation-stack/Thematic-plan-stack';
 import {ROUTES} from './routes';
+import HomeStack from './navigation-stack/HomeStack';
 
 const Drawer = createDrawerNavigator();
 
@@ -31,7 +32,7 @@ const DrawerNavigator = () => {
           backgroundColor: '#F5FDFF',
         },
       }}>
-      <Drawer.Screen name={ROUTES.MAIN.HOME} component={HomeScreen} />
+      <Drawer.Screen name={ROUTES.MAIN.HOME} component={HomeStack} />
       <Drawer.Screen
         name={ROUTES.MAIN.CALENDAR_SETTING}
         component={CalendarSettingScreen}

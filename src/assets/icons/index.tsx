@@ -226,6 +226,27 @@ export function CalendarBlueIcon(props: SvgProps) {
     </Svg>
   );
 }
+export function DataIcon(props: SvgProps) {
+  return (
+    <Svg width={22} height={24} viewBox="0 0 18 20" fill="none" {...props}>
+      <Path
+        d="M1.083 7.623h15.942M13.023 11.116h.008M9.054 11.116h.008M5.077 11.116h.008M13.023 14.592h.008M9.054 14.592h.008M5.077 14.592h.008M12.667 1v2.943M5.441 1v2.943"
+        stroke={COLORS.BLUE}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        clipRule="evenodd"
+        d="M12.84 2.413H5.268C2.641 2.413 1 3.876 1 6.566v8.094c0 2.732 1.64 4.229 4.267 4.229h7.566c2.635 0 4.267-1.472 4.267-4.161V6.566c.008-2.69-1.624-4.153-4.26-4.153z"
+        stroke={COLORS.BLUE}
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+}
 export function CalendarGreyIcon(props: SvgProps) {
   return (
     <Svg width={18} height={20} viewBox="0 0 18 20" fill="none" {...props}>
