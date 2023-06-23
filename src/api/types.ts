@@ -203,3 +203,13 @@ export type IScheduleTemplateResponse = Modify<
 >;
 
 export type IModeratorsResponse = IPaginatedContent<IModerator>;
+
+export interface ILessonTemplateRequest {
+  weekday: string;
+  klassNumber: string;
+  klassLetter: string;
+  startTime: string;
+  endTime: string;
+  sorder: string;
+  courseId: number;
+}

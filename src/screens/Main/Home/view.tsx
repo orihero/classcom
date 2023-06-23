@@ -21,9 +21,6 @@ const content = [
     iconActive: <CalendarGreyIcon />,
     iconPassive: <CalendarBlueIcon />,
     content: ({data, date}: {data: IScheduleResponse; date: Date}) => {
-      console.log('====================================');
-      console.log(JSON.stringify(data));
-      console.log('==================================== DATAA');
       const lesson = (data || {})[date.getDay() + 1]?.lessonsMap;
 
       return (
@@ -74,7 +71,7 @@ const content = [
 
 const HomeScreen = () => {
   const [shift, setShift] = useState(1);
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState(0);
   const [date, setDate] = useState(new Date(Date.now()));
   const [weeklySchedule, setWeeklySchedule] = useState<IScheduleResponse>();
   const [weeklyScheduleTemplate, setWeeklyScheduleTemplate] =

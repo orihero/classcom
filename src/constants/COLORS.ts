@@ -2,6 +2,7 @@ export const COLORS = {
   WHITE: '#FFF',
   WHITE_ONE: '#F8F9FA',
   BLUE: '#2F6C9F',
+  BLUE2: '#2F77B2',
   GREY_BLACK: '#333333',
   GREY: '#797979',
   GREY_ONE: '#CBCBCB',
@@ -10,4 +11,6 @@ export const COLORS = {
   ORANGE: '#E3643C',
   GREEN_ONE: '#276D6D',
   MIDNIGHT_BLUE: '#2C2B6D',
+  BLUISH_WHITE: '#E5F3FF',
+  BLUISH_WHITE2: '#78AAD3',
 };

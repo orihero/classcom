@@ -36,7 +36,8 @@ export const styles = StyleSheet.create({
   },
   registerContainer: {
     flex: 0.55,
-    justifyContent:'center',
+    justifyContent: 'center',
+    marginHorizontal: 30,
   },
   textLogin: {
     fontSize: 14,
@@ -50,6 +51,6 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '600',
     color: COLORS.GREY_ONE,
-    textAlign:'center',
+    textAlign: 'center',
   },
 });

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   LayoutAnimation,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -18,10 +19,11 @@ export interface SelectProps {
   items: SelectItemProps[];
   value?: string | number;
   onChange?: (name: string) => (value: string) => void;
-  name: string;
-  title: string;
+  name?: string;
+  title?: string;
   placeholder?: string;
-  errors: any;
+  errors?: any;
+  light?: boolean;
 }
 
 const Select = ({
@@ -32,11 +34,12 @@ const Select = ({
   placeholder,
   title,
   errors,
+  light = false,
 }: SelectProps) => {
   const [shouldShow, setShouldShow] = useState(false);
   const onChangeValue = (e: SelectItemProps) => {
     setShouldShow(false);
-    onChange && onChange(name)(e.value);
+    onChange && onChange(name || '')(e.value);
   };
 
   let realValue = '';
@@ -44,37 +47,62 @@ const Select = ({
     realValue = items.find(e => e.value === value)?.label || '';
   }
   return (
-    <View style={{marginHorizontal: 20}}>
-      <Text style={styles.text}>{title}</Text>
+    <View>
+      <Text style={[styles.text, light && {color: COLORS.WHITE}]}>{title}</Text>
       <TouchableOpacity
         activeOpacity={0.7}
-        style={styles.animated}
+        style={[styles.animated, light && {backgroundColor: COLORS.BLUE2}]}
         onPress={() => {
           LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
           setShouldShow(!shouldShow);
         }}>
         <View style={{flexDirection: 'row'}}>
-          <StudentIcon style={{marginRight: 10}} />
-          <Text style={[styles.textSubject, !value && {color: COLORS.GREY}]}>
+          {!light && <StudentIcon style={{marginRight: 10}} />}
+          <Text
+            style={[
+              styles.textSubject,
+              !value && {color: COLORS.GREY},
+              light && {color: COLORS.BLUISH_WHITE2},
+            ]}>
             {realValue || placeholder}
           </Text>
         </View>
-        {!shouldShow ? <ArrowDown /> : <ArrowUp />}
+        {!shouldShow ? (
+          <ArrowDown fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
+        ) : (
+          <ArrowUp fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
+        )}
       </TouchableOpacity>
       <View style={{}}>
         {!!shouldShow ? (
-          <View style={styles.animatedTwo}>
+          <ScrollView
+            style={[
+              styles.animatedTwo,
+              light && {backgroundColor: COLORS.BLUE2},
+              {
+                maxHeight: 200,
+                width: '100%',
+                zIndex: 10,
+                elevation: 1,
+              },
+            ]}>
             {items.map(e => {
               return (
                 <TouchableOpacity
                   key={e.value}
                   style={styles.button}
                   onPress={() => onChangeValue(e)}>
-                  <Text style={styles.textSubject}>{e.label}</Text>
+                  <Text
+                    style={[
+                      styles.textSubject,
+                      light && {color: COLORS.WHITE},
+                    ]}>
+                    {e.label}
+                  </Text>
                 </TouchableOpacity>
               );
             })}
-          </View>
+          </ScrollView>
         ) : null}
       </View>
       {!!errors && !!name && !!errors[name] && (

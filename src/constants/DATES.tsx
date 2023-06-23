@@ -38,3 +38,9 @@ export const RUSSAIN_WEEKDAYS = [
   'воскресенье',
 ];
 export const RUSSAIN_WEEKDAYS2 = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+
+export const HOUR_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: false,
+};

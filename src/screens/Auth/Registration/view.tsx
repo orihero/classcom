@@ -46,7 +46,7 @@ const RegistrationScreen = () => {
       </SafeAreaView>
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{marginBottom: 40}}>
+        <View style={{marginBottom: 40, marginHorizontal: 30}}>
           <Input
             name="firstName"
             title="Имя"

@@ -15,7 +15,7 @@ import {
 } from './types';
 import {store} from '../store/configureStore';
 
-export const BASE_URL = 'http://185.217.131.4:8080/api';
+export const BASE_URL = 'https://classcom.uz/api';
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
@@ -64,7 +64,9 @@ export const REQUESTS = {
       ),
     getWeeklyScheduleTemplate: () =>
       axiosInstance.get<IScheduleTemplateResponse>(
-        `/schedules/scheduleTemplates`,
+        '/schedules/scheduleTemplates',
       ),
+    getClassNumbers: () => axiosInstance.get<string[]>('/enums/klass-numbers'),
+    getClassLetters: () => axiosInstance.get<string[]>('/enums/klass-letters'),
   },
 };

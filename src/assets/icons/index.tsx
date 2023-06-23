@@ -136,8 +136,8 @@ export function ArrowDown(props: SvgProps) {
   return (
     <Svg width={15} height={9} viewBox="0 0 15 9" fill="none" {...props}>
       <Path
+        fill={props.fill || '#A9A9A9'}
         d="M12.997 9l1.73-1.713L7.364 0 0 7.287 1.73 9l5.634-5.563L12.997 9z"
-        fill="#A9A9A9"
       />
     </Svg>
   );
@@ -146,8 +146,8 @@ export function ArrowUp(props: SvgProps) {
   return (
     <Svg width={15} height={9} viewBox="0 0 15 9" fill="none" {...props}>
       <Path
+        fill={props.fill || '#A9A9A9'}
         d="M1.73 0L0 1.713 7.364 9l7.363-7.287L12.997 0 7.364 5.563 1.73 0z"
-        fill="#A9A9A9"
       />
     </Svg>
   );

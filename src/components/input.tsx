@@ -50,7 +50,7 @@ const Input = ({
     setIsPasswordVisible(e => !e);
   };
   return (
-    <View style={{marginHorizontal: 20}}>
+    <View>
       <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
