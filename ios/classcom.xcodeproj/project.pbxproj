@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-classcom-classcomTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-classcom-classcomTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		2FBF8DCD44744BD7AB79E10D /* FuturaCyrillicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */; };
+		5B719CC4D88942809306C89E /* FuturaCyrillicBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */; };
+		0990047A0D9C4AEB82E253F2 /* FuturaCyrillicDemi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */; };
+		4CF593EA522540E4AF7808BD /* FuturaCyrillicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */; };
+		485D19297B954E1CA9E61E0E /* FuturaCyrillicHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */; };
+		BFC92DAC6733492CB2705481 /* FuturaCyrillicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */; };
+		6B993A57E9914A2C91992ED9 /* FuturaCyrillicMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = classcom/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-classcom-classcomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classcom-classcomTests.release.xcconfig"; path = "Target Support Files/Pods-classcom-classcomTests/Pods-classcom-classcomTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicBold.ttf"; path = "../src/assets/fonts/FuturaCyrillicBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicBook.ttf"; path = "../src/assets/fonts/FuturaCyrillicBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicDemi.ttf"; path = "../src/assets/fonts/FuturaCyrillicDemi.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicExtraBold.ttf"; path = "../src/assets/fonts/FuturaCyrillicExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicHeavy.ttf"; path = "../src/assets/fonts/FuturaCyrillicHeavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicLight.ttf"; path = "../src/assets/fonts/FuturaCyrillicLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicMedium.ttf"; path = "../src/assets/fonts/FuturaCyrillicMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				2A625DCE8F5047DD9E0DC2F1 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +162,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		2A625DCE8F5047DD9E0DC2F1 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */,
+				031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */,
+				291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */,
+				27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */,
+				A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */,
+				8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */,
+				900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +274,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				2FBF8DCD44744BD7AB79E10D /* FuturaCyrillicBold.ttf in Resources */,
+				5B719CC4D88942809306C89E /* FuturaCyrillicBook.ttf in Resources */,
+				0990047A0D9C4AEB82E253F2 /* FuturaCyrillicDemi.ttf in Resources */,
+				4CF593EA522540E4AF7808BD /* FuturaCyrillicExtraBold.ttf in Resources */,
+				485D19297B954E1CA9E61E0E /* FuturaCyrillicHeavy.ttf in Resources */,
+				BFC92DAC6733492CB2705481 /* FuturaCyrillicLight.ttf in Resources */,
+				6B993A57E9914A2C91992ED9 /* FuturaCyrillicMedium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
