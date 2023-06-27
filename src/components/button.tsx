@@ -3,7 +3,6 @@ import React from 'react';
 import {
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   TouchableOpacity,
   View,
@@ -11,6 +10,7 @@ import {
 } from 'react-native';
 import animation from '../assets/animations/loading-white.json';
 import {COLORS} from '../constants/COLORS';
+import UiText from './text';
 
 interface IProps {
   text: string;
@@ -36,7 +36,11 @@ const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
             loop={true}
           />
         ) : (
-          <Text style={[styles.text, textStyle]}>{text}</Text>
+          <UiText
+            style={[styles.text, textStyle]}
+            title={text}
+            type="mediumRegular12"
+          />
         )}
       </View>
     </TouchableOpacity>

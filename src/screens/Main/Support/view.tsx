@@ -1,4 +1,3 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import InfoButton from '../../../components/Info-button';

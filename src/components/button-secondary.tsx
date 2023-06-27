@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   StyleSheet,
   StyleProp,
   TextStyle,
@@ -8,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {COLORS} from '../constants/COLORS';
+import UiText from './text';
 
 interface IProps {
   text: string;
@@ -20,7 +20,7 @@ const ButtonSecondary = ({text, containerStyle, onPress}: IProps) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container, containerStyle]}>
-        <Text style={styles.text}>{text}</Text>
+        <UiText style={styles.text} title={text} type="mediumRegular12" />
       </View>
     </TouchableOpacity>
   );

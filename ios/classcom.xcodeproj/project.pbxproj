@@ -8,19 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* classcomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* classcomTests.m */; };
+		0990047A0D9C4AEB82E253F2 /* FuturaCyrillicDemi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-classcom.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-classcom.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-classcom-classcomTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-classcom-classcomTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		1B91AC2F270B4853A26DA3BF /* FuturaPT-LightObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C90E70257F984887B2FFB2F5 /* FuturaPT-LightObl.ttf */; };
+		1BC25D37D8DD47FEA03EB11A /* FuturaPT-BoldObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 08604657B09F403E813ED3D8 /* FuturaPT-BoldObl.ttf */; };
+		28EB8220634A403E80A8FA7B /* FuturaPT-HeavyObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC0824519241578502BA48 /* FuturaPT-HeavyObl.ttf */; };
+		2BF144C5C97444958633B527 /* FuturaPT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A3E140919814E929A0EED94 /* FuturaPT-Bold.ttf */; };
+		2EFD3E5C17804702A8CAA704 /* FuturaPT-MediumObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BBDFE32D2B64DDEA9F2DBA4 /* FuturaPT-MediumObl.ttf */; };
 		2FBF8DCD44744BD7AB79E10D /* FuturaCyrillicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */; };
-		5B719CC4D88942809306C89E /* FuturaCyrillicBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */; };
-		0990047A0D9C4AEB82E253F2 /* FuturaCyrillicDemi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */; };
-		4CF593EA522540E4AF7808BD /* FuturaCyrillicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */; };
 		485D19297B954E1CA9E61E0E /* FuturaCyrillicHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */; };
-		BFC92DAC6733492CB2705481 /* FuturaCyrillicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */; };
+		4AD17A0FB560437BAB6AAAF8 /* FuturaPT-ExtraBoldObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAE186810C5B41D6810428F5 /* FuturaPT-ExtraBoldObl.ttf */; };
+		4CF593EA522540E4AF7808BD /* FuturaCyrillicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */; };
+		4F006337DDB44839B7B9774F /* FuturaPTCond-MediumObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B4308D79BCA34A8E9653286A /* FuturaPTCond-MediumObl.ttf */; };
+		5B719CC4D88942809306C89E /* FuturaCyrillicBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */; };
 		6B993A57E9914A2C91992ED9 /* FuturaCyrillicMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */; };
+		6C0EADEA00324B66A401C281 /* FuturaPTCond-ExtraBoldObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 993615F7984A47CCB8E2A64D /* FuturaPTCond-ExtraBoldObl.ttf */; };
+		6E0BED3E9E2E43E98411A774 /* FuturaPT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C901F47BB5EA4C0FBF1A84B5 /* FuturaPT-Medium.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-classcom-classcomTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-classcom-classcomTests.a */; };
+		790314E7456D4B4689A8B3A4 /* FuturaPT-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43013DA5D81F4D5696F81D87 /* FuturaPT-Light.ttf */; };
+		81246DFBF96E43B6B4A6A2A5 /* FuturaPTCond-BookObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9BAA020D4344ECF94438681 /* FuturaPTCond-BookObl.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8C0825E13B804F65B6147195 /* FuturaPTCond-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEE7C2835A4D430785E0B2C3 /* FuturaPTCond-Medium.ttf */; };
+		9B4C7A9E19F2466ABF7B174F /* FuturaPT-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0603EF086CE24A0F95868E2D /* FuturaPT-ExtraBold.ttf */; };
+		A99554F09B8F44DEBC3471F4 /* FuturaPT-Demi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7D895DC8EA984FA49C6DE5BC /* FuturaPT-Demi.ttf */; };
+		AC2270FED5024926B146C8EB /* FuturaPTCond-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8A33A23E8E3E48CE8818848E /* FuturaPTCond-ExtraBold.ttf */; };
+		BFC92DAC6733492CB2705481 /* FuturaCyrillicLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */; };
+		C5F6E10DC6EB40C290F578EE /* FuturaPTCond-BoldObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7CFC3538FFD4AE1BE0AF440 /* FuturaPTCond-BoldObl.ttf */; };
+		D0B6F32386DF42BBBC92D533 /* FuturaPT-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48FFC23BEE0E49829B9CEA98 /* FuturaPT-Book.ttf */; };
+		D5D1182E3CD04F40B39B1FCD /* FuturaPT-BookObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A2B4342650343B284DBF3E4 /* FuturaPT-BookObl.ttf */; };
+		D854568A579B4B268CF513B7 /* FuturaPT-DemiObl.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB68DA333B47B99932580A /* FuturaPT-DemiObl.ttf */; };
+		DDB26738CD584A57958DDD66 /* FuturaPTCond-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAF50CA4FD804CC6A7DC2549 /* FuturaPTCond-Bold.ttf */; };
+		E00F1D7F75234DB9B752B0DC /* FuturaPT-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCE6F93192F04E41A5D5F36A /* FuturaPT-Heavy.ttf */; };
+		E6F4ECE693084E63A3274B22 /* FuturaPTCond-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 252B69A9171C4BC0A2CED636 /* FuturaPTCond-Book.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +59,9 @@
 		00E356EE1AD99517003FC87E /* classcomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = classcomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* classcomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = classcomTests.m; sourceTree = "<group>"; };
+		031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicBook.ttf; path = ../src/assets/fonts/FuturaCyrillicBook.ttf; sourceTree = "<group>"; };
+		0603EF086CE24A0F95868E2D /* FuturaPT-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-ExtraBold.ttf"; path = "../src/assets/fonts/FuturaPT-ExtraBold.ttf"; sourceTree = "<group>"; };
+		08604657B09F403E813ED3D8 /* FuturaPT-BoldObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-BoldObl.ttf"; path = "../src/assets/fonts/FuturaPT-BoldObl.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* classcom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classcom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = classcom/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = classcom/AppDelegate.mm; sourceTree = "<group>"; };
@@ -44,20 +69,39 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = classcom/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = classcom/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-classcom-classcomTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classcom-classcomTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		252B69A9171C4BC0A2CED636 /* FuturaPTCond-Book.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-Book.ttf"; path = "../src/assets/fonts/FuturaPTCond-Book.ttf"; sourceTree = "<group>"; };
+		27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicExtraBold.ttf; path = ../src/assets/fonts/FuturaCyrillicExtraBold.ttf; sourceTree = "<group>"; };
+		291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicDemi.ttf; path = ../src/assets/fonts/FuturaCyrillicDemi.ttf; sourceTree = "<group>"; };
+		3A3E140919814E929A0EED94 /* FuturaPT-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Bold.ttf"; path = "../src/assets/fonts/FuturaPT-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-classcom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classcom.debug.xcconfig"; path = "Target Support Files/Pods-classcom/Pods-classcom.debug.xcconfig"; sourceTree = "<group>"; };
+		3FEC0824519241578502BA48 /* FuturaPT-HeavyObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-HeavyObl.ttf"; path = "../src/assets/fonts/FuturaPT-HeavyObl.ttf"; sourceTree = "<group>"; };
+		43013DA5D81F4D5696F81D87 /* FuturaPT-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Light.ttf"; path = "../src/assets/fonts/FuturaPT-Light.ttf"; sourceTree = "<group>"; };
+		48FFC23BEE0E49829B9CEA98 /* FuturaPT-Book.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Book.ttf"; path = "../src/assets/fonts/FuturaPT-Book.ttf"; sourceTree = "<group>"; };
+		4A2B4342650343B284DBF3E4 /* FuturaPT-BookObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-BookObl.ttf"; path = "../src/assets/fonts/FuturaPT-BookObl.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-classcom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classcom.release.xcconfig"; path = "Target Support Files/Pods-classcom/Pods-classcom.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-classcom-classcomTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classcom-classcomTests.debug.xcconfig"; path = "Target Support Files/Pods-classcom-classcomTests/Pods-classcom-classcomTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-classcom.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-classcom.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BBDFE32D2B64DDEA9F2DBA4 /* FuturaPT-MediumObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-MediumObl.ttf"; path = "../src/assets/fonts/FuturaPT-MediumObl.ttf"; sourceTree = "<group>"; };
+		7D895DC8EA984FA49C6DE5BC /* FuturaPT-Demi.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Demi.ttf"; path = "../src/assets/fonts/FuturaPT-Demi.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = classcom/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicLight.ttf; path = ../src/assets/fonts/FuturaCyrillicLight.ttf; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-classcom-classcomTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classcom-classcomTests.release.xcconfig"; path = "Target Support Files/Pods-classcom-classcomTests/Pods-classcom-classcomTests.release.xcconfig"; sourceTree = "<group>"; };
+		8A33A23E8E3E48CE8818848E /* FuturaPTCond-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-ExtraBold.ttf"; path = "../src/assets/fonts/FuturaPTCond-ExtraBold.ttf"; sourceTree = "<group>"; };
+		900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicMedium.ttf; path = ../src/assets/fonts/FuturaCyrillicMedium.ttf; sourceTree = "<group>"; };
+		993615F7984A47CCB8E2A64D /* FuturaPTCond-ExtraBoldObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-ExtraBoldObl.ttf"; path = "../src/assets/fonts/FuturaPTCond-ExtraBoldObl.ttf"; sourceTree = "<group>"; };
+		9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicBold.ttf; path = ../src/assets/fonts/FuturaCyrillicBold.ttf; sourceTree = "<group>"; };
+		A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FuturaCyrillicHeavy.ttf; path = ../src/assets/fonts/FuturaCyrillicHeavy.ttf; sourceTree = "<group>"; };
+		B4308D79BCA34A8E9653286A /* FuturaPTCond-MediumObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-MediumObl.ttf"; path = "../src/assets/fonts/FuturaPTCond-MediumObl.ttf"; sourceTree = "<group>"; };
+		BAF50CA4FD804CC6A7DC2549 /* FuturaPTCond-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-Bold.ttf"; path = "../src/assets/fonts/FuturaPTCond-Bold.ttf"; sourceTree = "<group>"; };
+		BEBB68DA333B47B99932580A /* FuturaPT-DemiObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-DemiObl.ttf"; path = "../src/assets/fonts/FuturaPT-DemiObl.ttf"; sourceTree = "<group>"; };
+		BEE7C2835A4D430785E0B2C3 /* FuturaPTCond-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-Medium.ttf"; path = "../src/assets/fonts/FuturaPTCond-Medium.ttf"; sourceTree = "<group>"; };
+		C901F47BB5EA4C0FBF1A84B5 /* FuturaPT-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Medium.ttf"; path = "../src/assets/fonts/FuturaPT-Medium.ttf"; sourceTree = "<group>"; };
+		C90E70257F984887B2FFB2F5 /* FuturaPT-LightObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-LightObl.ttf"; path = "../src/assets/fonts/FuturaPT-LightObl.ttf"; sourceTree = "<group>"; };
+		C9BAA020D4344ECF94438681 /* FuturaPTCond-BookObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-BookObl.ttf"; path = "../src/assets/fonts/FuturaPTCond-BookObl.ttf"; sourceTree = "<group>"; };
+		E7CFC3538FFD4AE1BE0AF440 /* FuturaPTCond-BoldObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPTCond-BoldObl.ttf"; path = "../src/assets/fonts/FuturaPTCond-BoldObl.ttf"; sourceTree = "<group>"; };
+		EAE186810C5B41D6810428F5 /* FuturaPT-ExtraBoldObl.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-ExtraBoldObl.ttf"; path = "../src/assets/fonts/FuturaPT-ExtraBoldObl.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicBold.ttf"; path = "../src/assets/fonts/FuturaCyrillicBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicBook.ttf"; path = "../src/assets/fonts/FuturaCyrillicBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicDemi.ttf"; path = "../src/assets/fonts/FuturaCyrillicDemi.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicExtraBold.ttf"; path = "../src/assets/fonts/FuturaCyrillicExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicHeavy.ttf"; path = "../src/assets/fonts/FuturaCyrillicHeavy.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicLight.ttf"; path = "../src/assets/fonts/FuturaCyrillicLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */ = {isa = PBXFileReference; name = "FuturaCyrillicMedium.ttf"; path = "../src/assets/fonts/FuturaCyrillicMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FCE6F93192F04E41A5D5F36A /* FuturaPT-Heavy.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FuturaPT-Heavy.ttf"; path = "../src/assets/fonts/FuturaPT-Heavy.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +152,42 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = classcom;
+			sourceTree = "<group>";
+		};
+		2A625DCE8F5047DD9E0DC2F1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */,
+				031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */,
+				291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */,
+				27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */,
+				A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */,
+				8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */,
+				900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */,
+				3A3E140919814E929A0EED94 /* FuturaPT-Bold.ttf */,
+				08604657B09F403E813ED3D8 /* FuturaPT-BoldObl.ttf */,
+				48FFC23BEE0E49829B9CEA98 /* FuturaPT-Book.ttf */,
+				4A2B4342650343B284DBF3E4 /* FuturaPT-BookObl.ttf */,
+				7D895DC8EA984FA49C6DE5BC /* FuturaPT-Demi.ttf */,
+				BEBB68DA333B47B99932580A /* FuturaPT-DemiObl.ttf */,
+				0603EF086CE24A0F95868E2D /* FuturaPT-ExtraBold.ttf */,
+				EAE186810C5B41D6810428F5 /* FuturaPT-ExtraBoldObl.ttf */,
+				FCE6F93192F04E41A5D5F36A /* FuturaPT-Heavy.ttf */,
+				3FEC0824519241578502BA48 /* FuturaPT-HeavyObl.ttf */,
+				43013DA5D81F4D5696F81D87 /* FuturaPT-Light.ttf */,
+				C90E70257F984887B2FFB2F5 /* FuturaPT-LightObl.ttf */,
+				C901F47BB5EA4C0FBF1A84B5 /* FuturaPT-Medium.ttf */,
+				6BBDFE32D2B64DDEA9F2DBA4 /* FuturaPT-MediumObl.ttf */,
+				BAF50CA4FD804CC6A7DC2549 /* FuturaPTCond-Bold.ttf */,
+				E7CFC3538FFD4AE1BE0AF440 /* FuturaPTCond-BoldObl.ttf */,
+				252B69A9171C4BC0A2CED636 /* FuturaPTCond-Book.ttf */,
+				C9BAA020D4344ECF94438681 /* FuturaPTCond-BookObl.ttf */,
+				8A33A23E8E3E48CE8818848E /* FuturaPTCond-ExtraBold.ttf */,
+				993615F7984A47CCB8E2A64D /* FuturaPTCond-ExtraBoldObl.ttf */,
+				BEE7C2835A4D430785E0B2C3 /* FuturaPTCond-Medium.ttf */,
+				B4308D79BCA34A8E9653286A /* FuturaPTCond-MediumObl.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -162,21 +242,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		2A625DCE8F5047DD9E0DC2F1 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				9AF251933C3D4208B6FAEB31 /* FuturaCyrillicBold.ttf */,
-				031955D7ECFD419C97D395F6 /* FuturaCyrillicBook.ttf */,
-				291A71B1CE81477EB92A852A /* FuturaCyrillicDemi.ttf */,
-				27E3186178BC45C6B3B6D481 /* FuturaCyrillicExtraBold.ttf */,
-				A526ED6DDF404DD6AA114358 /* FuturaCyrillicHeavy.ttf */,
-				8496F29487C248759BE9B332 /* FuturaCyrillicLight.ttf */,
-				900E335A520C4FA1B5F58AFC /* FuturaCyrillicMedium.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -281,6 +346,28 @@
 				485D19297B954E1CA9E61E0E /* FuturaCyrillicHeavy.ttf in Resources */,
 				BFC92DAC6733492CB2705481 /* FuturaCyrillicLight.ttf in Resources */,
 				6B993A57E9914A2C91992ED9 /* FuturaCyrillicMedium.ttf in Resources */,
+				2BF144C5C97444958633B527 /* FuturaPT-Bold.ttf in Resources */,
+				1BC25D37D8DD47FEA03EB11A /* FuturaPT-BoldObl.ttf in Resources */,
+				D0B6F32386DF42BBBC92D533 /* FuturaPT-Book.ttf in Resources */,
+				D5D1182E3CD04F40B39B1FCD /* FuturaPT-BookObl.ttf in Resources */,
+				A99554F09B8F44DEBC3471F4 /* FuturaPT-Demi.ttf in Resources */,
+				D854568A579B4B268CF513B7 /* FuturaPT-DemiObl.ttf in Resources */,
+				9B4C7A9E19F2466ABF7B174F /* FuturaPT-ExtraBold.ttf in Resources */,
+				4AD17A0FB560437BAB6AAAF8 /* FuturaPT-ExtraBoldObl.ttf in Resources */,
+				E00F1D7F75234DB9B752B0DC /* FuturaPT-Heavy.ttf in Resources */,
+				28EB8220634A403E80A8FA7B /* FuturaPT-HeavyObl.ttf in Resources */,
+				790314E7456D4B4689A8B3A4 /* FuturaPT-Light.ttf in Resources */,
+				1B91AC2F270B4853A26DA3BF /* FuturaPT-LightObl.ttf in Resources */,
+				6E0BED3E9E2E43E98411A774 /* FuturaPT-Medium.ttf in Resources */,
+				2EFD3E5C17804702A8CAA704 /* FuturaPT-MediumObl.ttf in Resources */,
+				DDB26738CD584A57958DDD66 /* FuturaPTCond-Bold.ttf in Resources */,
+				C5F6E10DC6EB40C290F578EE /* FuturaPTCond-BoldObl.ttf in Resources */,
+				E6F4ECE693084E63A3274B22 /* FuturaPTCond-Book.ttf in Resources */,
+				81246DFBF96E43B6B4A6A2A5 /* FuturaPTCond-BookObl.ttf in Resources */,
+				AC2270FED5024926B146C8EB /* FuturaPTCond-ExtraBold.ttf in Resources */,
+				6C0EADEA00324B66A401C281 /* FuturaPTCond-ExtraBoldObl.ttf in Resources */,
+				8C0825E13B804F65B6147195 /* FuturaPTCond-Medium.ttf in Resources */,
+				4F006337DDB44839B7B9774F /* FuturaPTCond-MediumObl.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +557,7 @@
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-classcom-classcomTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 93K92R8X54;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -498,6 +586,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 93K92R8X54;
 				INFOPLIST_FILE = classcomTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -521,8 +610,10 @@
 			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-classcom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = HPB6QQ52WT;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = classcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -535,7 +626,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = uz.classcom.app;
 				PRODUCT_NAME = classcom;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -548,8 +639,10 @@
 			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-classcom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = HPB6QQ52WT;
 				INFOPLIST_FILE = classcom/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,7 +654,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = uz.classcom.app;
 				PRODUCT_NAME = classcom;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {COLORS} from '../constants/COLORS';
+import UiText from './text';
 
 interface PlaneProps {
   testingTitle?: string;
@@ -40,16 +41,32 @@ const PlaneButton = ({
       activeOpacity={0.7}
       style={[styles.container, style]}>
       <View style={styles.first}>
-        <Text style={[styles.textName, textStyle]}>{testingTitle}</Text>
+        <UiText
+          style={[styles.textName, textStyle]}
+          title={testingTitle}
+          type="mediumRegular12"
+        />
         <TouchableOpacity>
           <Text style={styles.textDelete}>{deleteTitle}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.second}>
-        <Text style={styles.text}>{authorTitle}</Text>
+        <UiText
+          style={styles.text}
+          title={authorTitle}
+          type="mediumRegular12"
+        />
         <View style={styles.box}>
-          <Text style={[styles.title, textStyle]}>{nameTitle}</Text>
-          <Text style={[styles.lessonName, textStyle]}>{lessonTitle}</Text>
+          <UiText
+            style={[styles.title, textStyle]}
+            title={nameTitle}
+            type="mediumRegular12"
+          />
+          <UiText
+            style={[styles.lessonName, textStyle]}
+            title={lessonTitle}
+            type="mediumRegular12"
+          />
         </View>
       </View>
     </TouchableOpacity>

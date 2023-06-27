@@ -9,7 +9,7 @@ import Button from '../../../components/button';
 const SupportMessagesScreen = () => {
   return (
     <DefaultWrapper hasUser title="Сообщения для службы поддержки">
-      <View style={{flex: 1,}}>
+      <View style={{flex: 1}}>
         <DropDownAnimated
           dropDown={<Text style={styles.text}>Выберите тему</Text>}
           dropDownInner={

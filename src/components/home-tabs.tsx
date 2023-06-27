@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
 import {COLORS} from '../constants/COLORS';
+import UiText from './text';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -83,14 +84,15 @@ const TopTabs = ({
                           <View>{e.iconPassive}</View>
                         )}
                       </View>
-                      <Text
+                      <UiText
                         style={
                           activeTab === i
                             ? styles.textHeader
                             : styles.headerText
-                        }>
-                        {e.title}
-                      </Text>
+                        }
+                        title={e.title}
+                        type="mediumRegular12"
+                      />
                     </TouchableOpacity>
                   );
                 })}

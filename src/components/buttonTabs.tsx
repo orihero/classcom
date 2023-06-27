@@ -1,6 +1,6 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {
   View,
-  Text,
   StyleSheet,
   TouchableOpacity,
   StyleProp,
@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {COLORS} from '../constants/COLORS';
 import ButtonSecondary from './button-secondary';
+import UiText from './text';
 
 interface IProps {
   titles: string[];
@@ -19,23 +20,19 @@ interface IProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-const ButtonTabs = ({
-  titles,
-  active,
-  setActive,
-}: IProps) => (
+const ButtonTabs = ({titles, active, setActive}: IProps) => (
   <View style={[styles.container]}>
     {titles.map((title, i) => (
       <View>
         {active === i ? (
-          <ButtonSecondary
-            key={i}
-            text={title}
-            onPress={() => setActive(i)}
-          />
+          <ButtonSecondary key={i} text={title} onPress={() => setActive(i)} />
         ) : (
           <TouchableOpacity key={i} onPress={() => setActive(i)}>
-            <Text style={styles.inActiveText}>{title}</Text>
+            <UiText
+              style={styles.inActiveText}
+              title={title}
+              type="mediumRegular12"
+            />
           </TouchableOpacity>
         )}
       </View>
