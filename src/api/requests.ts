@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
+
 import {
   IAccountResponse,
   ICourseResponse,
@@ -12,7 +13,14 @@ import {
   IScheduleResponse,
   IScheduleTemplateResponse,
   IThematicPlanResource,
+  NotifactionType,
+  PostChatItem,
+  QuestionAndAnswersItems,
+  ReferenceChatItems,
+  TechService,
+  TechServiceThemeItems,
 } from './types';
+
 import {store} from '../store/configureStore';
 
 export const BASE_URL = 'https://classcom.uz/api';
@@ -68,5 +76,38 @@ export const REQUESTS = {
       ),
     getClassNumbers: () => axiosInstance.get<string[]>('/enums/klass-numbers'),
     getClassLetters: () => axiosInstance.get<string[]>('/enums/klass-letters'),
+  },
+  support: {
+    //Сообщения для службы поддержки
+    getTechServiceThemeItems: () =>
+      axiosInstance.get<TechServiceThemeItems>(
+        '/v2/reference/tech-service-theme/items',
+      ),
+
+    postTechService: () =>
+      axiosInstance.post<TechService>('/v2/reference/tech-service'),
+
+    //Чат со службой поддержки
+    getTechServiceChatItems: () =>
+      axiosInstance.get<ReferenceChatItems>(
+        '/v2/reference/tech-service-chat/items',
+      ),
+
+    postTechServiceChat: (params: PostChatItem) =>
+      axiosInstance.post<ReferenceChatItems[]>(
+        '/v2/reference/tech-service-chat',
+        params,
+      ),
+
+    //Ответы на вопросы
+    getQuestionandAnswersItems: () =>
+      axiosInstance.get<QuestionAndAnswersItems[]>(
+        '/v2/reference/questions-and-answers/items',
+      ),
+  },
+
+  notifaction: {
+    getMyNotifactionItems: () =>
+      axiosInstance.get<NotifactionType[]>('/v2/my-notification/items'),
   },
 };

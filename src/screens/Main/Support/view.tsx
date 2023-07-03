@@ -12,7 +12,13 @@ import {
 import {SupportHooks} from './hooks';
 
 const SupportScreen = () => {
-  const {onSupportMessagePress, onAnswerQuestionPress} = SupportHooks();
+  const {
+    onSupportMessagePress,
+    onAnswerQuestionPress,
+    onUsersMaualPress,
+    onSupportSuggestPress,
+    onChatSupportPress,
+  } = SupportHooks();
   return (
     <DefaultWrapper hasUser title="Служба поддержки">
       <InfoButton
@@ -26,17 +32,17 @@ const SupportScreen = () => {
         icon={<ExclamationIcon />}
       />
       <InfoButton
-        onPress={() => console.log('Qise')}
+        onPress={onUsersMaualPress}
         title="Инструкция пользователя"
         icon={<NoteIconProgram />}
       />
       <InfoButton
-        onPress={() => console.log('Qise')}
+        onPress={onSupportSuggestPress}
         title="Ваши предложения"
         icon={<BorderPencelIcon />}
       />
       <InfoButton
-        onPress={() => console.log('Qise')}
+        onPress={onChatSupportPress}
         title="Чат службы поддержки"
         icon={<ChatIcon />}
       />

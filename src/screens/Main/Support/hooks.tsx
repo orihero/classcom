@@ -7,6 +7,23 @@ export const SupportHooks = () => {
   const onAnswerQuestionPress = () => {
     navigation.navigate(ROUTES.SUPPORT.ANSWER_QUESTIONS as never);
   };
+
+  const onUsersMaualPress = () => {
+    navigation.navigate(ROUTES.SUPPORT.USERS_MAUAL as never);
+  };
+  const onSupportSuggestPress = () => {
+    navigation.navigate(ROUTES.SUPPORT.SUPPORT_SUGGEST as never);
+  };
+  const onChatSupportPress = () => {
+    navigation.navigate(ROUTES.SUPPORT.CHAT_SUPPORT as never);
+  };
+
   const navigation = useNavigation();
-  return {onSupportMessagePress, onAnswerQuestionPress};
+  return {
+    onSupportMessagePress,
+    onAnswerQuestionPress,
+    onUsersMaualPress,
+    onSupportSuggestPress,
+    onChatSupportPress,
+  };
 };

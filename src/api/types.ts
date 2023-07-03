@@ -213,3 +213,50 @@ export interface ILessonTemplateRequest {
   sorder: string;
   courseId: number;
 }
+export interface Content {
+  content: string;
+  createdBy: string;
+  createdDate: Date;
+  id: number;
+  viewed: boolean;
+}
+
+export interface ReferenceChatItems {
+  contents: Content[];
+  id: number;
+  username: string;
+}
+
+export interface TechServiceThemeItems {
+  id: number;
+  name: string;
+}
+
+export interface TechService {
+  content: string;
+  id: number;
+  themeId: number;
+  type: 'SUPPORT' | 'SUGGESTION';
+}
+
+export interface QuestionAndAnswersItems {
+  answer: string;
+  disabled: boolean;
+  id: number;
+  question: string;
+}
+
+export interface PostChatItem {
+  content: string;
+}
+
+export interface NotifactionType {
+  createdDate: Date;
+  entityType: string;
+  entityTypeId: number;
+  id: number;
+  message: string;
+  type: string;
+  userId: number;
+  viewed: boolean;
+}

@@ -105,4 +105,22 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontSize: 16,
     lineHeight: 22,
   },
+  Bold18: {
+    fontFamily: FontName[700],
+    fontWeight: '700',
+    fontSize: 18,
+    lineHeight: 20,
+  },
+  Bold20: {
+    fontFamily: FontName[700],
+    fontWeight: '700',
+    fontSize: 20,
+    lineHeight: 20,
+  },
+  Bold22: {
+    fontFamily: FontName[700],
+    fontWeight: '700',
+    fontSize: 22,
+    lineHeight: 28,
+  },
 });

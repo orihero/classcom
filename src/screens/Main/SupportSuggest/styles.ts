@@ -24,6 +24,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   text: {
+    fontSize: 16,
+    fontWeight: '500',
     color: COLORS.GREY_BLACK,
   },
   btn: {

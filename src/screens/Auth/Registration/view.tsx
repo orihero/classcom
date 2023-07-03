@@ -33,7 +33,7 @@ const RegistrationScreen = () => {
     validationErrors,
   } = RegistrationHooks();
 
-  const {regions, districts} = useRegionsHook(values['regionId']);
+  const {regions, districts} = useRegionsHook(values.regionId);
   const {courses} = useCoursesHook();
 
   return (
@@ -82,7 +82,7 @@ const RegistrationScreen = () => {
           <Select
             items={regions}
             name="regionId"
-            value={values['regionId']}
+            value={values.regionId}
             title="Область"
             placeholder="Область"
             onChange={onInputChange}
@@ -91,7 +91,7 @@ const RegistrationScreen = () => {
           <Select
             items={districts}
             name="districtId"
-            value={values['districtId']}
+            value={values.districtId}
             title="Район"
             placeholder="Район"
             onChange={onInputChange}
@@ -100,7 +100,7 @@ const RegistrationScreen = () => {
           <Select
             items={courses}
             name="courseId"
-            value={values['courseId']}
+            value={values.courseId}
             title="Предмет"
             placeholder="Предмет"
             onChange={onInputChange}

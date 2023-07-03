@@ -1,7 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROUTES} from '../routes';
 
-import PaymentScreen from '../../screens/Main/Payment/view';
 import HomeScreen from '../../screens/Main/Home/view';
 import SettingCalendar from '../../screens/Main/Setting-calendar/view';
 

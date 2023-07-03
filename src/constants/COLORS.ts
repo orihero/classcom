@@ -6,6 +6,7 @@ export const COLORS = {
   GREY_BLACK: '#333333',
   GREY: '#797979',
   GREY_ONE: '#CBCBCB',
+  GREY_TWO: '#909090',
   LIGHT_BLUE: '#70A2CB',
   GREEN: '#58AF23',
   ORANGE: '#E3643C',

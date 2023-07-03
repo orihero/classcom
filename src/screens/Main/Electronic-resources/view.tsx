@@ -18,7 +18,7 @@ const ElectronicResourceScreen = () => {
           iconNoActive={<ArrowDown />}
           dropDown={
             <View style={styles.first}>
-              <Text style={styles.title}>Презентация</Text>
+              <Text style={styles.title}>Презентация !!!</Text>
             </View>
           }
           containerInner={styles.dropDownInner}
