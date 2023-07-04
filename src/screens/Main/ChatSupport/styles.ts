@@ -4,6 +4,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
   },
 });

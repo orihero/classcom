@@ -1,4 +1,4 @@
-import {RUSSAIN_MONTHS2, RUSSAIN_WEEKDAYS2} from '../constants/DATES';
+import {RUSSAIN_MONTHS2, RUSSAIN_WEEKDAYS2} from '../constants/dates';
 
 export const dateInRussain = (date: Date = new Date(Date.now())) => {
   const currentDate =

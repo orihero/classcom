@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import {COLORS} from '../../../../constants/COLORS';
+import {COLORS} from '../../../../constants/colors';
 import {ArrowRightIcon, ShareIcon} from '../../../../assets/icons';
 import {SupportChatHook} from '../hooks';
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ChatFooter = ({shareBtn}: Props) => {
-  const {onSendNewMessage} = SupportChatHook();
+  const {onSendNewMessage, handleChangeText, sendMessage} = SupportChatHook();
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={shareBtn}>
@@ -20,6 +20,8 @@ const ChatFooter = ({shareBtn}: Props) => {
       <TextInput
         style={styles.messageInput}
         placeholder="Напишите что-нибудь"
+        onChangeText={handleChangeText}
+        value={sendMessage}
       />
       <TouchableOpacity style={styles.sendBtn} onPress={onSendNewMessage}>
         <ArrowRightIcon />
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     paddingHorizontal: 20,
     gap: 20,
+    backgroundColor: COLORS.WHITE,
   },
   messageInput: {
     width: '70%',

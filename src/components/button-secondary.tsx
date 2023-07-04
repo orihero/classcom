@@ -6,7 +6,7 @@ import {
   ViewStyle,
   TouchableOpacity,
 } from 'react-native';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 import UiText from './text';
 
 interface IProps {

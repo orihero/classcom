@@ -1,5 +1,5 @@
 import Snackbar from 'react-native-snackbar';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 
 export class CustomSnackbar {
   static danger(message: string) {

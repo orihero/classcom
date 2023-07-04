@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
 import {ArrowLeftIcon, BellIcon} from '../../assets/icons/index';
-import {COLORS} from '../../constants/COLORS';
+import {COLORS} from '../../constants/colors';
 import {defaultWrapperStyles} from './DefaultWrapper.styles';
 import {ROUTES} from '../../navigation/routes';
 import {SettingHooks} from '../../screens/Main/Setting/hooks';

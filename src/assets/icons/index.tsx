@@ -1,6 +1,6 @@
 import React from 'react';
 import Svg, {G, Mask, Path, SvgProps} from 'react-native-svg';
-import {COLORS} from '../../constants/COLORS';
+import {COLORS} from '../../constants/colors';
 
 export function UserIcon(props: SvgProps) {
   return (

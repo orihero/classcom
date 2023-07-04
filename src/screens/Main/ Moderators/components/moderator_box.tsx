@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {IModerator} from '../../../../api/types';
-import {COLORS} from '../../../../constants/COLORS';
+import {COLORS} from '../../../../constants/colors';
 
 interface Props {
   onPress?: () => void;

@@ -13,7 +13,7 @@ import {
   WorldIcon,
 } from '../../../assets/icons';
 import DropDownAnimated from '../../../components/drop-down';
-import {COLORS} from '../../../constants/COLORS';
+import {COLORS} from '../../../constants/colors';
 import {SettingHooks} from './hooks';
 import Active_Button from './components/Active-button';
 import Button from '../../../components/button';

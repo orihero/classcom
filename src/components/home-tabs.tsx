@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 import UiText from './text';
 
 const windowWidth = Dimensions.get('window').width;

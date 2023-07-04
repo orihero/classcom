@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import {ILoginRequest} from '../../../api/types';
+import {IAccountResponse, ILoginRequest} from '../../../api/types';
 import {ROUTES} from '../../../navigation/routes';
 import {REQUESTS} from '../../../api/requests';
 import {CustomSnackbar} from '../../../components/custom-snackbar';
@@ -26,7 +26,12 @@ export const AuthorizationHooks = () => {
     setLoading(true);
     try {
       const res = await REQUESTS.auth.login(values);
-      dispatch(loggedIn({id_token: res.data.id_token}));
+      dispatch(
+        loggedIn({
+          id_token: res.data.id_token,
+          iAccount: res.data,
+        }),
+      );
     } catch (error) {
       //@ts-ignore
       CustomSnackbar.danger(error?.response?.data?.message || '');

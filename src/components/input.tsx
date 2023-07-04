@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {EyesIcon} from '../assets/icons';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 
 interface IProps {
   name?: string;

@@ -8,8 +8,7 @@ import {
   StyleProp,
 } from 'react-native';
 import React, {useState} from 'react';
-import {ArrowDown, ArrowUp, StudentIcon} from '../assets/icons';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 
 interface DropDownProps {
   iconActive?: any;

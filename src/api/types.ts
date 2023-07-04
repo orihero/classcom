@@ -216,9 +216,9 @@ export interface ILessonTemplateRequest {
 export interface Content {
   content: string;
   createdBy: string;
-  createdDate: Date;
-  id: number;
-  viewed: boolean;
+  createdDate?: Date;
+  id?: number;
+  viewed?: boolean;
 }
 
 export interface ReferenceChatItems {

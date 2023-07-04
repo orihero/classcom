@@ -80,7 +80,7 @@ export const REQUESTS = {
   support: {
     //Сообщения для службы поддержки
     getTechServiceThemeItems: () =>
-      axiosInstance.get<TechServiceThemeItems>(
+      axiosInstance.get<TechServiceThemeItems[]>(
         '/v2/reference/tech-service-theme/items',
       ),
 
@@ -89,7 +89,7 @@ export const REQUESTS = {
 
     //Чат со службой поддержки
     getTechServiceChatItems: () =>
-      axiosInstance.get<ReferenceChatItems>(
+      axiosInstance.get<ReferenceChatItems[]>(
         '/v2/reference/tech-service-chat/items',
       ),
 

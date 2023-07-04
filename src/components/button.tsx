@@ -9,7 +9,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import animation from '../assets/animations/loading-white.json';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 import UiText from './text';
 
 interface IProps {

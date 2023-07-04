@@ -1,4 +1,4 @@
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 import {TYPOGRAPHY} from '../constants/typography';
 import {FC} from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';

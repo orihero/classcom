@@ -3,14 +3,13 @@ import {View} from 'react-native';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import {styles} from './styles';
 import ChatFooter from './components/chatfooter';
-import {SupportChatHook} from './hooks';
+import MessagesContainer from './components/MessagesContainer';
 
 const ChatSupport = () => {
-  const {itemChats, itemMessages} = SupportChatHook();
-  console.log(itemChats, itemMessages?.content, 'chats');
   return (
     <DefaultWrapper hasUser title="Чат со службой поддержки">
       <View style={styles.container}>
+        <MessagesContainer />
         <ChatFooter />
       </View>
     </DefaultWrapper>

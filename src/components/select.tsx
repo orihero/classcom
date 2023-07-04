@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import {ArrowDown, ArrowUp, StudentIcon} from '../assets/icons';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 
 export interface SelectItemProps {
   value: any;

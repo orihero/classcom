@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../../constants/COLORS';
+import {COLORS} from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {},
@@ -31,5 +31,12 @@ export const styles = StyleSheet.create({
     bottom: 50,
     left: 0,
     right: 0,
+  },
+  innerContainer: {
+    backgroundColor: 'red',
+    height: 100,
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

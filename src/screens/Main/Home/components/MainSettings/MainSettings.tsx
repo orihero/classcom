@@ -12,10 +12,10 @@ import {ROUTES} from '../../../../../navigation/routes';
 import EmptySchedule from '../../../../../components/empty-schedule';
 import ReactNativeModal from 'react-native-modal';
 import DatePicker from 'react-native-date-picker';
-import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/DATES';
+import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
 import {useCoursesHook} from '../../../../general-hooks/courses-hook';
 import Select from '../../../../../components/select';
-import {COLORS} from '../../../../../constants/COLORS';
+import {COLORS} from '../../../../../constants/colors';
 
 const lessonMap = {
   1: true,

@@ -1,13 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {RootState} from '../configureStore';
+import {IAccountResponse} from '../../api/types';
 
 export interface IProfile {
   id_token: string;
+  iAccount: IAccountResponse;
 }
 
 const initialState: IProfile = {
   id_token: '',
+  iAccount: {} as IAccountResponse,
 };
 
 export const profileSlice = createSlice({

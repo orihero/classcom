@@ -3,17 +3,17 @@ import React from 'react';
 import UiText from '../../../../components/text';
 import {ArrowDown, ArrowUp} from '../../../../assets/icons';
 import DropDownAnimated from '../../../../components/drop-down';
-import {COLORS} from '../../../../constants/COLORS';
+import {QuestionAndAnswersItems} from '../../../../api/types';
 
-interface Props {
-  onPress?: () => void;
-  title: string;
-  number?: string;
-}
-
-const AnswerQuestion = ({onPress, title, number}: Props) => {
+const AnswerQuestion = ({
+  id,
+  question,
+  answer,
+  disabled,
+}: QuestionAndAnswersItems) => {
+  console.log(disabled);
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity>
       <DropDownAnimated
         container={styles.dropDown}
         iconNoActive={<ArrowUp />}
@@ -22,14 +22,14 @@ const AnswerQuestion = ({onPress, title, number}: Props) => {
           <View style={styles.leftBox}>
             <UiText
               style={styles.number}
-              title={number ? `${number} .` : '1.'}
-              color="MIDNIGHT_BLUE"
+              title={id ? `${id} .` : '1.'}
+              color="GREY_BLACK"
               type="Bold18"
             />
             <UiText
               style={styles.title}
-              title={title}
-              color="MIDNIGHT_BLUE"
+              title={question}
+              color="GREY_BLACK"
               type="Bold18"
             />
           </View>
@@ -37,7 +37,7 @@ const AnswerQuestion = ({onPress, title, number}: Props) => {
         containerInner={styles.dropDownInner}
         dropDownInner={
           <View>
-            <UiText title="Hello" />
+            <UiText title={answer} type="bookRegular16" color="GREY_BLACK" />
           </View>
         }
       />
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   },
   dropDownInner: {
     overflow: 'hidden',
-    backgroundColor: COLORS.GREEN,
     borderRadius: 10,
     marginTop: 10,
     shadowColor: 'rgba(105, 105, 105, 0.18)',

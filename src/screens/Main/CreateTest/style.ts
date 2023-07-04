@@ -1,4 +1,4 @@
-import { COLORS } from './../../../constants/COLORS';
+import {COLORS} from '../../../constants/colors';
 import {StyleSheet} from 'react-native';
 
 export const createTestScreenStyles = StyleSheet.create({
@@ -29,16 +29,16 @@ export const createTestScreenStyles = StyleSheet.create({
   dropInner: {
     marginHorizontal: 20,
     height: 200,
-    backgroundColor:COLORS.WHITE_ONE,
+    backgroundColor: COLORS.WHITE_ONE,
     marginTop: 5,
     paddingHorizontal: 15,
     paddingVertical: 15,
     borderRadius: 10,
   },
-  btn:{
-    position:'absolute',
-    left:0,
-    right:0,
-    bottom:50,
+  btn: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 50,
   },
 });

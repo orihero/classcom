@@ -7,7 +7,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
 import ButtonSecondary from './button-secondary';
 import UiText from './text';
 

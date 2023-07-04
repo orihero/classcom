@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../../constants/COLORS';
+import {COLORS} from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {},
@@ -20,9 +20,9 @@ export const styles = StyleSheet.create({
     marginVertical: 13,
     marginLeft: 20,
   },
-  text:{
+  text: {
     fontSize: 15,
-    fontWeight:'500',
-    color:COLORS.GREY_BLACK,
+    fontWeight: '500',
+    color: COLORS.GREY_BLACK,
   },
 });
