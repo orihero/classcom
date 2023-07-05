@@ -260,3 +260,36 @@ export interface NotifactionType {
   userId: number;
   viewed: boolean;
 }
+
+export interface AllSubjects {
+  duration: number;
+  id: number;
+  name: string;
+  number: number;
+  planId: number;
+  sortOrder: number;
+  subjectResourceDTOs: SubjectResourceDTO[];
+}
+
+export interface SubjectResourceDTO {
+  attachment: Attachment;
+  content: string;
+  description: string;
+  id: number;
+  name: string;
+  resourceCategoryId: number;
+  resourceCategoryName: string;
+  source: string;
+  subjectId: number;
+  subjectName: string;
+}
+
+export interface Attachment {
+  file: string;
+  filePath: string;
+  fullSize: string;
+  id: number;
+  name: string;
+  size: number;
+  type: string;
+}

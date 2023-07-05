@@ -1,6 +1,7 @@
 import axios, {AxiosResponse} from 'axios';
 
 import {
+  AllSubjects,
   IAccountResponse,
   ICourseResponse,
   IDistrictResponse,
@@ -61,9 +62,23 @@ export const REQUESTS = {
       ),
     getCourses: () =>
       axiosInstance.get<ICourseResponse[]>('/register-shared/courses'),
+
+    //Thematic screens api
     getThematicPlans: () =>
       axiosInstance.get<IThematicPlanResource[]>('/calendar-thematic-plans'),
+
+    getThematicSubject: (plantId: string | number) =>
+      axiosInstance.get<AllSubjects[]>(`/subjects?planId=${plantId}`),
+
+    getThematicRecorcesSubject: (subjectId: string | number) =>
+      axiosInstance.get<any>(`/subject-resources?subjectId=${subjectId}`),
+
+    getCalendarThematicPlansId: (id: string | number) =>
+      axiosInstance.get<any>(`/calendar-thematic-plans/${id}`),
+
+    //====================
     getAccount: () => axiosInstance.get<IAccountResponse>('/account'),
+
     getModerators: () =>
       axiosInstance.get<IModeratorsResponse>('v2/users/mobile/moderators'),
     getWeeklySchedule: (weekId: number | string, shift: number | string) =>
@@ -77,6 +92,7 @@ export const REQUESTS = {
     getClassNumbers: () => axiosInstance.get<string[]>('/enums/klass-numbers'),
     getClassLetters: () => axiosInstance.get<string[]>('/enums/klass-letters'),
   },
+
   support: {
     //Сообщения для службы поддержки
     getTechServiceThemeItems: () =>

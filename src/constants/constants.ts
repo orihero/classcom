@@ -1,5 +1,5 @@
 import SIZES from './sizes';
 
 export const ScrollViewPadding = {
-  paddingBottom: SIZES.height * 0.2,
+  paddingBottom: SIZES.height * 0.1,
 };

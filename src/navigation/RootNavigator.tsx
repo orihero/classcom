@@ -8,6 +8,7 @@ import {ROUTES} from './routes';
 import DrawerNavigator from './DrawerNavigation';
 import {useSelector} from 'react-redux';
 import {profileSelector} from '../store/slices/profile.slice';
+import {IThematicPlanResource} from '../api/types';
 
 export type RootNavigatorParamList = {
   [ROUTES.AUTH.AUTHORIZATION]: undefined;
@@ -15,6 +16,7 @@ export type RootNavigatorParamList = {
   [ROUTES.AUTH.REGISTRATION]: undefined;
   [ROUTES.AUTH.WELCOME]: undefined;
   [ROUTES.DRAWER.DRAWER]: undefined;
+  [ROUTES.THEMATIC.THEMATIC_INNER]: {item: IThematicPlanResource};
 };
 
 const Stack = createNativeStackNavigator<RootNavigatorParamList>();

@@ -39,6 +39,12 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
   },
+  bookRegular14: {
+    fontFamily: FontName[400],
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 18,
+  },
   bookRegular16: {
     fontFamily: FontName[400],
     fontWeight: '400',
@@ -56,6 +62,12 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontWeight: '500',
     fontSize: 12,
     lineHeight: 16,
+  },
+  mediumRegular14: {
+    fontFamily: FontName[500],
+    fontWeight: '500',
+    fontSize: 14,
+    lineHeight: 18,
   },
   mediumRegular16: {
     fontFamily: FontName[500],
