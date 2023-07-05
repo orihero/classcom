@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {QuestionAndAnswersItems} from '../../../api/types';
 export const AnswersQuestionsHooks = () => {
-  const [allQuestion, setAllQuestion] = useState<QuestionAndAnswersItems[]>();
+  const [allQuestion, setAllQuestion] = useState<QuestionAndAnswersItems[]>([]);
 
   useEffect(() => {
     const getQuestionAndAnswearFunc = async () => {

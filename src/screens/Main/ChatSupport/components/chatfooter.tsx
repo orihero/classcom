@@ -13,28 +13,36 @@ interface Props {
 const ChatFooter = ({shareBtn}: Props) => {
   const {onSendNewMessage, handleChangeText, sendMessage} = SupportChatHook();
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={shareBtn}>
-        <ShareIcon />
-      </TouchableOpacity>
-      <TextInput
-        style={styles.messageInput}
-        placeholder="Напишите что-нибудь"
-        onChangeText={handleChangeText}
-        value={sendMessage}
-      />
-      <TouchableOpacity style={styles.sendBtn} onPress={onSendNewMessage}>
-        <ArrowRightIcon />
-      </TouchableOpacity>
+    <View style={styles.parentContainer}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={shareBtn}>
+          <ShareIcon />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.messageInput}
+          placeholder="Напишите что-нибудь"
+          onChangeText={handleChangeText}
+          value={sendMessage}
+        />
+        <TouchableOpacity style={styles.sendBtn} onPress={onSendNewMessage}>
+          <ArrowRightIcon />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 export default ChatFooter;
 
 const styles = StyleSheet.create({
+  parentContainer: {
+    height: 80,
+    width: '100%',
+    position: 'relative',
+    paddingVertical: 15,
+  },
   container: {
     position: 'absolute',
-    bottom: 25,
+    top: 0,
     left: 0,
     right: 0,
     height: 50,

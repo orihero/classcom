@@ -6,6 +6,7 @@ import {useModeratorsHooks} from './hooks';
 
 const ModeratorsScreen = () => {
   const {moderators} = useModeratorsHooks();
+  console.log('moderatoris', JSON.stringify(moderators, null, 2));
   return (
     <DefaultWrapper hasIcon hasUser title="Модераторы">
       <ScrollView>

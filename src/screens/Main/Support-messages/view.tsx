@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 import React from 'react';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import DropDownAnimated from '../../../components/drop-down';
@@ -6,7 +6,6 @@ import {styles} from './styles';
 import {ArrowDown, ArrowUp} from '../../../assets/icons';
 import Button from '../../../components/button';
 import {SupportMessagesHooks} from './hooks';
-import UiText from '../../../components/text';
 const SupportMessagesScreen = () => {
   const {techServiceItems} = SupportMessagesHooks();
   console.log(techServiceItems, 'techServiceItems');
@@ -16,7 +15,7 @@ const SupportMessagesScreen = () => {
         <DropDownAnimated
           dropDown={<Text style={styles.text}>Выберите тему</Text>}
           dropDownInner={
-            <UiText title="HEllo" type="bookRegular16" color="GREY_BLACK" />
+            <TextInput multiline={true} style={styles.dropInner} />
           }
           containerInner={styles.innerContainer}
           container={styles.drop}

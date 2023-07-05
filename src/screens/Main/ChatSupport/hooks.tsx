@@ -27,6 +27,7 @@ export const SupportChatHook = () => {
       await REQUESTS.support.postTechServiceChat({
         content: sendMessage,
       });
+
       setSendMessage('');
     } catch (error) {
       console.log(error);

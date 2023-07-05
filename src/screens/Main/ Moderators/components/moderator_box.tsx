@@ -3,6 +3,7 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {IModerator} from '../../../../api/types';
 import {COLORS} from '../../../../constants/colors';
+import {Images} from '../../../../assets/images';
 
 interface Props {
   onPress?: () => void;
@@ -10,12 +11,14 @@ interface Props {
 }
 
 const ModeratorBox = ({onPress, item}: Props) => {
+  const imgUrl = item?.imageUrl?.replace(/(:\d{4})/g, '/#');
+  const moderatorImg = imgUrl ? {uri: imgUrl} : Images.userImg;
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
       style={styles.container}>
-      <Image style={styles.image} source={{uri: item?.imageUrl}} />
+      <Image style={styles.image} source={moderatorImg} />
       <View style={{marginLeft: 10}}>
         <Text style={styles.name}>
           {item?.firstName} {item?.lastName}
@@ -37,6 +40,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginHorizontal: 20,
     borderRadius: 10,
+    marginVertical: 5,
+    gap: 10,
+
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

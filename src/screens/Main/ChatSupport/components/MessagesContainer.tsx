@@ -9,11 +9,13 @@ const MessagesContainer = () => {
   const {allMyMessage} = SupportChatHook();
   const renderMyMessages = () => {
     return allMyMessage?.map(item => {
-      return (
-        <View key={item.id}>
-          <MessageCard content={item.content} createdBy={item.createdBy} />
-        </View>
-      );
+      if (item.content) {
+        return (
+          <View key={item.id}>
+            <MessageCard content={item.content} createdBy={item.createdBy} />
+          </View>
+        );
+      }
     });
   };
   return (
