@@ -4,17 +4,27 @@ import {IElectronicRecCategories} from '../../../api/types';
 import {useIsFocused} from '@react-navigation/native';
 export const useElectronicResourcesHooks = () => {
   const [eResources, setEResources] = useState<
-    IElectronicRecCategories[] | null
+    IElectronicRecCategories[][] | null
   >([]);
-  // const [state, setState] = useState<string | number>('');
-  // const [data, setData] = useState<any>();
 
   const isFocuced = useIsFocused();
 
   const getElectionRecorcesCategories = useCallback(async () => {
     try {
       const res = await REQUESTS.general.getElectronicResourceCategories();
-      setEResources(res.data);
+      let someFilterArray = [
+        ...new Set(res.data.map(item => item.course_name)),
+      ];
+      let newArr: any = [];
+
+      someFilterArray.map(item => {
+        const arr = res.data.filter(element => element.course_name === item);
+        newArr.push(arr);
+      });
+
+      console.log(newArr);
+
+      setEResources(newArr);
     } catch (error) {}
   }, []);
 
@@ -22,7 +32,7 @@ export const useElectronicResourcesHooks = () => {
   //   async (id: string | number) => {
   //     try {
   //       const res = await REQUESTS.general.getElectronicResourceAll(id);
-  //       setData(res.data);
+  //       console.log(res.data);
   //     } catch (error) {}
   //   },
   //   [],
