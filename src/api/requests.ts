@@ -6,6 +6,7 @@ import {
   ICourseResponse,
   IDistrictResponse,
   IELectronicResourceResponse,
+  IElectronicRecCategories,
   ILoginRequest,
   ILoginResponse,
   IModeratorsResponse,
@@ -50,10 +51,21 @@ export const REQUESTS = {
       ),
   },
   general: {
-    getElectronicResource: () =>
+    getAllElectronicResource: () =>
       axiosInstance.get<IELectronicResourceResponse[]>(
         '/electronic-resources/all',
       ),
+
+    getElectronicResourceCategories: () =>
+      axiosInstance.get<IElectronicRecCategories[]>(
+        '/electronic-resources/categories',
+      ),
+
+    getElectronicResourceAll: (id: string | number) =>
+      axiosInstance.get<IELectronicResourceResponse>(
+        `electronic-resources/all/${id}`,
+      ),
+
     getRegions: () =>
       axiosInstance.get<IRegionResponse[]>('/register-shared/regions'),
     getDistricts: (id: string | number) =>

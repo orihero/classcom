@@ -1,91 +1,59 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, ScrollView} from 'react-native';
 import {ArrowDown, ArrowUp} from '../../../assets/icons';
 import Button from '../../../components/button';
 import DropDownAnimated from '../../../components/drop-down';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import {styles} from './styles';
 import {useElectronicResourcesHooks} from './hooks';
+import {ScrollViewPadding} from '../../../constants/constants';
+import {COLORS} from '../../../constants/colors';
+import SIZES from '../../../constants/sizes';
 
 const ElectronicResourceScreen = () => {
   const {eResources} = useElectronicResourcesHooks();
+  console.log(JSON.stringify(eResources, null, 2));
+  console.log(SIZES.width);
+
   return (
     <DefaultWrapper title={'Электронные ресурсы'}>
-      <View style={{marginTop: 15}}>
-        <DropDownAnimated
-          container={styles.dropDown}
-          iconActive={<ArrowUp />}
-          iconNoActive={<ArrowDown />}
-          dropDown={
-            <View style={styles.first}>
-              <Text style={styles.title}>Презентация !!!</Text>
-            </View>
-          }
-          containerInner={styles.dropDownInner}
-          dropDownInner={
-            <>
-              {eResources?.map(e => {
-                return (
-                  <View key={e.id}>
+      <ScrollView
+        style={{marginTop: 15}}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={ScrollViewPadding}>
+        {eResources?.map(item => {
+          return (
+            <View key={item.id}>
+              <DropDownAnimated
+                container={styles.dropDown}
+                iconActive={<ArrowUp />}
+                iconNoActive={<ArrowDown />}
+                dropDown={
+                  <View style={styles.first}>
+                    <Text style={styles.title}>{item.course_name}</Text>
+                  </View>
+                }
+                containerInner={styles.dropDownInner}
+                dropDownInner={
+                  <View key={item.id}>
                     <View style={styles.second}>
                       <View>
-                        <Text style={styles.textName}>Презентация</Text>
+                        <Text style={styles.textName}>{item.name}</Text>
                       </View>
-                      <ArrowDown />
                     </View>
-                    <View style={styles.container}>
-                      <Text style={styles.lessonText}>
-                        6 класс урок 39.docx
-                      </Text>
-                      <Text style={styles.kbText}>20.45 KB</Text>
-                    </View>
+
                     <Button
                       onPress={() => console.log('Log')}
                       text="Скачать"
-                      style={{backgroundColor: '#3673A5'}}
-                    />
-                    <View style={[styles.container, styles.containerOne]}>
-                      <Text style={styles.lessonText}>
-                        6 класс урок 39.docx
-                      </Text>
-                      <Text style={styles.kbText}>20.45 KB</Text>
-                    </View>
-                    <Button
-                      onPress={() => console.log('Log')}
-                      text="Скачать"
-                      style={{backgroundColor: '#3673A5'}}
+                      style={{backgroundColor: COLORS.BLUE3}}
                     />
                   </View>
-                );
-              })}
-              <View style={styles.second}>
-                <View>
-                  <Text style={styles.textName}>Презентация</Text>
-                </View>
-                <ArrowDown />
-              </View>
-              <View style={styles.container}>
-                <Text style={styles.lessonText}>6 класс урок 39.docx</Text>
-                <Text style={styles.kbText}>20.45 KB</Text>
-              </View>
-              <Button
-                onPress={() => console.log('Log')}
-                text="Скачать"
-                style={{backgroundColor: '#3673A5'}}
+                }
               />
-              <View style={[styles.container, styles.containerOne]}>
-                <Text style={styles.lessonText}>6 класс урок 39.docx</Text>
-                <Text style={styles.kbText}>20.45 KB</Text>
-              </View>
-              <Button
-                onPress={() => console.log('Log')}
-                text="Скачать"
-                style={{backgroundColor: '#3673A5'}}
-              />
-            </>
-          }
-        />
-      </View>
+            </View>
+          );
+        })}
+      </ScrollView>
     </DefaultWrapper>
   );
 };

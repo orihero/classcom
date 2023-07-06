@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {EyesIcon} from '../assets/icons';
 import {COLORS} from '../constants/colors';
+import {PaddingHorizantal} from '../constants/sizes';
 
 interface IProps {
   name?: string;
@@ -50,7 +51,7 @@ const Input = ({
     setIsPasswordVisible(e => !e);
   };
   return (
-    <View>
+    <View style={styles.parentContainer}>
       <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
@@ -80,13 +81,16 @@ const Input = ({
 export default Input;
 
 const styles = StyleSheet.create({
+  parentContainer: {
+    paddingHorizontal: PaddingHorizantal,
+  },
   container: {
     flexDirection: 'row',
     borderRadius: 8,
     backgroundColor: COLORS.WHITE_ONE,
     height: 49,
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: PaddingHorizantal,
   },
   input: {
     flex: 1,

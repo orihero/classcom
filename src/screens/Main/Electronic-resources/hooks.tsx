@@ -1,20 +1,36 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
-import {IELectronicResourceResponse} from '../../../api/types';
+import {IElectronicRecCategories} from '../../../api/types';
+import {useIsFocused} from '@react-navigation/native';
 export const useElectronicResourcesHooks = () => {
   const [eResources, setEResources] = useState<
-    IELectronicResourceResponse[] | null
+    IElectronicRecCategories[] | null
   >([]);
+  // const [state, setState] = useState<string | number>('');
+  // const [data, setData] = useState<any>();
+
+  const isFocuced = useIsFocused();
+
+  const getElectionRecorcesCategories = useCallback(async () => {
+    try {
+      const res = await REQUESTS.general.getElectronicResourceCategories();
+      setEResources(res.data);
+    } catch (error) {}
+  }, []);
+
+  // const getElectionRecorcesCategoryId = useCallback(
+  //   async (id: string | number) => {
+  //     try {
+  //       const res = await REQUESTS.general.getElectronicResourceAll(id);
+  //       setData(res.data);
+  //     } catch (error) {}
+  //   },
+  //   [],
+  // );
 
   useEffect(() => {
-    const effect = async () => {
-      try {
-        const res = await REQUESTS.general.getElectronicResource();
-        setEResources(res.data);
-      } catch (error) {}
-    };
-    effect();
-  }, []);
+    isFocuced && getElectionRecorcesCategories();
+  }, [isFocuced, getElectionRecorcesCategories]);
 
   return {eResources};
 };

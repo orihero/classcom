@@ -31,26 +31,25 @@ const SettingScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={{marginBottom: 40}}>
           <Input
-            name="Имя"
+            title="Имя"
             placeholder={account?.firstName}
             icon={<UserIcon />}
           />
           <Input
-            name="Фамилия"
+            title="Фамилия"
             placeholder={account?.lastName}
             icon={<UserIcon />}
           />
           <Input
-            name="Логин"
+            title="Логин"
             placeholder={account?.login}
             icon={<UserIcon />}
           />
           <Input
-            name="Номер телефона"
+            title="Номер телефона"
             placeholder={account?.phone}
             icon={<PhoneIcon />}
           />
-
           <DropDownAnimated
             text="Язык"
             iconActive={<ArrowDown />}

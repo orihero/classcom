@@ -19,6 +19,6 @@ const SIZES = {
   width,
   height,
 };
-export const PaddingHorizantal = SIZES.width * 0.035;
+export const PaddingHorizantal = SIZES.width * 0.05;
 
 export default SIZES;

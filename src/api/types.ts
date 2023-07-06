@@ -293,3 +293,21 @@ export interface Attachment {
   size: number;
   type: string;
 }
+
+export interface IElectronicRecCategories {
+  course_id: number;
+  course_name: string;
+  id: number;
+  module: number;
+  name: string;
+  sortOrder: number;
+  sourceEXT: Source;
+  sourceITS: Source;
+}
+
+export interface Source {
+  addCharge: number;
+  deleteCharge: number;
+  editCharge: number;
+  source: string;
+}

@@ -16,6 +16,7 @@ import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
 import {useCoursesHook} from '../../../../general-hooks/courses-hook';
 import Select from '../../../../../components/select';
 import {COLORS} from '../../../../../constants/colors';
+import UiText from '../../../../../components/text';
 
 const lessonMap = {
   1: true,
@@ -68,12 +69,12 @@ const MainSettings = ({
   };
   return (
     <>
-      <View style={{marginVertical: 20}}></View>
+      <View style={{marginVertical: 20}} />
 
       <View style={styles.box}>
-        <Text style={styles.text}>Время</Text>
-        <Text style={styles.text}>Предмет</Text>
-        <Text style={styles.text}>Класс</Text>
+        <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
+        <UiText title="Предмет" type="mediumRegular20" color="GREY_TWO" />
+        <UiText title="Класс" type="mediumRegular20" color="GREY_TWO" />
       </View>
 
       <View style={{marginBottom: 40}}>
@@ -132,7 +133,7 @@ const MainSettings = ({
             <Select
               items={courses}
               name="courseId"
-              value={values['courseId']}
+              value={values.courseId}
               title="Предмет"
               placeholder="Предмет"
               onChange={onInputChange}
@@ -145,7 +146,7 @@ const MainSettings = ({
               <Select
                 items={classNumbers}
                 name="courseId"
-                value={values['courseId']}
+                value={values.courseId}
                 title="Выберите класс"
                 placeholder="-"
                 onChange={onInputChange}
@@ -158,7 +159,7 @@ const MainSettings = ({
               <Select
                 items={classLetters}
                 name="courseId"
-                value={values['courseId']}
+                value={values.courseId}
                 title="Выберите букву"
                 placeholder="-"
                 onChange={onInputChange}
