@@ -2,11 +2,12 @@ import {StyleSheet} from 'react-native';
 import {COLORS} from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal: 20,
+  },
   dataContainer: {
     flexDirection: 'row',
     backgroundColor: COLORS.WHITE_ONE,
-    marginHorizontal: 20,
     paddingHorizontal: 20,
     height: 49,
     alignItems: 'center',
@@ -18,7 +19,6 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     color: COLORS.GREY,
     marginVertical: 13,
-    marginLeft: 20,
   },
   text: {
     fontSize: 15,

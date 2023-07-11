@@ -8,7 +8,7 @@ import Button from '../../../components/button';
 import {useThematicInnerHooks} from './hooks';
 
 const ThematicInnerScreen = () => {
-  const {subjectsData} = useThematicInnerHooks();
+  const {subjectsData, paramsTeacherName} = useThematicInnerHooks();
   console.log('subjects', JSON.stringify(subjectsData, null, 2));
 
   const renderView = () => {
@@ -23,7 +23,7 @@ const ThematicInnerScreen = () => {
               disable={true}
               authorTitle="Автор"
               lessonTitle={item.name}
-              nameTitle="В.Чаплина"
+              nameTitle={paramsTeacherName}
               testingTitle="Крылатый будильник"
               onPress={() => console.log('Hi')}
             />
@@ -36,7 +36,7 @@ const ThematicInnerScreen = () => {
                 style={styles.inner}
                 authorTitle="Автор"
                 lessonTitle="Конспекты"
-                nameTitle="В.Чаплина"
+                nameTitle={paramsTeacherName}
                 testingTitle="Крылатый будильник"
               />
               <View style={styles.btnContainer}>

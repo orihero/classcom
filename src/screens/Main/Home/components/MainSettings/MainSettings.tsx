@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {
   ILessonTemplateRequest,
   IScheduleTemplateResponse,
@@ -17,6 +17,7 @@ import {useCoursesHook} from '../../../../general-hooks/courses-hook';
 import Select from '../../../../../components/select';
 import {COLORS} from '../../../../../constants/colors';
 import UiText from '../../../../../components/text';
+import {ScrollViewPadding} from '../../../../../constants/constants';
 
 const lessonMap = {
   1: true,
@@ -77,7 +78,10 @@ const MainSettings = ({
         <UiText title="Класс" type="mediumRegular20" color="GREY_TWO" />
       </View>
 
-      <View style={{marginBottom: 40}}>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={ScrollViewPadding}>
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
           if (!el) {
@@ -102,7 +106,7 @@ const MainSettings = ({
             />
           );
         })}
-      </View>
+      </ScrollView>
       <ReactNativeModal
         onDismiss={onModalDissmiss}
         onBackdropPress={onModalDissmiss}
@@ -194,7 +198,7 @@ const MainSettings = ({
       />
       <Button
         onPress={onSettingCalendarPress}
-        style={{paddingVertical: 8, paddingHorizontal: 30}}
+        style={{paddingVertical: 8, paddingHorizontal: 30, marginBottom: 30}}
         text="Настройка календарно-тематического плана"
       />
     </>

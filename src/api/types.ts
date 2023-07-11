@@ -234,7 +234,6 @@ export interface TechServiceThemeItems {
 
 export interface TechService {
   content: string;
-  id: number;
   themeId: number;
   type: 'SUPPORT' | 'SUGGESTION';
 }
@@ -295,6 +294,7 @@ export interface Attachment {
 }
 
 export interface IElectronicRecCategories {
+  book?: AttachmenFile;
   course_id: number;
   course_name: string;
   id: number;
@@ -303,6 +303,20 @@ export interface IElectronicRecCategories {
   sortOrder: number;
   sourceEXT: Source;
   sourceITS: Source;
+}
+
+export interface AttachmenFile {
+  attachmentId: number;
+  attachmentName: string;
+  attachmentSize: string;
+  attachmentType: string;
+  description: string;
+  id: number;
+  name: string;
+  params: string;
+  resourceCategoryId: number;
+  resourceCategoryName: string;
+  source: string;
 }
 
 export interface Source {

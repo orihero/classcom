@@ -7,6 +7,7 @@ import {ScrollViewPadding} from '../../../constants/constants';
 
 const ThematicPlanScreen = () => {
   const {onThematicInnerPress, thematicPlans} = useThematicPlanHooks();
+  console.log(JSON.stringify(thematicPlans, null, 2));
   return (
     <DefaultWrapper hasUser title="Тематический план">
       <View style={{}}>

@@ -34,6 +34,7 @@ const HomeScreen = () => {
   const [weeklySchedule, setWeeklySchedule] = useState<IScheduleResponse>();
   const [weeklyScheduleTemplate, setWeeklyScheduleTemplate] =
     useState<IScheduleTemplateResponse>();
+
   const effect = useCallback(async () => {
     try {
       const weekId = calculateWeekId(date) - calculateWeekId();

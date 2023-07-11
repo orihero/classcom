@@ -2,6 +2,10 @@ import {COLORS} from '../../../constants/colors';
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  scroolViewContainer: {
+    marginTop: 15,
+  },
+
   dropDown: {
     backgroundColor: COLORS.WHITE,
     flexDirection: 'row',
@@ -44,6 +48,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginVertical: 10,
   },
   title: {
     fontSize: 17,
@@ -83,5 +88,25 @@ export const styles = StyleSheet.create({
     marginTop: 30,
     paddingTop: 20,
     borderColor: 'rgba(153, 153, 153, 0.2)',
+  },
+
+  titleText: {
+    textAlign: 'center',
+    marginVertical: 20,
+    marginHorizontal: 15,
+  },
+  textStyle: {
+    color: 'white',
+    fontSize: 14,
+    paddingHorizontal: 25,
+  },
+  btnStyle: {
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderRadius: 10,
+    width: 150,
+    height: 40,
   },
 });

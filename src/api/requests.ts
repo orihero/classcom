@@ -66,6 +66,9 @@ export const REQUESTS = {
         `electronic-resources/all/${id}`,
       ),
 
+    getFindAttechment: (fileId: string | number) =>
+      axiosInstance.get<any>(`/find-attachment?id=${fileId}`),
+
     getRegions: () =>
       axiosInstance.get<IRegionResponse[]>('/register-shared/regions'),
     getDistricts: (id: string | number) =>
