@@ -15,10 +15,12 @@ import {
   IScheduleResponse,
   IScheduleTemplateResponse,
   IThematicPlanResource,
+  LessonTemplatesType,
   NotifactionType,
   PostChatItem,
   QuestionAndAnswersItems,
   ReferenceChatItems,
+  ScheduleCourses,
   TechService,
   TechServiceThemeItems,
 } from './types';
@@ -78,6 +80,8 @@ export const REQUESTS = {
     getCourses: () =>
       axiosInstance.get<ICourseResponse[]>('/register-shared/courses'),
 
+    putLessonTemplates: (data: LessonTemplatesType) =>
+      axiosInstance.put<Partial<LessonTemplatesType>>('lesson-templates', data),
     //Thematic screens api
     getThematicPlans: () =>
       axiosInstance.get<IThematicPlanResource[]>('/calendar-thematic-plans'),
@@ -104,6 +108,8 @@ export const REQUESTS = {
       axiosInstance.get<IScheduleTemplateResponse>(
         '/schedules/scheduleTemplates',
       ),
+    getScheduleCourses: () =>
+      axiosInstance.get<ScheduleCourses[]>('/courses/scheduleCourses'),
     getClassNumbers: () => axiosInstance.get<string[]>('/enums/klass-numbers'),
     getClassLetters: () => axiosInstance.get<string[]>('/enums/klass-letters'),
   },

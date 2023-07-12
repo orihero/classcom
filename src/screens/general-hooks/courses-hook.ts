@@ -1,31 +1,81 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../api/requests';
-import {ICourseResponse} from '../../api/types';
+import {LessonTemplatesType, ScheduleCourses} from '../../api/types';
+import {useIsFocused} from '@react-navigation/native';
+import {HOUR_FORMAT_OPTIONS} from '../../constants/dates';
 
 export const useCoursesHook = () => {
-  const [courses, setCourses] = useState<ICourseResponse[]>([]);
+  const IsFocused = useIsFocused();
+
+  const currentHour = new Date().toLocaleTimeString('ru', HOUR_FORMAT_OPTIONS);
+  const [courses, setCourses] = useState<ScheduleCourses[]>([]);
   const [classLetters, setClassLetters] = useState<string[]>([]);
   const [classNumbers, setClassNumbers] = useState<string[]>([]);
-  useEffect(() => {
-    const gerCourses = async () => {
-      try {
-        const res = await REQUESTS.general.getCourses();
-        setCourses(res.data);
-      } catch (error) {}
-      try {
-        const res = await REQUESTS.general.getClassLetters();
-        setClassLetters(res.data);
-      } catch (error) {}
-      try {
-        const res = await REQUESTS.general.getClassNumbers();
-        setClassNumbers(res.data);
-      } catch (error) {}
-    };
-    gerCourses();
+  const [pickingTime, setPickingTime] = useState<null | 'start' | 'end'>(null);
+  const [values, setValues] = useState<any>({
+    startTime: currentHour as never,
+    endTime: currentHour as never,
+  });
+
+  console.log(values);
+
+  const onHourPress = (type: 'start' | 'end' | null) => () => {
+    setPickingTime(type);
+  };
+
+  const onHourChange = (e: Date) => {
+    setValues({
+      ...values,
+      [pickingTime + 'Time']: e.toLocaleTimeString('ru', HOUR_FORMAT_OPTIONS),
+    });
+
+    setPickingTime(null);
+  };
+
+  const onInputChange = (key: keyof typeof values) => (value: any) => {
+    setValues({...values, [key]: value});
+  };
+
+  const getCoursesSchedule = useCallback(async () => {
+    try {
+      const res = await REQUESTS.general.getScheduleCourses();
+      setCourses(res.data);
+    } catch (error) {}
+    try {
+      const res = await REQUESTS.general.getClassLetters();
+      setClassLetters(res.data);
+    } catch (error) {}
+    try {
+      const res = await REQUESTS.general.getClassNumbers();
+      setClassNumbers(res.data);
+    } catch (error) {}
   }, []);
+
+  const putLessonTemplates = useCallback(async (data: any) => {
+    try {
+      const res = await REQUESTS.general.putLessonTemplates(data);
+      console.log(res.data, 'put respinse');
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const addNewLessonTemplatesBtn = useCallback(() => {
+    putLessonTemplates(values);
+  }, [putLessonTemplates, values]);
+
+  useEffect(() => {
+    IsFocused && getCoursesSchedule();
+  }, [getCoursesSchedule, IsFocused]);
   return {
+    values,
+    pickingTime,
+    onHourPress,
+    onHourChange,
+    onInputChange,
     courses: courses.map(e => ({label: e.name, value: e.id})),
     classNumbers: classNumbers.map(e => ({label: e, value: e})),
     classLetters: classLetters.map(e => ({label: e, value: e})),
+    addNewLessonTemplatesBtn,
   };
 };

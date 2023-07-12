@@ -13,7 +13,7 @@ import {IElectronicRecCategories} from '../../../api/types';
 
 const ElectronicResourceScreen = () => {
   const {eResources, getFileAttechment} = useElectronicResourcesHooks();
-  // console.log(JSON.stringify(eResources, null, 2));
+  console.log(JSON.stringify(eResources, null, 2));
 
   return (
     <DefaultWrapper title={'Электронные ресурсы'}>

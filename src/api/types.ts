@@ -325,3 +325,34 @@ export interface Source {
   editCharge: number;
   source: string;
 }
+
+export interface ScheduleCourses {
+  code: string;
+  id: number;
+  name: string;
+  parentCode: string;
+  parentId: number;
+  parentName: string;
+  status: string;
+}
+
+export interface Time {
+  hour: number;
+  minute: number;
+  nano: number;
+  second: number;
+}
+
+export interface LessonTemplatesType {
+  courseId: number;
+  courseName: string;
+  endTime: Time;
+  id: number;
+  klassLetter: string;
+  klassNumber: string;
+  scheduleTemplateId: number;
+  shift: number;
+  sorder: number;
+  startTime: Time;
+  weekday: number;
+}

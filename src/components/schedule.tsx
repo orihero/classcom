@@ -1,6 +1,8 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import {COLORS} from '../constants/colors';
+import UiText from './text';
+import SIZES from '../constants/sizes';
 
 interface Props {
   number: string;
@@ -12,15 +14,15 @@ interface Props {
 const Schedule = ({number, classNumber, time, title}: Props) => {
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <Text style={styles.number}>{number}</Text>
+      <View style={styles.card}>
+        <UiText style={styles.number} title={number} type="Bold18" />
         <View style={styles.timeBox}>
-          <Text style={styles.timeText}>{time}</Text>
+          <UiText style={styles.timeText} title={time} type="Bold18" />
         </View>
-        <Text style={styles.itemText}>{title}</Text>
+        <UiText style={styles.itemText} title={title} type="Bold18" />
       </View>
       <View style={styles.classBox}>
-        <Text style={styles.classText}>{classNumber}</Text>
+        <UiText style={styles.classText} title={classNumber} type="Bold18" />
       </View>
     </View>
   );
@@ -38,6 +40,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderBottomWidth: 1,
   },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   timeText: {
     fontSize: 16,
     fontWeight: '500',
@@ -48,6 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: COLORS.GREY_BLACK,
     marginLeft: 8,
+    width: SIZES.width * 0.46,
   },
   timeBox: {
     width: 101,

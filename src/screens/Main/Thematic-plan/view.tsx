@@ -4,7 +4,7 @@ import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import Thematic from './components/Thematic-Plane';
 import {useThematicPlanHooks} from './hooks';
 import {ScrollViewPadding} from '../../../constants/constants';
-
+import {styles} from './styles';
 const ThematicPlanScreen = () => {
   const {onThematicInnerPress, thematicPlans} = useThematicPlanHooks();
   console.log(JSON.stringify(thematicPlans, null, 2));
@@ -14,7 +14,7 @@ const ThematicPlanScreen = () => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={ScrollViewPadding}>
-          <View style={{marginBottom: 30}}>
+          <View style={styles.viewCard}>
             {thematicPlans.map(e => {
               return (
                 <Thematic

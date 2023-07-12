@@ -7,17 +7,12 @@ import {AllSubjects} from '../../../api/types';
 
 export const useThematicInnerHooks = () => {
   const [subjectsData, setSubkectsData] = useState<AllSubjects[]>();
+  const [paramsData, setParamsData] = useState();
   const isFocused = useIsFocused();
   //@ts-ignore
   const route = useRoute<RootNavigatorParamList<THEMATIC.THEMATIC_INNER>>();
-  console.log(
-    'params id',
-    JSON.stringify(route.params.item.activated, null, 2),
-  );
   const SubjectID = route.params.item.id;
-  const paramsData = route.params.item.activated;
-
-  console.log(SubjectID);
+  const paramsTeacherName = route.params.item.activated;
 
   const getAllSubjectResources = useCallback(
     async (subjectId: string | number) => {
@@ -62,7 +57,8 @@ export const useThematicInnerHooks = () => {
 
   useEffect(() => {
     isFocused && getAllSubjects(SubjectID);
-  }, [isFocused, getAllSubjects, SubjectID]);
+    setParamsData(paramsTeacherName);
+  }, [isFocused, getAllSubjects, SubjectID, setParamsData, paramsTeacherName]);
 
   return {subjectsData, paramsData};
 };

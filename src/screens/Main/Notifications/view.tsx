@@ -14,7 +14,7 @@ const NotificationScreen = () => {
       return (
         <View style={styles.container}>
           <UiText
-            title="No Message"
+            title="Нет уведомления"
             type="mediumRegular24"
             color="GREY_BLACK"
           />

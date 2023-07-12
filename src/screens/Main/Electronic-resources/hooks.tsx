@@ -21,7 +21,7 @@ export const useElectronicResourcesHooks = () => {
     try {
       const res = await REQUESTS.general.getFindAttechment(findID);
 
-      console.log(JSON.stringify(res, null, 2));
+      console.log(JSON.stringify(res.data, null, 2));
     } catch (error) {}
   }, []);
 
