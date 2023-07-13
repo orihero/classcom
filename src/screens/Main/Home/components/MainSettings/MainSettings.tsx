@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
@@ -42,18 +42,53 @@ const MainSettings = ({
     pickingTime,
     values,
     addNewLessonTemplatesBtn,
+    setValues,
+    weeklySchedule,
   } = useCoursesHook();
 
-  const lesson = (data || {})[date.getDay() + 1]?.lessonTemplatesMap;
+  const [lesson, setLesson] = useState(
+    (data || {})[date.getDay() + 1]?.lessonTemplatesMap,
+  );
+
+  useEffect(() => {
+    if (weeklySchedule) {
+      setLesson((weeklySchedule || {})[date.getDay() + 1]?.lessonTemplatesMap);
+    } else {
+      setLesson((data || {})[date.getDay() + 1]?.lessonTemplatesMap);
+    }
+  }, [setLesson, weeklySchedule, data, date]);
+
+  const getWeekDay = useCallback(
+    (date: Date) => {
+      const day = date.getDay() + 1;
+      setValues(prev => ({...prev, weekday: day}));
+    },
+    [setValues],
+  );
+
+  useEffect(() => {
+    getWeekDay(date);
+  }, [date, getWeekDay]);
+
   const navigation = useNavigation();
 
   const onModalDissmiss = () => {
-    addNewLessonTemplatesBtn();
     setModalVisible(false);
   };
+
+  const handleAddNewLesson = () => {
+    addNewLessonTemplatesBtn(), setModalVisible(false);
+  };
+
   const onSettingCalendarPress = () => {
     navigation.navigate(ROUTES.HOME.SETTING_CALENDAR as never);
   };
+
+  const onModalVisible = (item: number) => {
+    setModalVisible(true);
+    setValues(prev => ({...prev, sorder: item}));
+  };
+
   return (
     <>
       <View style={styles.container} />
@@ -74,9 +109,9 @@ const MainSettings = ({
           if (!el) {
             return (
               <EmptySchedule
-                onPress={() => setModalVisible(true)}
+                onPress={e => onModalVisible(e)}
                 key={i}
-                number={e + '.'}
+                number={e}
               />
             );
           }
@@ -127,12 +162,11 @@ const MainSettings = ({
           <View style={{}}>
             <Select
               items={courses}
-              name="courseName"
-              value={values.courseName}
+              name="courseId"
+              value={values.courseId}
               title="Предмет"
               placeholder="Предмет"
               onChange={onInputChange}
-              icon={false}
               light={true}
             />
           </View>
@@ -145,7 +179,6 @@ const MainSettings = ({
                 title="Выберите класс"
                 placeholder="-"
                 onChange={onInputChange}
-                icon={false}
                 light={true}
               />
             </View>
@@ -158,7 +191,6 @@ const MainSettings = ({
                 title="Выберите букву"
                 placeholder="-"
                 onChange={onInputChange}
-                icon={false}
                 light={true}
               />
             </View>
@@ -168,10 +200,12 @@ const MainSettings = ({
               styles.row,
               {justifyContent: 'space-between', marginTop: 30},
             ]}>
-            <Text style={[styles.modalTitle, {color: COLORS.BLUISH_WHITE2}]}>
-              Отмена
-            </Text>
             <TouchableOpacity onPress={onModalDissmiss}>
+              <Text style={[styles.modalTitle, {color: COLORS.BLUISH_WHITE2}]}>
+                Отмена
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleAddNewLesson}>
               <Text style={[styles.modalTitle, {color: COLORS.WHITE}]}>
                 Добавить
               </Text>

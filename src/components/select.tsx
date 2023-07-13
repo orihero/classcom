@@ -18,7 +18,7 @@ export interface SelectItemProps {
 export interface SelectProps {
   items: SelectItemProps[];
   value?: string | number;
-  onChange: (name: string) => (value: string) => void;
+  onChange?: (name: string) => (value: string) => void;
   name?: string;
   title?: string;
   placeholder?: string;

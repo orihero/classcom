@@ -82,6 +82,7 @@ export const REQUESTS = {
 
     putLessonTemplates: (data: LessonTemplatesType) =>
       axiosInstance.put<Partial<LessonTemplatesType>>('lesson-templates', data),
+
     //Thematic screens api
     getThematicPlans: () =>
       axiosInstance.get<IThematicPlanResource[]>('/calendar-thematic-plans'),

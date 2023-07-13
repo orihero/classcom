@@ -5,17 +5,17 @@ import UiText from './text';
 
 interface Props {
   number: string;
-  onPress: () => void;
+  onPress: (e: any) => void;
 }
 
 const EmptySchedule = ({number, onPress}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <UiText style={styles.number} title={number} type="Bold18" />
+        <UiText style={styles.number} title={number + '.'} type="Bold18" />
         <UiText style={styles.itemText} title="Нет параметров" type="Bold18" />
       </View>
-      <TouchableOpacity onPress={onPress} style={styles.classBox}>
+      <TouchableOpacity onPress={() => onPress(number)} style={styles.classBox}>
         <UiText style={styles.classText} title="Добавить" type="Bold18" />
       </TouchableOpacity>
     </View>

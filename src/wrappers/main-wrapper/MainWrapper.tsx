@@ -24,7 +24,9 @@ const MainWrapper = ({
   const onPress = () => {
     drawer.dispatch(DrawerActions.toggleDrawer);
   };
+
   const navigation = useNavigation();
+
   const onBellPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
   };

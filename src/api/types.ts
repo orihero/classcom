@@ -337,6 +337,7 @@ export interface ScheduleCourses {
 }
 
 export interface Time {
+  split(arg0: string): unknown;
   hour: number;
   minute: number;
   nano: number;

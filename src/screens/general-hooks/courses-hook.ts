@@ -1,6 +1,10 @@
 import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../api/requests';
-import {LessonTemplatesType, ScheduleCourses} from '../../api/types';
+import {
+  IScheduleTemplateResponse,
+  LessonTemplatesType,
+  ScheduleCourses,
+} from '../../api/types';
 import {useIsFocused} from '@react-navigation/native';
 import {HOUR_FORMAT_OPTIONS} from '../../constants/dates';
 
@@ -12,12 +16,14 @@ export const useCoursesHook = () => {
   const [classLetters, setClassLetters] = useState<string[]>([]);
   const [classNumbers, setClassNumbers] = useState<string[]>([]);
   const [pickingTime, setPickingTime] = useState<null | 'start' | 'end'>(null);
-  const [values, setValues] = useState<any>({
+
+  const [weeklySchedule, setWeeklySchedule] =
+    useState<IScheduleTemplateResponse>();
+
+  const [values, setValues] = useState<Partial<LessonTemplatesType>>({
     startTime: currentHour as never,
     endTime: currentHour as never,
   });
-
-  console.log(values);
 
   const onHourPress = (type: 'start' | 'end' | null) => () => {
     setPickingTime(type);
@@ -53,8 +59,17 @@ export const useCoursesHook = () => {
 
   const putLessonTemplates = useCallback(async (data: any) => {
     try {
-      const res = await REQUESTS.general.putLessonTemplates(data);
-      console.log(res.data, 'put respinse');
+      await REQUESTS.general.putLessonTemplates(data);
+      getWeeklyScheduleTemplates();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const getWeeklyScheduleTemplates = useCallback(async () => {
+    try {
+      const res = await REQUESTS.general.getWeeklyScheduleTemplate();
+      setWeeklySchedule(res.data as any);
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +82,7 @@ export const useCoursesHook = () => {
   useEffect(() => {
     IsFocused && getCoursesSchedule();
   }, [getCoursesSchedule, IsFocused]);
+
   return {
     values,
     pickingTime,
@@ -77,5 +93,7 @@ export const useCoursesHook = () => {
     classNumbers: classNumbers.map(e => ({label: e, value: e})),
     classLetters: classLetters.map(e => ({label: e, value: e})),
     addNewLessonTemplatesBtn,
+    setValues,
+    weeklySchedule,
   };
 };
