@@ -11,22 +11,24 @@ const SettingCalendar = () => {
 
   return (
     <DefaultWrapper title="Настройка календарно-тематического плана" hasUser>
-      <Select
-        name="courseId"
-        value={values.courseId}
-        items={courses}
-        title="Предмет"
-        placeholder="Предмет"
-        onChange={onInputChange}
-      />
-      <Text style={styles.dataText}>Дата</Text>
-      <View style={styles.dataContainer}>
-        <Text style={styles.text}>01.01.2023</Text>
-        <TouchableOpacity>
-          <DataIcon />
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <Select
+          name="courseId"
+          value={values.courseId}
+          items={courses}
+          title="Предмет"
+          placeholder="Предмет"
+          onChange={onInputChange}
+        />
+        <Text style={styles.dataText}>Дата</Text>
+        <View style={styles.dataContainer}>
+          <Text style={styles.text}>01.01.2023</Text>
+          <TouchableOpacity>
+            <DataIcon />
+          </TouchableOpacity>
+        </View>
+        <Select placeholder="Тема" items={[]} title="Тема" />
       </View>
-      <Select placeholder="Тема" items={[]} title="Тема" />
     </DefaultWrapper>
   );
 };

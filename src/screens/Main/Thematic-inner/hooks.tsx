@@ -7,34 +7,12 @@ import {AllSubjects} from '../../../api/types';
 
 export const useThematicInnerHooks = () => {
   const [subjectsData, setSubkectsData] = useState<AllSubjects[]>();
+  const [paramsData, setParamsData] = useState();
   const isFocused = useIsFocused();
   //@ts-ignore
   const route = useRoute<RootNavigatorParamList<THEMATIC.THEMATIC_INNER>>();
-  console.log('params id', JSON.stringify(route.params.item.id, null, 2));
   const SubjectID = route.params.item.id;
-
-  const getAllSubjects = useCallback(async (id: string | number) => {
-    try {
-      const res = await REQUESTS.general.getThematicSubject(id);
-
-      setSubkectsData(res.data);
-
-      await Promise.all(
-        res.data.map(item => getAllSubjectResources(item.id)),
-      ).then(data => {
-        const list = data.map(itemD => itemD.data);
-
-        setSubkectsData(oldData =>
-          oldData?.map((item, index) => ({
-            ...item,
-            subjectResourceDTOs: list[index],
-          })),
-        );
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const paramsTeacherName = route.params.item.activated;
 
   const getAllSubjectResources = useCallback(
     async (subjectId: string | number) => {
@@ -42,7 +20,6 @@ export const useThematicInnerHooks = () => {
         const res = await REQUESTS.general.getThematicRecorcesSubject(
           subjectId,
         );
-
         return res;
       } catch (err) {
         return err;
@@ -51,10 +28,37 @@ export const useThematicInnerHooks = () => {
 
     [],
   );
+  const getAllSubjects = useCallback(
+    async (id: string | number) => {
+      try {
+        const res = await REQUESTS.general.getThematicSubject(id);
+
+        setSubkectsData(res.data);
+
+        await Promise.all(
+          res.data.map(item => getAllSubjectResources(item.id)),
+        ).then(data => {
+          //@ts-ignore
+          const list = data.map(itemD => itemD.data);
+
+          setSubkectsData(oldData =>
+            oldData?.map((item, index) => ({
+              ...item,
+              subjectResourceDTOs: list[index],
+            })),
+          );
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [getAllSubjectResources],
+  );
 
   useEffect(() => {
     isFocused && getAllSubjects(SubjectID);
-  }, [isFocused, getAllSubjects, SubjectID]);
+    setParamsData(paramsTeacherName);
+  }, [isFocused, getAllSubjects, SubjectID, setParamsData, paramsTeacherName]);
 
-  return {subjectsData};
+  return {subjectsData, paramsData};
 };

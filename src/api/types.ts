@@ -234,7 +234,6 @@ export interface TechServiceThemeItems {
 
 export interface TechService {
   content: string;
-  id: number;
   themeId: number;
   type: 'SUPPORT' | 'SUGGESTION';
 }
@@ -295,6 +294,7 @@ export interface Attachment {
 }
 
 export interface IElectronicRecCategories {
+  book?: AttachmenFile;
   course_id: number;
   course_name: string;
   id: number;
@@ -305,9 +305,55 @@ export interface IElectronicRecCategories {
   sourceITS: Source;
 }
 
+export interface AttachmenFile {
+  attachmentId: number;
+  attachmentName: string;
+  attachmentSize: string;
+  attachmentType: string;
+  description: string;
+  id: number;
+  name: string;
+  params: string;
+  resourceCategoryId: number;
+  resourceCategoryName: string;
+  source: string;
+}
+
 export interface Source {
   addCharge: number;
   deleteCharge: number;
   editCharge: number;
   source: string;
+}
+
+export interface ScheduleCourses {
+  code: string;
+  id: number;
+  name: string;
+  parentCode: string;
+  parentId: number;
+  parentName: string;
+  status: string;
+}
+
+export interface Time {
+  split(arg0: string): unknown;
+  hour: number;
+  minute: number;
+  nano: number;
+  second: number;
+}
+
+export interface LessonTemplatesType {
+  courseId: number;
+  courseName: string;
+  endTime: Time;
+  id: number;
+  klassLetter: string;
+  klassNumber: string;
+  scheduleTemplateId: number;
+  shift: number;
+  sorder: number;
+  startTime: Time;
+  weekday: number;
 }

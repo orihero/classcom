@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
   registerContainer: {
     flex: 0.55,
     justifyContent: 'center',
-    marginHorizontal: 30,
+    paddingHorizontal: 15,
   },
   textLogin: {
     fontSize: 14,

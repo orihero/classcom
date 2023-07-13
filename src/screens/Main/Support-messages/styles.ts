@@ -3,7 +3,7 @@ import {COLORS} from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {},
-  dropInner: {
+  postContent: {
     marginHorizontal: 20,
     height: 200,
     backgroundColor: COLORS.WHITE_ONE,
@@ -23,8 +23,22 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  dropInner: {
+    backgroundColor: COLORS.WHITE_ONE,
+    borderRadius: 8,
+    marginHorizontal: 20,
+    marginTop: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    alignItems: 'center',
+  },
   text: {
     color: COLORS.GREY_BLACK,
+  },
+  btndrop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
   },
   btn: {
     position: 'absolute',
@@ -32,11 +46,5 @@ export const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-  innerContainer: {
-    backgroundColor: 'red',
-    height: 100,
-    width: '90%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  innerContainer: {},
 });

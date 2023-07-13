@@ -1,9 +1,6 @@
-import React, {useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import {
-  ILessonTemplateRequest,
-  IScheduleTemplateResponse,
-} from '../../../../../api/types';
+import React, {useCallback, useEffect, useState} from 'react';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
 import Schedule from '../../../../../components/schedule';
 import {styles} from '../../styles';
@@ -12,11 +9,11 @@ import {ROUTES} from '../../../../../navigation/routes';
 import EmptySchedule from '../../../../../components/empty-schedule';
 import ReactNativeModal from 'react-native-modal';
 import DatePicker from 'react-native-date-picker';
-import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
 import {useCoursesHook} from '../../../../general-hooks/courses-hook';
 import Select from '../../../../../components/select';
 import {COLORS} from '../../../../../constants/colors';
 import UiText from '../../../../../components/text';
+import {ScrollViewPadding} from '../../../../../constants/constants';
 
 const lessonMap = {
   1: true,
@@ -34,42 +31,67 @@ const MainSettings = ({
   data: IScheduleTemplateResponse;
   date: Date;
 }) => {
-  const currentHour = new Date().toLocaleTimeString('ru', HOUR_FORMAT_OPTIONS);
   const [modalVisible, setModalVisible] = useState(true);
-  const [pickingTime, setPickingTime] = useState<null | 'start' | 'end'>(null);
-  const [values, setValues] = useState<Partial<ILessonTemplateRequest>>({
-    startTime: currentHour,
-    endTime: currentHour,
-  });
-  const {courses, classLetters, classNumbers} = useCoursesHook();
+  const {
+    courses,
+    classLetters,
+    classNumbers,
+    onHourChange,
+    onHourPress,
+    onInputChange,
+    pickingTime,
+    values,
+    addNewLessonTemplatesBtn,
+    setValues,
+    weeklySchedule,
+  } = useCoursesHook();
 
-  const onHourPress = (type: 'start' | 'end' | null) => () => {
-    setPickingTime(type);
-  };
+  const [lesson, setLesson] = useState(
+    (data || {})[date.getDay() + 1]?.lessonTemplatesMap,
+  );
 
-  const onHourChange = (e: Date) => {
-    setValues({
-      ...values,
-      [pickingTime + 'Time']: e.toLocaleTimeString('ru', HOUR_FORMAT_OPTIONS),
-    });
-    setPickingTime(null);
-  };
+  useEffect(() => {
+    if (weeklySchedule) {
+      setLesson((weeklySchedule || {})[date.getDay() + 1]?.lessonTemplatesMap);
+    } else {
+      setLesson((data || {})[date.getDay() + 1]?.lessonTemplatesMap);
+    }
+  }, [setLesson, weeklySchedule, data, date]);
 
-  const onInputChange = (key: keyof typeof values) => (value: any) => {
-    setValues({...values, [key]: value});
-  };
-  const lesson = (data || {})[date.getDay() + 1]?.lessonTemplatesMap;
+  const getWeekDay = useCallback(
+    (date: Date) => {
+      const day = date.getDay() + 1;
+      setValues(prev => ({...prev, weekday: day}));
+    },
+    [setValues],
+  );
+
+  useEffect(() => {
+    getWeekDay(date);
+  }, [date, getWeekDay]);
+
   const navigation = useNavigation();
 
   const onModalDissmiss = () => {
     setModalVisible(false);
   };
+
+  const handleAddNewLesson = () => {
+    addNewLessonTemplatesBtn(), setModalVisible(false);
+  };
+
   const onSettingCalendarPress = () => {
     navigation.navigate(ROUTES.HOME.SETTING_CALENDAR as never);
   };
+
+  const onModalVisible = (item: number) => {
+    setModalVisible(true);
+    setValues(prev => ({...prev, sorder: item}));
+  };
+
   return (
     <>
-      <View style={{marginVertical: 20}} />
+      <View style={styles.container} />
 
       <View style={styles.box}>
         <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
@@ -77,15 +99,19 @@ const MainSettings = ({
         <UiText title="Класс" type="mediumRegular20" color="GREY_TWO" />
       </View>
 
-      <View style={{marginBottom: 40}}>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={ScrollViewPadding}
+        style={styles.scroolViewStyle}>
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
           if (!el) {
             return (
               <EmptySchedule
-                onPress={() => setModalVisible(true)}
+                onPress={e => onModalVisible(e)}
                 key={i}
-                number={e + '.'}
+                number={e}
               />
             );
           }
@@ -102,7 +128,7 @@ const MainSettings = ({
             />
           );
         })}
-      </View>
+      </ScrollView>
       <ReactNativeModal
         onDismiss={onModalDissmiss}
         onBackdropPress={onModalDissmiss}
@@ -116,7 +142,9 @@ const MainSettings = ({
               <TouchableOpacity
                 onPress={onHourPress('start')}
                 style={styles.emptyInput}>
-                <Text style={styles.emptyInputText}>{values.startTime}</Text>
+                <Text style={styles.emptyInputText}>
+                  {values.startTime as never}
+                </Text>
               </TouchableOpacity>
             </View>
             <View style={styles.space} />
@@ -125,7 +153,9 @@ const MainSettings = ({
               <TouchableOpacity
                 onPress={onHourPress('end')}
                 style={styles.emptyInput}>
-                <Text style={styles.emptyInputText}>{values.endTime}</Text>
+                <Text style={styles.emptyInputText}>
+                  {values.endTime as never}
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -137,7 +167,6 @@ const MainSettings = ({
               title="Предмет"
               placeholder="Предмет"
               onChange={onInputChange}
-              icon={false}
               light={true}
             />
           </View>
@@ -145,12 +174,11 @@ const MainSettings = ({
             <View style={styles.flex}>
               <Select
                 items={classNumbers}
-                name="courseId"
-                value={values.courseId}
+                name="klassNumber"
+                value={values.klassNumber}
                 title="Выберите класс"
                 placeholder="-"
                 onChange={onInputChange}
-                icon={false}
                 light={true}
               />
             </View>
@@ -158,12 +186,11 @@ const MainSettings = ({
             <View style={styles.flex}>
               <Select
                 items={classLetters}
-                name="courseId"
-                value={values.courseId}
+                name="klassLetter"
+                value={values.klassLetter}
                 title="Выберите букву"
                 placeholder="-"
                 onChange={onInputChange}
-                icon={false}
                 light={true}
               />
             </View>
@@ -173,10 +200,12 @@ const MainSettings = ({
               styles.row,
               {justifyContent: 'space-between', marginTop: 30},
             ]}>
-            <Text style={[styles.modalTitle, {color: COLORS.BLUISH_WHITE2}]}>
-              Отмена
-            </Text>
             <TouchableOpacity onPress={onModalDissmiss}>
+              <Text style={[styles.modalTitle, {color: COLORS.BLUISH_WHITE2}]}>
+                Отмена
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={handleAddNewLesson}>
               <Text style={[styles.modalTitle, {color: COLORS.WHITE}]}>
                 Добавить
               </Text>
@@ -194,7 +223,7 @@ const MainSettings = ({
       />
       <Button
         onPress={onSettingCalendarPress}
-        style={{paddingVertical: 8, paddingHorizontal: 30}}
+        style={styles.bottomBtn}
         text="Настройка календарно-тематического плана"
       />
     </>

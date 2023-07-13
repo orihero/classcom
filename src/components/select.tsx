@@ -74,7 +74,7 @@ const Select = ({
         )}
       </TouchableOpacity>
       <View style={{}}>
-        {!!shouldShow ? (
+        {shouldShow ? (
           <ScrollView
             style={[
               styles.animatedTwo,

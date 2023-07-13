@@ -15,10 +15,12 @@ import {
   IScheduleResponse,
   IScheduleTemplateResponse,
   IThematicPlanResource,
+  LessonTemplatesType,
   NotifactionType,
   PostChatItem,
   QuestionAndAnswersItems,
   ReferenceChatItems,
+  ScheduleCourses,
   TechService,
   TechServiceThemeItems,
 } from './types';
@@ -66,6 +68,9 @@ export const REQUESTS = {
         `electronic-resources/all/${id}`,
       ),
 
+    getFindAttechment: (fileId: string | number) =>
+      axiosInstance.get<any>(`/find-attachment?id=${fileId}`),
+
     getRegions: () =>
       axiosInstance.get<IRegionResponse[]>('/register-shared/regions'),
     getDistricts: (id: string | number) =>
@@ -74,6 +79,9 @@ export const REQUESTS = {
       ),
     getCourses: () =>
       axiosInstance.get<ICourseResponse[]>('/register-shared/courses'),
+
+    putLessonTemplates: (data: LessonTemplatesType) =>
+      axiosInstance.put<Partial<LessonTemplatesType>>('lesson-templates', data),
 
     //Thematic screens api
     getThematicPlans: () =>
@@ -101,6 +109,8 @@ export const REQUESTS = {
       axiosInstance.get<IScheduleTemplateResponse>(
         '/schedules/scheduleTemplates',
       ),
+    getScheduleCourses: () =>
+      axiosInstance.get<ScheduleCourses[]>('/courses/scheduleCourses'),
     getClassNumbers: () => axiosInstance.get<string[]>('/enums/klass-numbers'),
     getClassLetters: () => axiosInstance.get<string[]>('/enums/klass-letters'),
   },

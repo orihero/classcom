@@ -11,13 +11,14 @@ import TopTabs from '../../../components/home-tabs';
 import {calculateWeekId} from '../../../utils/dateHelper';
 import MainWrapper from '../../../wrappers/main-wrapper/MainWrapper';
 import MainSettings from './components/MainSettings/MainSettings';
+import ScheduleScreen from './components/Schedule/Schedule';
 
 const content = [
   {
     title: 'Расписание',
     iconActive: <CalendarGreyIcon />,
     iconPassive: <CalendarBlueIcon />,
-    content: MainSettings,
+    content: ScheduleScreen,
   },
   {
     content: MainSettings,
@@ -34,6 +35,7 @@ const HomeScreen = () => {
   const [weeklySchedule, setWeeklySchedule] = useState<IScheduleResponse>();
   const [weeklyScheduleTemplate, setWeeklyScheduleTemplate] =
     useState<IScheduleTemplateResponse>();
+
   const effect = useCallback(async () => {
     try {
       const weekId = calculateWeekId(date) - calculateWeekId();

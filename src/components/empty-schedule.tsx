@@ -1,21 +1,22 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {COLORS} from '../constants/colors';
+import UiText from './text';
 
 interface Props {
   number: string;
-  onPress: () => void;
+  onPress: (e: any) => void;
 }
 
 const EmptySchedule = ({number, onPress}: Props) => {
   return (
     <View style={styles.container}>
-      <View style={{flexDirection: 'row', alignItems: 'center'}}>
-        <Text style={styles.number}>{number}</Text>
-        <Text style={styles.itemText}>Нет параметров</Text>
+      <View style={styles.card}>
+        <UiText style={styles.number} title={number + '.'} type="Bold18" />
+        <UiText style={styles.itemText} title="Нет параметров" type="Bold18" />
       </View>
-      <TouchableOpacity onPress={onPress} style={styles.classBox}>
-        <Text style={styles.classText}>Добавить</Text>
+      <TouchableOpacity onPress={() => onPress(number)} style={styles.classBox}>
+        <UiText style={styles.classText} title="Добавить" type="Bold18" />
       </TouchableOpacity>
     </View>
   );
@@ -32,6 +33,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderBottomWidth: 1,
+  },
+  card: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   timeText: {
     fontSize: 16,

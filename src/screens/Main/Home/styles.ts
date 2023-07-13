@@ -5,8 +5,10 @@ export const styles = StyleSheet.create({
   space: {
     width: 12,
   },
-  container: {
-    flex: 1,
+  container: {marginVertical: 15},
+
+  scroolViewStyle: {
+    marginBottom: 10,
   },
   box: {
     flexDirection: 'row',
@@ -56,5 +58,10 @@ export const styles = StyleSheet.create({
   },
   emptyInputText: {
     color: COLORS.BLUISH_WHITE2,
+  },
+  bottomBtn: {
+    paddingVertical: 8,
+    paddingHorizontal: 30,
+    marginBottom: 24,
   },
 });
