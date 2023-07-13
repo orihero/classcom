@@ -1,22 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {CalendarIcon} from '../../../../assets/icons';
-import {COLORS} from '../../../../constants/COLORS';
-import notifications from '../../../../tempData/notifications.json';
+import {COLORS} from '../../../../constants/colors';
+import {NotifactionType} from '../../../../api/types';
 
-// eslint-disable-next-line prettier/prettier
-const Notification = ({
-  date,
-  description,
-  title,
-}: (typeof notifications)[0]) => {
+const Notification: FC<NotifactionType> = ({message, type, id}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.title}>{message}</Text>
+      <Text style={styles.description}>{id}</Text>
       <View style={styles.dateContainer}>
         <CalendarIcon size={16} stroke={COLORS.GREY_ONE} />
-        <Text style={styles.date}>{date}</Text>
+        <Text style={styles.date}>{type}</Text>
       </View>
     </View>
   );

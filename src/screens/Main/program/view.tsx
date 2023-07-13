@@ -11,8 +11,15 @@ import {
   StarIcon,
 } from '../../../assets/icons';
 import InfoButton from '../../../components/Info-button';
+import {ProgramHooks} from './hooks';
 
 const ProgramScreen = () => {
+  const {
+    onModeratrosPress,
+    onDirectoryPress,
+    onRateUsOnGooglePlay,
+    onTermUseBtnPress,
+  } = ProgramHooks();
   return (
     <DefaultWrapper hasIcon title="О программе">
       <View style={styles.checkBox}>
@@ -22,22 +29,22 @@ const ProgramScreen = () => {
       <Text style={styles.text}>Версия приложение 1.0.0</Text>
       <View style={styles.programContainer}>
         <InfoButton
-          onPress={() => console.log('Qisee')}
+          onPress={onModeratrosPress}
           icon={<PenIcon />}
           title="Модераторы"
         />
         <InfoButton
-          onPress={() => console.log('Qisee')}
+          onPress={onDirectoryPress}
           icon={<PaperIcon />}
           title="Справочник"
         />
         <InfoButton
-          onPress={() => console.log('Qisee')}
+          onPress={onTermUseBtnPress}
           icon={<NoteIconProgram />}
           title="Пользовательское соглашение"
         />
         <InfoButton
-          onPress={() => console.log('Qisee')}
+          onPress={onRateUsOnGooglePlay}
           icon={<StarIcon />}
           title="Оцените нас в Google Play"
         />

@@ -1,7 +1,8 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
+import UiText from './text';
 
 interface ProgramProps {
   title: string;
@@ -15,7 +16,7 @@ const InfoButton = ({title, icon, onPress}: ProgramProps) => {
       style={styles.container}
       activeOpacity={0.7}>
       {icon}
-      <Text style={styles.title}>{title}</Text>
+      <UiText style={styles.title} title={title} type="mediumRegular20" />
     </TouchableOpacity>
   );
 };

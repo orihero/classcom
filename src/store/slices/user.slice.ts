@@ -1,24 +1,21 @@
-import {createSlice} from '@reduxjs/toolkit';
-import type {PayloadAction} from '@reduxjs/toolkit';
+import {PayloadAction, createSlice} from '@reduxjs/toolkit';
+import {IAccountResponse} from '../../api/types';
+import {RootState} from '../configureStore';
 
-export interface IUser {
-  name: string;
-}
+const initialState: Partial<IAccountResponse> = {};
 
-const initialState: IUser = {
-  name: 'OriHero UZB',
-};
-
-export const userSlice = createSlice({
-  name: 'user',
+const userSlice = createSlice({
   initialState,
+  name: 'user',
   reducers: {
-    loggedIn: (state, action: PayloadAction<IUser>) => {
+    userLoaded: (state, action: PayloadAction<IAccountResponse>) => {
       return action.payload;
     },
   },
 });
 
-export const {loggedIn} = userSlice.actions;
+export const userSelector = (state: RootState) => state.user;
+
+export const {userLoaded} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -1,5 +1,5 @@
-import {COLORS} from './../../../constants/COLORS';
 import {StyleSheet} from 'react-native';
+import {COLORS} from '../../../constants/colors';
 
 export const styles = StyleSheet.create({
   container: {
@@ -44,27 +44,27 @@ export const styles = StyleSheet.create({
   checkContainer: {
     marginHorizontal: 20,
     marginVertical: 20,
-    alignItems:"center",
-    flexDirection:'row',
-    justifyContent:'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
   },
   checkButton: {
     width: 24,
     height: 24,
-    backgroundColor:COLORS.WHITE_ONE,
-    alignItems:'center',
-    justifyContent:'center',
+    backgroundColor: COLORS.WHITE_ONE,
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 5,
   },
   checkBox: {
     borderBottomWidth: 1,
-    borderColor:COLORS.GREY,
+    borderColor: COLORS.GREY,
     paddingRight: 20,
     marginLeft: 12,
   },
   checkText: {
-    fontSize:13,
+    fontSize: 13,
     fontWeight: '500',
-    color:COLORS.GREY,
+    color: COLORS.GREY,
   },
 });

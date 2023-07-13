@@ -1,3 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-export const notificationStyles = StyleSheet.create({});
+export const styles = StyleSheet.create({
+  toContainer: {},
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
+});

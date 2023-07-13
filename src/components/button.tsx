@@ -3,14 +3,14 @@ import React from 'react';
 import {
   StyleProp,
   StyleSheet,
-  Text,
   TextStyle,
   TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 import animation from '../assets/animations/loading-white.json';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
+import UiText from './text';
 
 interface IProps {
   text: string;
@@ -24,12 +24,23 @@ interface IProps {
 
 const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={loading ? undefined : onPress}>
       <View style={[styles.container, style]}>
         {loading ? (
-          <Lottie source={animation} autoPlay loop={false} />
+          <Lottie
+            style={{transform: [{scale: 3}], height: 16}}
+            source={animation}
+            autoPlay
+            loop={true}
+          />
         ) : (
-          <Text style={[styles.text, textStyle]}>{text}</Text>
+          <UiText
+            style={[styles.text, textStyle]}
+            title={text}
+            type="mediumRegular12"
+          />
         )}
       </View>
     </TouchableOpacity>
@@ -52,8 +63,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
     elevation: 10,
+    alignItems: 'center',
   },
   text: {
     fontSize: 15,

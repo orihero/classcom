@@ -1,6 +1,15 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ViewStyle,
+  StyleProp,
+  TextStyle,
+} from 'react-native';
 import React from 'react';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
+import UiText from './text';
 
 interface PlaneProps {
   testingTitle?: string;
@@ -8,6 +17,9 @@ interface PlaneProps {
   authorTitle?: string;
   nameTitle?: string;
   lessonTitle?: string;
+  disable?: boolean;
+  textStyle?: StyleProp<TextStyle>;
+  style?: StyleProp<ViewStyle>;
   onPress?: () => void;
 }
 
@@ -17,24 +29,44 @@ const PlaneButton = ({
   authorTitle,
   nameTitle,
   lessonTitle,
+  disable,
+  style,
+  textStyle,
   onPress,
 }: PlaneProps) => {
   return (
     <TouchableOpacity
+      disabled={disable}
       onPress={onPress}
       activeOpacity={0.7}
-      style={styles.container}>
+      style={[styles.container, style]}>
       <View style={styles.first}>
-        <Text style={styles.textName}>{testingTitle}</Text>
+        <UiText
+          style={[styles.textName, textStyle]}
+          title={testingTitle}
+          type="mediumRegular12"
+        />
         <TouchableOpacity>
           <Text style={styles.textDelete}>{deleteTitle}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.second}>
-        <Text style={styles.text}>{authorTitle}</Text>
+        <UiText
+          style={styles.text}
+          title={authorTitle}
+          type="mediumRegular12"
+        />
         <View style={styles.box}>
-          <Text style={styles.title}>{nameTitle}</Text>
-          <Text style={styles.lessonName}>{lessonTitle}</Text>
+          <UiText
+            style={[styles.title, textStyle]}
+            title={nameTitle}
+            type="mediumRegular12"
+          />
+          <UiText
+            style={[styles.lessonName, textStyle]}
+            title={lessonTitle}
+            type="mediumRegular12"
+          />
         </View>
       </View>
     </TouchableOpacity>

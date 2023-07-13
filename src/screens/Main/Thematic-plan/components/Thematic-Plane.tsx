@@ -1,22 +1,41 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {COLORS} from '../../../../constants/COLORS';
+import {COLORS} from '../../../../constants/colors';
+import {IThematicPlanResource} from '../../../../api/types';
+import UiText from '../../../../components/text';
 
-const Thematic = () => {
+interface props {
+  onPress?: () => void;
+  content: IThematicPlanResource;
+}
+
+const Thematic = ({onPress, content}: props) => {
   return (
-    <TouchableOpacity activeOpacity={0.7} style={styles.container}>
+    <TouchableOpacity
+      onPress={onPress}
+      activeOpacity={0.7}
+      style={styles.container}>
       <View style={styles.firstContainer}>
         <Text style={styles.title}>Предмет</Text>
-        <Text style={styles.language}>Русский язык</Text>
+        <Text style={styles.language}>{content.courseName}</Text>
       </View>
       <View style={styles.secondContainer}>
         <View>
           <Text style={styles.title}>Четверть</Text>
-          <Text style={styles.text}>IV</Text>
+          <Text style={styles.text}>{content.quarter}</Text>
         </View>
         <View style={styles.box}>
-          <Text style={styles.title}>Класс</Text>
-          <Text style={styles.textNumber}>9</Text>
+          <UiText
+            style={styles.title}
+            title="Класс"
+            type="bookRegular14"
+            color="BLUISH_WHITE"
+          />
+          <UiText
+            style={styles.textNumber}
+            title={content.klass}
+            type="Bold12"
+          />
         </View>
       </View>
     </TouchableOpacity>
@@ -50,11 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 15,
   },
-  title: {
-    fontSize: 15,
-    fontWeight: '400',
-    color: COLORS.GREY,
-  },
+  title: {},
   language: {
     fontSize: 17,
     color: COLORS.GREY_BLACK,
@@ -76,6 +91,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 52,
     borderRadius: 10,
+    gap: 5,
     backgroundColor: COLORS.ORANGE,
     alignItems: 'center',
     justifyContent: 'center',

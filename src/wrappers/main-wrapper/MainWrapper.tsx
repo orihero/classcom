@@ -1,19 +1,38 @@
 import {DrawerActions, useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useState} from 'react';
 import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
 import {ROUTES} from '../../navigation/routes';
 import {Assets} from '../../utils/requireAssets';
 import {mainWrapperStyles} from './MainWrapper.styles';
+import {dateInRussain, getWeekDays} from '../../utils/dateHelper';
+import {useSelector} from 'react-redux';
+import {userSelector} from '../../store/slices/user.slice';
+import DatePicker from 'react-native-date-picker';
 
-const MainWrapper = (props: PropsWithChildren<any>) => {
+const MainWrapper = ({
+  date,
+  onDateChange,
+  children,
+}: PropsWithChildren<{date: Date; onDateChange: (date: Date) => void}>) => {
+  const [datePickerShown, setDatePickerShown] = useState(false);
+
   const drawer = useNavigation();
+
+  const user = useSelector(userSelector);
+
   const onPress = () => {
     drawer.dispatch(DrawerActions.toggleDrawer);
   };
+
   const navigation = useNavigation();
+
   const onBellPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
+  };
+
+  const onDatePress = () => {
+    setDatePickerShown(e => !e);
   };
 
   return (
@@ -37,47 +56,48 @@ const MainWrapper = (props: PropsWithChildren<any>) => {
 
       <View style={mainWrapperStyles.useNameBox}>
         <Text style={mainWrapperStyles.nameText}>
-          Ройтман Рафаэль Евгеньевич
+          {user.firstName} {user.lastName}
         </Text>
       </View>
 
       <View style={mainWrapperStyles.calendarBox}>
-        <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity onPress={onDatePress} style={{flexDirection: 'row'}}>
           <Text style={mainWrapperStyles.textData}>Выберите дату</Text>
           <CalendarIcon style={{marginLeft: 10}} />
-        </View>
+        </TouchableOpacity>
+        <DatePicker
+          date={date}
+          open={datePickerShown}
+          onConfirm={d => {
+            onDateChange(d);
+            setDatePickerShown(false);
+          }}
+          onCancel={() => {
+            setDatePickerShown(false);
+          }}
+          modal={true}
+          mode="date"
+        />
         <View>
-          <Text style={mainWrapperStyles.textData}>18 январь 2022</Text>
+          <Text style={mainWrapperStyles.textData}>{dateInRussain(date)}</Text>
         </View>
       </View>
 
       <View style={mainWrapperStyles.weeksContainer}>
-        <View style={mainWrapperStyles.weekBox}>
-          <Text style={mainWrapperStyles.textWeek}>Пн</Text>
-          <Text style={mainWrapperStyles.textWeek}>10</Text>
-        </View>
-        <View style={mainWrapperStyles.weekBox}>
-          <Text style={mainWrapperStyles.textWeek}>Вт</Text>
-          <Text style={mainWrapperStyles.textWeek}>11</Text>
-        </View>
-        <View style={mainWrapperStyles.week}>
-          <Text style={mainWrapperStyles.textWeek}>Ср</Text>
-          <Text style={mainWrapperStyles.textWeek}>12</Text>
-        </View>
-        <View style={mainWrapperStyles.weekBox}>
-          <Text style={mainWrapperStyles.textWeek}>Чт</Text>
-          <Text style={mainWrapperStyles.textWeek}>13</Text>
-        </View>
-        <View style={mainWrapperStyles.weekBox}>
-          <Text style={mainWrapperStyles.textWeek}>Пт</Text>
-          <Text style={mainWrapperStyles.textWeek}>14</Text>
-        </View>
-        <View style={mainWrapperStyles.weekBox}>
-          <Text style={mainWrapperStyles.textWeek}>Сб</Text>
-          <Text style={mainWrapperStyles.textWeek}>15</Text>
-        </View>
+        {getWeekDays(date).map(e => {
+          return (
+            <View
+              key={e.day}
+              style={
+                e.current ? mainWrapperStyles.week : mainWrapperStyles.weekBox
+              }>
+              <Text style={mainWrapperStyles.textWeek}>{e.date}</Text>
+              <Text style={mainWrapperStyles.textWeek}>{e.day}</Text>
+            </View>
+          );
+        })}
       </View>
-      <View style={mainWrapperStyles.childrenContainer}>{props.children}</View>
+      <View style={mainWrapperStyles.childrenContainer}>{children}</View>
     </View>
   );
 };

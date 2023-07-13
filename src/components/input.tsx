@@ -10,7 +10,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import {EyesIcon} from '../assets/icons';
-import {COLORS} from '../constants/COLORS';
+import {COLORS} from '../constants/colors';
+import {PaddingHorizantal} from '../constants/sizes';
 
 interface IProps {
   name?: string;
@@ -26,6 +27,7 @@ interface IProps {
   eyes?: boolean;
   icon?: any;
   dark?: boolean;
+  errors?: any;
 }
 
 const Input = ({
@@ -42,13 +44,14 @@ const Input = ({
   icon,
   dark,
   name,
+  errors,
 }: IProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
   const onEyePress = () => {
     setIsPasswordVisible(e => !e);
   };
   return (
-    <View style={{marginHorizontal: 20}}>
+    <View style={styles.parentContainer}>
       <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
@@ -68,6 +71,9 @@ const Input = ({
           </TouchableOpacity>
         ) : null}
       </View>
+      {!!errors && !!name && !!errors[name] && (
+        <Text style={styles.error}>{errors[name || '']}</Text>
+      )}
     </View>
   );
 };
@@ -75,13 +81,16 @@ const Input = ({
 export default Input;
 
 const styles = StyleSheet.create({
+  parentContainer: {
+    paddingHorizontal: PaddingHorizantal,
+  },
   container: {
     flexDirection: 'row',
     borderRadius: 8,
     backgroundColor: COLORS.WHITE_ONE,
     height: 49,
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: PaddingHorizantal,
   },
   input: {
     flex: 1,
@@ -100,5 +109,8 @@ const styles = StyleSheet.create({
   },
   darkText: {
     color: COLORS.GREY_BLACK,
+  },
+  error: {
+    color: COLORS.ORANGE,
   },
 });

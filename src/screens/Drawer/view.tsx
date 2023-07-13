@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
+import {SafeAreaView, Text, View, Image} from 'react-native';
 import {
   BookIcon,
   CalendarDrawerIcon,
@@ -12,9 +12,10 @@ import {
   SupportIcon,
   TestingIcon,
 } from '../../assets/icons';
-import {styles} from './styles';
 import DrawerButton from '../../components/drawer-button';
 import {DrawerHook} from './hooks';
+import {styles} from './styles';
+import {Assets} from '../../utils/requireAssets';
 
 const DrawerScreen = () => {
   const {
@@ -27,12 +28,15 @@ const DrawerScreen = () => {
     onSupportPress,
     onTestingPress,
     onThematicPress,
+    onLogout,
+    account,
   } = DrawerHook();
-
   return (
     <View style={styles.container}>
       <View style={styles.userContainer}>
         <SafeAreaView />
+        <Image source={Assets.images.user} style={styles.image} />
+        <Text style={styles.userText}>{account?.firstName}</Text>
       </View>
 
       <View style={styles.screenContainer}>
@@ -81,11 +85,7 @@ const DrawerScreen = () => {
           icon={<SettingDrawerIcon />}
           text="Настройки"
         />
-        <DrawerButton
-          onPress={() => console.log('Logout')}
-          icon={<ExitIcon />}
-          text="Выйти"
-        />
+        <DrawerButton onPress={onLogout} icon={<ExitIcon />} text="Выйти" />
       </View>
     </View>
   );

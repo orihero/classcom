@@ -2,9 +2,10 @@ import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren} from 'react';
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
 import {ArrowLeftIcon, BellIcon} from '../../assets/icons/index';
-import {COLORS} from '../../constants/COLORS';
+import {COLORS} from '../../constants/colors';
 import {defaultWrapperStyles} from './DefaultWrapper.styles';
 import {ROUTES} from '../../navigation/routes';
+import {SettingHooks} from '../../screens/Main/Setting/hooks';
 
 export interface DefaultWrapperProps {
   title: string;
@@ -18,6 +19,7 @@ const DefaultWrapper = ({
   title,
   hasIcon,
 }: PropsWithChildren<DefaultWrapperProps>) => {
+  const {account} = SettingHooks();
   const navigation = useNavigation();
   const onArrowLeftPress = () => {
     navigation.goBack();
@@ -44,7 +46,7 @@ const DefaultWrapper = ({
         </View>
         {hasUser && (
           <Text style={defaultWrapperStyles.userText}>
-            Ройтман Рафаэль Евгеньевич
+            {account?.firstName} {account.lastName}
           </Text>
         )}
       </SafeAreaView>
