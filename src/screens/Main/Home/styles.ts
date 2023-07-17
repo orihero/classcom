@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
   space: {
     width: 12,
   },
-  container: {marginVertical: 15},
+  container: {},
 
   scroolViewStyle: {
     marginBottom: 10,

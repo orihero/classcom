@@ -20,6 +20,7 @@ interface PlaneProps {
   disable?: boolean;
   textStyle?: StyleProp<TextStyle>;
   style?: StyleProp<ViewStyle>;
+  handledeleted?: () => void;
   onPress?: () => void;
 }
 
@@ -33,6 +34,7 @@ const PlaneButton = ({
   style,
   textStyle,
   onPress,
+  handledeleted,
 }: PlaneProps) => {
   return (
     <TouchableOpacity
@@ -46,7 +48,7 @@ const PlaneButton = ({
           title={testingTitle}
           type="mediumRegular12"
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handledeleted}>
           <Text style={styles.textDelete}>{deleteTitle}</Text>
         </TouchableOpacity>
       </View>

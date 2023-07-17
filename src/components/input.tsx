@@ -81,9 +81,7 @@ const Input = ({
 export default Input;
 
 const styles = StyleSheet.create({
-  parentContainer: {
-    paddingHorizontal: PaddingHorizantal,
-  },
+  parentContainer: {},
   container: {
     flexDirection: 'row',
     borderRadius: 8,

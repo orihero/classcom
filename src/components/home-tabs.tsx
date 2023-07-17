@@ -1,17 +1,9 @@
 import React from 'react';
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
 import {COLORS} from '../constants/colors';
 import UiText from './text';
-
-const windowWidth = Dimensions.get('window').width;
+import SIZES from '../constants/sizes';
 
 interface TabProps {
   content: Array<{
@@ -44,96 +36,79 @@ const TopTabs = ({
     setActiveTab(i);
   };
   return (
-    <View style={{flex: 1}}>
-      <View style={styles.ShopContainer}>
-        <View style={styles.header}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View
-              style={{
-                width: windowWidth,
-                alignItems: 'center',
-                paddingBottom: 15,
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  borderBottomWidth: 1,
-                  borderColor: '#CECECE',
-                  width: windowWidth / 1.2,
-                }}>
-                {content.map((e, i) => {
-                  return (
-                    <TouchableOpacity
-                      style={{
-                        flexDirection: 'row',
-                        width: '50%',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderBottomWidth: 4,
-                        borderColor:
-                          activeTab === i ? COLORS.BLUE : COLORS.WHITE,
-                        paddingVertical: 12,
-                      }}
-                      activeOpacity={0.7}
-                      onPress={onTabPress(i)}
-                      key={i}>
-                      <View style={{marginRight: 10}}>
-                        {activeTab ? (
-                          <View>{e.iconActive}</View>
-                        ) : (
-                          <View>{e.iconPassive}</View>
-                        )}
-                      </View>
-                      <UiText
-                        style={
-                          activeTab === i
-                            ? styles.textHeader
-                            : styles.headerText
-                        }
-                        title={e.title}
-                        type="mediumRegular12"
-                      />
-                    </TouchableOpacity>
-                  );
-                })}
-              </View>
-            </View>
-          </ScrollView>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.childView}>
+          {content.map((e, i) => {
+            return (
+              <TouchableOpacity
+                style={[
+                  {
+                    borderColor: activeTab === i ? COLORS.BLUE : COLORS.WHITE,
+                  },
+                  styles.touchAbleBtn,
+                ]}
+                activeOpacity={0.7}
+                onPress={onTabPress(i)}
+                key={i}>
+                <View style={{marginRight: 10}}>
+                  {activeTab ? (
+                    <View>{e.iconActive}</View>
+                  ) : (
+                    <View>{e.iconPassive}</View>
+                  )}
+                </View>
+                <UiText
+                  style={
+                    activeTab === i
+                      ? styles.activeTabText
+                      : styles.nonActiveText
+                  }
+                  title={e.title}
+                  type="mediumRegular16"
+                />
+              </TouchableOpacity>
+            );
+          })}
         </View>
-        <View style={styles.shiftTab}>
-          <TouchableOpacity
-            onPress={() => setShift(1)}
-            style={[
-              styles.tab,
-              shift === 1 ? null : {borderColor: COLORS.WHITE},
-            ]}>
-            <Text style={shift === 1 ? styles.textHeader : styles.headerText}>
-              1-смена
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => setShift(2)}
-            style={[
-              styles.tab,
-              shift === 2 ? null : {borderColor: COLORS.WHITE},
-            ]}>
-            <Text style={shift === 2 ? styles.textHeader : styles.headerText}>
-              2-смена
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.content}>
-          <View style={{flex: 1}}>
-            {content.map((e, i) => {
-              const Content: (props: {
-                data: IScheduleResponse | IScheduleTemplateResponse;
-                date: Date;
-              }) => JSX.Element = e.content;
-              if (i === activeTab) {
-                return <Content data={data[i]} date={date} key={i} />;
-              }
-            })}
-          </View>
+      </View>
+      <View style={styles.shiftTab}>
+        <TouchableOpacity
+          onPress={() => setShift(1)}
+          style={[
+            styles.tab,
+            shift === 1 ? null : {borderColor: COLORS.WHITE},
+          ]}>
+          <UiText
+            style={shift === 1 ? styles.textHeader : styles.headerText}
+            title="1-смена"
+            type={shift === 1 ? 'Bold16' : 'mediumRegular16'}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setShift(2)}
+          style={[
+            styles.tab,
+            shift === 2 ? null : {borderColor: COLORS.WHITE},
+          ]}>
+          <UiText
+            style={shift === 2 ? styles.textHeader : styles.headerText}
+            title="2-смена"
+            type={shift === 2 ? 'Bold16' : 'mediumRegular16'}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.content}>
+        <View style={{flex: 1}}>
+          {content.map((e, i) => {
+            const Content: (props: {
+              data: IScheduleResponse | IScheduleTemplateResponse;
+              date: Date;
+            }) => JSX.Element = e.content;
+            if (i === activeTab) {
+              return <Content data={data[i]} date={date} key={i} />;
+            }
+          })}
         </View>
       </View>
     </View>
@@ -146,26 +121,51 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  ShopContainer: {
-    flex: 1,
-  },
+
+  // =========== component header styles =================
+
   header: {},
-  content: {
-    flex: 1,
+
+  childView: {
+    width: SIZES.width,
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderColor: COLORS.BORDER_COLOR,
+  },
+  touchAbleBtn: {
+    flexDirection: 'row',
+    width: '50%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 4,
+    paddingVertical: 10,
+  },
+  activeTabText: {
+    color: COLORS.BLUE,
+  },
+  nonActiveText: {
+    color: COLORS.NON_ACTIVE_TEXT,
+  },
+
+  //============== component shift Tab styles  ================== //
+
+  shiftTab: {
+    marginVertical: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   textHeader: {
     color: COLORS.BLUE,
-    fontSize: 17,
-    fontWeight: '700',
   },
   headerText: {
-    color: '#757575',
-    fontSize: 17,
-    fontWeight: '500',
+    color: COLORS.NON_ACTIVE_TEXT,
   },
-  shiftTab: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+
+  //============== component Content styles  ================== //
+
+  content: {
+    flex: 1,
   },
   tab: {
     padding: 20,

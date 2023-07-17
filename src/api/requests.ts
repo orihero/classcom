@@ -2,8 +2,11 @@ import axios, {AxiosResponse} from 'axios';
 
 import {
   AllSubjects,
+  GetCourses,
   IAccountResponse,
   ICourseResponse,
+  ICreateNewTest,
+  ICreateTests,
   IDistrictResponse,
   IELectronicResourceResponse,
   IElectronicRecCategories,
@@ -142,6 +145,16 @@ export const REQUESTS = {
       axiosInstance.get<QuestionAndAnswersItems[]>(
         '/v2/reference/questions-and-answers/items',
       ),
+  },
+
+  test: {
+    getApiCourses: () => axiosInstance.get<GetCourses[]>('/courses'),
+    getAllMyTests: () => axiosInstance.get<ICreateTests[]>('/testing'),
+    getMyTestDelete: (id: number) =>
+      axiosInstance.delete<any>(`/testing/${id}`),
+
+    postCreateNewTest: (data: Partial<ICreateNewTest>) =>
+      axiosInstance.post<Partial<ICreateNewTest>>('/testing', data),
   },
 
   notifaction: {

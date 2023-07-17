@@ -357,3 +357,46 @@ export interface LessonTemplatesType {
   startTime: Time;
   weekday: number;
 }
+
+export interface GetCourses {
+  code: string;
+  id: number;
+  name: string;
+  parentCode: string;
+  parentId: number;
+  parentName: string;
+  status: string;
+}
+
+export interface ICreateTests {
+  createdBy: string;
+  createdDate: Date;
+  id: number;
+  status: string;
+  subjectName: string;
+  testName: string;
+}
+
+export interface ICreateNewTest {
+  id: number;
+  questions: Question[];
+  status: string;
+  subjectId: number;
+  testName: string;
+}
+
+export interface Question {
+  answers: Answer[];
+  id: number;
+  question: string;
+  testingId: number;
+  testingType: string;
+}
+
+export interface Answer {
+  answer: string;
+  answerLetter: string;
+  correct: boolean;
+  id: number;
+  questionId: number;
+}

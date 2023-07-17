@@ -1,21 +1,32 @@
 import {COLORS} from '../../../constants/colors';
 import {StyleSheet} from 'react-native';
+import SIZES, {PaddingHorizantal} from '../../../constants/sizes';
 
-export const createTestScreenStyles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-    padding: 10,
     flex: 1,
+    paddingVertical: 20,
+    paddingHorizontal: PaddingHorizantal,
   },
-  inputTitle: {
-    marginHorizontal: 20,
+  childContainer: {
+    height: '90%',
+  },
+  topCard: {
+    flexDirection: 'column',
+    paddingVertical: SIZES.height * 0.02,
+    gap: -SIZES.height * 0.02,
+  },
+  predmetCard: {
+    paddingVertical: SIZES.height * 0.02,
+    gap: -SIZES.height * 0.02,
   },
   drop: {
-    paddingHorizontal: 15,
     backgroundColor: COLORS.WHITE_ONE,
-    marginHorizontal: 20,
     borderRadius: 10,
     height: 50,
     flexDirection: 'row',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -23,22 +34,24 @@ export const createTestScreenStyles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '500',
     marginTop: 15,
-    marginLeft: 20,
     color: COLORS.GREY_BLACK,
   },
   dropInner: {
-    marginHorizontal: 20,
-    height: 200,
+    height: 40,
     backgroundColor: COLORS.WHITE_ONE,
     marginTop: 5,
-    paddingHorizontal: 15,
-    paddingVertical: 15,
     borderRadius: 10,
   },
   btn: {
     position: 'absolute',
+    bottom: 50,
     left: 0,
     right: 0,
-    bottom: 50,
+  },
+  btndrop: {
+    alignItems: 'center',
+    paddingVertical: 10,
+    width: '100%',
+    height: '100%',
   },
 });

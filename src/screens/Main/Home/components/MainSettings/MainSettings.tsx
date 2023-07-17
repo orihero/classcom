@@ -89,46 +89,8 @@ const MainSettings = ({
     setValues(prev => ({...prev, sorder: item}));
   };
 
-  return (
-    <>
-      <View style={styles.container} />
-
-      <View style={styles.box}>
-        <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
-        <UiText title="Предмет" type="mediumRegular20" color="GREY_TWO" />
-        <UiText title="Класс" type="mediumRegular20" color="GREY_TWO" />
-      </View>
-
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={ScrollViewPadding}
-        style={styles.scroolViewStyle}>
-        {Object.keys(lessonMap).map((e, i) => {
-          const el = lesson ? lesson[e] : null;
-          if (!el) {
-            return (
-              <EmptySchedule
-                onPress={e => onModalVisible(e)}
-                key={i}
-                number={e}
-              />
-            );
-          }
-          return (
-            <Schedule
-              key={i}
-              number={e + '.'}
-              classNumber={el.klassNumber + el.klassLetter}
-              time={`${el?.startTime
-                ?.split(':')
-                .slice(0, 2)
-                .join(':')}-${el?.endTime?.split(':').slice(0, 2).join(':')}`}
-              title={el.courseName}
-            />
-          );
-        })}
-      </ScrollView>
+  const renderReactNativeModal = () => {
+    return (
       <ReactNativeModal
         onDismiss={onModalDissmiss}
         onBackdropPress={onModalDissmiss}
@@ -166,7 +128,7 @@ const MainSettings = ({
               value={values.courseId}
               title="Предмет"
               placeholder="Предмет"
-              onChange={onInputChange}
+              onChange={() => onInputChange('courseId')}
               light={true}
             />
           </View>
@@ -178,7 +140,7 @@ const MainSettings = ({
                 value={values.klassNumber}
                 title="Выберите класс"
                 placeholder="-"
-                onChange={onInputChange}
+                onChange={() => onInputChange('klassNumber')}
                 light={true}
               />
             </View>
@@ -190,7 +152,7 @@ const MainSettings = ({
                 value={values.klassLetter}
                 title="Выберите букву"
                 placeholder="-"
-                onChange={onInputChange}
+                onChange={() => onInputChange('klassLetter')}
                 light={true}
               />
             </View>
@@ -213,6 +175,49 @@ const MainSettings = ({
           </View>
         </View>
       </ReactNativeModal>
+    );
+  };
+
+  return (
+    <>
+      <View style={styles.container} />
+      <View style={styles.box}>
+        <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
+        <UiText title="Предмет" type="mediumRegular20" color="GREY_TWO" />
+        <UiText title="Класс" type="mediumRegular20" color="GREY_TWO" />
+      </View>
+
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={ScrollViewPadding}
+        style={styles.scroolViewStyle}>
+        {Object.keys(lessonMap).map((e, i) => {
+          const el = lesson ? lesson[e] : null;
+          if (!el) {
+            return (
+              <EmptySchedule
+                onPress={e => onModalVisible(e)}
+                key={i}
+                number={e}
+              />
+            );
+          }
+          return (
+            <Schedule
+              key={i}
+              number={e + '.'}
+              classNumber={el.klassNumber + el.klassLetter}
+              time={`${el?.startTime
+                ?.split(':')
+                .slice(0, 2)
+                .join(':')}-${el?.endTime?.split(':').slice(0, 2).join(':')}`}
+              title={el.courseName}
+            />
+          );
+        })}
+      </ScrollView>
+      {renderReactNativeModal()}
       <DatePicker
         modal={true}
         mode="time"

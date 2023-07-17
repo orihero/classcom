@@ -1,21 +1,14 @@
 import React, {useState} from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {
   ILessonTemplateRequest,
   IScheduleTemplateResponse,
 } from '../../../../../api/types';
-import Button from '../../../../../components/button';
 import Schedule from '../../../../../components/schedule';
 import {styles} from '../../styles';
-import {useNavigation} from '@react-navigation/native';
-import {ROUTES} from '../../../../../navigation/routes';
 import EmptySchedule from '../../../../../components/empty-schedule';
-import ReactNativeModal from 'react-native-modal';
 import DatePicker from 'react-native-date-picker';
 import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
-import {useCoursesHook} from '../../../../general-hooks/courses-hook';
-import Select from '../../../../../components/select';
-import {COLORS} from '../../../../../constants/colors';
 import UiText from '../../../../../components/text';
 import {ScrollViewPadding} from '../../../../../constants/constants';
 
@@ -36,13 +29,11 @@ const ScheduleScreen = ({
   date: Date;
 }) => {
   const currentHour = new Date().toLocaleTimeString('ru', HOUR_FORMAT_OPTIONS);
-  const [modalVisible, setModalVisible] = useState(true);
   const [pickingTime, setPickingTime] = useState<null | 'start' | 'end'>(null);
   const [values, setValues] = useState<Partial<ILessonTemplateRequest>>({
     startTime: currentHour,
     endTime: currentHour,
   });
-  const {courses, classLetters, classNumbers} = useCoursesHook();
 
   const onHourPress = (type: 'start' | 'end' | null) => () => {
     setPickingTime(type);
@@ -56,21 +47,11 @@ const ScheduleScreen = ({
     setPickingTime(null);
   };
 
-  const onInputChange = (key: keyof typeof values) => (value: any) => {
-    setValues({...values, [key]: value});
-  };
   const lesson = (data || {})[date.getDay() + 1]?.lessonTemplatesMap;
-  const navigation = useNavigation();
 
-  const onModalDissmiss = () => {
-    setModalVisible(false);
-  };
-  const onSettingCalendarPress = () => {
-    navigation.navigate(ROUTES.HOME.SETTING_CALENDAR as never);
-  };
   return (
     <>
-      <View style={{marginVertical: 20}} />
+      <View style={styles.container} />
 
       <View style={styles.box}>
         <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
@@ -87,9 +68,9 @@ const ScheduleScreen = ({
           if (!el) {
             return (
               <EmptySchedule
-                onPress={() => setModalVisible(true)}
+                onPress={() => console.log('press')}
                 key={i}
-                number={e + '.'}
+                number={e + ''}
               />
             );
           }
