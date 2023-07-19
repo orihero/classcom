@@ -5,7 +5,6 @@ import {ScheduleCourses} from '../../../api/types';
 export const HomeHooks = () => {
   const [scheduleData, setScheduleData] = useState<ScheduleCourses[]>();
   const isFocused = useIsFocused();
-  const navigation = useNavigation();
 
   const getScheduleCourses = useCallback(async () => {
     try {

@@ -67,7 +67,7 @@ const Select = ({
             {realValue || placeholder}
           </Text>
         </View>
-        {!shouldShow ? (
+        {shouldShow ? (
           <ArrowDown fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
         ) : (
           <ArrowUp fill={light ? COLORS.BLUISH_WHITE2 : undefined} />

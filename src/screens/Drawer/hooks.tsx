@@ -47,6 +47,7 @@ export const DrawerHook = () => {
     const effect = async () => {
       try {
         const res = await REQUESTS.general.getAccount();
+
         dispatch(userLoaded(res.data));
       } catch (error) {}
     };

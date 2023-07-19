@@ -1,18 +1,16 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '../../../../components/button';
 import {COLORS} from '../../../../constants/colors';
 
 interface Props {
   container: any;
+  isModalVisible: boolean;
+  toggleModal: () => void;
 }
 
-const ModalTest = ({container}: Props) => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+const ModalTest = ({container, toggleModal, isModalVisible}: Props) => {
   return (
     <View style={{flex: 1}}>
       <Button text="Продолжить" onPress={toggleModal} />
