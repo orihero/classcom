@@ -116,7 +116,6 @@ export default Select;
 
 const styles = StyleSheet.create({
   animatedTwo: {
-    backgroundColor: COLORS.WHITE_ONE,
     borderRadius: 10,
     marginTop: 5,
   },
@@ -132,8 +131,11 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   button: {
-    marginHorizontal: 10,
-    paddingVertical: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    marginVertical: 3,
+    backgroundColor: COLORS.WHITE_ONE,
+    borderRadius: 10,
   },
   animated: {
     height: 49,

@@ -125,8 +125,8 @@ export const REQUESTS = {
         '/v2/reference/tech-service-theme/items',
       ),
 
-    postTechService: () =>
-      axiosInstance.post<TechService>('/v2/reference/tech-service'),
+    postTechService: (data: TechService) =>
+      axiosInstance.post<TechService>('/v2/reference/tech-service', data),
 
     //Чат со службой поддержки
     getTechServiceChatItems: () =>

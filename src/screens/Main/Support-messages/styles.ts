@@ -1,10 +1,13 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../../constants/colors';
+import {PaddingHorizantal} from '../../../constants/sizes';
 
 export const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingHorizontal: PaddingHorizantal,
+    flex: 1,
+  },
   postContent: {
-    marginHorizontal: 20,
     height: 200,
     backgroundColor: COLORS.WHITE_ONE,
     marginTop: 10,
@@ -12,6 +15,7 @@ export const styles = StyleSheet.create({
     paddingTop: 15,
     paddingBottom: 15,
     borderRadius: 10,
+    alignItems: 'flex-start',
   },
   drop: {
     paddingHorizontal: 15,
