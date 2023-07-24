@@ -1,16 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StyleSheet, View} from 'react-native';
+import {ListRenderItem, StyleSheet, View} from 'react-native';
 import PlaneButton from '../../../../components/plane-button';
 import Button from '../../../../components/button';
 import {TestingHooks} from '../hooks';
 import {FlatList} from 'react-native-gesture-handler';
 import {useCallback} from 'react';
 import {ScrollViewPadding} from '../../../../constants/constants';
+import {ICreateTests} from '../../../../api/types';
+import {COLORS} from '../../../../constants/colors';
 
 const MyTestScreen = () => {
   const {onCreateTestPress, allMyTests, getApiMyTestDelete} = TestingHooks();
-
-  console.log(JSON.stringify(allMyTests, null, 2), 'allMyTests');
 
   const clicked = useCallback(
     async (id: number) => {
@@ -19,25 +19,29 @@ const MyTestScreen = () => {
     [getApiMyTestDelete],
   );
 
+  const renderItem: ListRenderItem<ICreateTests> = ({item}) => (
+    <View style={styles.childContainer}>
+      <PlaneButton
+        testingTitle={item.testName}
+        deleteTitle="Удалить"
+        handledeleted={() => clicked(item.id)}
+        lessonTitle={item.subjectName}
+      />
+    </View>
+  );
+
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <FlatList
-        keyExtractor={index => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={ScrollViewPadding}
         data={allMyTests}
-        renderItem={({item}) => (
-          <View style={styles.childContainer}>
-            <PlaneButton
-              testingTitle={item.testName}
-              deleteTitle="Удалить"
-              handledeleted={() => clicked(item.id)}
-              lessonTitle={item.subjectName}
-            />
-          </View>
-        )}
+        renderItem={renderItem}
       />
-      <View style={styles.btn}>
-        <Button text="Создать тестирование" onPress={onCreateTestPress} />
+      <View style={styles.bottomContainer}>
+        <View style={styles.btn}>
+          <Button text="Создать тестирование" onPress={onCreateTestPress} />
+        </View>
       </View>
     </View>
   );
@@ -46,11 +50,17 @@ const MyTestScreen = () => {
 export default MyTestScreen;
 
 const styles = StyleSheet.create({
+  container: {flex: 1},
   childContainer: {},
   btn: {
     position: 'absolute',
-    bottom: 50,
+    bottom: 40,
     left: 0,
     right: 0,
+  },
+  bottomContainer: {
+    height: 100,
+    width: '100%',
+    backgroundColor: COLORS.WHITE,
   },
 });

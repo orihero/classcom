@@ -9,41 +9,27 @@ import {ROUTES} from '../../../../../navigation/routes';
 const initialQustion = {
   answers: [
     {
-      answer: '',
-      answerLetter: 'A',
+      answer: 'Да',
+      answerLetter: '',
       correct: false,
       id: 0,
       questionId: 0,
     },
     {
-      answer: '',
-      answerLetter: 'B',
+      answer: 'Нет',
+      answerLetter: '',
       correct: false,
       id: 1,
-      questionId: 0,
-    },
-    {
-      answer: '',
-      answerLetter: 'C',
-      correct: false,
-      id: 2,
-      questionId: 0,
-    },
-    {
-      answer: '',
-      answerLetter: 'D',
-      correct: false,
-      id: 3,
       questionId: 0,
     },
   ],
   id: 0,
   question: '',
   testingId: 0,
-  testingType: 'SINGLE_CHOICE',
+  testingType: 'BOOLEAN_CHOICE',
 };
 
-export const useTestingSingleChoiceHook = () => {
+export const useTestingBooleanChoiceHook = () => {
   const store = useSelector(testSelector);
   const navigation = useNavigation();
 
@@ -53,6 +39,8 @@ export const useTestingSingleChoiceHook = () => {
     subjectId: store.subjectId,
     testName: store.testName,
   });
+
+  console.log('newTest', newTest);
 
   const onQustionChange = useCallback((id: number, value: string) => {
     updateNewTest(oldTest => ({

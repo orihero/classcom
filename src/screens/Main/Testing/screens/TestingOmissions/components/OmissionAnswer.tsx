@@ -1,44 +1,22 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {has} from 'lodash';
 import {FC} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {Answer} from '../../../../api/types';
-import UiText from '../../../../components/text';
-import {COLORS} from '../../../../constants/colors';
+import {Answer} from '../../../../../../api/types';
+import {COLORS} from '../../../../../../constants/colors';
 interface AnswerOptionsProps {
   answer: Answer;
   currentAnswer: Answer;
   onPressAnswer(answer: Answer): void;
   answerOnChange(qustionId: number, answerId: number, value: string): void;
 }
-const AnswerOptions: FC<AnswerOptionsProps> = ({
+const OmissionsAnswerOptions: FC<AnswerOptionsProps> = ({
   answer,
-  currentAnswer,
-  onPressAnswer,
   answerOnChange,
 }) => {
-  // const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean>(false);
-
   return (
     <View style={styles.container}>
       <View style={styles.cardContent}>
         <View style={styles.answerCard}>
-          <TouchableOpacity
-            style={
-              has(currentAnswer, 'correct') &&
-              currentAnswer.correct &&
-              currentAnswer.id === answer.id
-                ? styles.correctAnswer
-                : styles.checkbox
-            }
-            onPress={() => onPressAnswer(answer)}
-          />
-          <UiText
-            title={answer.answerLetter}
-            type="mediumRegular16"
-            color="GREY_BLACK"
-          />
           <TextInput
             style={styles.inputStyle}
             placeholder="Answer"
@@ -53,7 +31,7 @@ const AnswerOptions: FC<AnswerOptionsProps> = ({
   );
 };
 
-export default AnswerOptions;
+export default OmissionsAnswerOptions;
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 5,
@@ -86,7 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.LIGHT_BLUE,
   },
   inputStyle: {
-    width: '85%',
+    width: '100%',
     backgroundColor: COLORS.LIGHT_GREY,
     height: 45,
     paddingVertical: 10,

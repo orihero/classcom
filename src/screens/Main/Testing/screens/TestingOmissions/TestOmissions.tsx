@@ -1,18 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
-import QuestionComponent from '../../components/Question';
-import {PaddingHorizantal} from '../../../../../constants/sizes';
 import UiText from '../../../../../components/text';
-import {COLORS} from '../../../../../constants/colors';
+import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
 import {ScrollViewPadding} from '../../../../../constants/constants';
-import {useTestingSingleChoiceHook} from './hook';
+import {PaddingHorizantal} from '../../../../../constants/sizes';
+import {COLORS} from '../../../../../constants/colors';
+import Button from '../../../../../components/button';
+import {useTestingOmissionsHook} from './hook';
+import OmissionQuestionComponent from './components/OmissionQuestion';
+import {Question} from '../../../../../api/types';
 import {useCallback} from 'react';
 import {map} from 'lodash';
-import {Question} from '../../../../../api/types';
-import Button from '../../../../../components/button';
 
-const TestingSingleChoice = () => {
+const TestingOmissionsChoice = () => {
   const {
     newTest,
     addNewQuestion,
@@ -20,12 +20,12 @@ const TestingSingleChoice = () => {
     onAnswerChange,
     onAnsverCorrectChange,
     onCreateNewTestBtn,
-  } = useTestingSingleChoiceHook();
+  } = useTestingOmissionsHook();
 
   const renderQuestion = useCallback(
     (question: Question, key: number) => {
       return (
-        <QuestionComponent
+        <OmissionQuestionComponent
           key={key}
           question={question}
           inputOnChange={onQustionChange}
@@ -43,12 +43,11 @@ const TestingSingleChoice = () => {
   }, [newTest.questions, renderQuestion]);
 
   return (
-    <DefaultWrapper title="Тестирования" hasUser>
+    <DefaultWrapper hasUser title="Тестирования">
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={ScrollViewPadding}>
         <View style={styles.container}>{renderQuestionList()}</View>
-
         <View style={styles.addNewItemCard}>
           <TouchableOpacity style={styles.addNewItem} onPress={addNewQuestion}>
             <UiText title="Добавить тест" color="BLUE" type="bookRegular16" />
@@ -64,7 +63,7 @@ const TestingSingleChoice = () => {
   );
 };
 
-export default TestingSingleChoice;
+export default TestingOmissionsChoice;
 
 const styles = StyleSheet.create({
   container: {

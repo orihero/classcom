@@ -43,7 +43,7 @@ const initialQustion = {
   testingType: 'SINGLE_CHOICE',
 };
 
-export const useTestingSingleChoiceHook = () => {
+export const useTestingMultipleChoiceHook = () => {
   const store = useSelector(testSelector);
   const navigation = useNavigation();
 
@@ -53,6 +53,10 @@ export const useTestingSingleChoiceHook = () => {
     subjectId: store.subjectId,
     testName: store.testName,
   });
+
+  console.log('====================================');
+  console.log(JSON.stringify(newTest, null, 2));
+  console.log('====================================');
 
   const onQustionChange = useCallback((id: number, value: string) => {
     updateNewTest(oldTest => ({
@@ -93,7 +97,7 @@ export const useTestingSingleChoiceHook = () => {
                 answers: question.answers?.map(answer =>
                   answer.id === answerId
                     ? {...answer, correct: value}
-                    : {...answer, correct: false},
+                    : {...answer},
                 ),
               }
             : question,
@@ -130,6 +134,9 @@ export const useTestingSingleChoiceHook = () => {
   }, []);
 
   const onCreateNewTestBtn = useCallback(() => {
+    console.log('====================================');
+    console.log(JSON.stringify(newTest, null, 2));
+    console.log('====================================');
     createNewTest(newTest);
     navigation.navigate(ROUTES.DRAWER.TESTING as never);
   }, [newTest, createNewTest, navigation]);

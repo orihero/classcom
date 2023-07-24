@@ -10,40 +10,19 @@ const initialQustion = {
   answers: [
     {
       answer: '',
-      answerLetter: 'A',
-      correct: false,
+      answerLetter: '',
+      correct: true,
       id: 0,
-      questionId: 0,
-    },
-    {
-      answer: '',
-      answerLetter: 'B',
-      correct: false,
-      id: 1,
-      questionId: 0,
-    },
-    {
-      answer: '',
-      answerLetter: 'C',
-      correct: false,
-      id: 2,
-      questionId: 0,
-    },
-    {
-      answer: '',
-      answerLetter: 'D',
-      correct: false,
-      id: 3,
       questionId: 0,
     },
   ],
   id: 0,
   question: '',
   testingId: 0,
-  testingType: 'SINGLE_CHOICE',
+  testingType: 'OMISSIONS',
 };
 
-export const useTestingSingleChoiceHook = () => {
+export const useTestingOmissionsHook = () => {
   const store = useSelector(testSelector);
   const navigation = useNavigation();
 

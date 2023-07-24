@@ -1,18 +1,20 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
-import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
-import QuestionComponent from '../../components/Question';
-import {PaddingHorizantal} from '../../../../../constants/sizes';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import UiText from '../../../../../components/text';
+import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
+import {ScrollView} from 'react-native-gesture-handler';
 import {COLORS} from '../../../../../constants/colors';
+import {PaddingHorizantal} from '../../../../../constants/sizes';
 import {ScrollViewPadding} from '../../../../../constants/constants';
-import {useTestingSingleChoiceHook} from './hook';
+import Button from '../../../../../components/button';
+import BooleanQuestion from './components/BooleanQuestion';
+import {useTestingBooleanChoiceHook} from './hook';
 import {useCallback} from 'react';
 import {map} from 'lodash';
 import {Question} from '../../../../../api/types';
-import Button from '../../../../../components/button';
+// import {useCallback} from 'react';
 
-const TestingSingleChoice = () => {
+const TestingBooleanChoice = () => {
   const {
     newTest,
     addNewQuestion,
@@ -20,12 +22,12 @@ const TestingSingleChoice = () => {
     onAnswerChange,
     onAnsverCorrectChange,
     onCreateNewTestBtn,
-  } = useTestingSingleChoiceHook();
+  } = useTestingBooleanChoiceHook();
 
   const renderQuestion = useCallback(
     (question: Question, key: number) => {
       return (
-        <QuestionComponent
+        <BooleanQuestion
           key={key}
           question={question}
           inputOnChange={onQustionChange}
@@ -46,9 +48,9 @@ const TestingSingleChoice = () => {
     <DefaultWrapper title="Тестирования" hasUser>
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={ScrollViewPadding}>
-        <View style={styles.container}>{renderQuestionList()}</View>
-
+        contentContainerStyle={ScrollViewPadding}
+        style={styles.container}>
+        {renderQuestionList()}
         <View style={styles.addNewItemCard}>
           <TouchableOpacity style={styles.addNewItem} onPress={addNewQuestion}>
             <UiText title="Добавить тест" color="BLUE" type="bookRegular16" />
@@ -64,7 +66,7 @@ const TestingSingleChoice = () => {
   );
 };
 
-export default TestingSingleChoice;
+export default TestingBooleanChoice;
 
 const styles = StyleSheet.create({
   container: {

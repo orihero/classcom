@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import UiText from '../../../../components/text';
+import UiText from '../../../../../components/text';
 
 const TestingCorresponChoice = () => {
   return (

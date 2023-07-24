@@ -1,13 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StyleSheet, TextInput, View} from 'react-native';
-import UiText from '../../../../components/text';
-import {ShareIcon} from '../../../../assets/icons';
-import {COLORS} from '../../../../constants/colors';
-import AnswerOptions from './AnswerOptions';
-import {Answer, ICreateNewTest, Question} from '../../../../api/types';
+
 import {FC, useCallback, useState} from 'react';
+import {Answer, ICreateNewTest, Question} from '../../../../../../api/types';
 import {map} from 'lodash';
-import ScreenTitle from '../../../../components/screenTitle';
+import {StyleSheet, TextInput, View} from 'react-native';
+import {ShareIcon} from '../../../../../../assets/icons';
+import {COLORS} from '../../../../../../constants/colors';
+import UiText from '../../../../../../components/text';
+import ScreenTitle from '../../../../../../components/screenTitle';
+import OmissionsAnswerOptions from './OmissionAnswer';
 
 interface QuestionComponentProps {
   question: Question;
@@ -20,7 +21,7 @@ interface QuestionComponentProps {
     value: boolean,
   ) => void;
 }
-const QuestionComponent: FC<QuestionComponentProps> = ({
+const OmissionQuestionComponent: FC<QuestionComponentProps> = ({
   question,
   inputOnChange,
   answerOnChange,
@@ -40,7 +41,7 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   const renderAnswer = useCallback(
     (answer: Answer, key: number) => {
       return (
-        <AnswerOptions
+        <OmissionsAnswerOptions
           key={key}
           answer={answer}
           currentAnswer={currentAnswer}
@@ -97,7 +98,7 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   );
 };
 
-export default QuestionComponent;
+export default OmissionQuestionComponent;
 
 const styles = StyleSheet.create({
   container: {

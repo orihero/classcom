@@ -1,13 +1,13 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, TextInput, View} from 'react-native';
-import UiText from '../../../../components/text';
-import {ShareIcon} from '../../../../assets/icons';
-import {COLORS} from '../../../../constants/colors';
-import AnswerOptions from './AnswerOptions';
-import {Answer, ICreateNewTest, Question} from '../../../../api/types';
+import ScreenTitle from '../../../../../../components/screenTitle';
+import {COLORS} from '../../../../../../constants/colors';
+import {ShareIcon} from '../../../../../../assets/icons';
+import UiText from '../../../../../../components/text';
+import BooleanAnswer from './BooleanAnswer';
+import {Answer, ICreateNewTest, Question} from '../../../../../../api/types';
 import {FC, useCallback, useState} from 'react';
 import {map} from 'lodash';
-import ScreenTitle from '../../../../components/screenTitle';
 
 interface QuestionComponentProps {
   question: Question;
@@ -20,10 +20,10 @@ interface QuestionComponentProps {
     value: boolean,
   ) => void;
 }
-const QuestionComponent: FC<QuestionComponentProps> = ({
+
+const BooleanQuestion: FC<QuestionComponentProps> = ({
   question,
   inputOnChange,
-  answerOnChange,
   onAnsverCorrectChange,
 }) => {
   const [currentAnswer, setCurrentAnswer] = useState<Answer>({} as Answer);
@@ -31,25 +31,23 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   const onPressAnswer = useCallback(
     (answer: Answer) => {
       setCurrentAnswer({...answer, correct: !answer.correct});
-      answerOnChange(answer.questionId, answer.id, answer.answer);
       onAnsverCorrectChange(answer.questionId, answer.id, !answer.correct);
     },
-    [answerOnChange, onAnsverCorrectChange],
+    [onAnsverCorrectChange],
   );
 
   const renderAnswer = useCallback(
     (answer: Answer, key: number) => {
       return (
-        <AnswerOptions
+        <BooleanAnswer
           key={key}
           answer={answer}
           currentAnswer={currentAnswer}
           onPressAnswer={onPressAnswer}
-          answerOnChange={answerOnChange}
         />
       );
     },
-    [currentAnswer, onPressAnswer, answerOnChange],
+    [currentAnswer, onPressAnswer],
   );
 
   const renderAnswerList = useCallback(() => {
@@ -60,7 +58,7 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
     <View style={styles.questionCard}>
       <TextInput
         placeholder="Введите вопрос"
-        multiline={true}
+        multiline
         value={question.question}
         onChange={value => inputOnChange(question.id, value.nativeEvent.text)}
         style={styles.postContent}
@@ -97,7 +95,7 @@ const QuestionComponent: FC<QuestionComponentProps> = ({
   );
 };
 
-export default QuestionComponent;
+export default BooleanQuestion;
 
 const styles = StyleSheet.create({
   container: {
@@ -115,10 +113,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE_TWO,
     marginVertical: 10,
     borderRadius: 10,
-    paddingVertical: 8,
-    paddingHorizontal: 5,
+    paddingHorizontal: 15,
     marginTop: 10,
-    height: 114,
+    height: 120,
+    flexDirection: 'column',
     alignItems: 'flex-start',
   },
   shareCard: {
@@ -129,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     opacity: 0.6,
-    gap: 10,
+    gap: 8,
   },
   shareIcon: {
     width: 40,

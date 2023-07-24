@@ -4,11 +4,11 @@ import {ROUTES} from '../routes';
 import TestingScreen from '../../screens/Main/Testing/view';
 import CreateTestScreen from '../../screens/Main/CreateTest/view';
 import TestingSingleChoice from '../../screens/Main/Testing/screens/TestingSingle/TestingSingle';
-import TestingMultipleChoice from '../../screens/Main/Testing/screens/TestingMultiple';
-import TestingSubChoice from '../../screens/Main/Testing/screens/TestingSubsequence';
-import TestingCorresponChoice from '../../screens/Main/Testing/screens/TestingCorrespon';
-import TestingOmissionsChoice from '../../screens/Main/Testing/screens/TestOmissions';
-import TestingBooleanChoice from '../../screens/Main/Testing/screens/TestingBoolean';
+import TestingMultipleChoice from '../../screens/Main/Testing/screens/TestingMultiple/TestingMultiple';
+import TestingSubChoice from '../../screens/Main/Testing/screens/TestingSubsequence/TestingSubsequence';
+import TestingCorresponChoice from '../../screens/Main/Testing/screens/TestingCorrespon/TestingCorrespon';
+import TestingOmissionsChoice from '../../screens/Main/Testing/screens/TestingOmissions/TestOmissions';
+import TestingBooleanChoice from '../../screens/Main/Testing/screens/TestingBoolean/TestingBoolean';
 
 const Stack = createNativeStackNavigator();
 

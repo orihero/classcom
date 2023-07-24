@@ -6,13 +6,13 @@ import {PaddingHorizantal} from '../../../../../constants/sizes';
 import UiText from '../../../../../components/text';
 import {COLORS} from '../../../../../constants/colors';
 import {ScrollViewPadding} from '../../../../../constants/constants';
-import {useTestingSingleChoiceHook} from './hook';
+import {useTestingMultipleChoiceHook} from './hook';
 import {useCallback} from 'react';
 import {map} from 'lodash';
 import {Question} from '../../../../../api/types';
 import Button from '../../../../../components/button';
 
-const TestingSingleChoice = () => {
+const TestingMultipleChoice = () => {
   const {
     newTest,
     addNewQuestion,
@@ -20,7 +20,7 @@ const TestingSingleChoice = () => {
     onAnswerChange,
     onAnsverCorrectChange,
     onCreateNewTestBtn,
-  } = useTestingSingleChoiceHook();
+  } = useTestingMultipleChoiceHook();
 
   const renderQuestion = useCallback(
     (question: Question, key: number) => {
@@ -64,7 +64,7 @@ const TestingSingleChoice = () => {
   );
 };
 
-export default TestingSingleChoice;
+export default TestingMultipleChoice;
 
 const styles = StyleSheet.create({
   container: {
