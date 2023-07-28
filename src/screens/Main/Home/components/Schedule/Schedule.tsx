@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import {
   ILessonTemplateRequest,
@@ -11,6 +11,8 @@ import DatePicker from 'react-native-date-picker';
 import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
 import UiText from '../../../../../components/text';
 import {ScrollViewPadding} from '../../../../../constants/constants';
+import {COLORS} from '../../../../../constants/colors';
+import {ThemeContext} from '../../../../../utils/themeContext';
 
 const lessonMap = {
   1: true,
@@ -35,6 +37,10 @@ const ScheduleScreen = ({
     endTime: currentHour,
   });
 
+  const {theme} = useContext(ThemeContext);
+  //@ts-ignore
+  let activeColor = COLORS[theme.mode];
+
   const onHourPress = (type: 'start' | 'end' | null) => () => {
     setPickingTime(type);
   };
@@ -51,7 +57,7 @@ const ScheduleScreen = ({
 
   return (
     <>
-      <View style={styles.container} />
+      <View style={[styles.container]} />
 
       <View style={styles.box}>
         <UiText title="Время" type="mediumRegular20" color="GREY_TWO" />
@@ -62,7 +68,7 @@ const ScheduleScreen = ({
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={ScrollViewPadding}>
+        contentContainerStyle={[ScrollViewPadding]}>
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
           if (!el) {

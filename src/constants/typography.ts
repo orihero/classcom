@@ -63,6 +63,12 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontSize: 20,
     lineHeight: 26,
   },
+  bookRegular23: {
+    fontFamily: FontName[400],
+    fontWeight: '400',
+    fontSize: 23,
+    lineHeight: 29,
+  },
   mediumRegular8: {
     fontFamily: FontName[500],
     fontWeight: '400',

@@ -1,6 +1,13 @@
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren, useState} from 'react';
-import {Image, SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
 import {ROUTES} from '../../navigation/routes';
 import {Assets} from '../../utils/requireAssets';
@@ -9,6 +16,9 @@ import {dateInRussain, getWeekDays} from '../../utils/dateHelper';
 import {useSelector} from 'react-redux';
 import {userSelector} from '../../store/slices/user.slice';
 import DatePicker from 'react-native-date-picker';
+import {COLORS} from '../../constants/colors';
+import {useContext} from 'react';
+import {ThemeContext} from '../../utils/themeContext';
 
 const MainWrapper = ({
   date,
@@ -35,8 +45,43 @@ const MainWrapper = ({
     setDatePickerShown(e => !e);
   };
 
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
+
+  const styles = StyleSheet.create({
+    activeCard: {
+      paddingHorizontal: 10,
+      borderRadius: 10,
+      paddingVertical: 2,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: activeColor.acriveBox,
+    },
+    activeTextWeek: {
+      fontSize: 23,
+      fontWeight: '400',
+      color: activeColor.activeTextColor,
+    },
+    nameText: {
+      fontSize: 15,
+      fontWeight: '500',
+      color: activeColor.textColor2,
+    },
+    useNameBox: {
+      marginTop: 10,
+      borderBottomWidth: 1,
+      borderColor: activeColor.textColor2,
+      marginHorizontal: 20,
+      paddingBottom: 12,
+    },
+  });
+
   return (
-    <View style={mainWrapperStyles.container}>
+    <View
+      style={[
+        mainWrapperStyles.container,
+        {backgroundColor: activeColor.primary},
+      ]}>
       <SafeAreaView>
         <View style={mainWrapperStyles.headerContainer}>
           <TouchableOpacity onPress={onPress}>
@@ -54,8 +99,8 @@ const MainWrapper = ({
         </View>
       </SafeAreaView>
 
-      <View style={mainWrapperStyles.useNameBox}>
-        <Text style={mainWrapperStyles.nameText}>
+      <View style={styles.useNameBox}>
+        <Text style={styles.nameText}>
           {user.firstName} {user.lastName}
         </Text>
       </View>
@@ -88,16 +133,30 @@ const MainWrapper = ({
           return (
             <View
               key={e.day}
-              style={
-                e.current ? mainWrapperStyles.week : mainWrapperStyles.weekBox
-              }>
-              <Text style={mainWrapperStyles.textWeek}>{e.date}</Text>
-              <Text style={mainWrapperStyles.textWeek}>{e.day}</Text>
+              style={e.current ? styles.activeCard : mainWrapperStyles.weekBox}>
+              <Text
+                style={
+                  e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
+                }>
+                {e.day}
+              </Text>
+              <Text
+                style={
+                  e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
+                }>
+                {e.date}
+              </Text>
             </View>
           );
         })}
       </View>
-      <View style={mainWrapperStyles.childrenContainer}>{children}</View>
+      <View
+        style={[
+          mainWrapperStyles.childrenContainer,
+          {backgroundColor: activeColor?.secondary},
+        ]}>
+        {children}
+      </View>
     </View>
   );
 };

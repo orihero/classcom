@@ -23,6 +23,7 @@ interface IProps {
   placeholderColor?: string;
   disablePlaceholder?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
+  parentContainerStyle?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<TextStyle>;
   eyes?: boolean;
   icon?: any;
@@ -38,6 +39,7 @@ const Input = ({
   placeholderColor = COLORS.GREY,
   disablePlaceholder,
   containerStyle,
+  parentContainerStyle,
   inputStyle,
   eyes,
   title,
@@ -51,7 +53,7 @@ const Input = ({
     setIsPasswordVisible(e => !e);
   };
   return (
-    <View style={styles.parentContainer}>
+    <View style={[styles.parentContainer, parentContainerStyle]}>
       <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
       <View style={[styles.container, containerStyle]}>
         {icon && icon}

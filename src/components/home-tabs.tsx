@@ -1,9 +1,12 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
 import {COLORS} from '../constants/colors';
 import UiText from './text';
 import SIZES from '../constants/sizes';
+import {useContext} from 'react';
+import {ThemeContext} from '../utils/themeContext';
 
 interface TabProps {
   content: Array<{
@@ -35,6 +38,11 @@ const TopTabs = ({
   const onTabPress = (i: number) => () => {
     setActiveTab(i);
   };
+
+  const {theme} = useContext(ThemeContext);
+  //@ts-ignore
+  let activeColor = COLORS[theme];
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -44,7 +52,9 @@ const TopTabs = ({
               <TouchableOpacity
                 style={[
                   {
-                    borderColor: activeTab === i ? COLORS.BLUE : COLORS.WHITE,
+                    borderColor:
+                      activeTab === i ? activeColor.acriveBox : 'transparent',
+                    borderBottomWidth: activeTab === i ? 4 : 0,
                   },
                   styles.touchAbleBtn,
                 ]}
@@ -61,7 +71,7 @@ const TopTabs = ({
                 <UiText
                   style={
                     activeTab === i
-                      ? styles.activeTabText
+                      ? {color: activeColor.acriveBox}
                       : styles.nonActiveText
                   }
                   title={e.title}
@@ -77,22 +87,32 @@ const TopTabs = ({
           onPress={() => setShift(1)}
           style={[
             styles.tab,
-            shift === 1 ? null : {borderColor: COLORS.WHITE},
+            shift === 1 ? {borderColor: activeColor.acriveBox} : null,
           ]}>
           <UiText
-            style={shift === 1 ? styles.textHeader : styles.headerText}
+            style={
+              shift === 1 ? {color: activeColor.acriveBox} : styles.headerText
+            }
             title="1-смена"
             type={shift === 1 ? 'Bold16' : 'mediumRegular16'}
           />
         </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() => setShift(2)}
           style={[
             styles.tab,
-            shift === 2 ? null : {borderColor: COLORS.WHITE},
+            shift === 2 ? {borderColor: activeColor.acriveBox} : null,
           ]}>
           <UiText
-            style={shift === 2 ? styles.textHeader : styles.headerText}
+            style={
+              shift === 2
+                ? {
+                    color: activeColor.acriveBox,
+                    borderColor: activeColor.acriveBox,
+                  }
+                : styles.headerText
+            }
             title="2-смена"
             type={shift === 2 ? 'Bold16' : 'mediumRegular16'}
           />
@@ -142,7 +162,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   activeTabText: {
-    color: COLORS.BLUE,
+    color: 'red',
   },
   nonActiveText: {
     color: COLORS.NON_ACTIVE_TEXT,
@@ -170,8 +190,8 @@ export const styles = StyleSheet.create({
   tab: {
     padding: 20,
     borderRadius: 30,
-    borderColor: COLORS.BLUE,
     borderWidth: 1,
+    borderColor: 'transparent',
     paddingVertical: 8,
     marginHorizontal: 3,
   },

@@ -5,8 +5,8 @@ import TestingScreen from '../../screens/Main/Testing/view';
 import CreateTestScreen from '../../screens/Main/CreateTest/view';
 import TestingSingleChoice from '../../screens/Main/Testing/screens/TestingSingle/TestingSingle';
 import TestingMultipleChoice from '../../screens/Main/Testing/screens/TestingMultiple/TestingMultiple';
-import TestingSubChoice from '../../screens/Main/Testing/screens/TestingSubsequence/TestingSubsequence';
-import TestingCorresponChoice from '../../screens/Main/Testing/screens/TestingCorrespon/TestingCorrespon';
+// import TestingSubChoice from '../../screens/Main/Testing/screens/TestingSubsequence/TestingSubsequence';
+// import TestingCorresponChoice from '../../screens/Main/Testing/screens/TestingCorrespon/TestingCorrespon';
 import TestingOmissionsChoice from '../../screens/Main/Testing/screens/TestingOmissions/TestOmissions';
 import TestingBooleanChoice from '../../screens/Main/Testing/screens/TestingBoolean/TestingBoolean';
 
@@ -30,11 +30,11 @@ const TestingStack = () => {
       />
       <Stack.Screen
         name={ROUTES.TESTING.TESTING_SUBSEQUENCE}
-        component={TestingSubChoice}
+        component={TestingOmissionsChoice}
       />
       <Stack.Screen
         name={ROUTES.TESTING.TESTING_CORRESPONDENCE}
-        component={TestingCorresponChoice}
+        component={TestingOmissionsChoice}
       />
       <Stack.Screen
         name={ROUTES.TESTING.TESTING_OMISSIONS}

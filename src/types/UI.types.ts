@@ -50,3 +50,9 @@ export interface PaddingProps {
   paddingVertical?: number | string;
   paddingHorizontal?: number | string;
 }
+
+export enum ThemeType {
+  LIGHT = 'light',
+  DARK = 'dark',
+  GREEN = 'green',
+}

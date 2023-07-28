@@ -1,11 +1,12 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useContext} from 'react';
 import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
 import {ArrowLeftIcon, BellIcon} from '../../assets/icons/index';
 import {COLORS} from '../../constants/colors';
 import {defaultWrapperStyles} from './DefaultWrapper.styles';
 import {ROUTES} from '../../navigation/routes';
 import {SettingHooks} from '../../screens/Main/Setting/hooks';
+import {ThemeContext} from '../../utils/themeContext';
 
 export interface DefaultWrapperProps {
   title: string;
@@ -27,9 +28,16 @@ const DefaultWrapper = ({
   const onNotificationPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
   };
+  const {theme} = useContext(ThemeContext);
+  //@ts-ignore
+  let activeColor = COLORS[theme];
 
   return (
-    <View style={defaultWrapperStyles.container}>
+    <View
+      style={[
+        defaultWrapperStyles.container,
+        {backgroundColor: activeColor.secondary},
+      ]}>
       <SafeAreaView>
         <View style={defaultWrapperStyles.headerContainer}>
           <TouchableOpacity onPress={onArrowLeftPress}>
@@ -45,12 +53,22 @@ const DefaultWrapper = ({
           )}
         </View>
         {hasUser && (
-          <Text style={defaultWrapperStyles.userText}>
+          <Text
+            style={[
+              defaultWrapperStyles.userText,
+              {color: activeColor.textColor2},
+            ]}>
             {account?.firstName} {account.lastName}
           </Text>
         )}
       </SafeAreaView>
-      <View style={defaultWrapperStyles.childrenContainer}>{children}</View>
+      <View
+        style={[
+          defaultWrapperStyles.childrenContainer,
+          {backgroundColor: activeColor.secondary},
+        ]}>
+        {children}
+      </View>
     </View>
   );
 };

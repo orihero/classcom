@@ -49,7 +49,6 @@ export const mainWrapperStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   week: {
-    backgroundColor: COLORS.LIGHT_BLUE,
     paddingHorizontal: 10,
     borderRadius: 10,
     paddingVertical: 2,
@@ -63,7 +62,6 @@ export const mainWrapperStyles = StyleSheet.create({
   },
   childrenContainer: {
     paddingTop: 15,
-    backgroundColor: COLORS.WHITE,
     flex: 1,
     marginTop: 20,
     borderTopLeftRadius: 30,

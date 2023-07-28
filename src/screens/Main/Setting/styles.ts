@@ -1,5 +1,6 @@
 import {COLORS} from '../../../constants/colors';
 import {StyleSheet} from 'react-native';
+import {PaddingHorizantal} from '../../../constants/sizes';
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,6 +10,9 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  inputContainer: {
+    marginHorizontal: PaddingHorizantal,
   },
   image: {
     width: 75,
