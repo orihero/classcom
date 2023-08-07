@@ -1,43 +1,34 @@
-import React, {useLayoutEffect} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import {persistor, store} from './src/store/configureStore';
+import {getData, persistor, store} from './src/store/configureStore';
 import {NavigationContainer} from '@react-navigation/native';
 import RootNavigator from './src/navigation/RootNavigator';
-import {ThemeContext} from './src/utils/themeContext';
 import {ThemeType} from './src/types';
-import {ThemeHelper} from './src/helper/ThemeHelper';
-import {ThemeProvider, createTheme} from '@rneui/themed';
+import {ThemeContext} from './src/utils/themeContext';
+import {storeData} from './src/store/configureStore';
 
 const App = () => {
-  // const [theme, setTheme] = React.useState<ThemeType>(ThemeType.DARK);
+  const [theme, setTheme] = React.useState<ThemeType>(ThemeType.LIGHT);
 
-  const theme = createTheme({
-    lightColors: {
-      primary: '#e7e7e8',
-    },
-    darkColors: {
-      primary: '#000',
-    },
-    mode: 'light',
-  });
+  const updateTheme = (newTheme: ThemeType) => {
+    setTheme(newTheme);
+    storeData('theme', newTheme);
+  };
 
-  // const updateTheme = (newTheme: ThemeType) => {
-  //   setTheme(newTheme);
-  // };
+  const fetchStoredTheme = async () => {
+    const storedTheme = await getData('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  };
 
-  // const themeRef = React.useRef({
-  //   theme,
-  //   updateTheme,
-  // });
-
-  // useLayoutEffect(() => {
-  //   ThemeHelper.set(themeRef);
-  //   ThemeHelper._theme = theme;
-  // }, [theme]);
+  React.useEffect(() => {
+    fetchStoredTheme();
+  }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeContext.Provider value={{theme, updateTheme}}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>
@@ -45,7 +36,7 @@ const App = () => {
           </NavigationContainer>
         </PersistGate>
       </Provider>
-    </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };
 

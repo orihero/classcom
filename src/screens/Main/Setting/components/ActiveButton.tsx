@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useContext, useState} from 'react';
 import {
   LayoutAnimation,
   Platform,
@@ -9,20 +10,31 @@ import {
   View,
 } from 'react-native';
 import {COLORS} from '../../../../constants/colors';
+import {ThemeContext} from '../../../../utils/themeContext';
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 }
-const activeColor = COLORS.BLUE;
-const inActiveColor = COLORS.BLUE;
+
+// const activeColor = COLORS.BLUE;
+// const inActiveColor = COLORS.BLUE;
 export default function Active_Button() {
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
+
+  const inActiveColor = activeColor?.primary;
+  const backActiveColor = activeColor.primary;
+
   const [toggleActive, setToggle] = useState(false);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Text style={styles.text}>Push уведомления</Text>
       <TouchableOpacity
-        style={[styles.toggleContainer]}
+        style={[
+          styles.toggleContainer,
+          {backgroundColor: activeColor.textColor2},
+        ]}
         onPress={() => {
           LayoutAnimation.easeInEaseOut();
           setToggle(!toggleActive);
@@ -32,7 +44,7 @@ export default function Active_Button() {
           style={[
             styles.toggleBtn,
             toggleActive
-              ? {backgroundColor: activeColor, alignSelf: 'flex-end'}
+              ? {backgroundColor: backActiveColor, alignSelf: 'flex-end'}
               : {backgroundColor: inActiveColor},
           ]}
         />

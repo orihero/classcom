@@ -82,6 +82,10 @@ export const styles = StyleSheet.create({
     marginVertical: 10,
     marginLeft: 20,
   },
+  textStyle: {
+    paddingHorizontal: PaddingHorizantal,
+    color: COLORS.GREY_BLACK,
+  },
   colorContainer: {
     flexDirection: 'row',
     marginHorizontal: 10,

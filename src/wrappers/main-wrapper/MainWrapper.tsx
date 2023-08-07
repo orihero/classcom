@@ -55,7 +55,7 @@ const MainWrapper = ({
       paddingVertical: 2,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: activeColor.acriveBox,
+      backgroundColor: 'red',
     },
     activeTextWeek: {
       fontSize: 23,

@@ -51,7 +51,6 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
     backgroundColor: COLORS.BLUE,
     marginHorizontal: 20,
     paddingVertical: 17,

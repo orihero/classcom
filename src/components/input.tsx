@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -12,6 +12,8 @@ import {
 import {EyesIcon} from '../assets/icons';
 import {COLORS} from '../constants/colors';
 import {PaddingHorizantal} from '../constants/sizes';
+import {ThemeContext} from '../utils/themeContext';
+import UiText from './text';
 
 interface IProps {
   name?: string;
@@ -49,12 +51,19 @@ const Input = ({
   errors,
 }: IProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
   const onEyePress = () => {
     setIsPasswordVisible(e => !e);
   };
+
   return (
     <View style={[styles.parentContainer, parentContainerStyle]}>
-      <Text style={[styles.text, dark && styles.darkText]}>{title}</Text>
+      <UiText
+        style={[styles.text, dark && styles.darkText]}
+        title={title}
+        type="regular16"
+      />
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
         <TextInput
@@ -64,7 +73,7 @@ const Input = ({
           placeholder={!disablePlaceholder ? placeholder : undefined}
           placeholderTextColor={placeholderColor}
           textAlignVertical={'center'}
-          style={[styles.input, inputStyle]}
+          style={[styles.input, inputStyle, {color: activeColor?.textColor}]}
           secureTextEntry={isPasswordVisible}
         />
         {eyes ? (

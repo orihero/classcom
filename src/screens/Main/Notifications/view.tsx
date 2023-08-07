@@ -42,7 +42,7 @@ const NotificationScreen = () => {
     }
   };
   return (
-    <WhiteWrapper>
+    <WhiteWrapper title="Уведомления">
       <View style={styles.toContainer}>{returnNotifaction?.()}</View>
     </WhiteWrapper>
   );

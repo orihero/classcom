@@ -105,6 +105,12 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontSize: 24,
     lineHeight: 28,
   },
+  mediumRegular26: {
+    fontFamily: FontName[500],
+    fontWeight: '500',
+    fontSize: 26,
+    lineHeight: 30,
+  },
   extraBold8: {
     fontFamily: FontName[600],
     fontWeight: '600',

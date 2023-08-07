@@ -40,8 +40,6 @@ export const useTestingBooleanChoiceHook = () => {
     testName: store.testName,
   });
 
-  console.log('newTest', newTest);
-
   const onQustionChange = useCallback((id: number, value: string) => {
     updateNewTest(oldTest => ({
       ...oldTest,

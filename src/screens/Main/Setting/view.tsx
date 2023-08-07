@@ -16,24 +16,31 @@ import {
 import DropDownAnimated from '../../../components/drop-down';
 import {COLORS} from '../../../constants/colors';
 import {SettingHooks} from './hooks';
-import Active_Button from './components/Active-button';
+import Active_Button from './components/ActiveButton';
 import Button from '../../../components/button';
 import {ThemeContext} from '../../../utils/themeContext';
 import {ThemeType} from '../../../types';
-import {ThemeHelper} from '../../../helper/ThemeHelper';
+import {useSelector} from 'react-redux';
+import {sliderRangeSelector} from '../../../store/slices/sliderRange';
+import UiText from '../../../components/text';
 
 const SettingScreen = () => {
-  const {updateTheme} = useContext(ThemeContext);
-  //@ts-ignore
-  let activeColor = COLORS[ThemeHelper._theme];
+  const {updateTheme, theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
 
-  const {range, setRange, account} = SettingHooks();
+  const {range, onChangeRange, account, onChangePasswordPress} = SettingHooks();
+  console.log('range', range);
+
+  const store = useSelector(sliderRangeSelector);
+
   return (
     <DefaultWrapper title="Настройки" hasUser>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={Assets.images.user} />
         <TouchableOpacity>
-          <Text style={styles.imageText}>Добавить фото</Text>
+          <Text style={[styles.imageText, {color: activeColor.textColor2}]}>
+            Добавить фото
+          </Text>
         </TouchableOpacity>
       </View>
       <ScrollView
@@ -43,6 +50,7 @@ const SettingScreen = () => {
           <Input
             title="Имя"
             placeholder={account?.firstName}
+            value={account?.firstName}
             icon={<UserIcon />}
             containerStyle={{backgroundColor: activeColor?.tertiary}}
             parentContainerStyle={styles.inputContainer}
@@ -50,6 +58,7 @@ const SettingScreen = () => {
           <Input
             title="Фамилия"
             placeholder={account?.lastName}
+            value={account?.lastName}
             icon={<UserIcon />}
             containerStyle={{backgroundColor: activeColor?.tertiary}}
             parentContainerStyle={styles.inputContainer}
@@ -57,6 +66,7 @@ const SettingScreen = () => {
           <Input
             title="Логин"
             placeholder={account?.login}
+            value={account?.login}
             icon={<UserIcon />}
             containerStyle={{backgroundColor: activeColor?.tertiary}}
             parentContainerStyle={styles.inputContainer}
@@ -72,12 +82,20 @@ const SettingScreen = () => {
             text="Язык"
             iconActive={<ArrowDown />}
             iconNoActive={<ArrowUp />}
-            containerInner={styles.dropInner}
-            container={styles.dropContainer}
+            containerInner={[
+              styles.dropInner,
+              {backgroundColor: activeColor?.tertiary},
+            ]}
+            container={[
+              styles.dropContainer,
+              {backgroundColor: activeColor?.tertiary},
+            ]}
             dropDown={
-              <View style={styles.dropDown}>
+              <View style={[styles.dropDown]}>
                 <WorldIcon />
-                <Text style={styles.text}>Русский</Text>
+                <Text style={[styles.text, {color: activeColor.textColor}]}>
+                  Русский
+                </Text>
               </View>
             }
             dropDownInner={
@@ -100,21 +118,30 @@ const SettingScreen = () => {
           <Text style={styles.titleSlider}>Размер текста</Text>
           <View style={styles.sliderContainer}>
             <Slider
-              style={{width: '85%', height: 40}}
-              minimumValue={0}
+              style={{
+                width: '85%',
+                height: 40,
+              }}
+              minimumValue={0.5}
               maximumValue={1}
-              minimumTrackTintColor={COLORS.BLUE}
-              maximumTrackTintColor={COLORS.WHITE_ONE}
-              thumbTintColor={COLORS.BLUE}
-              value={0.5}
+              minimumTrackTintColor={activeColor?.primary}
+              maximumTrackTintColor={activeColor?.textColor2}
+              thumbTintColor={activeColor?.primary}
+              value={(store.value + 50) / 100}
               onValueChange={value =>
-                setRange(parseInt((value * 50) as never) as never)
+                onChangeRange(parseInt((value * 100) as never, 10) as never)
               }
             />
-            <Text style={styles.textSlider}>{range}</Text>
+            <Text style={[styles.textSlider, {color: activeColor.textColor}]}>
+              {range}
+            </Text>
           </View>
 
-          <Text style={styles.titleSlider}>Поменять стилистику</Text>
+          <UiText
+            title="Поменять стилистику"
+            type="bookRegular18"
+            style={styles.textStyle}
+          />
           <View style={styles.colorContainer}>
             <TouchableOpacity
               activeOpacity={0.7}
@@ -132,23 +159,21 @@ const SettingScreen = () => {
               onPress={() => updateTheme(ThemeType.LIGHT)}
             />
           </View>
-
           <Active_Button />
-
           <View>
             <Button
-              textStyle={{color: COLORS.BLUE}}
-              style={styles.button}
-              onPress={() => {
-                ThemeHelper.update(ThemeType.LIGHT);
-              }}
+              textStyle={{color: activeColor?.noneBackgroundBtn}}
+              style={[
+                styles.button,
+                {borderColor: activeColor?.noneBackgroundBtn},
+              ]}
+              onPress={onChangePasswordPress}
               text="Изменить пароль"
             />
             <Button
               text="Изменить"
-              onPress={() => {
-                ThemeHelper.update(ThemeType.GREEN);
-              }}
+              onPress={() => {}}
+              style={{backgroundColor: activeColor.primary}}
             />
           </View>
         </View>

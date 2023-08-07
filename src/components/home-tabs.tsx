@@ -40,7 +40,6 @@ const TopTabs = ({
   };
 
   const {theme} = useContext(ThemeContext);
-  //@ts-ignore
   let activeColor = COLORS[theme];
 
   return (

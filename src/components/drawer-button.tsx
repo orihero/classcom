@@ -1,18 +1,18 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {HomeIcon} from '../assets/icons';
 
 interface DrawerProps {
   text: string;
   icon: any;
   onPress: () => void;
+  textColor?: string;
 }
 
-const DrawerButton = ({text, icon, onPress}: DrawerProps) => {
+const DrawerButton = ({text, icon, onPress, textColor}: DrawerProps) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       {icon}
-      <Text style={styles.text}>{text}</Text>
+      <Text style={[styles.text, {color: textColor}]}>{text}</Text>
     </TouchableOpacity>
   );
 };

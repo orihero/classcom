@@ -1,28 +1,51 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren} from 'react';
+import React, {FC, useContext} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {ArrowLeftIcon} from '../../assets/icons';
 import {COLORS} from '../../constants/colors';
 import {defaultWrapperStyles} from '../default-wrapper/DefaultWrapper.styles';
 import {whiteWrapperStyles} from './WhiteWrapper.styles';
+import {ThemeContext} from '../../utils/themeContext';
 
-const WhiteWrapper = (props: PropsWithChildren<any>) => {
+interface Props {
+  title: string;
+  children?: React.ReactNode;
+}
+
+const WhiteWrapper: FC<Props> = ({title, children}) => {
   const navigation = useNavigation();
   const onArrowLeftPress = () => {
     navigation.goBack();
   };
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
+
   return (
-    <View style={whiteWrapperStyles.container}>
+    <View
+      style={[
+        whiteWrapperStyles.container,
+        {backgroundColor: activeColor.secondary},
+      ]}>
       <SafeAreaView>
         <View style={whiteWrapperStyles.headerContainer}>
           <TouchableOpacity onPress={onArrowLeftPress}>
-            <ArrowLeftIcon fill={COLORS.GREY_BLACK} />
+            <ArrowLeftIcon fill={activeColor.textColor} />
           </TouchableOpacity>
-          <Text style={whiteWrapperStyles.titleText}>Уведомления</Text>
+          <Text
+            style={[
+              whiteWrapperStyles.titleText,
+              {color: activeColor.textColor},
+            ]}>
+            {title}
+          </Text>
         </View>
       </SafeAreaView>
-      <View style={defaultWrapperStyles.childrenContainer}>
-        {props.children}
+      <View
+        style={
+          (defaultWrapperStyles.childrenContainer,
+          {backgroundColor: activeColor.secondary})
+        }>
+        {children}
       </View>
     </View>
   );

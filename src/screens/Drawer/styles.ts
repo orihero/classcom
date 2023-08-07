@@ -6,11 +6,12 @@ export const styles = StyleSheet.create({
   },
   userContainer: {
     height: 190,
-    backgroundColor: '#5A8FBB',
   },
+
   screenContainer: {
     paddingTop: 15,
   },
+
   image: {
     width: 94,
     height: 94,
@@ -18,6 +19,7 @@ export const styles = StyleSheet.create({
     borderRadius: 2000,
     marginHorizontal: 20,
   },
+
   userText: {
     fontSize: 17,
     fontWeight: '500',

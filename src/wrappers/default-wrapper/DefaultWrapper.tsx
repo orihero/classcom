@@ -36,7 +36,7 @@ const DefaultWrapper = ({
     <View
       style={[
         defaultWrapperStyles.container,
-        {backgroundColor: activeColor.secondary},
+        {backgroundColor: activeColor.primary},
       ]}>
       <SafeAreaView>
         <View style={defaultWrapperStyles.headerContainer}>

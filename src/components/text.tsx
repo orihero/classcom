@@ -1,8 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {COLORS} from '../constants/colors';
 import {TYPOGRAPHY} from '../constants/typography';
-import {FC} from 'react';
+import {FC, useMemo} from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';
 import {BaseText, PaddingProps} from '../types';
+import {useSelector} from 'react-redux';
+import {sliderRangeSelector} from '../store/slices/sliderRange';
 
 type TextProps = BaseText &
   PaddingProps & {
@@ -29,16 +32,22 @@ const UiText: FC<TextProps> = ({
   textTransform,
   ...res
 }) => {
+  const store = useSelector(sliderRangeSelector);
+
+  const fontSize = useMemo(
+    () => TYPOGRAPHY[type].fontSize * (store.value / 100 + 1),
+    [store.value, type],
+  );
+
   if (!isActive || !title) {
-    // eslint-disable-next-line react/react-in-jsx-scope
     return <Text />;
   }
 
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <Text
       style={[
         TYPOGRAPHY[type],
+        //@ts-ignore
         {
           textAlign: textPosition,
           color: COLORS[color],
@@ -49,6 +58,7 @@ const UiText: FC<TextProps> = ({
           paddingHorizontal,
           paddingVertical,
           textTransform,
+          fontSize,
         },
         style,
       ]}
