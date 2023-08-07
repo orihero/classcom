@@ -19,6 +19,7 @@ import DatePicker from 'react-native-date-picker';
 import {COLORS} from '../../constants/colors';
 import {useContext} from 'react';
 import {ThemeContext} from '../../utils/themeContext';
+import {notifactionCountSelector} from '../../store/slices/notifactionCounter';
 
 const MainWrapper = ({
   date,
@@ -30,6 +31,7 @@ const MainWrapper = ({
   const drawer = useNavigation();
 
   const user = useSelector(userSelector);
+  const notifactionCount = useSelector(notifactionCountSelector);
 
   const onPress = () => {
     drawer.dispatch(DrawerActions.toggleDrawer);
@@ -74,6 +76,24 @@ const MainWrapper = ({
       marginHorizontal: 20,
       paddingBottom: 12,
     },
+    noticBtn: {
+      position: 'relative',
+    },
+    counterNotifaction: {
+      position: 'absolute',
+      top: -6,
+      right: -6,
+      backgroundColor: COLORS.YELLOW,
+      width: 20,
+      height: 20,
+      borderRadius: 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 2,
+    },
+    counterNotifactionText: {
+      color: COLORS.WHITE,
+    },
   });
 
   return (
@@ -92,10 +112,17 @@ const MainWrapper = ({
             style={mainWrapperStyles.image}
             source={Assets.images.classPhoto}
           />
+          <View style={styles.noticBtn}>
+            {notifactionCount > 0 && (
+              <View style={styles.counterNotifaction}>
+                <Text style={styles.counterNotifactionText}>2</Text>
+              </View>
+            )}
 
-          <TouchableOpacity onPress={onBellPress}>
-            <BellIcon />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={onBellPress}>
+              <BellIcon />
+            </TouchableOpacity>
+          </View>
         </View>
       </SafeAreaView>
 

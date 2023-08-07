@@ -47,9 +47,11 @@ const DefaultWrapper = ({
           {!hasIcon ? (
             <View style={{width: 20}} />
           ) : (
-            <TouchableOpacity onPress={onNotificationPress}>
-              <BellIcon />
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity onPress={onNotificationPress}>
+                <BellIcon />
+              </TouchableOpacity>
+            </View>
           )}
         </View>
         {hasUser && (

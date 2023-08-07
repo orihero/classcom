@@ -50,4 +50,5 @@ export const COLORS = {
   BLUISH_WHITE2: '#78AAD3',
   BORDER_COLOR: '#CECECE',
   NON_ACTIVE_TEXT: '#757575',
+  YELLOW: '#F3C831',
 };
