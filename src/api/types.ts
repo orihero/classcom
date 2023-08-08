@@ -400,3 +400,36 @@ export interface Answer {
   id: number;
   questionId: number;
 }
+
+//statistic interface
+
+export interface TransactionHistory {
+  content: Content[];
+  first: boolean;
+  last: boolean;
+  number: number;
+  numberOfElements: number;
+  size: number;
+  sort: any;
+  totalElements: number;
+  totalPages: number;
+}
+
+export interface Content {
+  id?: number;
+  amount: number;
+  endDate: Date;
+  ownerName: string;
+  startDate: Date;
+  status: string;
+}
+
+export interface ModeratorHistoryiesType {
+  actionDate: string;
+  actionType: string;
+  bonus: number;
+  entityID: number;
+  entityType: string;
+  id: number;
+  ownerName: string;
+}

@@ -14,6 +14,7 @@ type TextProps = BaseText &
     isActive?: boolean;
     type?: keyof typeof TYPOGRAPHY;
     color?: keyof typeof COLORS;
+    themeColor?: string;
   };
 
 const UiText: FC<TextProps> = ({
@@ -30,6 +31,7 @@ const UiText: FC<TextProps> = ({
   paddingHorizontal,
   paddingVertical,
   textTransform,
+  themeColor,
   ...res
 }) => {
   const store = useSelector(sliderRangeSelector);
@@ -50,7 +52,7 @@ const UiText: FC<TextProps> = ({
         //@ts-ignore
         {
           textAlign: textPosition,
-          color: COLORS[color],
+          color: themeColor ? themeColor : COLORS[color],
           paddingLeft,
           paddingRight,
           paddingBottom,

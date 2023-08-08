@@ -19,6 +19,7 @@ import {
   IScheduleTemplateResponse,
   IThematicPlanResource,
   LessonTemplatesType,
+  ModeratorHistoryiesType,
   NotifactionType,
   PostChatItem,
   QuestionAndAnswersItems,
@@ -26,6 +27,7 @@ import {
   ScheduleCourses,
   TechService,
   TechServiceThemeItems,
+  TransactionHistory,
 } from './types';
 
 import {store} from '../store/configureStore';
@@ -160,5 +162,17 @@ export const REQUESTS = {
   notifaction: {
     getMyNotifactionItems: () =>
       axiosInstance.get<NotifactionType[]>('/v2/my-notification/items'),
+  },
+
+  // statistic screens
+
+  statistic: {
+    getTransactionHistory: () =>
+      axiosInstance.get<TransactionHistory>('/v2/transaction/history'),
+
+    getDownloadHistory: () => axiosInstance.get<any>('/donwloads'),
+
+    getModeratorHistories: () =>
+      axiosInstance.get<ModeratorHistoryiesType[]>('/moderator-histories'),
   },
 };
