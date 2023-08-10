@@ -37,7 +37,7 @@ const UiText: FC<TextProps> = ({
   const store = useSelector(sliderRangeSelector);
 
   const fontSize = useMemo(
-    () => TYPOGRAPHY[type].fontSize * (store.value / 100 + 1),
+    () => TYPOGRAPHY[type].fontSize * (store.value / 100 + 1) || 10,
     [store.value, type],
   );
 

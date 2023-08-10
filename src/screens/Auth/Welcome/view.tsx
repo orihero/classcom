@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import {Assets} from '../../../utils/requireAssets';

@@ -20,8 +20,6 @@ import Active_Button from './components/ActiveButton';
 import Button from '../../../components/button';
 import {ThemeContext} from '../../../utils/themeContext';
 import {ThemeType} from '../../../types';
-import {useSelector} from 'react-redux';
-import {sliderRangeSelector} from '../../../store/slices/sliderRange';
 import UiText from '../../../components/text';
 
 const SettingScreen = () => {
@@ -30,8 +28,6 @@ const SettingScreen = () => {
 
   const {range, onChangeRange, account, onChangePasswordPress} = SettingHooks();
   console.log('range', range);
-
-  const store = useSelector(sliderRangeSelector);
 
   return (
     <DefaultWrapper title="Настройки" hasUser>
@@ -127,7 +123,6 @@ const SettingScreen = () => {
               minimumTrackTintColor={activeColor?.primary}
               maximumTrackTintColor={activeColor?.textColor2}
               thumbTintColor={activeColor?.primary}
-              value={(store.value + 50) / 100}
               onValueChange={value =>
                 onChangeRange(parseInt((value * 100) as never, 10) as never)
               }

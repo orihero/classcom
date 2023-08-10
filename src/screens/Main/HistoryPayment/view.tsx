@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react/react-in-jsx-scope */
-import {FlatList, ListRenderItem, ScrollView, View} from 'react-native';
+import {FlatList, ListRenderItem, View} from 'react-native';
 import PaymentCard from '../../../components/paymentCard';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import {Styles} from './styles';
-import {ScrollViewPadding} from '../../../constants/constants';
 import {HistoryPaymentHook} from './hook';
 import {Content} from '../../../api/types';
 const HistoryPaymentView = () => {
@@ -25,16 +24,14 @@ const HistoryPaymentView = () => {
 
   return (
     <DefaultWrapper hasUser title="История оплаты">
-      <ScrollView
-        style={Styles.container}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={ScrollViewPadding}>
+      <View style={Styles.container}>
         <FlatList
           data={Content}
+          style={Styles.flatlistContainer}
           renderItem={renderPaymentHistory}
           keyExtractor={(_, index) => index.toString()}
         />
-      </ScrollView>
+      </View>
     </DefaultWrapper>
   );
 };

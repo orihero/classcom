@@ -14,6 +14,7 @@ import TestingStack from './navigation-stack/Testing-stack';
 import ThematicPlanStack from './navigation-stack/Thematic-plan-stack';
 import {ROUTES} from './routes';
 import HomeStack from './navigation-stack/HomeStack';
+import WebViewScreen from '../screens/Main/WebView';
 
 const Drawer = createDrawerNavigator();
 
@@ -84,6 +85,10 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name={ROUTES.STACK.THEMATIC_STACK}
         component={ThematicPlanStack}
+      />
+      <Drawer.Screen
+        name={ROUTES.WEB_VIEW.WEB_VIEW}
+        component={WebViewScreen}
       />
     </Drawer.Navigator>
   );

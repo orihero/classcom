@@ -5,4 +5,7 @@ export const Styles = StyleSheet.create({
   container: {
     paddingHorizontal: PaddingHorizantal,
   },
+  flatlistContainer: {
+    height: '100%',
+  },
 });

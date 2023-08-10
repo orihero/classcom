@@ -33,6 +33,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-snackbar": "^2.4.0",
     "react-native-svg": "^12.4.0",
+    "react-native-webview": "^13.2.2",
     "react-navigation-stack": "react-navigation/stack",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",

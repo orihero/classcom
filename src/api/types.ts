@@ -433,3 +433,26 @@ export interface ModeratorHistoryiesType {
   id: number;
   ownerName: string;
 }
+
+export interface SubscriptionsItemProps {
+  id: number;
+  amount: number;
+  name: string;
+  details: string;
+  applicableDays: number;
+}
+
+export interface PostPayment {
+  subscriptionId: number;
+}
+
+export interface PostPaymentResponse {
+  errorCode: number;
+  message: string;
+  result: Result;
+}
+
+export interface Result {
+  orderId: string;
+  paymentRedirectUrl: string;
+}

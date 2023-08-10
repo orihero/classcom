@@ -22,9 +22,12 @@ import {
   ModeratorHistoryiesType,
   NotifactionType,
   PostChatItem,
+  PostPayment,
+  PostPaymentResponse,
   QuestionAndAnswersItems,
   ReferenceChatItems,
   ScheduleCourses,
+  SubscriptionsItemProps,
   TechService,
   TechServiceThemeItems,
   TransactionHistory,
@@ -174,5 +177,14 @@ export const REQUESTS = {
 
     getModeratorHistories: () =>
       axiosInstance.get<ModeratorHistoryiesType[]>('/moderator-histories'),
+  },
+  //payment screens
+
+  payment: {
+    getSubscriptionsItems: () =>
+      axiosInstance.get<SubscriptionsItemProps[]>('/v1/subscriptions/items'),
+
+    postPayment: (data: PostPayment) =>
+      axiosInstance.post<PostPaymentResponse>('/v2/pay', data),
   },
 };

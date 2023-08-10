@@ -1,45 +1,27 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
-import TopTabs from '../../../components/home-tabs';
-import PlateButton from './components/Plate-Button';
+import TestTopTabs, {TopTabsItem} from '../../../components/test-tabs';
 
-const content = [
+import SubscriptionsScreenItem from './screens/Subscriptions/Subscriptions';
+import ActivniyScreenItem from './screens/ActivityItem/Activniy';
+
+const content: TopTabsItem[] = [
   {
-    title: 'Подписки',
-    content: () => (
-      <>
-        <PlateButton
-          onPress={() => console.log('Qissse')}
-          hasButton
-          subscription="Подписка"
-          data=""
-          day="на 30 дней"
-          mony="40.000 сум"
-        />
-      </>
-    ),
+    id: 0,
+    name: 'Подписки',
+    component: SubscriptionsScreenItem,
   },
   {
-    content: () => (
-      <>
-        <PlateButton
-          onPress={() => console.log('Qissse')}
-          // hasButton
-          subscription="Подписка"
-          data="до 25.02.2023"
-          day="c 25.01.2023"
-          // mony="40.000 сум"
-        />
-      </>
-    ),
-    title: 'Активные',
+    id: 1,
+    name: 'Активные',
+    component: ActivniyScreenItem,
   },
 ];
+
 const PaymentScreen = () => {
   return (
     <DefaultWrapper hasUser title="Оплата">
-      <TopTabs content={content} />
+      <TestTopTabs content={content} />
     </DefaultWrapper>
   );
 };

@@ -7,11 +7,12 @@ import Button from '../../../../components/button';
 
 interface PlateProps {
   subscription?: string;
-  day?: string;
+  day?: any;
   data?: string;
-  mony?: string;
-  onPress: () => void;
+  amount?: number;
+  onPress?: () => void;
   hasButton?: boolean;
+  orderBtnPress?: () => void;
 }
 
 const PlateButton = ({
@@ -19,8 +20,9 @@ const PlateButton = ({
   subscription,
   data,
   day,
-  mony,
+  amount,
   onPress,
+  orderBtnPress,
 }: PlateProps) => {
   return (
     <>
@@ -31,23 +33,23 @@ const PlateButton = ({
               <WalletIcon />
               <View style={{marginLeft: 20}}>
                 <Text style={styles.firstText}>{subscription}</Text>
-                <Text style={styles.secondText}>{day}</Text>
+                <Text style={styles.secondText}>{`на ${day} дней`}</Text>
               </View>
             </View>
             <View style={styles.second}>
-              <Text style={styles.monyText}>{mony}</Text>
+              <Text style={styles.monyText}>{`${amount} сум`}</Text>
               {!hasButton ? (
                 <Text style={styles.secondText}>{data}</Text>
               ) : (
-                <Text style={styles.secondText}></Text>
+                <Text style={styles.secondText} />
               )}
             </View>
           </View>
-          <View style={{alignItems: 'flex-end'}}>
+          <View style={styles.cartBottomSec}>
             {hasButton ? (
               <Button
                 text="Купить"
-                onPress={() => console.log('Qsee')}
+                onPress={orderBtnPress}
                 style={styles.btn}
               />
             ) : null}
@@ -67,11 +69,11 @@ const PlateButton = ({
               </View>
             </View>
             <View style={styles.second}>
-              <Text style={styles.monyText}>{mony}</Text>
+              <Text style={styles.monyText}>{amount}</Text>
               {!hasButton ? (
                 <Text style={styles.secondText}>{data}</Text>
               ) : (
-                <Text style={styles.secondText}></Text>
+                <Text style={styles.secondText} />
               )}
             </View>
           </View>
@@ -94,9 +96,9 @@ export default PlateButton;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 5,
+    marginVertical: 8,
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 12,
     borderRadius: 10,
     marginHorizontal: 20,
     backgroundColor: COLORS.WHITE,
@@ -107,13 +109,15 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.2,
     shadowRadius: 3.27,
-
     elevation: 10,
   },
   btnTextContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  cartBottomSec: {
+    alignItems: 'flex-end',
   },
   first: {
     flexDirection: 'row',
@@ -144,6 +148,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 0,
-    marginTop: 10,
   },
 });

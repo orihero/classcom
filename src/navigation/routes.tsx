@@ -10,6 +10,10 @@ export enum MAIN {
   NOTIFICATIONS = 'NOTIFICATIONS',
   CREATE_TEST = 'CREATE_TEST',
 }
+export enum WEB_VIEW {
+  WEB_VIEW = 'WEB_VIEW',
+}
+
 export enum DRAWER {
   DRAWER = 'DRAWER',
   SETTING = 'SETTING',
@@ -85,4 +89,5 @@ export const ROUTES = {
   PROGRAM,
   HOME,
   STATISTIC,
+  WEB_VIEW,
 } as const;

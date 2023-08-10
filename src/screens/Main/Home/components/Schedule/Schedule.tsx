@@ -40,6 +40,7 @@ const ScheduleScreen = ({
   const {theme} = useContext(ThemeContext);
   //@ts-ignore
   let activeColor = COLORS[theme.mode];
+  console.log('activeColor', activeColor);
 
   const onHourPress = (type: 'start' | 'end' | null) => () => {
     setPickingTime(type);
