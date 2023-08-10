@@ -18,6 +18,7 @@ const SupportScreen = () => {
     onUsersMaualPress,
     onSupportSuggestPress,
     onChatSupportPress,
+    callPhoneNumber,
   } = SupportHooks();
   return (
     <DefaultWrapper hasUser title="Служба поддержки">
@@ -47,7 +48,7 @@ const SupportScreen = () => {
         icon={<ChatIcon />}
       />
       <InfoButton
-        onPress={() => console.log('Qise')}
+        onPress={callPhoneNumber}
         title="Звонок в контакт-центр"
         icon={<PhoneBlueIcon />}
       />

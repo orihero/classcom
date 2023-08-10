@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {ROUTES} from '../../../navigation/routes';
+import {Linking} from 'react-native';
 export const SupportHooks = () => {
   const onSupportMessagePress = () => {
     navigation.navigate(ROUTES.SUPPORT.SUPPORT_MESSAGES as never);
@@ -18,6 +19,11 @@ export const SupportHooks = () => {
     navigation.navigate(ROUTES.SUPPORT.CHAT_SUPPORT as never);
   };
 
+  const callPhoneNumber = () => {
+    const phoneNumber = '974009849'; // Replace with the desired phone number
+    Linking.openURL(`tel:${phoneNumber}`);
+  };
+
   const navigation = useNavigation();
   return {
     onSupportMessagePress,
@@ -25,5 +31,6 @@ export const SupportHooks = () => {
     onUsersMaualPress,
     onSupportSuggestPress,
     onChatSupportPress,
+    callPhoneNumber,
   };
 };
