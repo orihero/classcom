@@ -9,7 +9,7 @@ import {useThematicInnerHooks} from './hooks';
 
 const ThematicInnerScreen = () => {
   const {subjectsData, paramsData} = useThematicInnerHooks();
-  console.log(JSON.stringify(subjectsData, null, 2));
+  console.log('subjectsData', JSON.stringify(subjectsData, null, 2));
   const renderView = () => {
     return subjectsData?.map(item => {
       return (

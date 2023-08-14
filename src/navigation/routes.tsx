@@ -14,7 +14,7 @@ export enum WEB_VIEW {
   WEB_VIEW = 'WEB_VIEW',
 }
 
-export enum DRAWER {
+export enum DRAWER_STACK {
   DRAWER = 'DRAWER',
   SETTING = 'SETTING',
   THEMATIC_PLANE = 'THEMATIC_PLANE',
@@ -80,7 +80,7 @@ export enum STACK {
 export const ROUTES = {
   AUTH,
   MAIN,
-  DRAWER,
+  DRAWER_STACK,
   STACK,
   THEMATIC,
   TESTING,

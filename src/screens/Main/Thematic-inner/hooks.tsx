@@ -32,9 +32,7 @@ export const useThematicInnerHooks = () => {
     async (id: string | number) => {
       try {
         const res = await REQUESTS.general.getThematicSubject(id);
-
         setSubkectsData(res.data);
-
         await Promise.all(
           res.data.map(item => getAllSubjectResources(item.id)),
         ).then(data => {

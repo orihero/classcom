@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSDocumentsFolderUsageDescription</key>
+<string></string>
+<key>NSDownloadsFolderUsageDescription</key>
+<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UIAppFonts</key>

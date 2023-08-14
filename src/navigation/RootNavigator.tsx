@@ -15,7 +15,7 @@ export type RootNavigatorParamList = {
   [ROUTES.AUTH.PUBLIC_OFFER]: undefined;
   [ROUTES.AUTH.REGISTRATION]: undefined;
   [ROUTES.AUTH.WELCOME]: undefined;
-  [ROUTES.DRAWER.DRAWER]: undefined;
+  [ROUTES.DRAWER_STACK.DRAWER]: undefined;
   [ROUTES.THEMATIC.THEMATIC_INNER]: {item: IThematicPlanResource};
 };
 
@@ -44,7 +44,10 @@ const RootNavigator = () => {
           <Stack.Screen name={ROUTES.AUTH.WELCOME} component={WelcomeScreen} />
         </Stack.Group>
       ) : (
-        <Stack.Screen name={ROUTES.DRAWER.DRAWER} component={DrawerNavigator} />
+        <Stack.Screen
+          name={ROUTES.DRAWER_STACK.DRAWER}
+          component={DrawerNavigator}
+        />
       )}
     </Stack.Navigator>
   );

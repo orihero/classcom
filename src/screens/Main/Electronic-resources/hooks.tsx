@@ -2,11 +2,15 @@ import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {useIsFocused} from '@react-navigation/native';
 import {find, flatten, map} from 'lodash';
+import FileDownloadHelper from '../../../helper/FileDownload';
+import {AttachmenFile} from '../../../api/types';
+import {Platform} from 'react-native';
+
 export const useElectronicResourcesHooks = () => {
   const [eResources, setResources] = useState<any>({});
-  // const [findAttechmentId, setFindAttechmentID] = useState<string | number>();
-
+  const {downloadFile, getDownloadPermissionAndroid} = FileDownloadHelper();
   const isFocuced = useIsFocused();
+
   const getElectionRecorcesCategoryId = useCallback(
     async (id: string | number) => {
       try {
@@ -17,13 +21,32 @@ export const useElectronicResourcesHooks = () => {
     [],
   );
 
-  const getFileAttechment = useCallback(async (findID: string | number) => {
-    try {
-      const res = await REQUESTS.general.getFindAttechment(findID);
+  const getFileAttechment = useCallback(
+    async (currentItem: AttachmenFile) => {
+      console.log(currentItem, 'currentItem');
+      const url = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
+      const fileName = currentItem.attachmentName;
 
-      console.log(JSON.stringify(res.data, null, 2));
-    } catch (error) {}
-  }, []);
+      downloadFile({fName: fileName, fUrl: url});
+      if (Platform.OS === 'android') {
+        getDownloadPermissionAndroid().then(granted => {
+          if (granted) {
+            downloadFile({fName: fileName, fUrl: url});
+          }
+        });
+      } else {
+        downloadFile({fName: fileName, fUrl: url}).then(res => {
+          console.log(res, 'res');
+        });
+      }
+
+      // try {
+      //   const res = await REQUESTS.general.getFindAttechment(findID);
+      //   console.log(JSON.stringify(res.data, null, 2) + 'res');
+      // } catch (error) {}
+    },
+    [downloadFile, getDownloadPermissionAndroid],
+  );
 
   // resourceCategoryId
   const getElectionRecorcesCategories = useCallback(async () => {

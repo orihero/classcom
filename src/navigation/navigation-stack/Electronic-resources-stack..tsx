@@ -9,7 +9,7 @@ const ElectronicResourcesStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
-        name={ROUTES.DRAWER.ELECTRONIC_RESOURCES}
+        name={ROUTES.DRAWER_STACK.ELECTRONIC_RESOURCES}
         component={ElectronicResourceScreen}
       />
     </Stack.Navigator>

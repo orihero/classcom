@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
   },
 
   dropDown: {
-    backgroundColor: COLORS.WHITE,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
