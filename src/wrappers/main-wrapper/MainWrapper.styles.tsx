@@ -34,11 +34,7 @@ export const mainWrapperStyles = StyleSheet.create({
     justifyContent: 'space-between',
     marginVertical: 20,
   },
-  textData: {
-    fontSize: 16,
-    fontWeight: '700',
-    color: COLORS.WHITE,
-  },
+  textData: {},
   weeksContainer: {
     flexDirection: 'row',
     marginHorizontal: 20,
@@ -55,11 +51,7 @@ export const mainWrapperStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textWeek: {
-    fontSize: 23,
-    fontWeight: '400',
-    color: COLORS.WHITE,
-  },
+  textWeek: {},
   childrenContainer: {
     paddingTop: 15,
     flex: 1,

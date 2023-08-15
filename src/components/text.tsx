@@ -64,7 +64,6 @@ const UiText: FC<TextProps> = ({
         },
         style,
       ]}
-      testID={title}
       {...res}>
       {title}
     </Text>

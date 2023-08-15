@@ -20,6 +20,7 @@ import {COLORS} from '../../constants/colors';
 import {useContext} from 'react';
 import {ThemeContext} from '../../utils/themeContext';
 import {notifactionCountSelector} from '../../store/slices/notifactionCounter';
+import UiText from '../../components/text';
 
 const MainWrapper = ({
   date,
@@ -57,12 +58,13 @@ const MainWrapper = ({
       paddingVertical: 2,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'red',
+      backgroundColor: activeColor.acriveBox,
     },
     activeTextWeek: {
-      fontSize: 23,
-      fontWeight: '400',
       color: activeColor.activeTextColor,
+    },
+    textWeek: {
+      color: activeColor.textColor2,
     },
     nameText: {
       fontSize: 15,
@@ -118,7 +120,6 @@ const MainWrapper = ({
                 <Text style={styles.counterNotifactionText}>2</Text>
               </View>
             )}
-
             <TouchableOpacity onPress={onBellPress}>
               <BellIcon />
             </TouchableOpacity>
@@ -134,13 +135,19 @@ const MainWrapper = ({
 
       <View style={mainWrapperStyles.calendarBox}>
         <TouchableOpacity onPress={onDatePress} style={{flexDirection: 'row'}}>
-          <Text style={mainWrapperStyles.textData}>Выберите дату</Text>
+          <UiText
+            style={[mainWrapperStyles.textData, {color: activeColor.acriveBox}]}
+            type="mediumRegular16"
+            title="Выберите дату"
+          />
           <CalendarIcon style={{marginLeft: 10}} />
         </TouchableOpacity>
         <DatePicker
           date={date}
           open={datePickerShown}
           onConfirm={d => {
+            console.log(d, 'date');
+
             onDateChange(d);
             setDatePickerShown(false);
           }}
@@ -151,29 +158,38 @@ const MainWrapper = ({
           mode="date"
         />
         <View>
-          <Text style={mainWrapperStyles.textData}>{dateInRussain(date)}</Text>
+          <UiText
+            title={dateInRussain(date)}
+            style={[mainWrapperStyles.textData, {color: activeColor.acriveBox}]}
+            type="Bold16"
+          />
         </View>
       </View>
 
       <View style={mainWrapperStyles.weeksContainer}>
         {getWeekDays(date).map(e => {
           return (
-            <View
+            <TouchableOpacity
+              onPress={() =>
+                onDateChange(new Date(e.year + '-' + e.month + '-' + e.date))
+              }
               key={e.day}
               style={e.current ? styles.activeCard : mainWrapperStyles.weekBox}>
-              <Text
+              <UiText
                 style={
                   e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
-                }>
-                {e.day}
-              </Text>
-              <Text
+                }
+                type="bookRegular23"
+                title={e.day}
+              />
+              <UiText
                 style={
                   e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
-                }>
-                {e.date}
-              </Text>
-            </View>
+                }
+                type="bookRegular20"
+                title={e.date as never}
+              />
+            </TouchableOpacity>
           );
         })}
       </View>
