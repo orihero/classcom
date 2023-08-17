@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
@@ -14,6 +14,7 @@ import Select from '../../../../../components/select';
 import {COLORS} from '../../../../../constants/colors';
 import UiText from '../../../../../components/text';
 import {ScrollViewPadding} from '../../../../../constants/constants';
+import {ThemeContext} from '../../../../../utils/themeContext';
 
 const lessonMap = {
   1: true,
@@ -49,6 +50,8 @@ const MainSettings = ({
   const [lesson, setLesson] = useState(
     (data || {})[date.getDay() + 1]?.lessonTemplatesMap,
   );
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
 
   useEffect(() => {
     if (weeklySchedule) {
@@ -96,14 +99,32 @@ const MainSettings = ({
         onBackdropPress={onModalDissmiss}
         onBackButtonPress={onModalDissmiss}
         isVisible={modalVisible}>
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Добавить параметры</Text>
+        <View
+          style={[
+            styles.modalContainer,
+            {backgroundColor: activeColor.primary},
+          ]}>
+          <Text style={styles.modalTitle} />
+          <UiText
+            title="Добавить параметры"
+            style={styles.modalTitle}
+            type="mediumRegular24"
+            color="WHITE"
+          />
           <View style={styles.row}>
             <View style={styles.flex}>
-              <Text style={styles.modalText}>Время начало</Text>
+              <UiText
+                title="Время начало"
+                style={styles.modalText}
+                type="bookRegular18"
+                color="WHITE"
+              />
               <TouchableOpacity
                 onPress={onHourPress('start')}
-                style={styles.emptyInput}>
+                style={[
+                  styles.emptyInput,
+                  {backgroundColor: activeColor.selectedBack},
+                ]}>
                 <Text style={styles.emptyInputText}>
                   {values.startTime as never}
                 </Text>
@@ -111,17 +132,25 @@ const MainSettings = ({
             </View>
             <View style={styles.space} />
             <View style={styles.flex}>
-              <Text style={styles.modalText}>Время конца</Text>
+              <UiText
+                title="Время конца"
+                style={styles.modalText}
+                type="bookRegular18"
+                color="WHITE"
+              />
               <TouchableOpacity
                 onPress={onHourPress('end')}
-                style={styles.emptyInput}>
+                style={[
+                  styles.emptyInput,
+                  {backgroundColor: activeColor.selectedBack},
+                ]}>
                 <Text style={styles.emptyInputText}>
                   {values.endTime as never}
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{}}>
+          <View>
             <Select
               items={courses}
               name="courseId"
@@ -228,7 +257,7 @@ const MainSettings = ({
       />
       <Button
         onPress={onSettingCalendarPress}
-        style={styles.bottomBtn}
+        style={[styles.bottomBtn, {backgroundColor: activeColor.acriveBox}]}
         text="Настройка календарно-тематического плана"
       />
     </>

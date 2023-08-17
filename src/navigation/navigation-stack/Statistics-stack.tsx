@@ -11,7 +11,10 @@ const Stack = createNativeStackNavigator();
 const StatisticStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name={ROUTES.DRAWER.TESTING} component={StatisticScreen} />
+      <Stack.Screen
+        name={ROUTES.DRAWER_STACK.TESTING}
+        component={StatisticScreen}
+      />
       <Stack.Screen
         name={ROUTES.STATISTIC.HISTORY_PAYMENT}
         component={HistoryPaymentView}

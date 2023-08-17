@@ -15,7 +15,10 @@ const Stack = createNativeStackNavigator();
 const TestingStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name={ROUTES.DRAWER.TESTING} component={TestingScreen} />
+      <Stack.Screen
+        name={ROUTES.DRAWER_STACK.TESTING}
+        component={TestingScreen}
+      />
       <Stack.Screen
         name={ROUTES.TESTING.CREATE_TEST}
         component={CreateTestScreen}

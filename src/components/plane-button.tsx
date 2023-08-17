@@ -13,7 +13,7 @@ import UiText from './text';
 
 interface PlaneProps {
   testingTitle?: string;
-  deleteTitle?: string;
+  deleteBtn?: boolean;
   authorTitle?: string;
   nameTitle?: string;
   lessonTitle?: string;
@@ -26,9 +26,8 @@ interface PlaneProps {
 
 const PlaneButton = ({
   testingTitle,
-  deleteTitle,
+  deleteBtn,
   authorTitle,
-  nameTitle,
   lessonTitle,
   disable,
   style,
@@ -48,26 +47,26 @@ const PlaneButton = ({
           title={testingTitle}
           type="mediumRegular12"
         />
-        <TouchableOpacity onPress={handledeleted}>
-          <Text style={styles.textDelete}>{deleteTitle}</Text>
-        </TouchableOpacity>
+        {deleteBtn && (
+          <TouchableOpacity onPress={handledeleted}>
+            <Text style={styles.textDelete}>Удалить</Text>
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.second}>
-        <UiText
-          style={styles.text}
-          title={authorTitle}
-          type="mediumRegular12"
-        />
+        {authorTitle && (
+          <UiText style={styles.text} title="Автор" type="mediumRegular12" />
+        )}
         <View style={styles.box}>
           <UiText
             style={[styles.title, textStyle]}
-            title={nameTitle}
+            title={authorTitle}
             type="mediumRegular12"
           />
           <UiText
             style={[styles.lessonName, textStyle]}
             title={lessonTitle}
-            type="mediumRegular12"
+            type="mediumRegular24"
           />
         </View>
       </View>
@@ -79,10 +78,9 @@ export default PlaneButton;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
     backgroundColor: COLORS.WHITE,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 15,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -131,5 +129,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: 5,
+    alignItems: 'center',
   },
 });

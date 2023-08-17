@@ -377,6 +377,15 @@ export interface ICreateTests {
   testName: string;
 }
 
+export interface AllTesting {
+  createdBy: string;
+  createdDate: Date;
+  id: number;
+  status: string;
+  subjectName: string;
+  testName: string;
+}
+
 export interface ICreateNewTest {
   id: number;
   questions: Question[];

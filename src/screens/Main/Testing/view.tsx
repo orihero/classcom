@@ -2,7 +2,7 @@ import React from 'react';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import TestTopTabs, {TopTabsItem} from '../../../components/test-tabs';
 import MyTestScreen from './components/MyTestScreen';
-import TestingTabsScreen from './components/TestingScreen';
+import TestingTabsScreen from './screens/TestingScreen/TestingScreen';
 const content: TopTabsItem[] = [
   {
     id: 0,

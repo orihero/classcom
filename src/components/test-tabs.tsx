@@ -57,7 +57,6 @@ const TestTopTabs: FC<TopTabsProps> = ({content}) => {
             );
           })}
         </View>
-        <UiText title="Header" />
       </View>
       <View style={styles.contentCard}>
         <component.comp />

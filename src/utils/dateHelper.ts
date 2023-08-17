@@ -14,10 +14,7 @@ export const dateInRussain = (date: Date = new Date(Date.now())) => {
 
 export const getWeekDays = (current: Date = new Date(Date.now())) => {
   const curr = new Date(current);
-  console.log(curr.getDate(), curr.getDay(), curr.getMonth(), 'curr date');
-
   var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay() + 1));
-  console.log(firstday.getDate(), 'firstday');
 
   const arr = [];
   for (let i = 0; i <= 6; i++) {

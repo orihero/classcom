@@ -1,5 +1,6 @@
 import {COLORS} from '../../../constants/colors';
 import {StyleSheet} from 'react-native';
+import {PaddingHorizantal} from '../../../constants/sizes';
 
 export const styles = StyleSheet.create({
   space: {
@@ -25,26 +26,19 @@ export const styles = StyleSheet.create({
   },
   modalContainer: {
     padding: 25,
-    paddingVertical: 36,
     borderRadius: 10,
-    backgroundColor: COLORS.BLUE,
     paddingBottom: 0,
   },
   modalTitle: {
     color: COLORS.BLUISH_WHITE,
-    fontSize: 21,
-    fontWeight: '700',
     textAlign: 'center',
     marginBottom: 30,
+    marginTop: -15,
   },
   row: {
     flexDirection: 'row',
   },
-  modalText: {
-    color: COLORS.WHITE,
-    fontSize: 14,
-    fontWeight: '500',
-  },
+  modalText: {},
   flex: {
     flex: 1,
   },
@@ -62,6 +56,7 @@ export const styles = StyleSheet.create({
   bottomBtn: {
     paddingVertical: 8,
     paddingHorizontal: 30,
+    marginHorizontal: PaddingHorizantal,
     marginBottom: 24,
   },
 });

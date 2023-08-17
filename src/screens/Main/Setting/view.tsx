@@ -27,7 +27,6 @@ const SettingScreen = () => {
   let activeColor = COLORS[theme];
 
   const {range, onChangeRange, account, onChangePasswordPress} = SettingHooks();
-  console.log('range', range);
 
   return (
     <DefaultWrapper title="Настройки" hasUser>

@@ -2,6 +2,7 @@ import axios, {AxiosResponse} from 'axios';
 
 import {
   AllSubjects,
+  AllTesting,
   GetCourses,
   IAccountResponse,
   ICourseResponse,
@@ -155,6 +156,7 @@ export const REQUESTS = {
   test: {
     getApiCourses: () => axiosInstance.get<GetCourses[]>('/courses'),
     getAllMyTests: () => axiosInstance.get<ICreateTests[]>('/testing'),
+    getAllTesting: () => axiosInstance.get<AllTesting[]>('/v2/testing'),
     getMyTestDelete: (id: number) =>
       axiosInstance.delete<any>(`/testing/${id}`),
 

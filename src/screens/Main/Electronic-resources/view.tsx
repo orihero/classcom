@@ -31,13 +31,17 @@ const ElectronicResourceScreen = () => {
             <DropDownAnimated
               container={[
                 styles.dropDown,
-                {backgroundColor: activeColor.btnBackColor},
+                {backgroundColor: activeColor.btnBackColor2},
               ]}
               iconActive={<ArrowDown />}
               iconNoActive={<ArrowUp />}
               dropDown={
                 <View style={styles.first}>
-                  <UiText title={key} type="Bold16" />
+                  <UiText
+                    title={key}
+                    type="Bold16"
+                    style={{color: activeColor.textColor2}}
+                  />
                 </View>
               }
               containerInner={[
@@ -61,7 +65,7 @@ const ElectronicResourceScreen = () => {
                       <Button
                         onPress={() => getFileAttechment(item.book as never)}
                         text="Скачать"
-                        style={{backgroundColor: COLORS.BLUE3}}
+                        style={{backgroundColor: activeColor.btnBackColor2}}
                       />
                     </View>
                   ))}

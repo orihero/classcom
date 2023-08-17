@@ -146,8 +146,6 @@ const MainWrapper = ({
           date={date}
           open={datePickerShown}
           onConfirm={d => {
-            console.log(d, 'date');
-
             onDateChange(d);
             setDatePickerShown(false);
           }}

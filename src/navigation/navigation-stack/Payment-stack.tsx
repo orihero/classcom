@@ -9,7 +9,10 @@ const Stack = createNativeStackNavigator();
 const PaymentStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      <Stack.Screen name={ROUTES.DRAWER.PAYMENT} component={PaymentScreen} />
+      <Stack.Screen
+        name={ROUTES.DRAWER_STACK.PAYMENT}
+        component={PaymentScreen}
+      />
     </Stack.Navigator>
   );
 };

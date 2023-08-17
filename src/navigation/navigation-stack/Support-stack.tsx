@@ -15,7 +15,7 @@ const SupportStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
-        name={ROUTES.DRAWER.THEMATIC_PLANE}
+        name={ROUTES.DRAWER_STACK.THEMATIC_PLANE}
         component={SupportScreen}
       />
       <Stack.Screen
