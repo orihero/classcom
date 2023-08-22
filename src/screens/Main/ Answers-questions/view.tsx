@@ -4,6 +4,7 @@ import AnswerQuestion from './components/Answer-question';
 import {AnswersQuestionsHooks} from './hooks';
 import {ScrollView} from 'react-native-gesture-handler';
 import {View} from 'react-native';
+
 const AnswerQuestionScreen = () => {
   const {allQuestion} = AnswersQuestionsHooks();
 

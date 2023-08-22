@@ -1,15 +1,20 @@
 import {View, Text, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {styles} from './styles';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import DropDownAnimated from '../../../components/drop-down';
 import PlaneButton from '../../../components/plane-button';
 import Button from '../../../components/button';
 import {useThematicInnerHooks} from './hooks';
+import {ThemeContext} from '../../../utils/themeContext';
+import {COLORS} from '../../../constants/colors';
 
 const ThematicInnerScreen = () => {
   const {subjectsData, paramsData} = useThematicInnerHooks();
-  console.log('subjectsData', JSON.stringify(subjectsData, null, 2));
+  console.log(subjectsData, ' subgectdata');
+
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
   const renderView = () => {
     return subjectsData?.map(item => {
       return (
@@ -47,6 +52,8 @@ const ThematicInnerScreen = () => {
                   text="Скачать"
                   style={styles.btn}
                   textStyle={styles.btnText}
+                  textColor={activeColor.activeTextColor}
+                  onPress={() => console.log(item)}
                 />
               </View>
             </View>

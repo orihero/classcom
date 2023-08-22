@@ -1,9 +1,12 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../../constants/colors';
+import {PaddingHorizantal} from '../../../constants/sizes';
 
 export const styles = StyleSheet.create({
   container: {},
-  dropContainer: {},
+  dropContainer: {
+    marginHorizontal: PaddingHorizantal,
+  },
   dropInnerContainer: {},
   box: {
     backgroundColor: COLORS.BLUE,

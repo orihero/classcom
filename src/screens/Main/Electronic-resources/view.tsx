@@ -54,7 +54,11 @@ const ElectronicResourceScreen = () => {
                     <View key={childKey}>
                       <View style={styles.second}>
                         <View>
-                          <Text style={styles.textName}>{item.name}</Text>
+                          <UiText
+                            title={item.name}
+                            type="bookRegular16"
+                            style={{color: activeColor.activeTextColor}}
+                          />
                         </View>
                         <View>
                           <Text style={styles.textName}>
@@ -65,7 +69,8 @@ const ElectronicResourceScreen = () => {
                       <Button
                         onPress={() => getFileAttechment(item.book as never)}
                         text="Скачать"
-                        style={{backgroundColor: activeColor.btnBackColor2}}
+                        textColor={activeColor.activeTextColor}
+                        style={{backgroundColor: activeColor.acriveBox}}
                       />
                     </View>
                   ))}

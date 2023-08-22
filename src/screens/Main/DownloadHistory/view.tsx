@@ -9,11 +9,15 @@ import {Styles} from './styles';
 import Button from '../../../components/button';
 import {COLORS} from '../../../constants/colors';
 import {useDownloadHistoryhook} from './hook';
+import {useContext} from 'react';
+import {ThemeContext} from '../../../utils/themeContext';
 const DownloadHistoryPayment = () => {
   const {downloadHistory} = useDownloadHistoryhook();
   console.log('====================================');
   console.log('downloadHistory', JSON.stringify(downloadHistory, null, 2));
   console.log('====================================');
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
 
   return (
     <DefaultWrapper hasUser title="История скачиваний">
@@ -55,6 +59,7 @@ const DownloadHistoryPayment = () => {
                 onPress={() => console.log('download')}
                 text="Скачать"
                 style={[Styles.button, {backgroundColor: COLORS.BLUE3}]}
+                textColor={activeColor.activeTextColor}
               />
             </View>
           }

@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   TouchableOpacity,
   LayoutAnimation,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {COLORS} from '../constants/colors';
+import UiText from './text';
 
 interface DropDownProps {
   iconActive?: any;
@@ -32,7 +32,7 @@ const DropDownAnimated = ({
   const [state, setState] = useState(true);
   return (
     <View>
-      <Text style={styles.text}>{text}</Text>
+      <UiText title={text} type="bookRegular18" style={styles.text} />
       <TouchableOpacity
         activeOpacity={0.7}
         style={[container]}

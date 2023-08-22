@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    color: COLORS.GREY_BLACK,
+    color: 'red',
   },
   btndrop: {
     flexDirection: 'row',
@@ -49,6 +49,7 @@ export const styles = StyleSheet.create({
     bottom: 50,
     left: 0,
     right: 0,
+    marginHorizontal: PaddingHorizantal,
   },
   innerContainer: {},
 });

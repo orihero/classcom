@@ -1,11 +1,13 @@
 import {View} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import {styles} from './styles';
 import Button from '../../../components/button';
 import {SupportMessagesHooks} from './hooks';
 import Select from '../../../components/select';
 import Input from '../../../components/input';
+import {ThemeContext} from '../../../utils/themeContext';
+import {COLORS} from '../../../constants/colors';
 
 const SupportMessagesScreen = () => {
   const {
@@ -14,7 +16,9 @@ const SupportMessagesScreen = () => {
     onInputChange,
     handleClickBtn,
   } = SupportMessagesHooks();
-  console.log('techServiceItems', JSON.stringify(techServiceItems, null, 2));
+
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
 
   return (
     <DefaultWrapper hasUser title="Сообщения для службы поддержки">
@@ -30,10 +34,15 @@ const SupportMessagesScreen = () => {
           placeholder="Введите сообщение"
           value={postTechServiceItems.content}
           onChange={() => onInputChange('content')}
-          containerStyle={styles.postContent}
+          containerStyle={[styles.postContent]}
         />
         <View style={styles.btn}>
-          <Button text="Отправить" onPress={handleClickBtn} />
+          <Button
+            text="Отправить"
+            onPress={handleClickBtn}
+            textColor={activeColor.activeTextColor}
+            style={{backgroundColor: activeColor.btnBackColor2}}
+          />
         </View>
       </View>
     </DefaultWrapper>

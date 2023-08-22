@@ -4,7 +4,7 @@ import {PaddingHorizantal} from '../../../constants/sizes';
 
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: PaddingHorizantal,
+    marginHorizontal: PaddingHorizantal,
     flex: 1,
   },
   postContent: {

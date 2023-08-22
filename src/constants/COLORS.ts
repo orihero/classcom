@@ -12,6 +12,7 @@ export const COLORS = {
     textColor2: '#7FADD3',
     noneActiveColor: '##CECECE',
     noneBackgroundBtn: '#2F6C9F',
+    inputTitleColor: '#333333',
   },
   dark: {
     primary: '#121B22',
@@ -25,6 +26,7 @@ export const COLORS = {
     textColor: '#FFFFFF',
     textColor2: '#1D2E3C',
     noneBackgroundBtn: '#121B22',
+    inputTitleColor: '#FFFF',
   },
   green: {
     primary: '#1A3C40',
@@ -38,6 +40,7 @@ export const COLORS = {
     textColor: '#FFFFFF',
     textColor2: '#2C888C',
     noneBackgroundBtn: '#1A3C40',
+    inputTitleColor: '#FFFF',
   },
   WHITE: '#FFF',
   WHITE_ONE: '#F8F9FA',

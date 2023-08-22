@@ -9,15 +9,18 @@ import {ScrollViewPadding} from '../../../../constants/constants';
 import {ICreateTests} from '../../../../api/types';
 import {COLORS} from '../../../../constants/colors';
 import {ThemeContext} from '../../../../utils/themeContext';
+import {PaddingHorizantal} from '../../../../constants/sizes';
 
 const MyTestScreen = () => {
-  const {onCreateTestPress, allMyTests, getApiMyTestDelete} = TestingHooks();
+  const {onCreateTestPress, allMyTests, getApiMyTestDelete, setAllMyTests} =
+    TestingHooks();
 
   const clicked = useCallback(
     async (id: number) => {
       await getApiMyTestDelete(id);
+      setAllMyTests(oldTests => oldTests.filter(test => test.id !== id));
     },
-    [getApiMyTestDelete],
+    [getApiMyTestDelete, setAllMyTests],
   );
 
   const {theme} = useContext(ThemeContext);
@@ -30,6 +33,7 @@ const MyTestScreen = () => {
         handledeleted={() => clicked(item.id)}
         lessonTitle={item.subjectName}
         deleteBtn
+        style={{marginHorizontal: PaddingHorizantal}}
       />
     </View>
   );
@@ -41,13 +45,20 @@ const MyTestScreen = () => {
         contentContainerStyle={ScrollViewPadding}
         data={allMyTests}
         renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
       />
       <View style={styles.bottomContainer}>
         <View style={styles.btn}>
           <Button
             text="Создать тестирование"
             onPress={onCreateTestPress}
-            style={[{backgroundColor: activeColor.btnBackColor2}]}
+            textColor={activeColor.activeTextColor}
+            style={[
+              {
+                backgroundColor: activeColor.btnBackColor2,
+                marginHorizontal: PaddingHorizantal,
+              },
+            ]}
           />
         </View>
       </View>
@@ -60,7 +71,6 @@ export default MyTestScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 20,
   },
 
   childContainer: {},

@@ -53,6 +53,7 @@ const Input = ({
   const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
+
   const onEyePress = () => {
     setIsPasswordVisible(e => !e);
   };
@@ -73,7 +74,7 @@ const Input = ({
           placeholder={!disablePlaceholder ? placeholder : undefined}
           placeholderTextColor={placeholderColor}
           textAlignVertical={'center'}
-          style={[styles.input, inputStyle, {color: activeColor?.textColor}]}
+          style={[styles.input, inputStyle, {color: activeColor.textColor}]}
           secureTextEntry={isPasswordVisible}
         />
         {eyes ? (

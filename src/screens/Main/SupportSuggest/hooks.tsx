@@ -1,11 +1,12 @@
 import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {TechService, TechServiceThemeItems} from '../../../api/types';
-import {useIsFocused} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 export const SupportSuggestHooks = () => {
   const [techServiceItems, setTechServiceItems] =
     useState<TechServiceThemeItems[]>();
+  const navigation = useNavigation();
   const [postTechServiceItems, setPostTechServiceItems] = useState<TechService>(
     {
       themeId: 0,
@@ -43,7 +44,8 @@ export const SupportSuggestHooks = () => {
       content: '',
       type: 'SUPPORT',
     });
-  }, [postTechServiceItems, postTechService]);
+    navigation.goBack;
+  }, [postTechService, postTechServiceItems, navigation.goBack]);
 
   useEffect(() => {
     isFocused && getTechServiceItems();

@@ -33,9 +33,11 @@ const SettingScreen = () => {
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={Assets.images.user} />
         <TouchableOpacity>
-          <Text style={[styles.imageText, {color: activeColor.textColor2}]}>
-            Добавить фото
-          </Text>
+          <UiText
+            title="Добавить фото"
+            type="bookRegular18"
+            style={[styles.imageText, {color: activeColor.textColor2}]}
+          />
         </TouchableOpacity>
       </View>
       <ScrollView
@@ -111,6 +113,11 @@ const SettingScreen = () => {
             }
           />
           <Text style={styles.titleSlider}>Размер текста</Text>
+          <UiText
+            title="Размер текста"
+            type="bookRegular18"
+            style={styles.titleSlider}
+          />
           <View style={styles.sliderContainer}>
             <Slider
               style={{
@@ -137,37 +144,58 @@ const SettingScreen = () => {
             style={styles.textStyle}
           />
           <View style={styles.colorContainer}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={[styles.color, {backgroundColor: COLORS.GREEN_ONE}]}
-              onPress={() => updateTheme(ThemeType.GREEN)}
-            />
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={[styles.color, {backgroundColor: COLORS.GREY_BLACK}]}
-              onPress={() => updateTheme(ThemeType.DARK)}
-            />
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={[styles.color, {backgroundColor: COLORS.BLUE}]}
-              onPress={() => updateTheme(ThemeType.LIGHT)}
-            />
+            <View
+              style={[
+                styles.themeBorder,
+                ThemeType.GREEN === theme && styles.activeThemeBorder,
+                {borderColor: COLORS.GREEN_ONE},
+              ]}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={[styles.color, {backgroundColor: COLORS.GREEN_ONE}]}
+                onPress={() => updateTheme(ThemeType.GREEN)}
+              />
+            </View>
+            <View
+              style={[
+                styles.themeBorder,
+                ThemeType.DARK === theme && styles.activeThemeBorder,
+                {borderColor: COLORS.GREY_BLACK},
+              ]}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={[styles.color, {backgroundColor: COLORS.GREY_BLACK}]}
+                onPress={() => updateTheme(ThemeType.DARK)}
+              />
+            </View>
+
+            <View
+              style={[
+                styles.themeBorder,
+                ThemeType.LIGHT === theme && styles.activeThemeBorder,
+                {borderColor: COLORS.BLUE},
+              ]}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={[styles.color, {backgroundColor: COLORS.BLUE}]}
+                onPress={() => updateTheme(ThemeType.LIGHT)}
+              />
+            </View>
           </View>
           <Active_Button />
-          <View>
+          <View style={styles.bottomBtns}>
             <Button
               textStyle={{color: activeColor?.noneBackgroundBtn}}
-              style={[
-                styles.button,
-                {borderColor: activeColor?.noneBackgroundBtn},
-              ]}
+              style={[styles.button, {borderColor: activeColor?.primary}]}
               onPress={onChangePasswordPress}
               text="Изменить пароль"
+              textColor={activeColor.primary}
             />
             <Button
               text="Изменить"
               onPress={() => {}}
-              style={{backgroundColor: activeColor.primary}}
+              style={{backgroundColor: activeColor.btnBackColor2}}
+              textColor={activeColor.activeTextColor}
             />
           </View>
         </View>

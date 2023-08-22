@@ -1,9 +1,10 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {COLORS} from '../../../../constants/colors';
 import {WalletIcon} from '../../../../assets/icons';
 import Button from '../../../../components/button';
+import {ThemeContext} from '../../../../utils/themeContext';
 
 interface PlateProps {
   subscription?: string;
@@ -24,6 +25,8 @@ const PlateButton = ({
   onPress,
   orderBtnPress,
 }: PlateProps) => {
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
   return (
     <>
       {hasButton ? (
@@ -50,7 +53,11 @@ const PlateButton = ({
               <Button
                 text="Купить"
                 onPress={orderBtnPress}
-                style={styles.btn}
+                textColor={COLORS.WHITE}
+                style={[
+                  styles.btn,
+                  {backgroundColor: activeColor.selectedBack},
+                ]}
               />
             ) : null}
           </View>
@@ -82,7 +89,10 @@ const PlateButton = ({
               <Button
                 text="Купить"
                 onPress={() => console.log('Qsee')}
-                style={styles.btn}
+                style={[
+                  styles.btn,
+                  {backgroundColor: activeColor.selectedBack},
+                ]}
               />
             ) : null}
           </View>

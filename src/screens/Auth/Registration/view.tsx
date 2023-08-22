@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -20,6 +20,8 @@ import {useCoursesHook} from '../../general-hooks/courses-hook';
 import {useRegionsHook} from '../../general-hooks/regions-hook';
 import {RegistrationHooks} from './hooks';
 import {styles} from './styles';
+import {ThemeContext} from '../../../utils/themeContext';
+import {COLORS} from '../../../constants/colors';
 
 const RegistrationScreen = () => {
   const {
@@ -35,6 +37,8 @@ const RegistrationScreen = () => {
 
   const {regions, districts} = useRegionsHook(values.regionId);
   const {courses} = useCoursesHook();
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
 
   return (
     <View style={styles.container}>
@@ -138,6 +142,7 @@ const RegistrationScreen = () => {
             loading={loading}
             onPress={onRegisterPress}
             text="Зарегестрироваться"
+            textColor={activeColor.activeTextColor}
           />
         </View>
       </ScrollView>

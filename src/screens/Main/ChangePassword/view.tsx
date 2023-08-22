@@ -34,7 +34,8 @@ const ChangePasswordView = () => {
         <Button
           text="Изменить"
           onPress={onNextScreen}
-          style={[{backgroundColor: activeColor.primary}, Styles.button]}
+          style={[{backgroundColor: activeColor.btnBackColor2}, Styles.button]}
+          textColor={activeColor.activeTextColor}
         />
       </View>
     </WhiteWrapper>

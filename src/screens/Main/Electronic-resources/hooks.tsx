@@ -2,13 +2,17 @@ import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {useIsFocused} from '@react-navigation/native';
 import {find, flatten, map} from 'lodash';
-import FileDownloadHelper from '../../../helper/FileDownload';
 import {AttachmenFile} from '../../../api/types';
 import {Platform} from 'react-native';
+import {
+  getDownloadPermissionAndroid,
+  downloadFile,
+} from '../../../helper/DownloadFile';
+import RNFetchBlob from 'rn-fetch-blob';
 
 export const useElectronicResourcesHooks = () => {
   const [eResources, setResources] = useState<any>({});
-  const {downloadFile, getDownloadPermissionAndroid} = FileDownloadHelper();
+  // const {downloadFile, getDownloadPermissionAndroid} = FileDownloadHelper();
   const isFocuced = useIsFocused();
 
   const getElectionRecorcesCategoryId = useCallback(
@@ -21,32 +25,24 @@ export const useElectronicResourcesHooks = () => {
     [],
   );
 
-  const getFileAttechment = useCallback(
-    async (currentItem: AttachmenFile) => {
-      console.log(currentItem, 'currentItem');
-      const url = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
-      const fileName = currentItem.attachmentName;
+  const getFileAttechment = useCallback(async (currentItem: AttachmenFile) => {
+    console.log(currentItem, 'currentItem');
+    const fileUrl = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
+    const fileName = currentItem.attachmentName;
 
-      downloadFile({fName: fileName, fUrl: url});
-      if (Platform.OS === 'android') {
-        getDownloadPermissionAndroid().then(granted => {
-          if (granted) {
-            downloadFile({fName: fileName, fUrl: url});
-          }
-        });
-      } else {
-        downloadFile({fName: fileName, fUrl: url}).then(res => {
-          console.log(res, 'res');
-        });
-      }
-
-      // try {
-      //   const res = await REQUESTS.general.getFindAttechment(findID);
-      //   console.log(JSON.stringify(res.data, null, 2) + 'res');
-      // } catch (error) {}
-    },
-    [downloadFile, getDownloadPermissionAndroid],
-  );
+    if (Platform.OS === 'android') {
+      getDownloadPermissionAndroid().then(granted => {
+        if (granted) {
+          downloadFile({fUrl: fileUrl, fName: fileName});
+        }
+      });
+    } else {
+      downloadFile({fUrl: fileUrl, fName: fileName}).then(res => {
+        //@ts-ignore
+        RNFetchBlob.ios.previewDocument(res.path());
+      });
+    }
+  }, []);
 
   // resourceCategoryId
   const getElectionRecorcesCategories = useCallback(async () => {

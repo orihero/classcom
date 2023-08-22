@@ -19,9 +19,12 @@ export const TestingHooks = () => {
   }, []);
 
   const getApiMyTestDelete = useCallback(async (itemId: number) => {
+    console.log(itemId);
+
     try {
       await REQUESTS.test.getMyTestDelete(itemId).then(() => {
         setAllMyTests(oldTests => oldTests.filter(test => test.id !== itemId));
+        console.log('clicked item delate');
       });
     } catch (error) {}
   }, []);
@@ -34,5 +37,6 @@ export const TestingHooks = () => {
     onCreateTestPress,
     allMyTests,
     getApiMyTestDelete,
+    setAllMyTests,
   };
 };

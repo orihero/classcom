@@ -4,6 +4,7 @@ import PlaneButton from '../../../../../components/plane-button';
 import useTestingHook from './hook';
 import {ScrollViewPadding} from '../../../../../constants/constants';
 import {AllTesting} from '../../../../../api/types';
+import {PaddingHorizantal} from '../../../../../constants/sizes';
 
 const TestingTabsScreen = () => {
   const {allTesting} = useTestingHook();
@@ -16,6 +17,7 @@ const TestingTabsScreen = () => {
         handledeleted={() => console.log(item.id)}
         lessonTitle={item.subjectName}
         authorTitle={item.createdBy}
+        style={{marginHorizontal: PaddingHorizantal}}
       />
     </View>
   );
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     marginBottom: 30,
-    marginHorizontal: 20,
   },
   childContainer: {},
 });

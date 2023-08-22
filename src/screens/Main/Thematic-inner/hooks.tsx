@@ -14,6 +14,25 @@ export const useThematicInnerHooks = () => {
   const SubjectID = route.params.item.id;
   const paramsTeacherName = route.params.item.activated;
 
+  // const getFileAttechment = useCallback(async (currentItem: AttachmenFile) => {
+  //   console.log(currentItem, 'currentItem');
+  //   const fileUrl = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
+  //   const fileName = currentItem.attachmentName;
+
+  //   if (Platform.OS === 'android') {
+  //     getDownloadPermissionAndroid().then(granted => {
+  //       if (granted) {
+  //         downloadFile({fUrl: fileUrl, fName: fileName});
+  //       }
+  //     });
+  //   } else {
+  //     downloadFile({fUrl: fileUrl, fName: fileName}).then(res => {
+  //       //@ts-ignore
+  //       RNFetchBlob.ios.previewDocument(res.path());
+  //     });
+  //   }
+  // }, []);
+
   const getAllSubjectResources = useCallback(
     async (subjectId: string | number) => {
       try {

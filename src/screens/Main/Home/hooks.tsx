@@ -1,4 +1,4 @@
-import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {ScheduleCourses} from '../../../api/types';
@@ -17,5 +17,7 @@ export const HomeHooks = () => {
     isFocused && getScheduleCourses();
   }, [isFocused, getScheduleCourses]);
 
-  return {};
+  return {
+    scheduleData,
+  };
 };

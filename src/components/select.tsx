@@ -58,12 +58,7 @@ const Select = ({
   }
   return (
     <View style={style}>
-      <UiText
-        title={title}
-        type="bookRegular18"
-        color="WHITE"
-        style={styles.text}
-      />
+      <UiText title={title} type="bookRegular18" style={[styles.text]} />
       <TouchableOpacity
         activeOpacity={0.7}
         style={[
@@ -82,8 +77,7 @@ const Select = ({
             color="WHITE"
             style={[
               styles.textSubject,
-              !value && {color: COLORS.GREY},
-              light && {color: COLORS.BLUISH_WHITE2},
+              !value && {color: activeColor.inputTitleColor},
             ]}
           />
         </View>
@@ -112,11 +106,14 @@ const Select = ({
                   key={e.value}
                   style={[
                     styles.button,
-                    {backgroundColor: activeColor.selectedBack},
+                    {backgroundColor: activeColor.btnBackColor2},
                   ]}
                   onPress={() => onChangeValue(e)}>
                   <UiText
-                    style={[styles.textSubject, light && {color: COLORS.WHITE}]}
+                    style={[
+                      styles.textSubject,
+                      {color: activeColor.activeTextColor},
+                    ]}
                     title={e.label}
                     type="bookRegular14"
                   />

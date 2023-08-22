@@ -21,22 +21,48 @@ const FileDownloadHelper = () => {
       });
   }, []);
 
-  const getDownloadPermissionAndroid = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-        {
-          title: 'File Download Permission',
-          message: 'Your permission is required to save Files to your device',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        return true;
+  // const getDownloadPermissionAndroid = async () => {
+  //   try {
+  //     const granted = await PermissionsAndroid.request(
+  //       PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+  //       {
+  //         title: 'File Download Permission',
+  //         message: 'Your permission is required to save Files to your device',
+  //         buttonNegative: 'Cancel',
+  //         buttonPositive: 'OK',
+  //       },
+  //     );
+  //     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+  //       return true;
+  //     }
+  //   } catch (err) {
+  //     console.log('err', err);
+  //   }
+  // };
+
+  const requestFilePermission = async () => {
+    if (Platform.OS === 'android') {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+          {
+            title: 'File Permission',
+            message: 'App needs access to your files',
+            buttonNeutral: 'Ask Me Later',
+            buttonNegative: 'Cancel',
+            buttonPositive: 'OK',
+          },
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+          console.log('File permission granted');
+          return true;
+        } else {
+          console.log('File permission denied');
+        }
+      } catch (err) {
+        console.warn(err);
       }
-    } catch (err) {
-      console.log('err', err);
+    } else {
     }
   };
 
@@ -47,7 +73,7 @@ const FileDownloadHelper = () => {
           PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
         );
         if (!granted) {
-          await getDownloadPermissionAndroid();
+          await requestFilePermission();
           return;
         }
 
@@ -108,10 +134,10 @@ const FileDownloadHelper = () => {
         console.log(err);
       }
     },
-    [getDownloadPermissionAndroid],
+    [requestFilePermission],
   );
 
-  return {downloadFile, getDownloadPermissionAndroid};
+  return {downloadFile, requestFilePermission};
 };
 
 export default FileDownloadHelper;

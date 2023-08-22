@@ -10,7 +10,7 @@ const ThematicPlanScreen = () => {
   console.log(JSON.stringify(thematicPlans, null, 2));
   return (
     <DefaultWrapper hasUser title="Тематический план">
-      <View style={{}}>
+      <View style={styles.container}>
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={ScrollViewPadding}>

@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react-native';
-import React, {useContext} from 'react';
+import React from 'react';
 import {
   StyleProp,
   StyleSheet,
@@ -11,7 +11,6 @@ import {
 import animation from '../assets/animations/loading-white.json';
 import {COLORS} from '../constants/colors';
 import UiText from './text';
-import {ThemeContext} from '../utils/themeContext';
 
 interface IProps {
   text: string;
@@ -21,11 +20,19 @@ interface IProps {
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   lineStyle?: StyleProp<ViewStyle>;
+  textColor?: any;
 }
 
-const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
-  const {theme} = useContext(ThemeContext);
-  let activeColor = COLORS[theme];
+const Button = ({
+  text,
+  onPress,
+  loading,
+  style,
+  textStyle,
+  textColor,
+}: IProps) => {
+  // const {theme} = useContext(ThemeContext);
+  // let activeColor = COLORS[theme];
   return (
     <TouchableOpacity
       activeOpacity={0.7}
@@ -40,11 +47,7 @@ const Button = ({text, onPress, loading, style, textStyle}: IProps) => {
           />
         ) : (
           <UiText
-            style={[
-              styles.text,
-              textStyle,
-              {color: activeColor.activeTextColor},
-            ]}
+            style={[styles.text, textStyle, {color: textColor}]}
             title={text}
             type="mediumRegular12"
           />

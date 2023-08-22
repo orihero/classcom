@@ -1,17 +1,15 @@
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import UiText from '../../../../components/text';
 import {ArrowDown, ArrowUp} from '../../../../assets/icons';
 import DropDownAnimated from '../../../../components/drop-down';
 import {QuestionAndAnswersItems} from '../../../../api/types';
+import {ThemeContext} from '../../../../utils/themeContext';
+import {COLORS} from '../../../../constants/colors';
 
-const AnswerQuestion = ({
-  id,
-  question,
-  answer,
-  disabled,
-}: QuestionAndAnswersItems) => {
-  console.log(disabled);
+const AnswerQuestion = ({id, question, answer}: QuestionAndAnswersItems) => {
+  const {theme} = useContext(ThemeContext);
+  let activeColor = COLORS[theme];
   return (
     <TouchableOpacity>
       <DropDownAnimated
@@ -21,13 +19,13 @@ const AnswerQuestion = ({
         dropDown={
           <View style={styles.leftBox}>
             <UiText
-              style={styles.number}
+              style={[styles.number, {color: activeColor.inputTitleColor}]}
               title={id ? `${id} .` : '1.'}
               color="GREY_BLACK"
               type="Bold18"
             />
             <UiText
-              style={styles.title}
+              style={[styles.title, {color: activeColor.inputTitleColor}]}
               title={question}
               color="GREY_BLACK"
               type="Bold18"
@@ -37,7 +35,12 @@ const AnswerQuestion = ({
         containerInner={styles.dropDownInner}
         dropDownInner={
           <View>
-            <UiText title={answer} type="bookRegular16" color="GREY_BLACK" />
+            <UiText
+              title={answer}
+              type="bookRegular16"
+              color="GREY_BLACK"
+              themeColor={activeColor.inputTitleColor}
+            />
           </View>
         }
       />
