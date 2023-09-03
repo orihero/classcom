@@ -1,5 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {View} from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  TouchableNativeFeedback,
+  View,
+} from 'react-native';
 import {Styles} from './styles';
 import WhiteWrapper from '../../../wrappers/white-wrapper/WhiteWrapper';
 import Input from '../../../components/input';
@@ -12,32 +17,45 @@ import useChangePhoneNumber from './hook';
 
 const ChangePasswordView = () => {
   const {theme} = useContext(ThemeContext);
+  const {clickedBtn, onInputChange, phoneNumber} = useChangePhoneNumber();
 
   let activeColor = COLORS[theme];
-  const {onNextScreen} = useChangePhoneNumber();
 
   return (
     <WhiteWrapper title="Изменить пароль">
-      <View
-        style={[Styles.container, {backgroundColor: activeColor.secondary}]}>
-        <View style={Styles.inputView}>
-          <Input
-            name="changeNumber"
-            title="Номер телефона"
-            icon={<PhoneIcon />}
-            containerStyle={[
-              {backgroundColor: activeColor?.tertiary},
-              Styles.input,
-            ]}
-          />
-        </View>
-        <Button
-          text="Изменить"
-          onPress={onNextScreen}
-          style={[{backgroundColor: activeColor.btnBackColor2}, Styles.button]}
-          textColor={activeColor.activeTextColor}
-        />
-      </View>
+      <KeyboardAvoidingView>
+        <TouchableNativeFeedback onPress={Keyboard.dismiss}>
+          <View
+            style={[
+              Styles.container,
+              {backgroundColor: activeColor.secondary},
+            ]}>
+            <View style={Styles.inputView}>
+              <Input
+                name="changeNumber"
+                title="Номер телефона"
+                icon={<PhoneIcon />}
+                type="phone"
+                value={phoneNumber.phone}
+                onChange={() => onInputChange('phone')}
+                containerStyle={[
+                  {backgroundColor: activeColor?.tertiary},
+                  Styles.input,
+                ]}
+              />
+            </View>
+            <Button
+              text="Изменить"
+              onPress={clickedBtn}
+              style={[
+                {backgroundColor: activeColor.btnBackColor2},
+                Styles.button,
+              ]}
+              textColor={activeColor.activeTextColor}
+            />
+          </View>
+        </TouchableNativeFeedback>
+      </KeyboardAvoidingView>
     </WhiteWrapper>
   );
 };

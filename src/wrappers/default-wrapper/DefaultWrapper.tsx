@@ -12,6 +12,7 @@ export interface DefaultWrapperProps {
   title: string;
   hasUser?: boolean;
   hasIcon?: boolean;
+  onArrowLeftBtnPress?: () => void;
 }
 
 const DefaultWrapper = ({
@@ -19,17 +20,19 @@ const DefaultWrapper = ({
   hasUser,
   title,
   hasIcon,
+  onArrowLeftBtnPress,
 }: PropsWithChildren<DefaultWrapperProps>) => {
   const {account} = SettingHooks();
   const navigation = useNavigation();
+
   const onArrowLeftPress = () => {
     navigation.goBack();
+    onArrowLeftBtnPress && onArrowLeftBtnPress();
   };
   const onNotificationPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
   };
   const {theme} = useContext(ThemeContext);
-  //@ts-ignore
   let activeColor = COLORS[theme];
 
   return (
@@ -45,7 +48,7 @@ const DefaultWrapper = ({
           </TouchableOpacity>
           <Text style={defaultWrapperStyles.titleText}>{title}</Text>
           {!hasIcon ? (
-            <View style={{width: 20}} />
+            <View style={defaultWrapperStyles.notifactionView} />
           ) : (
             <View>
               <TouchableOpacity onPress={onNotificationPress}>

@@ -1,4 +1,14 @@
 import {RUSSAIN_MONTHS2, RUSSAIN_WEEKDAYS2} from '../constants/dates';
+import {
+  eachDayOfInterval,
+  endOfWeek,
+  getDate,
+  getDay,
+  getMonth,
+  getYear,
+  startOfWeek,
+  isSameDay,
+} from 'date-fns';
 
 export const dateInRussain = (date: Date = new Date(Date.now())) => {
   const currentDate =
@@ -28,6 +38,28 @@ export const getWeekDays = (current: Date = new Date(Date.now())) => {
     });
   }
   return arr;
+};
+
+const DAY = 1 * 24 * 60 * 60 * 1000;
+
+export const getDaysOfWeek = (_current: Date = new Date()) => {
+  const start = startOfWeek(_current, {weekStartsOn: 1});
+  const end = endOfWeek(_current, {weekStartsOn: 1});
+
+  const list = eachDayOfInterval({
+    start,
+    end,
+  }).map(date => ({
+    date: getDate(date),
+    day: RUSSAIN_WEEKDAYS2[getDay(new Date(new Date(date).getTime() - DAY))],
+    current: isSameDay(date, _current),
+    month: getMonth(date),
+    year: getYear(date),
+    _date: date,
+    _day: getDay(date),
+  }));
+
+  return list;
 };
 
 export const calculateWeekId = (date: Date = new Date(Date.now())) => {

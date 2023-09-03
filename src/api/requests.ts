@@ -189,4 +189,12 @@ export const REQUESTS = {
     postPayment: (data: PostPayment) =>
       axiosInstance.post<PostPaymentResponse>('/v2/pay', data),
   },
+  accountSettings: {
+    postAccountRequestCode: (data: any) =>
+      axiosInstance.post('/account/request_code', data),
+    postAccountConfirmCode: (data: any) =>
+      axiosInstance.post('/account/confirm_code', data),
+    postAccountChangePassword: (data: any) =>
+      axiosInstance.post('/account/change_password', data),
+  },
 };

@@ -11,7 +11,7 @@ import {COLORS} from '../../../constants/colors';
 
 const ThematicInnerScreen = () => {
   const {subjectsData, paramsData} = useThematicInnerHooks();
-  console.log(subjectsData, ' subgectdata');
+  console.log(' subgectdata', JSON.stringify(subjectsData, null, 2));
 
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
@@ -32,32 +32,27 @@ const ThematicInnerScreen = () => {
               onPress={() => console.log('Hi')}
             />
           }
-          dropDownInner={
-            <View style={styles.box}>
-              <PlaneButton
-                disable={true}
-                textStyle={styles.textStyles}
-                style={styles.inner}
-                authorTitle="Автор"
-                lessonTitle="Конспекты"
-                nameTitle={paramsData}
-                testingTitle="Крылатый будильник"
-              />
-              <View style={styles.btnContainer}>
-                <Text style={styles.title}>6 класс урок 39.docx</Text>
-                <Text style={styles.text}>20.45 KB</Text>
+          dropDownInner={item.subjectResourceDTOs.map((e, index) => {
+            console.log(JSON.stringify(e, null, 2));
+
+            return (
+              <View style={styles.box} key={index}>
+                <View style={styles.btnContainer}>
+                  <Text style={styles.title}>{e.name}</Text>
+                  <Text style={styles.text}>{e.attachment.fullSize} </Text>
+                </View>
+                <View style={{alignItems: 'center'}}>
+                  <Button
+                    text="Скачать"
+                    style={styles.btn}
+                    textStyle={styles.btnText}
+                    textColor={activeColor.activeTextColor}
+                    onPress={() => console.log(item)}
+                  />
+                </View>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Button
-                  text="Скачать"
-                  style={styles.btn}
-                  textStyle={styles.btnText}
-                  textColor={activeColor.activeTextColor}
-                  onPress={() => console.log(item)}
-                />
-              </View>
-            </View>
-          }
+            );
+          })}
         />
       );
     });

@@ -9,6 +9,7 @@ import {
 } from '../../../assets/icons';
 import {ScrollViewPadding} from '../../../constants/constants';
 import {StatisticHooks} from './hooks';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const StatisticScreen = () => {
   const {
@@ -16,8 +17,17 @@ const StatisticScreen = () => {
     onPressHistoryPaymentCall,
     onPressHistoryPaymentDownload,
   } = StatisticHooks();
+
+  const drawer = useNavigation();
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
+
   return (
-    <DefaultWrapper hasUser title="Статистика">
+    <DefaultWrapper
+      hasUser
+      title="Статистика"
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={ScrollViewPadding}>

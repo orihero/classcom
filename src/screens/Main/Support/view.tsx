@@ -10,6 +10,7 @@ import {
   PhoneBlueIcon,
 } from '../../../assets/icons';
 import {SupportHooks} from './hooks';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const SupportScreen = () => {
   const {
@@ -20,8 +21,17 @@ const SupportScreen = () => {
     onChatSupportPress,
     callPhoneNumber,
   } = SupportHooks();
+  const drawer = useNavigation();
+
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
+
   return (
-    <DefaultWrapper hasUser title="Служба поддержки">
+    <DefaultWrapper
+      hasUser
+      title="Служба поддержки"
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <InfoButton
         onPress={onSupportMessagePress}
         title="Сообщения для службы поддержки"

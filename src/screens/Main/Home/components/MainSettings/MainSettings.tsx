@@ -254,11 +254,14 @@ const MainSettings = ({
         open={!!pickingTime}
         date={new Date()}
         onConfirm={onHourChange}
+        cancelText="Отмена"
+        confirmText="Принять"
       />
       <Button
         onPress={onSettingCalendarPress}
-        style={[styles.bottomBtn, {backgroundColor: activeColor.acriveBox}]}
+        style={[styles.bottomBtn, {backgroundColor: activeColor.btnBackColor2}]}
         text="Настройка календарно-тематического плана"
+        textColor={activeColor.activeTextColor}
       />
     </>
   );

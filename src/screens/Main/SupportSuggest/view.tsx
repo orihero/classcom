@@ -17,6 +17,7 @@ const SupportSuggest = () => {
     onInputChange,
     postTechServiceItems,
     techServiceItems,
+    loading,
   } = SupportSuggestHooks();
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
@@ -38,6 +39,7 @@ const SupportSuggest = () => {
         />
         <View style={styles.btn}>
           <Button
+            loading={loading}
             text="Отправить"
             onPress={handleClickBtn}
             textColor={activeColor.activeTextColor}

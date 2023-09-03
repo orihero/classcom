@@ -75,10 +75,7 @@ const Select = ({
             title={realValue || placeholder}
             type="mediumRegular16"
             color="WHITE"
-            style={[
-              styles.textSubject,
-              !value && {color: activeColor.inputTitleColor},
-            ]}
+            style={[styles.textSubject, !value && {color: COLORS.WHITE}]}
           />
         </View>
         {shouldShow ? (
@@ -92,7 +89,7 @@ const Select = ({
           <ScrollView
             style={[
               styles.animatedTwo,
-              light && {backgroundColor: activeColor.selectedBack},
+              light && {backgroundColor: 'transparent'},
               {
                 maxHeight: 200,
                 width: '100%',
@@ -106,7 +103,7 @@ const Select = ({
                   key={e.value}
                   style={[
                     styles.button,
-                    {backgroundColor: activeColor.btnBackColor2},
+                    {backgroundColor: activeColor.selectedBack},
                   ]}
                   onPress={() => onChangeValue(e)}>
                   <UiText

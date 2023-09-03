@@ -65,7 +65,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   textSlider: {
-    fontSize: 14,
     fontWeight: '500',
     color: COLORS.GREY_BLACK,
     marginLeft: 10,

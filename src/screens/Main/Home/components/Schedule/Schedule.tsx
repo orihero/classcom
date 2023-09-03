@@ -11,6 +11,7 @@ import DatePicker from 'react-native-date-picker';
 import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/dates';
 import UiText from '../../../../../components/text';
 import {ScrollViewPadding} from '../../../../../constants/constants';
+// import useScheduleHook from './hook';
 // import {COLORS} from '../../../../../constants/colors';
 // import {ThemeContext} from '../../../../../utils/themeContext';
 
@@ -36,6 +37,18 @@ const ScheduleScreen = ({
     startTime: currentHour,
     endTime: currentHour,
   });
+
+  // const {weeklySchedule} = useScheduleHook();
+
+  // const [lesson, setLesson] = useState(
+  //   (data || {})[date.getDay() + 1]?.lessonTemplatesMap,
+  // );
+
+  // useEffect(() => {
+  //   if (weeklySchedule) {
+  //     setLesson((weeklySchedule || {})[date.getDay() + 1]?.lessonTemplatesMap);
+  //   }
+  // }, [date, weeklySchedule]);
 
   // const {theme} = useContext(ThemeContext);
   // //@ts-ignore

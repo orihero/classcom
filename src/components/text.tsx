@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {COLORS} from '../constants/colors';
 import {TYPOGRAPHY} from '../constants/typography';
-import {FC, useMemo} from 'react';
+import {FC, memo, useMemo} from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';
 import {BaseText, PaddingProps} from '../types';
 import {useSelector} from 'react-redux';
@@ -20,18 +20,18 @@ type TextProps = BaseText &
 const UiText: FC<TextProps> = ({
   title,
   style,
-  type = 'default',
-  isActive = true,
-  textPosition = 'auto',
-  color = 'WHITE',
-  paddingBottom,
+  themeColor,
+  paddingTop,
   paddingLeft,
   paddingRight,
-  paddingTop,
-  paddingHorizontal,
-  paddingVertical,
+  paddingBottom,
   textTransform,
-  themeColor,
+  color = 'WHITE',
+  isActive = true,
+  paddingVertical,
+  type = 'default',
+  paddingHorizontal,
+  textPosition = 'auto',
   ...res
 }) => {
   const store = useSelector(sliderRangeSelector);
@@ -70,4 +70,4 @@ const UiText: FC<TextProps> = ({
   );
 };
 
-export default UiText;
+export default memo(UiText);

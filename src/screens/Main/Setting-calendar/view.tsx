@@ -12,6 +12,13 @@ const SettingCalendar = () => {
   return (
     <DefaultWrapper title="Настройка календарно-тематического плана" hasUser>
       <View style={styles.container}>
+        <Text style={styles.dataText}>Дата</Text>
+        <View style={styles.dataContainer}>
+          <Text style={styles.text}>01.01.2023</Text>
+          <TouchableOpacity>
+            <DataIcon />
+          </TouchableOpacity>
+        </View>
         <Select
           name="courseId"
           value={values.courseId}
@@ -20,14 +27,6 @@ const SettingCalendar = () => {
           placeholder="Предмет"
           onChange={onInputChange}
         />
-        <Text style={styles.dataText}>Дата</Text>
-        <View style={styles.dataContainer}>
-          <Text style={styles.text}>01.01.2023</Text>
-          <TouchableOpacity>
-            <DataIcon />
-          </TouchableOpacity>
-        </View>
-        <Select placeholder="Тема" items={[]} title="Тема" />
       </View>
     </DefaultWrapper>
   );

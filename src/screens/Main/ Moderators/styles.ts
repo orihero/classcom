@@ -1,5 +1,8 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginTop: 10,
+    marginBottom: 50,
+  },
 });

@@ -57,7 +57,6 @@ export const useThematicInnerHooks = () => {
         ).then(data => {
           //@ts-ignore
           const list = data.map(itemD => itemD.data);
-
           setSubkectsData(oldData =>
             oldData?.map((item, index) => ({
               ...item,

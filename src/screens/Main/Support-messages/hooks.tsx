@@ -2,11 +2,13 @@ import {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {TechService, TechServiceThemeItems} from '../../../api/types';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {CustomSnackbar} from '../../../components/custom-snackbar';
 
 export const SupportMessagesHooks = () => {
   const [techServiceItems, setTechServiceItems] =
     useState<TechServiceThemeItems[]>();
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
   const [postTechServiceItems, setPostTechServiceItems] = useState<TechService>(
     {
       themeId: 0,
@@ -31,11 +33,21 @@ export const SupportMessagesHooks = () => {
     }
   }, []);
 
-  const postTechService = useCallback(async (data: TechService) => {
-    try {
-      await REQUESTS.support.postTechService(data);
-    } catch (error) {}
-  }, []);
+  const postTechService = useCallback(
+    async (data: TechService) => {
+      setLoading(true);
+      try {
+        await REQUESTS.support.postTechService(data);
+      } catch (error) {
+        //@ts-ignore
+        CustomSnackbar.danger(error?.response?.data?.message || '');
+      } finally {
+        setLoading(false);
+        navigation.goBack();
+      }
+    },
+    [navigation],
+  );
 
   const handleClickBtn = useCallback(() => {
     postTechService(postTechServiceItems);
@@ -44,8 +56,7 @@ export const SupportMessagesHooks = () => {
       content: '',
       type: 'SUPPORT',
     });
-    navigation.goBack();
-  }, [postTechService, postTechServiceItems, navigation]);
+  }, [postTechService, postTechServiceItems]);
 
   useEffect(() => {
     isFocused && getTechServiceItems();
@@ -59,5 +70,6 @@ export const SupportMessagesHooks = () => {
     onInputChange,
     handleClickBtn,
     postTechServiceItems,
+    loading,
   };
 };

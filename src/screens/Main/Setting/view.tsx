@@ -21,6 +21,7 @@ import Button from '../../../components/button';
 import {ThemeContext} from '../../../utils/themeContext';
 import {ThemeType} from '../../../types';
 import UiText from '../../../components/text';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const SettingScreen = () => {
   const {updateTheme, theme} = useContext(ThemeContext);
@@ -28,8 +29,17 @@ const SettingScreen = () => {
 
   const {range, onChangeRange, account, onChangePasswordPress} = SettingHooks();
 
+  const drawer = useNavigation();
+
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
+
   return (
-    <DefaultWrapper title="Настройки" hasUser>
+    <DefaultWrapper
+      title="Настройки"
+      hasUser
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={Assets.images.user} />
         <TouchableOpacity>
@@ -112,7 +122,6 @@ const SettingScreen = () => {
               </View>
             }
           />
-          <Text style={styles.titleSlider}>Размер текста</Text>
           <UiText
             title="Размер текста"
             type="bookRegular18"
@@ -129,6 +138,7 @@ const SettingScreen = () => {
               minimumTrackTintColor={activeColor?.primary}
               maximumTrackTintColor={activeColor?.textColor2}
               thumbTintColor={activeColor?.primary}
+              aria-valuemax={30}
               onValueChange={value =>
                 onChangeRange(parseInt((value * 100) as never, 10) as never)
               }

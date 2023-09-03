@@ -12,16 +12,24 @@ import {map} from 'lodash';
 import {IElectronicRecCategories} from '../../../api/types';
 import {ThemeContext} from '../../../utils/themeContext';
 import UiText from '../../../components/text';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const ElectronicResourceScreen = () => {
   const {eResources, getFileAttechment} = useElectronicResourcesHooks();
-  console.log('eResources', JSON.stringify(eResources, null, 2));
 
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
+  const drawer = useNavigation();
+
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
+
   return (
-    <DefaultWrapper title={'Электронные ресурсы'}>
+    <DefaultWrapper
+      title={'Электронные ресурсы'}
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <ScrollView
         style={styles.scroolViewContainer}
         showsVerticalScrollIndicator={false}
@@ -40,7 +48,7 @@ const ElectronicResourceScreen = () => {
                   <UiText
                     title={key}
                     type="Bold16"
-                    style={{color: activeColor.textColor2}}
+                    style={{color: activeColor.activeTextColor}}
                   />
                 </View>
               }

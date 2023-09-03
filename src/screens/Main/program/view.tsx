@@ -12,6 +12,7 @@ import {
 } from '../../../assets/icons';
 import InfoButton from '../../../components/Info-button';
 import {ProgramHooks} from './hooks';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const ProgramScreen = () => {
   const {
@@ -20,8 +21,18 @@ const ProgramScreen = () => {
     onRateUsOnGooglePlay,
     onTermUseBtnPress,
   } = ProgramHooks();
+
+  const drawer = useNavigation();
+
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
+
   return (
-    <DefaultWrapper hasIcon title="О программе">
+    <DefaultWrapper
+      hasIcon
+      title="О программе"
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <View style={styles.checkBox}>
         <Image style={styles.image} source={Assets.images.check} />
         <Text style={styles.classcom}>CLASSCOM</Text>

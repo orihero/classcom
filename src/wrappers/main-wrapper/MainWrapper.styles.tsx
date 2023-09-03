@@ -59,4 +59,10 @@ export const mainWrapperStyles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
   },
+  calendarIconStyle: {
+    marginLeft: 10,
+  },
+  datePickerBtnStyle: {
+    flexDirection: 'row',
+  },
 });

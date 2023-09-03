@@ -26,6 +26,7 @@ interface IProps {
   disablePlaceholder?: boolean;
   containerStyle?: StyleProp<ViewStyle>;
   parentContainerStyle?: StyleProp<ViewStyle>;
+  type?: 'text' | 'password' | 'phone' | 'number';
   inputStyle?: StyleProp<TextStyle>;
   eyes?: boolean;
   icon?: any;
@@ -43,6 +44,7 @@ const Input = ({
   containerStyle,
   parentContainerStyle,
   inputStyle,
+  type,
   eyes,
   title,
   icon,
@@ -58,6 +60,49 @@ const Input = ({
     setIsPasswordVisible(e => !e);
   };
 
+  const renderInput = () => {
+    switch (type) {
+      case 'phone':
+        return (
+          <TextInput
+            keyboardType="phone-pad"
+            value={value}
+            onChangeText={onChange && onChange(name)}
+            placeholder={!disablePlaceholder ? placeholder : undefined}
+            placeholderTextColor={placeholderColor}
+            textAlignVertical={'center'}
+            style={[styles.input, inputStyle, {color: activeColor.textColor}]}
+            secureTextEntry={isPasswordVisible}
+          />
+        );
+      case 'password':
+        return (
+          <TextInput
+            value={value}
+            onChangeText={onChange && onChange(name)}
+            placeholder={!disablePlaceholder ? placeholder : undefined}
+            placeholderTextColor={placeholderColor}
+            textAlignVertical={'center'}
+            style={[styles.input, inputStyle, {color: activeColor.textColor}]}
+            secureTextEntry={isPasswordVisible}
+          />
+        );
+      default:
+        return (
+          <TextInput
+            multiline={multiline}
+            value={value}
+            onChangeText={onChange && onChange(name)}
+            placeholder={!disablePlaceholder ? placeholder : undefined}
+            placeholderTextColor={placeholderColor}
+            textAlignVertical={'center'}
+            style={[styles.input, inputStyle, {color: activeColor.textColor}]}
+            secureTextEntry={isPasswordVisible}
+          />
+        );
+    }
+  };
+
   return (
     <View style={[styles.parentContainer, parentContainerStyle]}>
       <UiText
@@ -67,16 +112,7 @@ const Input = ({
       />
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
-        <TextInput
-          multiline={multiline}
-          value={value}
-          onChangeText={onChange && onChange(name)}
-          placeholder={!disablePlaceholder ? placeholder : undefined}
-          placeholderTextColor={placeholderColor}
-          textAlignVertical={'center'}
-          style={[styles.input, inputStyle, {color: activeColor.textColor}]}
-          secureTextEntry={isPasswordVisible}
-        />
+        {renderInput()}
         {eyes ? (
           <TouchableOpacity activeOpacity={0.6} onPress={onEyePress}>
             <EyesIcon />

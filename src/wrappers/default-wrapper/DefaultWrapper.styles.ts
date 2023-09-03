@@ -33,4 +33,7 @@ export const defaultWrapperStyles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 30,
   },
+  notifactionView: {
+    width: 20,
+  },
 });

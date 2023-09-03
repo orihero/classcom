@@ -12,7 +12,7 @@ import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
 import {ROUTES} from '../../navigation/routes';
 import {Assets} from '../../utils/requireAssets';
 import {mainWrapperStyles} from './MainWrapper.styles';
-import {dateInRussain, getWeekDays} from '../../utils/dateHelper';
+import {dateInRussain, getDaysOfWeek} from '../../utils/dateHelper';
 import {useSelector} from 'react-redux';
 import {userSelector} from '../../store/slices/user.slice';
 import DatePicker from 'react-native-date-picker';
@@ -134,17 +134,22 @@ const MainWrapper = ({
       </View>
 
       <View style={mainWrapperStyles.calendarBox}>
-        <TouchableOpacity onPress={onDatePress} style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          onPress={onDatePress}
+          style={mainWrapperStyles.datePickerBtnStyle}>
           <UiText
-            style={[mainWrapperStyles.textData, {color: activeColor.acriveBox}]}
+            style={[mainWrapperStyles.textData, {color: COLORS.WHITE}]}
             type="mediumRegular16"
             title="Выберите дату"
           />
-          <CalendarIcon style={{marginLeft: 10}} />
+          <CalendarIcon style={mainWrapperStyles.calendarIconStyle} />
         </TouchableOpacity>
         <DatePicker
           date={date}
           open={datePickerShown}
+          locale="ru"
+          confirmText="Принять"
+          cancelText="Отмена"
           onConfirm={d => {
             onDateChange(d);
             setDatePickerShown(false);
@@ -158,19 +163,17 @@ const MainWrapper = ({
         <View>
           <UiText
             title={dateInRussain(date)}
-            style={[mainWrapperStyles.textData, {color: activeColor.acriveBox}]}
+            style={[mainWrapperStyles.textData, {color: COLORS.WHITE}]}
             type="Bold16"
           />
         </View>
       </View>
 
       <View style={mainWrapperStyles.weeksContainer}>
-        {getWeekDays(date).map(e => {
+        {getDaysOfWeek(date).map(e => {
           return (
             <TouchableOpacity
-              onPress={() =>
-                onDateChange(new Date(e.year + '-' + e.month + '-' + e.date))
-              }
+              onPress={() => onDateChange(e._date)}
               key={e.day}
               style={e.current ? styles.activeCard : mainWrapperStyles.weekBox}>
               <UiText

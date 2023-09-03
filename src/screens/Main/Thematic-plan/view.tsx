@@ -5,11 +5,19 @@ import Thematic from './components/Thematic-Plane';
 import {useThematicPlanHooks} from './hooks';
 import {ScrollViewPadding} from '../../../constants/constants';
 import {styles} from './styles';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
 const ThematicPlanScreen = () => {
   const {onThematicInnerPress, thematicPlans} = useThematicPlanHooks();
-  console.log(JSON.stringify(thematicPlans, null, 2));
+  const drawer = useNavigation();
+
+  const onArrowLeftBtnPress = () => {
+    drawer.dispatch(DrawerActions.toggleDrawer);
+  };
   return (
-    <DefaultWrapper hasUser title="Тематический план">
+    <DefaultWrapper
+      hasUser
+      title="Тематический план"
+      onArrowLeftBtnPress={onArrowLeftBtnPress}>
       <View style={styles.container}>
         <ScrollView
           showsVerticalScrollIndicator={false}

@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {useState} from 'react';
-import {IAccountResponse, ILoginRequest} from '../../../api/types';
+import {ILoginRequest} from '../../../api/types';
 import {ROUTES} from '../../../navigation/routes';
 import {REQUESTS} from '../../../api/requests';
 import {CustomSnackbar} from '../../../components/custom-snackbar';

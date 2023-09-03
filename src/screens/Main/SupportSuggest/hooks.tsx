@@ -7,6 +7,7 @@ export const SupportSuggestHooks = () => {
   const [techServiceItems, setTechServiceItems] =
     useState<TechServiceThemeItems[]>();
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
   const [postTechServiceItems, setPostTechServiceItems] = useState<TechService>(
     {
       themeId: 0,
@@ -31,11 +32,21 @@ export const SupportSuggestHooks = () => {
     }
   }, []);
 
-  const postTechService = useCallback(async (data: TechService) => {
-    try {
-      await REQUESTS.support.postTechService(data);
-    } catch (error) {}
-  }, []);
+  const postTechService = useCallback(
+    async (data: TechService) => {
+      setLoading(true);
+      try {
+        await REQUESTS.support.postTechService(data);
+      } catch (error) {
+        //@ts-ignore
+        CustomSnackbar.danger(error?.response?.data?.message || '');
+      } finally {
+        setLoading(false);
+        navigation.goBack();
+      }
+    },
+    [navigation],
+  );
 
   const handleClickBtn = useCallback(() => {
     postTechService(postTechServiceItems);
@@ -59,5 +70,6 @@ export const SupportSuggestHooks = () => {
     onInputChange,
     handleClickBtn,
     postTechServiceItems,
+    loading,
   };
 };
