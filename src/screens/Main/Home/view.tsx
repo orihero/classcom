@@ -52,10 +52,13 @@ const HomeScreen = () => {
 
   return (
     <MainWrapper date={date} onDateChange={setDate}>
-      <TopTabs
-        data={[weeklySchedule || {}, weeklyScheduleTemplate || {}]}
-        {...{shift, content, date, activeTab, setActiveTab, setShift}}
-      />
+      {
+        //@ts-ignore
+        <TopTabs
+          data={[weeklySchedule || {}, weeklyScheduleTemplate || {}]}
+          {...{shift, content, date, activeTab, setActiveTab, setShift}}
+        />
+      }
     </MainWrapper>
   );
 };

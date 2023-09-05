@@ -10,11 +10,12 @@ import Button from '../../../components/button';
 import {Styles} from './style';
 import UiText from '../../../components/text';
 import useSendSmsToPhoneNumber from './hook';
-const ChangePasswordWithCode = () => {
+
+const ConfirimCodeView = () => {
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
-  const {onNextScreen} = useSendSmsToPhoneNumber();
+  const {clickedBtn, onInputChange, confirimCode} = useSendSmsToPhoneNumber();
 
   return (
     <WhiteWrapper title="Изменить пароль">
@@ -24,6 +25,7 @@ const ChangePasswordWithCode = () => {
           <Input
             name="changeNumber"
             title="Номер телефона"
+            value={confirimCode.phone}
             icon={<PhoneIcon />}
             containerStyle={[
               {backgroundColor: activeColor?.tertiary},
@@ -33,18 +35,20 @@ const ChangePasswordWithCode = () => {
           <Input
             name="code"
             title="Код из смс"
+            value={confirimCode.code}
+            onChange={() => onInputChange('code')}
             containerStyle={[
               {backgroundColor: activeColor?.tertiary},
               Styles.input,
             ]}
           />
         </View>
-
         <View style={Styles.bottomView}>
           <Button
             text="Подтвердить код"
-            onPress={onNextScreen}
+            onPress={clickedBtn}
             style={[{backgroundColor: activeColor.primary}, Styles.button]}
+            textColor={activeColor.secondary}
           />
           <UiText
             title="Запросить еще раз ( 0:50 )"
@@ -58,4 +62,4 @@ const ChangePasswordWithCode = () => {
   );
 };
 
-export default ChangePasswordWithCode;
+export default ConfirimCodeView;

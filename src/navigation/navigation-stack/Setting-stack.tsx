@@ -2,9 +2,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROUTES} from '../routes';
 import SettingScreen from '../../screens/Main/Setting/view';
-import ChangePasswordView from '../../screens/Main/ChangePassword';
-import ChangePasswordWithCode from '../../screens/Main/ChangePassPhoneCode';
-import NewPasswordScreen from '../../screens/Main/NewPassword';
+import RequestCodeView from '../../screens/Main/RequestCode/view';
+import ConfirimCodeView from '../../screens/Main/ConfirimCode/view';
+import NewPasswordScreen from '../../screens/Main/NewPassword/view';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,16 +12,16 @@ const SettingStack = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
-        name={ROUTES.DRAWER_STACK.THEMATIC_PLANE}
+        name={ROUTES.DRAWER_STACK.SETTING}
         component={SettingScreen}
       />
       <Stack.Screen
-        name={ROUTES.SETTING.CHANGE_PASSWORD}
-        component={ChangePasswordView}
+        name={ROUTES.SETTING.REQUEST_CODE}
+        component={RequestCodeView}
       />
       <Stack.Screen
-        name={ROUTES.SETTING.CHANGE_PHONE}
-        component={ChangePasswordWithCode}
+        name={ROUTES.SETTING.CONFIRIM_CODE}
+        component={ConfirimCodeView}
       />
       <Stack.Screen
         name={ROUTES.SETTING.NEW_PASSWORD}

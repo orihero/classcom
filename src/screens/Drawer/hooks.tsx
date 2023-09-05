@@ -23,7 +23,7 @@ export const DrawerHook = () => {
   };
 
   const onHomePress = () => {
-    navigation.navigate(ROUTES.MAIN.HOME as never);
+    navigation.navigate(ROUTES.STACK.HOME_STACK as never);
   };
   const onSettingPress = () => {
     navigation.navigate(ROUTES.STACK.SETTING_STACK as never);

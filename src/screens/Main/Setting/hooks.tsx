@@ -15,7 +15,7 @@ export const SettingHooks = () => {
   const dispatch = useDispatch();
 
   const onChangePasswordPress = () => {
-    navigation.navigate(ROUTES.SETTING.CHANGE_PASSWORD as never);
+    navigation.navigate(ROUTES.SETTING.REQUEST_CODE as never);
   };
 
   const onChangeRange = useCallback(

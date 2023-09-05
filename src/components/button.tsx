@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import Lottie from 'lottie-react-native';
 import React from 'react';
 import {
@@ -31,8 +32,6 @@ const Button = ({
   textStyle,
   textColor,
 }: IProps) => {
-  // const {theme} = useContext(ThemeContext);
-  // let activeColor = COLORS[theme];
   return (
     <TouchableOpacity
       activeOpacity={0.7}

@@ -48,7 +48,6 @@ export const useElectronicResourcesHooks = () => {
   const getElectionRecorcesCategories = useCallback(async () => {
     try {
       const res = await REQUESTS.general.getElectronicResourceCategories();
-
       const resData = res.data.reduce((total: any, currentItem) => {
         if (total.hasOwnProperty(currentItem.course_name)) {
           total[currentItem.course_name] = [

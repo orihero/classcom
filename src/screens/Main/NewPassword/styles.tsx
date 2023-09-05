@@ -12,7 +12,9 @@ export const Styles = StyleSheet.create({
   inputView: {
     paddingHorizontal: PaddingHorizantal,
   },
-  button: {},
+  button: {
+    marginHorizontal: PaddingHorizantal,
+  },
   bottomView: {},
   text: {
     textAlign: 'center',

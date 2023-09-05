@@ -1,18 +1,21 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {View} from 'react-native';
+import {Styles} from './styles';
 import WhiteWrapper from '../../../wrappers/white-wrapper/WhiteWrapper';
 import Input from '../../../components/input';
+import {PhoneIcon} from '../../../assets/icons';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';
 import {COLORS} from '../../../constants/colors';
-import {Styles} from './styles';
 import Button from '../../../components/button';
-import useNewPasswordHook from './hook';
-const NewPasswordScreen = () => {
+import useChangePhoneNumber from './hook';
+
+const RequestCodeView = () => {
   const {theme} = useContext(ThemeContext);
+  const {onInputChange, phoneNumber, clickedBtn} = useChangePhoneNumber();
+
   let activeColor = COLORS[theme];
 
-  const {onInputChange, password, checkConfirimPassword} = useNewPasswordHook();
   return (
     <WhiteWrapper title="Изменить пароль">
       <View
@@ -20,19 +23,11 @@ const NewPasswordScreen = () => {
         <View style={Styles.inputView}>
           <Input
             name="changeNumber"
-            title="Новый пароль"
-            value={password.password}
-            onChange={() => onInputChange('password')}
-            containerStyle={[
-              {backgroundColor: activeColor?.tertiary},
-              Styles.input,
-            ]}
-          />
-          <Input
-            name="changeNumber"
-            title="Подтвердите пароль"
-            value={password.confirmPassword}
-            onChange={() => onInputChange('confirmPassword')}
+            title="Номер телефона"
+            icon={<PhoneIcon />}
+            type="phone"
+            value={phoneNumber.phone}
+            onChange={() => onInputChange('phone')}
             containerStyle={[
               {backgroundColor: activeColor?.tertiary},
               Styles.input,
@@ -41,13 +36,13 @@ const NewPasswordScreen = () => {
         </View>
         <Button
           text="Изменить"
-          onPress={checkConfirimPassword}
-          style={[{backgroundColor: activeColor.primary}, Styles.button]}
-          textColor={activeColor.secondary}
+          onPress={clickedBtn}
+          style={[{backgroundColor: activeColor.btnBackColor2}, Styles.button]}
+          textColor={activeColor.activeTextColor}
         />
       </View>
     </WhiteWrapper>
   );
 };
 
-export default NewPasswordScreen;
+export default RequestCodeView;
