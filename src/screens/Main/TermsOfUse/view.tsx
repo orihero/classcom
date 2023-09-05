@@ -10,6 +10,10 @@ import {
 } from 'react-native';
 import UiText from '../../../components/text';
 import {useNavigation} from '@react-navigation/native';
+import Button from '../../../components/button';
+import {ArrowLeftIcon} from '../../../assets/icons';
+import {COLORS} from '../../../constants/colors';
+import SIZES from '../../../constants/sizes';
 //@ts-ignore
 const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {
   const paddingToBottom = 20;
@@ -25,12 +29,21 @@ const TermsAndConditions = () => {
   const [accepted, setAccepted] = useState(false);
   return (
     <View style={styles.container}>
-      <UiText
-        style={styles.title}
-        title="Terms and conditions"
-        type="mediumRegular20"
-        color="GREY_BLACK"
-      />
+      <View style={styles.headerView}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
+          <ArrowLeftIcon fill={COLORS.GREY_BLACK} />
+        </TouchableOpacity>
+        <UiText
+          style={styles.title}
+          title="Terms and conditions"
+          type="mediumRegular20"
+          color="GREY_BLACK"
+        />
+      </View>
+
       <ScrollView
         style={styles.tcContainer}
         onScroll={({nativeEvent}) => {
@@ -136,6 +149,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     paddingTop: 40,
+  },
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SIZES.width * 0.21,
   },
   title: {
     textAlign: 'center',
