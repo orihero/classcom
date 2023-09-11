@@ -30,6 +30,8 @@ export interface SelectProps {
   errors?: any;
   light?: boolean;
   style?: StyleProp<ViewStyle>;
+  selectedBackColor?: string;
+  selectTextColor?: string;
 }
 
 const Select = ({
@@ -41,6 +43,8 @@ const Select = ({
   title,
   errors,
   style,
+  selectedBackColor,
+  selectTextColor,
   light = false,
 }: SelectProps) => {
   const [shouldShow, setShouldShow] = useState(false);
@@ -51,6 +55,7 @@ const Select = ({
 
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
+  console.log(activeColor);
 
   let realValue = '';
   if (!!value && !!items && items.length > 0) {
@@ -61,10 +66,7 @@ const Select = ({
       <UiText title={title} type="bookRegular18" style={[styles.text]} />
       <TouchableOpacity
         activeOpacity={0.7}
-        style={[
-          styles.animated,
-          light && {backgroundColor: activeColor.selectedBack},
-        ]}
+        style={[styles.animated, {backgroundColor: selectedBackColor}]}
         onPress={() => {
           LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
           setShouldShow(!shouldShow);
@@ -75,7 +77,7 @@ const Select = ({
             title={realValue || placeholder}
             type="mediumRegular16"
             color="WHITE"
-            style={[styles.textSubject, !value && {color: COLORS.WHITE}]}
+            style={[styles.textSubject, !value && {color: selectTextColor}]}
           />
         </View>
         {shouldShow ? (
@@ -101,16 +103,10 @@ const Select = ({
               return (
                 <TouchableOpacity
                   key={e.value}
-                  style={[
-                    styles.button,
-                    {backgroundColor: activeColor.selectedBack},
-                  ]}
+                  style={[styles.button, {backgroundColor: selectedBackColor}]}
                   onPress={() => onChangeValue(e)}>
                   <UiText
-                    style={[
-                      styles.textSubject,
-                      {color: activeColor.activeTextColor},
-                    ]}
+                    style={[styles.textSubject, {color: selectTextColor}]}
                     title={e.label}
                     type="bookRegular14"
                   />
@@ -153,6 +149,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 15,
     borderRadius: 8,
+    backgroundColor: COLORS.WHITE_ONE,
   },
   error: {
     color: COLORS.ORANGE,

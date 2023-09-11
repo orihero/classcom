@@ -22,6 +22,7 @@ interface IProps {
   textStyle?: StyleProp<TextStyle>;
   lineStyle?: StyleProp<ViewStyle>;
   textColor?: any;
+  disabledBtn?: boolean;
 }
 
 const Button = ({
@@ -31,9 +32,11 @@ const Button = ({
   style,
   textStyle,
   textColor,
+  disabledBtn,
 }: IProps) => {
   return (
     <TouchableOpacity
+      disabled={disabledBtn}
       activeOpacity={0.7}
       onPress={loading ? undefined : onPress}>
       <View style={[styles.container, style]}>

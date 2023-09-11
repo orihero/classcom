@@ -30,6 +30,7 @@ const SupportSuggest = () => {
           value={postTechServiceItems.themeId}
           onChange={() => onInputChange('themeId')}
           name="themeId"
+          light
         />
         <Input
           placeholder="Введите сообщение"

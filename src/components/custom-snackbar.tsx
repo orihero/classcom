@@ -30,4 +30,18 @@ export class CustomSnackbar {
       },
     });
   }
+  static warning(message: string) {
+    Snackbar.show({
+      text: message,
+      duration: Snackbar.LENGTH_LONG,
+      numberOfLines: 2,
+      textColor: COLORS.WHITE,
+      backgroundColor: COLORS.ORANGE,
+      action: {
+        text: 'X',
+        onPress: Snackbar.dismiss,
+        textColor: COLORS.WHITE,
+      },
+    });
+  }
 }

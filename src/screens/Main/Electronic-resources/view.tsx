@@ -17,6 +17,10 @@ import {DrawerActions, useNavigation} from '@react-navigation/native';
 const ElectronicResourceScreen = () => {
   const {eResources, getFileAttechment} = useElectronicResourcesHooks();
 
+  console.log('====================================');
+  console.log(JSON.stringify(eResources, null, 2));
+  console.log('====================================');
+
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
@@ -65,7 +69,7 @@ const ElectronicResourceScreen = () => {
                           <UiText
                             title={item.name}
                             type="bookRegular16"
-                            style={{color: activeColor.activeTextColor}}
+                            style={{color: COLORS.WHITE}}
                           />
                         </View>
                         <View>
@@ -76,8 +80,9 @@ const ElectronicResourceScreen = () => {
                       </View>
                       <Button
                         onPress={() => getFileAttechment(item.book as never)}
-                        text="Скачать"
+                        text={item.book?.attachmentId ? 'Скачать' : 'Нет файла'}
                         textColor={activeColor.activeTextColor}
+                        disabledBtn={!item.book?.attachmentId}
                         style={{backgroundColor: activeColor.acriveBox}}
                       />
                     </View>

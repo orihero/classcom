@@ -9,10 +9,10 @@ import {
   downloadFile,
 } from '../../../helper/DownloadFile';
 import RNFetchBlob from 'rn-fetch-blob';
+import {CustomSnackbar} from '../../../components/custom-snackbar';
 
 export const useElectronicResourcesHooks = () => {
   const [eResources, setResources] = useState<any>({});
-  // const {downloadFile, getDownloadPermissionAndroid} = FileDownloadHelper();
   const isFocuced = useIsFocused();
 
   const getElectionRecorcesCategoryId = useCallback(
@@ -26,21 +26,26 @@ export const useElectronicResourcesHooks = () => {
   );
 
   const getFileAttechment = useCallback(async (currentItem: AttachmenFile) => {
-    console.log(currentItem, 'currentItem');
-    const fileUrl = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
-    const fileName = currentItem.attachmentName;
-
-    if (Platform.OS === 'android') {
-      getDownloadPermissionAndroid().then(granted => {
-        if (granted) {
-          downloadFile({fUrl: fileUrl, fName: fileName});
-        }
-      });
+    if (!currentItem.attachmentId) {
+      CustomSnackbar.warning('Файл не найден');
     } else {
-      downloadFile({fUrl: fileUrl, fName: fileName}).then(res => {
-        //@ts-ignore
-        RNFetchBlob.ios.previewDocument(res.path());
-      });
+      console.log(currentItem, 'currentItem');
+      const fileUrl = `https://classcom.uz/api/find-attachment?id=${currentItem.attachmentId}`;
+      const fileName = currentItem.attachmentName;
+
+      if (Platform.OS === 'android') {
+        getDownloadPermissionAndroid().then(granted => {
+          if (granted) {
+            downloadFile({fUrl: fileUrl, fName: fileName});
+          }
+        });
+      } else {
+        downloadFile({fUrl: fileUrl, fName: fileName}).then(res => {
+          //@ts-ignore
+          RNFetchBlob.ios.previewDocument(res.path());
+        });
+      }
+      CustomSnackbar.success('Файл загружается');
     }
   }, []);
 

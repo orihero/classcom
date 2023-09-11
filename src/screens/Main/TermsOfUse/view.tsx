@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import UiText from '../../../components/text';
 import {useNavigation} from '@react-navigation/native';
-import Button from '../../../components/button';
 import {ArrowLeftIcon} from '../../../assets/icons';
 import {COLORS} from '../../../constants/colors';
 import SIZES from '../../../constants/sizes';

@@ -91,6 +91,9 @@ const RegistrationScreen = () => {
             placeholder="Область"
             onChange={onInputChange}
             errors={validationErrors}
+            selectedBackColor={activeColor.selectBackColor2}
+            selectTextColor={activeColor.textColor}
+            light
           />
           <Select
             items={districts}
@@ -100,6 +103,9 @@ const RegistrationScreen = () => {
             placeholder="Район"
             onChange={onInputChange}
             errors={validationErrors}
+            selectedBackColor={activeColor.selectBackColor2}
+            selectTextColor={activeColor.textColor}
+            light
           />
           <Select
             items={courses}
@@ -109,6 +115,9 @@ const RegistrationScreen = () => {
             placeholder="Предмет"
             onChange={onInputChange}
             errors={validationErrors}
+            selectedBackColor={activeColor.selectBackColor2}
+            selectTextColor={activeColor.textColor}
+            light
           />
           <Input
             name="password"

@@ -158,7 +158,8 @@ const MainSettings = ({
               title="Предмет"
               placeholder="Предмет"
               onChange={() => onInputChange('courseId')}
-              light={true}
+              selectTextColor={COLORS.WHITE}
+              selectedBackColor={activeColor.selectedBack}
             />
           </View>
           <View style={styles.row}>
@@ -171,6 +172,8 @@ const MainSettings = ({
                 placeholder="-"
                 onChange={() => onInputChange('klassNumber')}
                 light={true}
+                selectTextColor={COLORS.WHITE}
+                selectedBackColor={activeColor.selectedBack}
               />
             </View>
             <View style={styles.space} />
@@ -183,6 +186,8 @@ const MainSettings = ({
                 placeholder="-"
                 onChange={() => onInputChange('klassLetter')}
                 light={true}
+                selectTextColor={COLORS.WHITE}
+                selectedBackColor={activeColor.selectedBack}
               />
             </View>
           </View>

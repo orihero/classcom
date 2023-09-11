@@ -7,6 +7,7 @@ import RootNavigator from './src/navigation/RootNavigator';
 import {ThemeType} from './src/types';
 import {ThemeContext} from './src/utils/themeContext';
 import {storeData} from './src/store/configureStore';
+import {StatusBar} from 'react-native';
 
 const App = () => {
   const [theme, setTheme] = React.useState<ThemeType>(ThemeType.LIGHT);
@@ -29,6 +30,9 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{theme, updateTheme}}>
+      <StatusBar
+        barStyle={theme === ThemeType.DARK ? 'light-content' : 'dark-content'}
+      />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>

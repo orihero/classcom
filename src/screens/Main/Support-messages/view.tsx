@@ -8,7 +8,6 @@ import Select from '../../../components/select';
 import Input from '../../../components/input';
 import {ThemeContext} from '../../../utils/themeContext';
 import {COLORS} from '../../../constants/colors';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
 
 const SupportMessagesScreen = () => {
   const {
@@ -18,20 +17,12 @@ const SupportMessagesScreen = () => {
     handleClickBtn,
     loading,
   } = SupportMessagesHooks();
-  const drawer = useNavigation();
 
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
-  const onArrowLeftBtnPress = () => {
-    drawer.dispatch(DrawerActions.toggleDrawer);
-  };
-
   return (
-    <DefaultWrapper
-      hasUser
-      title="Сообщения для службы поддержки"
-      onArrowLeftBtnPress={onArrowLeftBtnPress}>
+    <DefaultWrapper hasUser title="Сообщения для службы поддержки">
       <View style={styles.container}>
         <Select
           items={techServiceItems as never}
@@ -39,6 +30,7 @@ const SupportMessagesScreen = () => {
           value={postTechServiceItems.themeId}
           onChange={() => onInputChange('themeId')}
           name="themeId"
+          light
         />
         <Input
           placeholder="Введите сообщение"
