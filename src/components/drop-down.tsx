@@ -32,7 +32,7 @@ const DropDownAnimated = ({
   const [state, setState] = useState(true);
   return (
     <View>
-      <UiText title={text} type="bookRegular18" style={styles.text} />
+      <UiText title={text} type="bookOblRegular16" style={styles.text} />
       <TouchableOpacity
         activeOpacity={0.7}
         style={[container]}
@@ -53,8 +53,6 @@ export default DropDownAnimated;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 15,
-    fontWeight: '500',
     color: COLORS.GREY,
     marginLeft: 20,
     marginVertical: 15,

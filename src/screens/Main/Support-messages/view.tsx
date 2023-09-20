@@ -31,6 +31,7 @@ const SupportMessagesScreen = () => {
           onChange={() => onInputChange('themeId')}
           name="themeId"
           light
+          selectedBackColor={activeColor.selectBackColor2}
         />
         <Input
           placeholder="Введите сообщение"

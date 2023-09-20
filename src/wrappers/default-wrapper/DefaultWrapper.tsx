@@ -1,7 +1,17 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {PropsWithChildren, useContext} from 'react';
-import {SafeAreaView, TouchableOpacity, View, Text} from 'react-native';
-import {ArrowLeftIcon, BellIcon} from '../../assets/icons/index';
+import {
+  SafeAreaView,
+  TouchableOpacity,
+  View,
+  Text,
+  Platform,
+} from 'react-native';
+import {
+  ArrowLeftIcon,
+  ArrowLeftIconForIos,
+  BellIcon,
+} from '../../assets/icons/index';
 import {COLORS} from '../../constants/colors';
 import {defaultWrapperStyles} from './DefaultWrapper.styles';
 import {ROUTES} from '../../navigation/routes';
@@ -43,8 +53,14 @@ const DefaultWrapper = ({
       ]}>
       <SafeAreaView>
         <View style={defaultWrapperStyles.headerContainer}>
-          <TouchableOpacity onPress={onArrowLeftPress}>
-            <ArrowLeftIcon fill={COLORS.WHITE} />
+          <TouchableOpacity
+            onPress={onArrowLeftPress}
+            style={defaultWrapperStyles.arrowBtn}>
+            {Platform.OS === 'ios' ? (
+              <ArrowLeftIconForIos fill={COLORS.WHITE} />
+            ) : (
+              <ArrowLeftIcon fill={COLORS.WHITE} />
+            )}
           </TouchableOpacity>
           <Text style={defaultWrapperStyles.titleText}>{title}</Text>
           {!hasIcon ? (

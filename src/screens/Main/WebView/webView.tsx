@@ -12,6 +12,10 @@ import {COLORS} from '../../../constants/colors';
 const WebViewScreen = () => {
   const route = useRoute();
   const {uri} = route.params as any;
+
+  console.log('====================================');
+  console.log('uri', uri);
+  console.log('====================================');
   return (
     <View>
       <WebView source={{uri: uri}} style={styles.wevViewStyle} />

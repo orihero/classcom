@@ -108,7 +108,7 @@ const Input = ({
       <UiText
         style={[styles.text, dark && styles.darkText]}
         title={title}
-        type="regular16"
+        type="bookOblRegular16"
       />
       <View style={[styles.container, containerStyle]}>
         {icon && icon}
@@ -148,8 +148,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   text: {
-    fontSize: 15,
-    fontWeight: '500',
     color: COLORS.GREY,
     marginVertical: 13,
   },

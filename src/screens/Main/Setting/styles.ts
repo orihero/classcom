@@ -65,7 +65,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   textSlider: {
-    fontWeight: '500',
     color: COLORS.GREY_BLACK,
     marginLeft: 10,
   },
@@ -75,7 +74,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   titleSlider: {
-    fontSize: 15,
     fontWeight: '500',
     color: COLORS.GREY,
     marginVertical: 10,
@@ -84,6 +82,7 @@ export const styles = StyleSheet.create({
   textStyle: {
     paddingHorizontal: PaddingHorizantal,
     color: COLORS.GREY,
+    fontWeight: '500',
   },
   colorContainer: {
     flexDirection: 'row',

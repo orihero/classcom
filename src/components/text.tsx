@@ -53,6 +53,7 @@ const UiText: FC<TextProps> = ({
         {
           textAlign: textPosition,
           color: themeColor ? themeColor : COLORS[color],
+          fontSize,
           paddingLeft,
           paddingRight,
           paddingBottom,
@@ -60,7 +61,6 @@ const UiText: FC<TextProps> = ({
           paddingHorizontal,
           paddingVertical,
           textTransform,
-          fontSize,
         },
         style,
       ]}

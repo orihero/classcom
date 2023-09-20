@@ -26,6 +26,7 @@ export function UserIcon(props: SvgProps) {
     </Svg>
   );
 }
+
 export function LockIcon(props: SvgProps) {
   return (
     <Svg width={18} height={20} viewBox="0 0 18 20" fill="none" {...props}>
@@ -63,6 +64,29 @@ export function ArrowLeftIcon(props: SvgProps) {
     </Svg>
   );
 }
+export function ArrowLeftIconForIos(props: SvgProps) {
+  return (
+    <Svg width={24} height={24} viewBox="0 0 24 24" {...props}>
+      <G
+        id="\uD83D\uDD0D-Product-Icons"
+        stroke="none"
+        strokeWidth={1}
+        fill="none"
+        fillRule="evenodd">
+        <G
+          id="ic_fluent_ios_arrow_left_24_regular"
+          fill={props.fill ? props.fill : '#333'}
+          fillRule="nonzero">
+          <Path
+            d="M4.29642509,11.9999996 L12.7875444,3.27301622 C13.0763983,2.97613862 13.0698938,2.50130943 12.7730162,2.21245555 C12.4761386,1.92360167 12.0013094,1.93010618 11.7124556,2.22698378 L2.71245555,11.4769838 C2.42918148,11.7681266 2.42918148,12.2318734 2.71245555,12.5230162 L11.7124556,21.7730162 C12.0013094,22.0698938 12.4761386,22.0763983 12.7730162,21.7875444 C13.0698938,21.4986906 13.0763983,21.0238614 12.7875444,20.7269838 L4.29642509,11.9999996 Z"
+            id="\uD83C\uDFA8-Color"
+          />
+        </G>
+      </G>
+    </Svg>
+  );
+}
+
 export function PhoneIcon(props: SvgProps) {
   return (
     <Svg width={20} height={20} viewBox="0 0 20 20" fill="none" {...props}>

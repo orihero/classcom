@@ -24,7 +24,7 @@ export const defaultWrapperStyles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '700',
     color: COLORS.WHITE,
-    marginLeft: 15,
+    marginLeft: -15,
   },
   userText: {
     fontSize: 15,
@@ -35,5 +35,8 @@ export const defaultWrapperStyles = StyleSheet.create({
   },
   notifactionView: {
     width: 20,
+  },
+  arrowBtn: {
+    marginRight: 17,
   },
 });

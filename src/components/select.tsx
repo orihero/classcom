@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useContext, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
+  Animated,
   LayoutAnimation,
   ScrollView,
   StyleProp,
@@ -12,7 +13,6 @@ import {
 } from 'react-native';
 import {ArrowDown, ArrowUp, StudentIcon} from '../assets/icons';
 import {COLORS} from '../constants/colors';
-import {ThemeContext} from '../utils/themeContext';
 import UiText from './text';
 
 export interface SelectItemProps {
@@ -53,72 +53,105 @@ const Select = ({
     onChange && onChange(name || '')(e.value);
   };
 
-  const {theme} = useContext(ThemeContext);
-  let activeColor = COLORS[theme];
-  console.log(activeColor);
+  // const {theme} = useContext(ThemeContext);
+  // let activeColor = COLORS[theme];
 
   let realValue = '';
   if (!!value && !!items && items.length > 0) {
     realValue = items.find(e => e.value === value)?.label || '';
   }
+
+  const animationController = useRef(new Animated.Value(0)).current;
+  const toogleAnimation = () => {
+    const config = {
+      duration: 300,
+      create: {
+        type: LayoutAnimation.Types.linear,
+        property: LayoutAnimation.Properties.opacity,
+      },
+      update: {
+        type: LayoutAnimation.Types.linear,
+      },
+    };
+    LayoutAnimation.configureNext(config);
+    Animated.timing(animationController, {
+      toValue: shouldShow ? 1 : 0,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const animatedStyle = StyleSheet.create({
+    animated: {
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: COLORS.BLUE2,
+      backgroundColor: selectedBackColor,
+    },
+  });
+
   return (
     <View style={style}>
       <UiText title={title} type="bookRegular18" style={[styles.text]} />
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={[styles.animated, {backgroundColor: selectedBackColor}]}
-        onPress={() => {
-          LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-          setShouldShow(!shouldShow);
-        }}>
-        <View style={{flexDirection: 'row'}}>
-          {!light && <StudentIcon style={{marginRight: 10}} />}
-          <UiText
-            title={realValue || placeholder}
-            type="mediumRegular16"
-            color="WHITE"
-            style={[styles.textSubject, !value && {color: selectTextColor}]}
-          />
+
+      <View style={shouldShow && animatedStyle.animated}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={[styles.animated, {backgroundColor: selectedBackColor}]}
+          onPress={() => {
+            toogleAnimation();
+            setShouldShow(!shouldShow);
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            {!light && <StudentIcon style={{marginRight: 10}} />}
+            <UiText
+              title={realValue || placeholder}
+              type="mediumRegular16"
+              color="WHITE"
+              style={[styles.textSubject, !value && {color: selectTextColor}]}
+            />
+          </View>
+          {shouldShow ? (
+            <ArrowDown fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
+          ) : (
+            <ArrowUp fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
+          )}
+        </TouchableOpacity>
+        <View
+          style={[styles.bottomSection, {backgroundColor: selectedBackColor}]}>
+          {shouldShow ? (
+            <ScrollView
+              style={[
+                styles.animatedTwo,
+                light && {backgroundColor: 'transparent'},
+                {
+                  maxHeight: 200,
+                  width: '100%',
+                  zIndex: 10,
+                  elevation: 1,
+                },
+              ]}>
+              {items.map(e => {
+                return (
+                  <TouchableOpacity
+                    key={e.value}
+                    style={[styles.button]}
+                    onPress={() => onChangeValue(e)}>
+                    <UiText
+                      style={[styles.textSubject, {color: selectTextColor}]}
+                      title={e.label}
+                      type="bookRegular14"
+                    />
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+          ) : null}
         </View>
-        {shouldShow ? (
-          <ArrowDown fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
-        ) : (
-          <ArrowUp fill={light ? COLORS.BLUISH_WHITE2 : undefined} />
+        {!!errors && !!name && !!errors[name] && (
+          <Text style={styles.error}>{errors[name || '']}</Text>
         )}
-      </TouchableOpacity>
-      <View style={{}}>
-        {shouldShow ? (
-          <ScrollView
-            style={[
-              styles.animatedTwo,
-              light && {backgroundColor: 'transparent'},
-              {
-                maxHeight: 200,
-                width: '100%',
-                zIndex: 10,
-                elevation: 1,
-              },
-            ]}>
-            {items.map(e => {
-              return (
-                <TouchableOpacity
-                  key={e.value}
-                  style={[styles.button, {backgroundColor: selectedBackColor}]}
-                  onPress={() => onChangeValue(e)}>
-                  <UiText
-                    style={[styles.textSubject, {color: selectTextColor}]}
-                    title={e.label}
-                    type="bookRegular14"
-                  />
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
-        ) : null}
       </View>
-      {!!errors && !!name && !!errors[name] && (
-        <Text style={styles.error}>{errors[name || '']}</Text>
-      )}
     </View>
   );
 };
@@ -130,9 +163,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 5,
   },
-  text: {
-    marginVertical: 13,
-  },
+  text: {},
   textSubject: {
     color: COLORS.GREY_BLACK,
   },
@@ -142,14 +173,20 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     borderRadius: 10,
   },
+  bottomSection: {
+    backgroundColor: 'red',
+    borderBottomRightRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+
   animated: {
-    height: 49,
+    paddingVertical: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 15,
     borderRadius: 8,
-    backgroundColor: COLORS.WHITE_ONE,
+    overflow: 'hidden',
   },
   error: {
     color: COLORS.ORANGE,

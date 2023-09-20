@@ -124,17 +124,17 @@ const SettingScreen = () => {
           />
           <UiText
             title="Размер текста"
-            type="bookRegular18"
+            type="bookOblRegular16"
             style={styles.titleSlider}
           />
           <View style={styles.sliderContainer}>
             <Slider
               style={{
-                width: '85%',
-                height: 40,
+                width: '80%',
+                height: 50,
               }}
               minimumValue={0.5}
-              maximumValue={1}
+              maximumValue={0.75}
               minimumTrackTintColor={activeColor?.primary}
               maximumTrackTintColor={activeColor?.textColor2}
               thumbTintColor={activeColor?.primary}
@@ -150,7 +150,7 @@ const SettingScreen = () => {
 
           <UiText
             title="Поменять стилистику"
-            type="bookRegular18"
+            type="bookOblRegular16"
             style={styles.textStyle}
           />
           <View style={styles.colorContainer}>

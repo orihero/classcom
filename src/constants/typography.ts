@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 export const FontName = {
   '200': 'FuturaPT-Light',
   '400': 'FuturaPT-Book',
+  '450': 'FuturaPT-BookObl',
   '500': 'FuturaPT-Medium',
   '600': 'FuturaPT-ExtraBold',
   '700': 'FuturaPT-Bold',
@@ -75,6 +76,43 @@ export const TYPOGRAPHY = StyleSheet.create({
     fontSize: 8,
     lineHeight: 13,
   },
+  bookOblRegular8: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 8,
+    lineHeight: 13,
+  },
+  bookOblRegular12: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  bookOblRegular14: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 18,
+  },
+  bookOblRegular16: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 22,
+  },
+  bookOblRegular18: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 18,
+    lineHeight: 24,
+  },
+  bookOblRegular20: {
+    fontFamily: FontName[450],
+    fontWeight: '400',
+    fontSize: 20,
+    lineHeight: 26,
+  },
+
   mediumRegular12: {
     fontFamily: FontName[500],
     fontWeight: '500',

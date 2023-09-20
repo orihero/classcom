@@ -1,10 +1,6 @@
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import {useCallback, useEffect, useState} from 'react';
-import {
-  PostPayment,
-  PostPaymentResponse,
-  SubscriptionsItemProps,
-} from '../../../../../api/types';
+import {PostPayment, SubscriptionsItemProps} from '../../../../../api/types';
 import {REQUESTS} from '../../../../../api/requests';
 import {ROUTES} from '../../../../../navigation/routes';
 
@@ -14,10 +10,6 @@ export const useSubscriptionsHook = () => {
 
   const [subscriptions, setSubscriptions] = useState<SubscriptionsItemProps[]>(
     [],
-  );
-
-  const [linkView, setLinkView] = useState<PostPaymentResponse>(
-    {} as PostPaymentResponse,
   );
 
   const getSubscriptions = useCallback(async () => {
@@ -33,8 +25,7 @@ export const useSubscriptionsHook = () => {
     async (data: PostPayment) => {
       try {
         const res = await REQUESTS.payment.postPayment(data);
-        console.log(res.data);
-        setLinkView(res.data);
+        console.log(res.data, 'responce data ');
         //@ts-ignore
         navigation.navigate(ROUTES.WEB_VIEW.WEB_VIEW, {
           uri: res.data.result.paymentRedirectUrl,
@@ -63,6 +54,5 @@ export const useSubscriptionsHook = () => {
   return {
     handlePaymentGetID,
     subscriptions,
-    linkView,
   };
 };
