@@ -1,6 +1,6 @@
 export const COLORS = {
   light: {
-    primary: '#2F6C9F',
+    primary: '#517DA2',
     secondary: '#FFF',
     tertiary: '#F8F9FA',
     btnBackColor: '#2F6C9F',
@@ -10,7 +10,7 @@ export const COLORS = {
     selectBackColor2: '#F8F9FA',
     acriveBox: '#70A2CB',
     textColor: '#000',
-    textColor2: '#7FADD3',
+    textColor2: '#5a8fbb',
     noneActiveColor: '#CECECE',
     noneBackgroundBtn: '#2F6C9F',
     inputTitleColor: '#333333',
@@ -50,9 +50,9 @@ export const COLORS = {
   WHITE: '#FFF',
   WHITE_ONE: '#F8F9FA',
   WHITE_TWO: '#F5F5F5',
-  BLUE: '#2F6C9F',
+  BLUE: '#517DA2',
   BLUE2: '#2F77B2',
-  BLUE3: '#3673A5',
+  BLUE3: '#7FADD3',
   GREY_BLACK: '#333333',
   GREY: '#797979',
   GREY_ONE: '#CBCBCB',

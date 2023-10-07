@@ -30,9 +30,7 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{theme, updateTheme}}>
-      <StatusBar
-        barStyle={theme === ThemeType.DARK ? 'light-content' : 'dark-content'}
-      />
+      <StatusBar barStyle={'light-content'} />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <NavigationContainer>

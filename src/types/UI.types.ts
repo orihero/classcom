@@ -1,4 +1,3 @@
-import {Icons} from 'assets/icons';
 import {TYPOGRAPHY} from 'constants/typography';
 import {StyleProp, ViewStyle} from 'react-native';
 import {CountryCode} from 'react-native-country-picker-modal';
@@ -32,8 +31,6 @@ export type IconProps = {
   style?: StyleProp<ViewStyle>;
 };
 export type ColoredIconProps = Omit<IconProps, 'color'>;
-
-export type IconType = keyof typeof Icons;
 
 export interface Phone {
   countryCode: CountryCode;

@@ -29,6 +29,7 @@ export const AuthorizationHooks = () => {
       dispatch(
         loggedIn({
           id_token: res.data.id_token,
+          //@ts-ignore
           iAccount: res.data,
         }),
       );

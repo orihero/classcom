@@ -58,7 +58,14 @@ const MainWrapper = ({
       paddingVertical: 2,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: activeColor.acriveBox,
+      backgroundColor: activeColor.primary,
+      shadowOffset: {
+        width: 2,
+        height: 4,
+      },
+      shadowOpacity: 52,
+      shadowRadius: 20,
+      shadowColor: 'rgba(64, 93, 117, 0.52)',
     },
     activeTextWeek: {
       color: activeColor.activeTextColor,
@@ -137,11 +144,7 @@ const MainWrapper = ({
         <TouchableOpacity
           onPress={onDatePress}
           style={mainWrapperStyles.datePickerBtnStyle}>
-          <UiText
-            style={[mainWrapperStyles.textData, {color: COLORS.WHITE}]}
-            type="mediumRegular16"
-            title="Выберите дату"
-          />
+          <UiText type="Bold16" title="Выберите дату" />
           <CalendarIcon style={mainWrapperStyles.calendarIconStyle} />
         </TouchableOpacity>
         <DatePicker
@@ -161,11 +164,7 @@ const MainWrapper = ({
           mode="date"
         />
         <View>
-          <UiText
-            title={dateInRussain(date)}
-            style={[mainWrapperStyles.textData, {color: COLORS.WHITE}]}
-            type="Bold16"
-          />
+          <UiText title={dateInRussain(date)} type="Bold16" />
         </View>
       </View>
 

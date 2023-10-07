@@ -54,7 +54,7 @@ const ActivniyScreenItem = () => {
           transform: [{scale}],
           opacity,
         }}>
-        <PaymentCard item={item} viewableItems={viewableItems} />
+        <PaymentCard item={item} index={index} />
       </Animated.View>
     );
   };

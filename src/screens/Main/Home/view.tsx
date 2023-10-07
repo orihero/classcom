@@ -1,29 +1,25 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {REQUESTS} from '../../../api/requests';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../../../api/types';
-import {
-  CalendarBlueIcon,
-  CalendarGreyIcon,
-  SettingBlueIcon,
-  SettingGreyIcon,
-} from '../../../assets/icons';
+import {CalendarIcon, SettingIcon} from '../../../assets/icons';
 import TopTabs from '../../../components/home-tabs';
 import {calculateWeekId} from '../../../utils/dateHelper';
 import MainWrapper from '../../../wrappers/main-wrapper/MainWrapper';
 import MainSettings from './components/MainSettings/MainSettings';
 import ScheduleScreen from './components/Schedule/Schedule';
+import {COLORS} from '../../../constants/colors';
 
 const content = [
   {
     title: 'Расписание',
-    iconActive: <CalendarGreyIcon />,
-    iconPassive: <CalendarBlueIcon />,
+    iconActive: <CalendarIcon stroke={COLORS.GREY} size={18} />,
+    iconPassive: <CalendarIcon stroke={COLORS.BLUE} size={18} />,
     content: ScheduleScreen,
   },
   {
     content: MainSettings,
-    iconActive: <SettingBlueIcon />,
-    iconPassive: <SettingGreyIcon />,
+    iconActive: <SettingIcon fill={COLORS.GREY} />,
+    iconPassive: <SettingIcon fill={COLORS.GREY} />,
     title: 'Настройка',
   },
 ];

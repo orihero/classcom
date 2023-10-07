@@ -1,5 +1,6 @@
-import {Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
+import UiText from './text';
 
 interface DrawerProps {
   text: string;
@@ -12,7 +13,12 @@ const DrawerButton = ({text, icon, onPress, textColor}: DrawerProps) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       {icon}
-      <Text style={[styles.text, {color: textColor}]}>{text}</Text>
+      <UiText
+        title={text}
+        themeColor={textColor}
+        type="extraBold16"
+        style={styles.text}
+      />
     </TouchableOpacity>
   );
 };
@@ -29,7 +35,5 @@ const styles = StyleSheet.create({
   },
   text: {
     marginLeft: 10,
-    fontSize: 16,
-    fontWeight: '700',
   },
 });

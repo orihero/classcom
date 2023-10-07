@@ -51,7 +51,9 @@ export const mainWrapperStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textWeek: {},
+  textWeek: {
+    color: '#6A9CC6',
+  },
   childrenContainer: {
     paddingTop: 15,
     flex: 1,

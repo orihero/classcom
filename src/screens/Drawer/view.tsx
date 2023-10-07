@@ -40,7 +40,10 @@ const DrawerScreen = () => {
   return (
     <View style={[styles.container, {backgroundColor: activeColor.secondary}]}>
       <View
-        style={[styles.userContainer, {backgroundColor: activeColor.primary}]}>
+        style={[
+          styles.userContainer,
+          {backgroundColor: activeColor.acriveBox},
+        ]}>
         <SafeAreaView />
         <Image source={Assets.images.user} style={styles.image} />
         <Text style={[styles.userText, {color: activeColor.textColor2}]}>
