@@ -1,9 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {Keyboard, TouchableNativeFeedback} from 'react-native';
+import {Keyboard, StyleSheet, TouchableNativeFeedback} from 'react-native';
 
 const KeyboardAvoidingView = ({children}: any) => {
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={styles.container}>
       <TouchableNativeFeedback onPress={Keyboard.dismiss}>
         {children}
       </TouchableNativeFeedback>
@@ -11,3 +11,9 @@ const KeyboardAvoidingView = ({children}: any) => {
   );
 };
 export default KeyboardAvoidingView;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

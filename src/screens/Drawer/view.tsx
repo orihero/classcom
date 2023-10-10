@@ -42,7 +42,7 @@ const DrawerScreen = () => {
       <View
         style={[
           styles.userContainer,
-          {backgroundColor: activeColor.acriveBox},
+          {backgroundColor: activeColor.drawerBackColor},
         ]}>
         <SafeAreaView />
         <Image source={Assets.images.user} style={styles.image} />
@@ -58,61 +58,61 @@ const DrawerScreen = () => {
         ]}>
         <DrawerButton
           onPress={onHomePress}
-          icon={<HomeIcon />}
+          icon={<HomeIcon fill={activeColor.acriveBox} />}
           text="Главная страница"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onElectronicPress}
-          icon={<BookIcon />}
+          icon={<BookIcon stroke={activeColor.acriveBox} />}
           text="Электронные ресурсы"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onThematicPress}
-          icon={<CalendarDrawerIcon />}
+          icon={<CalendarDrawerIcon fill={activeColor.acriveBox} />}
           text="Тематический план"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onTestingPress}
-          icon={<TestingIcon />}
+          icon={<TestingIcon fill={activeColor.acriveBox} />}
           text="Тестирование"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onProgramPress}
-          icon={<NoteIcon />}
+          icon={<NoteIcon fill={activeColor.acriveBox} />}
           text="О программе"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onStatisticPress}
-          icon={<ChartIcon />}
+          icon={<ChartIcon fill={activeColor.acriveBox} />}
           text="Статистика"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onPaymentPress}
-          icon={<PayIcon />}
+          icon={<PayIcon fill={activeColor.acriveBox} />}
           text="Оплата"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onSupportPress}
-          icon={<SupportIcon />}
+          icon={<SupportIcon stroke={activeColor.acriveBox} />}
           text="Служба поддержки"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onSettingPress}
-          icon={<SettingDrawerIcon />}
+          icon={<SettingDrawerIcon fill={activeColor.acriveBox} />}
           text="Настройки"
           textColor={activeColor.textColor}
         />
         <DrawerButton
           onPress={onLogout}
-          icon={<ExitIcon />}
+          icon={<ExitIcon fill={activeColor.acriveBox} />}
           text="Выйти"
           textColor={activeColor.textColor}
         />

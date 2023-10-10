@@ -74,7 +74,7 @@ const TopTabs = ({
                       : styles.nonActiveText
                   }
                   title={e.title}
-                  type="mediumRegular16"
+                  type={activeTab === i ? 'Bold16' : 'mediumRegular16'}
                 />
               </TouchableOpacity>
             );
@@ -164,7 +164,7 @@ export const styles = StyleSheet.create({
     color: 'red',
   },
   nonActiveText: {
-    color: COLORS.NON_ACTIVE_TEXT,
+    color: COLORS.BORDER_COLOR,
   },
 
   //============== component shift Tab styles  ================== //
@@ -178,7 +178,7 @@ export const styles = StyleSheet.create({
     color: COLORS.BLUE,
   },
   headerText: {
-    color: COLORS.NON_ACTIVE_TEXT,
+    color: COLORS.BORDER_COLOR,
   },
 
   //============== component Content styles  ================== //

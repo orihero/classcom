@@ -58,20 +58,21 @@ const MainWrapper = ({
       paddingVertical: 2,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: activeColor.primary,
+      backgroundColor: activeColor.acriveBox,
       shadowOffset: {
         width: 2,
         height: 4,
       },
-      shadowOpacity: 52,
+      shadowOpacity: 1,
       shadowRadius: 20,
       shadowColor: 'rgba(64, 93, 117, 0.52)',
+      elevation: 15,
     },
     activeTextWeek: {
-      color: activeColor.activeTextColor,
+      color: activeColor.secondary,
     },
     textWeek: {
-      color: activeColor.textColor2,
+      color: activeColor.noneActiveTextColor,
     },
     nameText: {
       fontSize: 15,
@@ -176,16 +177,12 @@ const MainWrapper = ({
               key={e.day}
               style={e.current ? styles.activeCard : mainWrapperStyles.weekBox}>
               <UiText
-                style={
-                  e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
-                }
+                style={e.current ? styles.activeTextWeek : styles.textWeek}
                 type="bookRegular23"
                 title={e.day}
               />
               <UiText
-                style={
-                  e.current ? styles.activeTextWeek : mainWrapperStyles.textWeek
-                }
+                style={e.current ? styles.activeTextWeek : styles.textWeek}
                 type="bookRegular20"
                 title={e.date as never}
               />

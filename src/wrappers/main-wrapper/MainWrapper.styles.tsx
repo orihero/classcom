@@ -43,6 +43,7 @@ export const mainWrapperStyles = StyleSheet.create({
   weekBox: {
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 15,
   },
   week: {
     paddingHorizontal: 10,
@@ -51,9 +52,7 @@ export const mainWrapperStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textWeek: {
-    color: '#6A9CC6',
-  },
+  textWeek: {},
   childrenContainer: {
     paddingTop: 15,
     flex: 1,

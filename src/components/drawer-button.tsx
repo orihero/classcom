@@ -16,7 +16,7 @@ const DrawerButton = ({text, icon, onPress, textColor}: DrawerProps) => {
       <UiText
         title={text}
         themeColor={textColor}
-        type="extraBold16"
+        type="Bold16"
         style={styles.text}
       />
     </TouchableOpacity>
