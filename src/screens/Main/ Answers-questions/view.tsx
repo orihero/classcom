@@ -6,10 +6,10 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {View} from 'react-native';
 
 const AnswerQuestionScreen = () => {
-  const {allQuestion} = AnswersQuestionsHooks();
+  const {allQuestion, loading} = AnswersQuestionsHooks();
 
   return (
-    <DefaultWrapper hasUser title="Ответы на вопросы">
+    <DefaultWrapper hasUser title="Ответы на вопросы" isLoad={loading}>
       <ScrollView>
         {allQuestion?.map(item => {
           return (

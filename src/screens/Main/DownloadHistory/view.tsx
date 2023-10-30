@@ -12,15 +12,13 @@ import {useDownloadHistoryhook} from './hook';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';
 const DownloadHistoryPayment = () => {
-  const {downloadHistory} = useDownloadHistoryhook();
-  console.log('====================================');
+  const {downloadHistory, loading} = useDownloadHistoryhook();
   console.log('downloadHistory', JSON.stringify(downloadHistory, null, 2));
-  console.log('====================================');
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
   return (
-    <DefaultWrapper hasUser title="История скачиваний">
+    <DefaultWrapper hasUser title="История скачиваний" isLoad={loading}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={ScrollViewPadding}>
@@ -56,8 +54,8 @@ const DownloadHistoryPayment = () => {
                 <UiText title="20.45 KB" type="mediumRegular14" color="WHITE" />
               </View>
               <Button
-                onPress={() => console.log('download')}
                 text="Скачать"
+                disabledBtn
                 style={[Styles.button, {backgroundColor: COLORS.BLUE3}]}
                 textColor={activeColor.activeTextColor}
               />

@@ -39,4 +39,9 @@ export const defaultWrapperStyles = StyleSheet.create({
   arrowBtn: {
     marginRight: 17,
   },
+  activityIndicator: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

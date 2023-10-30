@@ -4,6 +4,7 @@ import {
   AllSubjects,
   AllTesting,
   GetCourses,
+  GetTestSolution,
   IAccountResponse,
   ICourseResponse,
   ICreateNewTest,
@@ -155,13 +156,15 @@ export const REQUESTS = {
 
   test: {
     getApiCourses: () => axiosInstance.get<GetCourses[]>('/courses'),
-    getAllMyTests: () => axiosInstance.get<ICreateTests[]>('/testing'),
+    getAllMyTests: () => axiosInstance.get<ICreateTests[]>('/v2/testing/mine'),
     getAllTesting: () => axiosInstance.get<AllTesting[]>('/v2/testing'),
     getMyTestDelete: (id: number) =>
       axiosInstance.delete<any>(`/testing/${id}`),
 
     postCreateNewTest: (data: Partial<ICreateNewTest>) =>
       axiosInstance.post<Partial<ICreateNewTest>>('/testing', data),
+    getCurrentTest: (id: number) =>
+      axiosInstance.get<GetTestSolution>(`/v2/testing/${id}`),
   },
 
   notifaction: {
@@ -170,7 +173,6 @@ export const REQUESTS = {
   },
 
   // statistic screens
-
   statistic: {
     getTransactionHistory: () =>
       axiosInstance.get<TransactionHistory>('/v2/transaction/history'),
@@ -180,6 +182,7 @@ export const REQUESTS = {
     getModeratorHistories: () =>
       axiosInstance.get<ModeratorHistoryiesType[]>('/moderator-histories'),
   },
+
   //payment screens
 
   payment: {

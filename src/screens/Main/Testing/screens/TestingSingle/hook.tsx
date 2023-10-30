@@ -131,7 +131,7 @@ export const useTestingSingleChoiceHook = () => {
 
   const onCreateNewTestBtn = useCallback(() => {
     createNewTest(newTest);
-    navigation.navigate(ROUTES.DRAWER.TESTING as never);
+    navigation.navigate(ROUTES.DRAWER_STACK.TESTING as never);
   }, [newTest, createNewTest, navigation]);
 
   return {

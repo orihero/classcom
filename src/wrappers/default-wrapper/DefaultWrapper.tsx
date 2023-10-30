@@ -6,6 +6,7 @@ import {
   View,
   Text,
   Platform,
+  ActivityIndicator,
 } from 'react-native';
 import {
   ArrowLeftIcon,
@@ -22,6 +23,7 @@ export interface DefaultWrapperProps {
   title: string;
   hasUser?: boolean;
   hasIcon?: boolean;
+  isLoad?: boolean;
   onArrowLeftBtnPress?: () => void;
 }
 
@@ -30,6 +32,7 @@ const DefaultWrapper = ({
   hasUser,
   title,
   hasIcon,
+  isLoad = false,
   onArrowLeftBtnPress,
 }: PropsWithChildren<DefaultWrapperProps>) => {
   const {account} = SettingHooks();
@@ -88,7 +91,13 @@ const DefaultWrapper = ({
           defaultWrapperStyles.childrenContainer,
           {backgroundColor: activeColor.secondary},
         ]}>
-        {children}
+        {isLoad ? (
+          <View style={defaultWrapperStyles.activityIndicator}>
+            <ActivityIndicator size={'large'} color={COLORS.BLUE} />
+          </View>
+        ) : (
+          children
+        )}
       </View>
     </View>
   );

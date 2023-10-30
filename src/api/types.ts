@@ -410,6 +410,8 @@ export interface Answer {
   questionId: number;
 }
 
+export type GetTestSolution = Omit<Answer, 'correct'>;
+
 //statistic interface
 
 export interface TransactionHistory {

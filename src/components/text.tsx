@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {COLORS} from '../constants/colors';
 import {TYPOGRAPHY} from '../constants/typography';
-import {FC, memo, useMemo} from 'react';
+import {FC, useMemo} from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';
 import {BaseText, PaddingProps} from '../types';
 import {useSelector} from 'react-redux';
@@ -70,4 +70,4 @@ const UiText: FC<TextProps> = ({
   );
 };
 
-export default memo(UiText);
+export default UiText;

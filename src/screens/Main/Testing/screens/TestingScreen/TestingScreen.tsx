@@ -7,16 +7,16 @@ import {AllTesting} from '../../../../../api/types';
 import {PaddingHorizantal} from '../../../../../constants/sizes';
 
 const TestingTabsScreen = () => {
-  const {allTesting} = useTestingHook();
-  console.log(JSON.stringify(allTesting, null, 2));
+  const {allTesting, navigateToSolution} = useTestingHook();
 
   const renderItem: ListRenderItem<AllTesting> = ({item}) => (
     <View style={styles.childContainer}>
       <PlaneButton
         testingTitle={item.testName}
-        handledeleted={() => console.log(item.id)}
-        lessonTitle={item.subjectName}
         authorTitle={item.createdBy}
+        lessonTitle={item.subjectName}
+        onPress={() => navigateToSolution(item.id)}
+        handledeleted={() => console.log(item.id)}
         style={{marginHorizontal: PaddingHorizantal}}
       />
     </View>
@@ -25,12 +25,12 @@ const TestingTabsScreen = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        keyExtractor={(_, index) => index.toString()}
         data={allTesting}
-        contentContainerStyle={ScrollViewPadding}
         renderItem={renderItem}
-        showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={ScrollViewPadding}
+        keyExtractor={(_, index) => index.toString()}
       />
     </View>
   );

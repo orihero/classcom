@@ -7,9 +7,9 @@ import {styles} from './styles';
 import {ScrollViewPadding} from '../../../constants/constants';
 
 const ModeratorsScreen = () => {
-  const {moderators} = useModeratorsHooks();
+  const {moderators, loading} = useModeratorsHooks();
   return (
-    <DefaultWrapper hasIcon hasUser title="Модераторы">
+    <DefaultWrapper hasIcon hasUser title="Модераторы" isLoad={loading}>
       <ScrollView
         contentContainerStyle={ScrollViewPadding}
         showsVerticalScrollIndicator={false}>

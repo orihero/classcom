@@ -7,14 +7,22 @@ export const useCallHistoryPayment = () => {
   const [moderatorHistoryies, setModeratorHistoryies] = useState<
     ModeratorHistoryiesType[]
   >([]);
+  const [loading, setLoading] = useState(false);
 
   const getoderatorHistoryies = useCallback(async () => {
+    setLoading(true);
     try {
       const res = await REQUESTS.statistic.getModeratorHistories();
       console.log(res);
       setModeratorHistoryies(res.data);
+      setLoading(false);
     } catch (e) {
       console.log(e);
+      setLoading(false);
+      //@ts-ignore
+      CustomSnackbar.error(e.response.data.message);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -22,5 +30,5 @@ export const useCallHistoryPayment = () => {
     IsFocused && getoderatorHistoryies();
   }, [IsFocused, getoderatorHistoryies]);
 
-  return {moderatorHistoryies};
+  return {moderatorHistoryies, loading};
 };

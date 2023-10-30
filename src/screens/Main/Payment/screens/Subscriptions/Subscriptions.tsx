@@ -6,6 +6,7 @@ import {SubscriptionsItemProps} from '../../../../../api/types';
 
 const SubscriptionsScreenItem = () => {
   const {subscriptions, handlePaymentGetID} = useSubscriptionsHook();
+  console.log('subscriptions', JSON.stringify(subscriptions, null, 2));
 
   const renderItem: ListRenderItem<SubscriptionsItemProps> = ({item}) => (
     <View key={item.id}>

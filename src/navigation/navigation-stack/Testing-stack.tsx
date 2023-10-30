@@ -9,6 +9,7 @@ import TestingMultipleChoice from '../../screens/Main/Testing/screens/TestingMul
 // import TestingCorresponChoice from '../../screens/Main/Testing/screens/TestingCorrespon/TestingCorrespon';
 import TestingOmissionsChoice from '../../screens/Main/Testing/screens/TestingOmissions/TestOmissions';
 import TestingBooleanChoice from '../../screens/Main/Testing/screens/TestingBoolean/TestingBoolean';
+import TestSolutionView from '../../screens/Main/TestSolution/SolutionView';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,10 @@ const TestingStack = () => {
       <Stack.Screen
         name={ROUTES.TESTING.TESTING_BOOLEAN_QUESTION}
         component={TestingBooleanChoice}
+      />
+      <Stack.Screen
+        name={ROUTES.TESTING.TESTING_RESHENIYA}
+        component={TestSolutionView}
       />
     </Stack.Navigator>
   );

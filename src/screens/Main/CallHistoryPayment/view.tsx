@@ -9,14 +9,14 @@ import {Styles} from './styles';
 import {useCallHistoryPayment} from './hook';
 
 const CallHistoryPayment = () => {
-  const {moderatorHistoryies} = useCallHistoryPayment();
+  const {moderatorHistoryies, loading} = useCallHistoryPayment();
   console.log(
     'moderatorHistoryies',
     JSON.stringify(moderatorHistoryies, null, 2),
   );
 
   return (
-    <DefaultWrapper hasUser title="История обращений">
+    <DefaultWrapper hasUser title="История обращений" isLoad={loading}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={ScrollViewPadding}>

@@ -14,6 +14,7 @@ import {useSharedValue} from 'react-native-reanimated';
 
 const ActivniyScreenItem = () => {
   const {subscription} = useActivityItemHook();
+  console.log('subscription', JSON.stringify(subscription, null, 2));
   const {content} = subscription;
   const scrollY = React.useRef(new Animated.Value(0)).current;
   const SPACING = 20;

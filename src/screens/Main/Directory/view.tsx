@@ -5,10 +5,9 @@ import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
 import {useDirectoryHook} from './hook';
 import AnswerQuestion from '../ Answers-questions/components/Answer-question';
 const DirectoryScreen = () => {
-  const {allItems} = useDirectoryHook();
-  console.log(JSON.stringify(allItems, null, 2));
+  const {allItems, loading} = useDirectoryHook();
   return (
-    <DefaultWrapper hasIcon hasUser title="Справочник">
+    <DefaultWrapper hasIcon hasUser title="Справочник" isLoad={loading}>
       <ScrollView style={styles.container}>
         {allItems?.map(item => {
           return (
