@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import UiText from '../../../../../../components/text';
-import {COLORS} from '../../../../../../constants/colors';
+import {COLORS} from '../../../../../../constants/COLORS';
 import {Answer} from '../../../../../../api/types';
 import {FC} from 'react';
 import {has} from 'lodash';

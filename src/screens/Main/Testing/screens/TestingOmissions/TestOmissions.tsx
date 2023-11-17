@@ -4,7 +4,7 @@ import UiText from '../../../../../components/text';
 import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
 import {ScrollViewPadding} from '../../../../../constants/constants';
 import {PaddingHorizantal} from '../../../../../constants/sizes';
-import {COLORS} from '../../../../../constants/colors';
+import {COLORS} from '../../../../../constants/COLORS';
 import Button from '../../../../../components/button';
 import {useTestingOmissionsHook} from './hook';
 import OmissionQuestionComponent from './components/OmissionQuestion';

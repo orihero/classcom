@@ -4,7 +4,7 @@ import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapp
 import QuestionComponent from '../../components/Question';
 import {PaddingHorizantal} from '../../../../../constants/sizes';
 import UiText from '../../../../../components/text';
-import {COLORS} from '../../../../../constants/colors';
+import {COLORS} from '../../../../../constants/COLORS';
 import {ScrollViewPadding} from '../../../../../constants/constants';
 import {useTestingMultipleChoiceHook} from './hook';
 import {useCallback} from 'react';

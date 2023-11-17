@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, TextInput, View} from 'react-native';
 import ScreenTitle from '../../../../../../components/screenTitle';
-import {COLORS} from '../../../../../../constants/colors';
+import {COLORS} from '../../../../../../constants/COLORS';
 import {ShareIcon} from '../../../../../../assets/icons';
 import UiText from '../../../../../../components/text';
 import BooleanAnswer from './BooleanAnswer';

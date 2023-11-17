@@ -2,20 +2,23 @@ export const COLORS = {
   light: {
     primary: '#517DA2',
     secondary: '#FFF',
-    drawerBackColor: '#5A8FBB',
-    tertiary: '#F8F9FA',
+    drawerBackColor: 'rgba(51, 113, 107, 1)',
+    tertiary: 'rgba(255,255,255,0.1)',
     btnBackColor: '#2F6C9F',
     btnBackColor2: '#2F6C9F',
     activeTextColor: '#FFF',
-    selectedBack: '#2F77B2',
-    selectBackColor2: '#F8F9FA',
-    acriveBox: '#517DA2',
-    textColor: '#000',
+    selectedBack: 'rgba(70, 142, 144, 1)',
+    selectBackColor2: 'rgba(255,255,255,0.1)',
+    acriveBox: '#FFFFFF',
+    textColor: '#FFFFFF',
     textColor2: '#5a8fbb',
     noneActiveColor: '#CECECE',
     noneBackgroundBtn: '#2F6C9F',
     inputTitleColor: '#333333',
     noneActiveTextColor: '#6A9CC6',
+    weekDayDefault: "rgba(70, 142, 144, 0.12)",
+    weekDayActive: "rgba(64, 93, 117, 0.52)"
+
   },
   dark: {
     primary: '#121B22',
@@ -34,6 +37,9 @@ export const COLORS = {
     noneBackgroundBtn: '#121B22',
     inputTitleColor: '#FFFF',
     noneActiveTextColor: '#CECECE',
+    weekDayDefault: "rgba(70, 142, 144, 0.12)",
+    weekDayActive: "rgba(64, 93, 117, 0.52)"
+
   },
   green: {
     primary: '#1A3C40',
@@ -52,6 +58,8 @@ export const COLORS = {
     noneBackgroundBtn: '#1A3C40',
     inputTitleColor: '#FFFF',
     noneActiveTextColor: '#154A5B',
+    weekDayDefault: "rgba(70, 142, 144, 0.12)",
+    weekDayActive: "rgba(64, 93, 117, 0.52)"
   },
   WHITE: '#FFF',
   WHITE_ONE: '#F8F9FA',

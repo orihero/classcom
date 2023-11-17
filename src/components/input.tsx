@@ -10,7 +10,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {EyesIcon} from '../assets/icons';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import {PaddingHorizantal} from '../constants/sizes';
 import {ThemeContext} from '../utils/themeContext';
 import UiText from './text';

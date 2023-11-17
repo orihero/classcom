@@ -1,4 +1,4 @@
-import {RUSSAIN_MONTHS2, RUSSAIN_WEEKDAYS2} from '../constants/dates';
+import {RUSSAIN_MONTHS2, RUSSAIN_WEEKDAYS2} from '../constants/DATES';
 import {
   eachDayOfInterval,
   endOfWeek,

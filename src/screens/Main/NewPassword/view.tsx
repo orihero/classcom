@@ -4,7 +4,7 @@ import WhiteWrapper from '../../../wrappers/white-wrapper/WhiteWrapper';
 import Input from '../../../components/input';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import {Styles} from './styles';
 import Button from '../../../components/button';
 import useNewPasswordHook from './hook';

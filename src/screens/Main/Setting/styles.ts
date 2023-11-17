@@ -1,4 +1,4 @@
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import {StyleSheet} from 'react-native';
 import {PaddingHorizantal} from '../../../constants/sizes';
 

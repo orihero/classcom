@@ -1,7 +1,7 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React from 'react';
-import {COLORS} from '../../../../constants/colors';
-import {IThematicPlanResource} from '../../../../api/types';
+import { COLORS } from '../../../../constants/COLORS';
+import { IThematicPlanResource } from '../../../../api/types';
 import UiText from '../../../../components/text';
 
 interface props {
@@ -9,7 +9,7 @@ interface props {
   content: IThematicPlanResource;
 }
 
-const Thematic = ({onPress, content}: props) => {
+const Thematic = ({ onPress, content }: props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -46,16 +46,16 @@ export default Thematic;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: COLORS.WHITE,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.27,
+    backgroundColor: "rgba(255, 255, 255, 0.1)",
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 3.27,
 
-    elevation: 10,
+    // elevation: 10,
     marginHorizontal: 20,
     marginVertical: 5,
     borderRadius: 10,
@@ -69,16 +69,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 15,
   },
-  title: {},
+  title: {
+    color: "#68AEA3"
+  },
   language: {
     fontSize: 17,
-    color: COLORS.GREY_BLACK,
+    color: "white",
     fontWeight: '700',
     marginTop: 5,
   },
   text: {
     fontSize: 17,
-    color: COLORS.GREY_BLACK,
+    color: "white",
     fontWeight: '500',
     marginTop: 5,
   },
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 10,
     gap: 5,
-    backgroundColor: COLORS.ORANGE,
+    backgroundColor: "rgba(56, 118, 106, 1)",
     alignItems: 'center',
     justifyContent: 'center',
   },

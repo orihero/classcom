@@ -2,7 +2,7 @@
 import {FC} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import UiText from './text';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 
 interface ScreenTitleProps {
   title: string;

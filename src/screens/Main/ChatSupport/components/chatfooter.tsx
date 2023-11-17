@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import {ArrowRightIcon, ShareIcon} from '../../../../assets/icons';
 import {SupportChatHook} from '../hooks';
 interface Props {

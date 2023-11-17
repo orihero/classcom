@@ -1,6 +1,6 @@
 import React from 'react';
 import Svg, {G, Mask, Path, SvgProps} from 'react-native-svg';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/COLORS';
 
 export function UserIcon(props: SvgProps & {size?: number}) {
   const width = props.size ?? 17;

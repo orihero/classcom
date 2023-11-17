@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import MessageCard from './MessageCard';
 import {SupportChatHook} from '../hooks';
 import {ScrollViewPadding} from '../../../../constants/constants';

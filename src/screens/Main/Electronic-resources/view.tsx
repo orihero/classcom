@@ -7,7 +7,7 @@ import {styles} from './styles';
 import {useElectronicResourcesHooks} from './hooks';
 import {ScrollViewPadding} from '../../../constants/constants';
 import Button from '../../../components/button';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import {map} from 'lodash';
 import {IElectronicRecCategories} from '../../../api/types';
 import {ThemeContext} from '../../../utils/themeContext';
@@ -43,7 +43,7 @@ const ElectronicResourceScreen = () => {
             <DropDownAnimated
               container={[
                 styles.dropDown,
-                {backgroundColor: activeColor.btnBackColor2},
+                {backgroundColor: activeColor.selectBackColor2},
               ]}
               iconActive={<ArrowDown />}
               iconNoActive={<ArrowUp />}
@@ -58,7 +58,7 @@ const ElectronicResourceScreen = () => {
               }
               containerInner={[
                 styles.dropDownInner,
-                {backgroundColor: activeColor.noneBackgroundBtn},
+                {backgroundColor: activeColor.selectBackColor2},
               ]}
               dropDownInner={
                 <View>
@@ -83,7 +83,7 @@ const ElectronicResourceScreen = () => {
                         text={item.book?.attachmentId ? 'Скачать' : 'Нет файла'}
                         textColor={activeColor.activeTextColor}
                         disabledBtn={!item.book?.attachmentId}
-                        style={{backgroundColor: activeColor.acriveBox}}
+                        style={{backgroundColor: activeColor.selectBackColor2}}
                       />
                     </View>
                   ))}

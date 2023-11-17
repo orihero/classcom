@@ -1,6 +1,6 @@
 import {StyleSheet, View, Animated} from 'react-native';
 import UiText from './text';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import {WalletIcon} from '../assets/icons';
 import React, {FC} from 'react';
 import {Content} from '../api/types';

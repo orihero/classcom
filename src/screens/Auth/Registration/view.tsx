@@ -21,7 +21,7 @@ import {useRegionsHook} from '../../general-hooks/regions-hook';
 import {RegistrationHooks} from './hooks';
 import {styles} from './styles';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 const RegistrationScreen = () => {
   const {

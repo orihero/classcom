@@ -7,7 +7,7 @@ import DropDownAnimated from '../../../components/drop-down';
 import {ArrowDown, ArrowUp} from '../../../assets/icons';
 import {Styles} from './styles';
 import Button from '../../../components/button';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import {useDownloadHistoryhook} from './hook';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';

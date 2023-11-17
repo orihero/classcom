@@ -11,7 +11,7 @@ import {
 import UiText from '../../../components/text';
 import {useNavigation} from '@react-navigation/native';
 import {ArrowLeftIcon} from '../../../assets/icons';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import SIZES from '../../../constants/sizes';
 //@ts-ignore
 const isCloseToBottom = ({layoutMeasurement, contentOffset, contentSize}) => {

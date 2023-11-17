@@ -7,7 +7,7 @@ import {
   StyleProp,
 } from 'react-native';
 import React, {useState} from 'react';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import UiText from './text';
 
 interface DropDownProps {

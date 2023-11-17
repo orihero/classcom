@@ -1,18 +1,18 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {ListRenderItem, StyleSheet, View} from 'react-native';
+import { ListRenderItem, StyleSheet, View } from 'react-native';
 import PlaneButton from '../../../../components/plane-button';
 import Button from '../../../../components/button';
-import {TestingHooks} from '../hooks';
-import {FlatList} from 'react-native-gesture-handler';
-import {useCallback, useContext} from 'react';
-import {ScrollViewPadding} from '../../../../constants/constants';
-import {ICreateTests} from '../../../../api/types';
-import {COLORS} from '../../../../constants/colors';
-import {ThemeContext} from '../../../../utils/themeContext';
-import {PaddingHorizantal} from '../../../../constants/sizes';
+import { TestingHooks } from '../hooks';
+import { FlatList } from 'react-native-gesture-handler';
+import { useCallback, useContext } from 'react';
+import { ScrollViewPadding } from '../../../../constants/constants';
+import { ICreateTests } from '../../../../api/types';
+import { COLORS } from '../../../../constants/COLORS';
+import { ThemeContext } from '../../../../utils/themeContext';
+import { PaddingHorizantal } from '../../../../constants/sizes';
 
 const MyTestScreen = () => {
-  const {onCreateTestPress, allMyTests, getApiMyTestDelete, setAllMyTests} =
+  const { onCreateTestPress, allMyTests, getApiMyTestDelete, setAllMyTests } =
     TestingHooks();
 
   const clicked = useCallback(
@@ -23,17 +23,18 @@ const MyTestScreen = () => {
     [getApiMyTestDelete, setAllMyTests],
   );
 
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
-  const renderItem: ListRenderItem<ICreateTests> = ({item}) => (
+  const renderItem: ListRenderItem<ICreateTests> = ({ item }) => (
     <View style={styles.childContainer}>
       <PlaneButton
         testingTitle={item.testName}
         handledeleted={() => clicked(item.id)}
         lessonTitle={item.subjectName}
         deleteBtn
-        style={{marginHorizontal: PaddingHorizantal}}
+        style={{ marginHorizontal: PaddingHorizantal, backgroundColor: "rgba(255,255,255,0.1)" }}
+        textStyle={{ color: COLORS.WHITE }}
       />
     </View>
   );
@@ -59,6 +60,7 @@ const MyTestScreen = () => {
                 marginHorizontal: PaddingHorizantal,
               },
             ]}
+            colors={["#4C849C", "#409788"]}
           />
         </View>
       </View>

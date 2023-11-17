@@ -5,7 +5,7 @@ import {Answer, ICreateNewTest, Question} from '../../../../../../api/types';
 import {map} from 'lodash';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {ShareIcon} from '../../../../../../assets/icons';
-import {COLORS} from '../../../../../../constants/colors';
+import {COLORS} from '../../../../../../constants/COLORS';
 import UiText from '../../../../../../components/text';
 import ScreenTitle from '../../../../../../components/screenTitle';
 import OmissionsAnswerOptions from './OmissionAnswer';

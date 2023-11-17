@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React, {FC, useContext} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {ArrowLeftIcon} from '../../assets/icons';
-import {COLORS} from '../../constants/colors';
+import {COLORS} from '../../constants/COLORS';
 import {defaultWrapperStyles} from '../default-wrapper/DefaultWrapper.styles';
 import {whiteWrapperStyles} from './WhiteWrapper.styles';
 import {ThemeContext} from '../../utils/themeContext';

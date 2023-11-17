@@ -1,8 +1,8 @@
-import {View, Text, Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import { styles } from './styles';
 import DefaultWrapper from '../../../wrappers/default-wrapper/DefaultWrapper';
-import {Assets} from '../../../utils/requireAssets';
+import { Assets } from '../../../utils/requireAssets';
 
 import {
   NoteIconProgram,
@@ -11,8 +11,9 @@ import {
   StarIcon,
 } from '../../../assets/icons';
 import InfoButton from '../../../components/Info-button';
-import {ProgramHooks} from './hooks';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { ProgramHooks } from './hooks';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { COLORS } from '../../../constants/COLORS';
 
 const ProgramScreen = () => {
   const {
@@ -41,22 +42,22 @@ const ProgramScreen = () => {
       <View style={styles.programContainer}>
         <InfoButton
           onPress={onModeratrosPress}
-          icon={<PenIcon />}
+          icon={<PenIcon stroke={COLORS.WHITE} color={COLORS.WHITE} />}
           title="Модераторы"
         />
         <InfoButton
           onPress={onDirectoryPress}
-          icon={<PaperIcon />}
+          icon={<PaperIcon stroke={COLORS.WHITE} />}
           title="Справочник"
         />
         <InfoButton
           onPress={onTermUseBtnPress}
-          icon={<NoteIconProgram />}
+          icon={<NoteIconProgram stroke={COLORS.WHITE} />}
           title="Пользовательское соглашение"
         />
         <InfoButton
           onPress={onRateUsOnGooglePlay}
-          icon={<StarIcon />}
+          icon={<StarIcon fill={'transparent'} stroke={COLORS.WHITE} />}
           title="Оцените нас в Google Play"
         />
       </View>

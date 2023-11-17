@@ -7,7 +7,7 @@ import PlaneButton from '../../../components/plane-button';
 import Button from '../../../components/button';
 import {useThematicInnerHooks} from './hooks';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 const ThematicInnerScreen = () => {
   const {subjectsData, paramsData} = useThematicInnerHooks();

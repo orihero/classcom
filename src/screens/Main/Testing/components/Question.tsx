@@ -2,7 +2,7 @@
 import {StyleSheet, TextInput, View} from 'react-native';
 import UiText from '../../../../components/text';
 import {ShareIcon} from '../../../../assets/icons';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import AnswerOptions from './AnswerOptions';
 import {Answer, ICreateNewTest, Question} from '../../../../api/types';
 import {FC, useCallback, useState} from 'react';

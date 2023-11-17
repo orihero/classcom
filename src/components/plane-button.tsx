@@ -8,7 +8,7 @@ import {
   TextStyle,
 } from 'react-native';
 import React from 'react';
-import {COLORS} from '../constants/colors';
+import { COLORS } from '../constants/COLORS';
 import UiText from './text';
 
 interface PlaneProps {
@@ -49,13 +49,13 @@ const PlaneButton = ({
         />
         {deleteBtn && (
           <TouchableOpacity onPress={handledeleted}>
-            <Text style={styles.textDelete}>Удалить</Text>
+            <Text style={[styles.textDelete, { color: "#68AEA3" }]}>Удалить</Text>
           </TouchableOpacity>
         )}
       </View>
       <View style={styles.second}>
         {authorTitle && (
-          <UiText style={styles.text} title="Автор" type="mediumRegular12" />
+          <UiText style={[styles.text, { color: "#68AEA3" }]} title="Автор" type="mediumRegular12" />
         )}
         <View style={styles.box}>
           <UiText
@@ -81,15 +81,15 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     paddingHorizontal: 15,
     paddingVertical: 15,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.27,
+    // shadowColor: '#000',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 1,
+    // },
+    // shadowOpacity: 0.2,
+    // shadowRadius: 3.27,
 
-    elevation: 10,
+    // elevation: 10,
     marginVertical: 5,
     borderRadius: 10,
   },

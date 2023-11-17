@@ -1,19 +1,20 @@
-import {View, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
-import {COLORS} from '../constants/colors';
+import { View, StyleSheet, Animated } from 'react-native';
+import React, { useContext } from 'react';
+import { COLORS } from '../constants/COLORS';
 import UiText from './text';
 import SIZES from '../constants/sizes';
-import {ThemeContext} from '../utils/themeContext';
+import { ThemeContext } from '../utils/themeContext';
 
 interface Props {
   number: string;
   time: string;
   title: string;
   classNumber: string;
+  scale: Animated.Value
 }
 
-const Schedule = ({number, classNumber, time, title}: Props) => {
-  const {theme} = useContext(ThemeContext);
+const Schedule = ({ number, classNumber, time, title, scale }: Props) => {
+  const { theme } = useContext(ThemeContext);
   //@ts-ignore
   let activeColor = COLORS[theme];
 
@@ -71,6 +72,65 @@ const Schedule = ({number, classNumber, time, title}: Props) => {
       marginRight: 5,
     },
   });
+
+  const newStyle = StyleSheet.create({
+    container: {
+      padding: 18,
+      backgroundColor: "rgba(255, 255, 255, 0.1)",
+      borderRadius: 20,
+      flexDirection: 'row',
+      paddingRight: 5,
+      marginVertical: 3.5,
+      marginHorizontal: 30,
+      alignItems: 'center'
+    },
+    middle: {
+      flex: 1,
+      marginLeft: 20,
+
+    },
+    rightPill: {
+      height: 40,
+      maxHeight: 100,
+      width: 5,
+      borderRadius: 20,
+      backgroundColor: COLORS.GREEN,
+      marginLeft: 20
+    },
+    number: {
+      color: COLORS.WHITE,
+      fontSize: 23,
+      lineHeight: 30
+
+    },
+    right: {
+      flexDirection: 'row',
+      alignItems: 'center'
+    },
+    lessonName: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    timeText: {
+      fontSize: 18,
+      marginTop: 20
+    }
+  })
+
+
+  return <Animated.View style={[newStyle.container, /*{ transform: [{ scale }] }*/]}>
+    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+      <UiText style={newStyle.number} title={number} type="default" />
+    </View>
+    <View style={newStyle.middle}>
+      <UiText style={[newStyle.lessonName]} title={title} type="Bold18" />
+      <UiText style={newStyle.timeText} title={time} type="bookOblRegular18" />
+    </View>
+    <View style={newStyle.right}>
+      <UiText style={newStyle.lessonName} title={classNumber} type="Bold18" />
+      <View style={newStyle.rightPill}></View>
+    </View>
+  </Animated.View>
 
   return (
     <View style={styles.container}>

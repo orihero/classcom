@@ -5,7 +5,7 @@ import {StyleSheet, TextInput, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Answer} from '../../../../api/types';
 import UiText from '../../../../components/text';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 interface AnswerOptionsProps {
   answer: Answer;
   currentAnswer: Answer;

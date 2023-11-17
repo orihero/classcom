@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import {WalletIcon} from '../../../../assets/icons';
 import Button from '../../../../components/button';
 import {ThemeContext} from '../../../../utils/themeContext';

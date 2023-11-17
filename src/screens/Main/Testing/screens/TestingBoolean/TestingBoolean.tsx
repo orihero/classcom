@@ -3,7 +3,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import UiText from '../../../../../components/text';
 import DefaultWrapper from '../../../../../wrappers/default-wrapper/DefaultWrapper';
 import {ScrollView} from 'react-native-gesture-handler';
-import {COLORS} from '../../../../../constants/colors';
+import {COLORS} from '../../../../../constants/COLORS';
 import {PaddingHorizantal} from '../../../../../constants/sizes';
 import {ScrollViewPadding} from '../../../../../constants/constants';
 import Button from '../../../../../components/button';

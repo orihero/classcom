@@ -6,7 +6,7 @@ import Input from '../../../components/input';
 import {PhoneIcon} from '../../../assets/icons';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import Button from '../../../components/button';
 import useChangePhoneNumber from './hook';
 

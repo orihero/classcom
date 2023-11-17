@@ -1,15 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {FlatList, ListRenderItem, StyleSheet, View} from 'react-native';
+import { FlatList, ListRenderItem, StyleSheet, View } from 'react-native';
 import PlaneButton from '../../../../../components/plane-button';
 import useTestingHook from './hook';
-import {ScrollViewPadding} from '../../../../../constants/constants';
-import {AllTesting} from '../../../../../api/types';
-import {PaddingHorizantal} from '../../../../../constants/sizes';
+import { ScrollViewPadding } from '../../../../../constants/constants';
+import { AllTesting } from '../../../../../api/types';
+import { PaddingHorizantal } from '../../../../../constants/sizes';
+import { COLORS } from '../../../../../constants/COLORS';
 
 const TestingTabsScreen = () => {
-  const {allTesting, navigateToSolution} = useTestingHook();
+  const { allTesting, navigateToSolution } = useTestingHook();
 
-  const renderItem: ListRenderItem<AllTesting> = ({item}) => (
+  const renderItem: ListRenderItem<AllTesting> = ({ item }) => (
     <View style={styles.childContainer}>
       <PlaneButton
         testingTitle={item.testName}
@@ -17,7 +18,8 @@ const TestingTabsScreen = () => {
         lessonTitle={item.subjectName}
         onPress={() => navigateToSolution(item.id)}
         handledeleted={() => console.log(item.id)}
-        style={{marginHorizontal: PaddingHorizantal}}
+        style={{ marginHorizontal: PaddingHorizantal, backgroundColor: "rgba(255,255,255,0.1)" }}
+        textStyle={{ color: COLORS.WHITE }}
       />
     </View>
   );

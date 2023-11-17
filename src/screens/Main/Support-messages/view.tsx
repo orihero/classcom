@@ -7,7 +7,7 @@ import {SupportMessagesHooks} from './hooks';
 import Select from '../../../components/select';
 import Input from '../../../components/input';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 const SupportMessagesScreen = () => {
   const {

@@ -1,7 +1,7 @@
 import {Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 
 interface ModalProps {
   onPress?: () => void;

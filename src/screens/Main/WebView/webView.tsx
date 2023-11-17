@@ -3,7 +3,7 @@ import {useRoute} from '@react-navigation/native';
 import {StyleSheet, View} from 'react-native';
 import {WebView} from 'react-native-webview';
 import Button from '../../../components/button';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 // interface WebViewProps {
 //   uri: string;

@@ -6,7 +6,7 @@ import {
   ScheduleCourses,
 } from '../../api/types';
 import {useIsFocused} from '@react-navigation/native';
-import {HOUR_FORMAT_OPTIONS} from '../../constants/dates';
+import {HOUR_FORMAT_OPTIONS} from '../../constants/DATES';
 
 export const useCoursesHook = () => {
   const IsFocused = useIsFocused();

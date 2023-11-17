@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants/COLORS';
 
 export const defaultWrapperStyles = StyleSheet.create({
   container: {
@@ -14,7 +14,6 @@ export const defaultWrapperStyles = StyleSheet.create({
   },
   childrenContainer: {
     paddingTop: 15,
-    backgroundColor: COLORS.WHITE,
     flex: 1,
     marginTop: 20,
     borderTopLeftRadius: 30,

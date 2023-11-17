@@ -9,8 +9,9 @@ import {
   NoteIconProgram,
   PhoneBlueIcon,
 } from '../../../assets/icons';
-import {SupportHooks} from './hooks';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { SupportHooks } from './hooks';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { COLORS } from '../../../constants/COLORS';
 
 const SupportScreen = () => {
   const {
@@ -35,32 +36,32 @@ const SupportScreen = () => {
       <InfoButton
         onPress={onSupportMessagePress}
         title="Сообщения для службы поддержки"
-        icon={<MessageIcon />}
+        icon={<MessageIcon stroke={COLORS.WHITE} />}
       />
       <InfoButton
         onPress={onAnswerQuestionPress}
         title="Ответы на вопросы"
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill={COLORS.WHITE} />}
       />
       <InfoButton
         onPress={onUsersMaualPress}
         title="Инструкция пользователя"
-        icon={<NoteIconProgram />}
+        icon={<NoteIconProgram fill={COLORS.WHITE}  stroke={COLORS.WHITE} />}
       />
       <InfoButton
         onPress={onSupportSuggestPress}
         title="Ваши предложения"
-        icon={<BorderPencelIcon />}
+        icon={<BorderPencelIcon stroke={COLORS.WHITE} />}
       />
       <InfoButton
         onPress={onChatSupportPress}
         title="Чат службы поддержки"
-        icon={<ChatIcon />}
+        icon={<ChatIcon fill={COLORS.WHITE} />}
       />
       <InfoButton
         onPress={callPhoneNumber}
         title="Звонок в контакт-центр"
-        icon={<PhoneBlueIcon />}
+        icon={<PhoneBlueIcon stroke={COLORS.WHITE} />}
       />
     </DefaultWrapper>
   );

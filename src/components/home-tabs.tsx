@@ -2,7 +2,7 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {IScheduleResponse, IScheduleTemplateResponse} from '../api/types';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import UiText from './text';
 import SIZES from '../constants/sizes';
 import {useContext} from 'react';

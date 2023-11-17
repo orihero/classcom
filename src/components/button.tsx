@@ -10,8 +10,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import animation from '../assets/animations/loading-white.json';
-import {COLORS} from '../constants/colors';
+import { COLORS } from '../constants/COLORS';
 import UiText from './text';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface IProps {
   text: string;
@@ -23,6 +24,7 @@ interface IProps {
   lineStyle?: StyleProp<ViewStyle>;
   textColor?: any;
   disabledBtn?: boolean;
+  colors?: string[]
 }
 
 const Button = ({
@@ -33,23 +35,44 @@ const Button = ({
   textStyle,
   textColor,
   disabledBtn,
+  colors
 }: IProps) => {
   return (
-    <TouchableOpacity
+    !!colors ? <TouchableOpacity
       disabled={disabledBtn}
       activeOpacity={0.7}
       onPress={loading ? undefined : onPress}>
-      <View style={[styles.container, style]}>
+      <LinearGradient colors={colors} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={[styles.container, style]}>
         {loading ? (
           <Lottie
-            style={{transform: [{scale: 3}], height: 16}}
+            style={{ transform: [{ scale: 3 }], height: 16 }}
             source={animation}
             autoPlay
             loop={true}
           />
         ) : (
           <UiText
-            style={[styles.text, textStyle, {color: textColor}]}
+            style={[styles.text, textStyle, { color: textColor }]}
+            title={text}
+            type="mediumRegular12"
+          />
+        )}
+      </LinearGradient>
+    </TouchableOpacity> : <TouchableOpacity
+      disabled={disabledBtn}
+      activeOpacity={0.7}
+      onPress={loading ? undefined : onPress}>
+      <View style={[styles.container, style]}>
+        {loading ? (
+          <Lottie
+            style={{ transform: [{ scale: 3 }], height: 16 }}
+            source={animation}
+            autoPlay
+            loop={true}
+          />
+        ) : (
+          <UiText
+            style={[styles.text, textStyle, { color: textColor }]}
             title={text}
             type="mediumRegular12"
           />

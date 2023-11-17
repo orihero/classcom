@@ -2,7 +2,7 @@ import {View, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
 import React from 'react';
 import Button from '../../../../components/button';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 
 interface Props {
   container: any;

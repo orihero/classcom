@@ -9,7 +9,7 @@ import Input from '../../../components/input';
 import {SupportSuggestHooks} from './hooks';
 import {useContext} from 'react';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 const SupportSuggest = () => {
   const {

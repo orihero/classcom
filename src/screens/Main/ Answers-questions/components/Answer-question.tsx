@@ -5,7 +5,7 @@ import {ArrowDown, ArrowUp} from '../../../../assets/icons';
 import DropDownAnimated from '../../../../components/drop-down';
 import {QuestionAndAnswersItems} from '../../../../api/types';
 import {ThemeContext} from '../../../../utils/themeContext';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 
 const AnswerQuestion = ({id, question, answer}: QuestionAndAnswersItems) => {
   const {theme} = useContext(ThemeContext);

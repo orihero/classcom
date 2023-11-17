@@ -12,7 +12,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {ArrowDown, ArrowUp, StudentIcon} from '../assets/icons';
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import UiText from './text';
 
 export interface SelectItemProps {

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {CalendarIcon} from '../../../../assets/icons';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import {NotifactionType} from '../../../../api/types';
 
 const Notification: FC<NotifactionType> = ({message, type, id}) => {

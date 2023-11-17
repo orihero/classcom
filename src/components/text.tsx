@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {COLORS} from '../constants/colors';
+import {COLORS} from '../constants/COLORS';
 import {TYPOGRAPHY} from '../constants/typography';
 import {FC, useMemo} from 'react';
 import {StyleProp, Text, TextStyle} from 'react-native';

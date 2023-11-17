@@ -2,7 +2,7 @@
 import {FC} from 'react';
 import {StyleSheet, TextInput, View} from 'react-native';
 import {Answer} from '../../../../../../api/types';
-import {COLORS} from '../../../../../../constants/colors';
+import {COLORS} from '../../../../../../constants/COLORS';
 interface AnswerOptionsProps {
   answer: Answer;
   currentAnswer: Answer;

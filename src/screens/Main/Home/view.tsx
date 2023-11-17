@@ -7,7 +7,7 @@ import {calculateWeekId} from '../../../utils/dateHelper';
 import MainWrapper from '../../../wrappers/main-wrapper/MainWrapper';
 import MainSettings from './components/MainSettings/MainSettings';
 import ScheduleScreen from './components/Schedule/Schedule';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 import {ThemeContext} from '../../../utils/themeContext';
 
 const HomeScreen = () => {

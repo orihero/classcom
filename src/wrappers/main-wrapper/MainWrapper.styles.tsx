@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {COLORS} from '../../constants/colors';
+import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants/COLORS';
 
 export const mainWrapperStyles = StyleSheet.create({
   container: {
@@ -44,6 +44,7 @@ export const mainWrapperStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 15,
+    backgroundColor: COLORS.light.weekDayDefault
   },
   week: {
     paddingHorizontal: 10,

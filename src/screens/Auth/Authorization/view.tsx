@@ -15,7 +15,7 @@ import {Assets} from '../../../utils/requireAssets';
 import {AuthorizationHooks} from './hooks';
 import {styles} from './styles';
 import {ThemeContext} from '../../../utils/themeContext';
-import {COLORS} from '../../../constants/colors';
+import {COLORS} from '../../../constants/COLORS';
 
 const AuthorizationScreen = () => {
   const {onRegisterPress, onInputChange, onLogin, loading} =

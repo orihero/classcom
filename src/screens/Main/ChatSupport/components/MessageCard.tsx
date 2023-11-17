@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {StyleSheet, View} from 'react-native';
 import UiText from '../../../../components/text';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import {FC} from 'react';
 import {Content} from '../../../../api/types';
 

@@ -9,7 +9,7 @@ import {
   UIManager,
   View,
 } from 'react-native';
-import {COLORS} from '../../../../constants/colors';
+import {COLORS} from '../../../../constants/COLORS';
 import {ThemeContext} from '../../../../utils/themeContext';
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {

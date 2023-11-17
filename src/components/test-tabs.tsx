@@ -1,7 +1,7 @@
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import UiText from './text';
-import React, {FC, useState} from 'react';
-import {COLORS} from '../constants/colors';
+import React, { FC, useState } from 'react';
+import { COLORS } from '../constants/COLORS';
 import SIZES from '../constants/sizes';
 
 export type TopTabsItem = {
@@ -14,7 +14,7 @@ interface TopTabsProps {
   content: TopTabsItem[];
 }
 
-const TestTopTabs: FC<TopTabsProps> = ({content}) => {
+const TestTopTabs: FC<TopTabsProps> = ({ content }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [component, setComponent] = useState<{
     comp: React.FC;
@@ -96,9 +96,9 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   activeTabText: {
-    color: COLORS.BLUE,
+    color: COLORS.WHITE,
   },
   nonActiveText: {
-    color: COLORS.NON_ACTIVE_TEXT,
+    color: COLORS.WHITE,
   },
 });

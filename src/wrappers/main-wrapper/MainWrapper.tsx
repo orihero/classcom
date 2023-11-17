@@ -1,32 +1,32 @@
-import {DrawerActions, useNavigation} from '@react-navigation/native';
-import React, {PropsWithChildren, useState} from 'react';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import React, { PropsWithChildren, useContext, useState } from 'react';
 import {
   Image,
+  ImageBackground,
   SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {BellIcon, CalendarIcon, MenuIcon} from '../../assets/icons';
-import {ROUTES} from '../../navigation/routes';
-import {Assets} from '../../utils/requireAssets';
-import {mainWrapperStyles} from './MainWrapper.styles';
-import {dateInRussain, getDaysOfWeek} from '../../utils/dateHelper';
-import {useSelector} from 'react-redux';
-import {userSelector} from '../../store/slices/user.slice';
 import DatePicker from 'react-native-date-picker';
-import {COLORS} from '../../constants/colors';
-import {useContext} from 'react';
-import {ThemeContext} from '../../utils/themeContext';
-import {notifactionCountSelector} from '../../store/slices/notifactionCounter';
+import { useSelector } from 'react-redux';
+import { BellIcon, CalendarIcon, MenuIcon } from '../../assets/icons';
 import UiText from '../../components/text';
+import { COLORS } from '../../constants/COLORS';
+import { ROUTES } from '../../navigation/routes';
+import { notifactionCountSelector } from '../../store/slices/notifactionCounter';
+import { userSelector } from '../../store/slices/user.slice';
+import { dateInRussain, getDaysOfWeek } from '../../utils/dateHelper';
+import { Assets } from '../../utils/requireAssets';
+import { ThemeContext } from '../../utils/themeContext';
+import { mainWrapperStyles } from './MainWrapper.styles';
 
 const MainWrapper = ({
   date,
   onDateChange,
   children,
-}: PropsWithChildren<{date: Date; onDateChange: (date: Date) => void}>) => {
+}: PropsWithChildren<{ date: Date; onDateChange: (date: Date) => void }>) => {
   const [datePickerShown, setDatePickerShown] = useState(false);
 
   const drawer = useNavigation();
@@ -48,7 +48,7 @@ const MainWrapper = ({
     setDatePickerShown(e => !e);
   };
 
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
   const styles = StyleSheet.create({
@@ -58,7 +58,7 @@ const MainWrapper = ({
       paddingVertical: 2,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: activeColor.acriveBox,
+      backgroundColor: activeColor.weekDayActive,
       shadowOffset: {
         width: 2,
         height: 4,
@@ -107,10 +107,13 @@ const MainWrapper = ({
   });
 
   return (
-    <View
+
+    <ImageBackground
+      source={require("../../assets/images/background.png")}
       style={[
         mainWrapperStyles.container,
-        {backgroundColor: activeColor.primary},
+        // { opacity: .9 }
+        // { backgroundColor: activeColor.primary },
       ]}>
       <SafeAreaView>
         <View style={mainWrapperStyles.headerContainer}>
@@ -190,14 +193,15 @@ const MainWrapper = ({
           );
         })}
       </View>
-      <View
+      <ImageBackground
+        source={require("../../assets/images/background.png")}
         style={[
           mainWrapperStyles.childrenContainer,
-          {backgroundColor: activeColor?.secondary},
+          { backgroundColor: activeColor?.secondary },
         ]}>
         {children}
-      </View>
-    </View>
+      </ImageBackground>
+    </ImageBackground>
   );
 };
 

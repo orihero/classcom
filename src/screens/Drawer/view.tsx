@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {SafeAreaView, Text, View, Image} from 'react-native';
+import React, { useContext } from 'react';
+import { SafeAreaView, Text, View, Image } from 'react-native';
 import {
   BookIcon,
   CalendarDrawerIcon,
@@ -13,11 +13,11 @@ import {
   TestingIcon,
 } from '../../assets/icons';
 import DrawerButton from '../../components/drawer-button';
-import {DrawerHook} from './hooks';
-import {styles} from './styles';
-import {Assets} from '../../utils/requireAssets';
-import {ThemeContext} from '../../utils/themeContext';
-import {COLORS} from '../../constants/colors';
+import { DrawerHook } from './hooks';
+import { styles } from './styles';
+import { Assets } from '../../utils/requireAssets';
+import { ThemeContext } from '../../utils/themeContext';
+import { COLORS } from '../../constants/COLORS';
 
 const DrawerScreen = () => {
   const {
@@ -34,27 +34,27 @@ const DrawerScreen = () => {
     account,
   } = DrawerHook();
 
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
   return (
-    <View style={[styles.container, {backgroundColor: activeColor.secondary}]}>
+    <View style={[styles.container, { backgroundColor: activeColor.secondary }]}>
       <View
         style={[
           styles.userContainer,
-          {backgroundColor: activeColor.drawerBackColor},
+          { backgroundColor: activeColor.drawerBackColor },
         ]}>
         <SafeAreaView />
         <Image source={Assets.images.user} style={styles.image} />
-        <Text style={[styles.userText, {color: activeColor.textColor2}]}>
-          {account?.firstName}
+        <Text style={[styles.userText, { color: activeColor.textColor }]}>
+          {account?.firstName}{" "}{account?.lastName}
         </Text>
       </View>
 
       <View
         style={[
-          {backgroundColor: activeColor.secondary},
           styles.screenContainer,
+          { backgroundColor: "rgba(55, 118, 110, 1)" },
         ]}>
         <DrawerButton
           onPress={onHomePress}
