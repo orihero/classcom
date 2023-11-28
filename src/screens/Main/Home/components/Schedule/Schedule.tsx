@@ -85,13 +85,7 @@ const ScheduleScreen = ({
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
           if (!el) {
-            return (
-              <EmptySchedule
-                onPress={() => console.log('press')}
-                key={i}
-                number={e + ''}
-              />
-            );
+            return <EmptySchedule key={i} number={e + ''} />;
           }
           return (
             <Schedule

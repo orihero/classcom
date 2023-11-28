@@ -279,6 +279,7 @@ const MainSettings = ({
         style={[styles.bottomBtn, {backgroundColor: activeColor.btnBackColor2}]}
         text="Настройка календарно-тематического плана"
         textColor={activeColor.activeTextColor}
+        colors={["#4C849C", "#409788"]}
       />
     </>
   );
