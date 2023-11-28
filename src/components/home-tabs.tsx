@@ -7,6 +7,7 @@ import UiText from './text';
 import SIZES from '../constants/sizes';
 import {useContext} from 'react';
 import {ThemeContext} from '../utils/themeContext';
+import LinearGradient from 'react-native-linear-gradient';
 
 interface TabProps {
   content: Array<{
@@ -49,33 +50,41 @@ const TopTabs = ({
           {content.map((e, i) => {
             return (
               <TouchableOpacity
-                style={[
-                  {
-                    borderColor:
-                      activeTab === i ? activeColor.acriveBox : 'transparent',
-                    borderBottomWidth: activeTab === i ? 4 : 0,
-                  },
-                  styles.touchAbleBtn,
-                ]}
+                style={[styles.touchAbleBtn]}
                 activeOpacity={0.7}
                 onPress={onTabPress(i)}
                 key={i}>
-                <View style={{marginRight: 10}}>
-                  {activeTab ? (
-                    <View>{e.iconActive}</View>
-                  ) : (
-                    <View>{e.iconPassive}</View>
-                  )}
-                </View>
-                <UiText
-                  style={
+                <LinearGradient
+                  style={[
+                    {
+                      borderColor: activeTab === i ? 'white' : 'transparent',
+                      borderWidth: activeTab === i ? 2 : 0,
+                      borderRadius: 20,
+                      flex: 0.7,
+                      justifyContent: 'center',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      paddingVertical: 5,
+                    },
+                  ]}
+                  colors={
                     activeTab === i
-                      ? {color: activeColor.acriveBox}
-                      : styles.nonActiveText
-                  }
-                  title={e.title}
-                  type={activeTab === i ? 'Bold16' : 'mediumRegular16'}
-                />
+                      ? ['#4C849B', '#3F9886']
+                      : ['#40797F', '#40797F']
+                  }>
+                  <View style={{marginRight: 10}}>
+                    <View>{e.iconPassive}</View>
+                  </View>
+                  <UiText
+                    style={
+                      activeTab === i
+                        ? {color: activeColor.acriveBox}
+                        : styles.nonActiveText
+                    }
+                    title={e.title}
+                    type={activeTab === i ? 'Bold16' : 'mediumRegular16'}
+                  />
+                </LinearGradient>
               </TouchableOpacity>
             );
           })}
@@ -149,7 +158,7 @@ export const styles = StyleSheet.create({
     width: SIZES.width,
     alignItems: 'center',
     flexDirection: 'row',
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
     borderColor: COLORS.BORDER_COLOR,
   },
   touchAbleBtn: {
@@ -157,7 +166,8 @@ export const styles = StyleSheet.create({
     width: '50%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomWidth: 4,
+    // borderBottomWidth: 4,
+    borderColor: 'transparent',
     paddingVertical: 10,
   },
   activeTabText: {

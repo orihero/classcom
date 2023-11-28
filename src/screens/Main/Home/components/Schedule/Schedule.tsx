@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, View} from 'react-native';
 import {
   ILessonTemplateRequest,
   IScheduleTemplateResponse,
 } from '../../../../../api/types';
 import Schedule from '../../../../../components/schedule';
-import { styles } from '../../styles';
+import {styles} from '../../styles';
 import EmptySchedule from '../../../../../components/empty-schedule';
 import DatePicker from 'react-native-date-picker';
-import { HOUR_FORMAT_OPTIONS } from '../../../../../constants/DATES';
+import {HOUR_FORMAT_OPTIONS} from '../../../../../constants/DATES';
 import UiText from '../../../../../components/text';
-import { ScrollViewPadding } from '../../../../../constants/constants';
+import {ScrollViewPadding} from '../../../../../constants/constants';
 // import useScheduleHook from './hook';
 // import {COLORS} from '../../../../../constants/COLORS';
 // import {ThemeContext} from '../../../../../utils/themeContext';
@@ -85,13 +85,7 @@ const ScheduleScreen = ({
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
           if (!el) {
-            return (
-              <EmptySchedule
-                onPress={() => console.log('press')}
-                key={i}
-                number={e + ''}
-              />
-            );
+            return <EmptySchedule key={i} number={e + ''} />;
           }
           return (
             <Schedule
