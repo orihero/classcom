@@ -11,7 +11,6 @@ import {COLORS} from '../../../constants/COLORS';
 
 const ThematicInnerScreen = () => {
   const {subjectsData, paramsData} = useThematicInnerHooks();
-  console.log(' subgectdata', JSON.stringify(subjectsData, null, 2));
 
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
@@ -39,7 +38,7 @@ const ThematicInnerScreen = () => {
               <View style={styles.box} key={index}>
                 <View style={styles.btnContainer}>
                   <Text style={styles.title}>{e.name}</Text>
-                  <Text style={styles.text}>{e.attachment.fullSize} </Text>
+                  <Text style={styles.text}>{e.attachment?.fullSize} </Text>
                 </View>
                 <View style={{alignItems: 'center'}}>
                   <Button

@@ -28,7 +28,7 @@ interface IProps {
   parentContainerStyle?: StyleProp<ViewStyle>;
   type?: 'text' | 'password' | 'phone' | 'number';
   inputStyle?: StyleProp<TextStyle>;
-  eyes?: boolean;
+  eyes?: string;
   icon?: any;
   dark?: boolean;
   errors?: any;
@@ -52,7 +52,7 @@ const Input = ({
   name,
   errors,
 }: IProps) => {
-  const [isPasswordVisible, setIsPasswordVisible] = useState(eyes);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(!!eyes);
   const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
@@ -115,7 +115,7 @@ const Input = ({
         {renderInput()}
         {eyes ? (
           <TouchableOpacity activeOpacity={0.6} onPress={onEyePress}>
-            <EyesIcon />
+            <EyesIcon fill={eyes ?? null} />
           </TouchableOpacity>
         ) : null}
       </View>
