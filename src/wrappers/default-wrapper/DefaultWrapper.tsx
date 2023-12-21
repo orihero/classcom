@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { PropsWithChildren, useContext } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {PropsWithChildren, useContext} from 'react';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -14,11 +14,11 @@ import {
   ArrowLeftIconForIos,
   BellIcon,
 } from '../../assets/icons/index';
-import { COLORS } from '../../constants/COLORS';
-import { defaultWrapperStyles } from './DefaultWrapper.styles';
-import { ROUTES } from '../../navigation/routes';
-import { SettingHooks } from '../../screens/Main/Setting/hooks';
-import { ThemeContext } from '../../utils/themeContext';
+import {COLORS} from '../../constants/COLORS';
+import {defaultWrapperStyles} from './DefaultWrapper.styles';
+import {ROUTES} from '../../navigation/routes';
+import {SettingHooks} from '../../screens/Main/Setting/hooks';
+import {ThemeContext} from '../../utils/themeContext';
 import LinearGradient from 'react-native-linear-gradient';
 
 export interface DefaultWrapperProps {
@@ -37,7 +37,7 @@ const DefaultWrapper = ({
   isLoad = false,
   onArrowLeftBtnPress,
 }: PropsWithChildren<DefaultWrapperProps>) => {
-  const { account } = SettingHooks();
+  const {account} = SettingHooks();
   const navigation = useNavigation();
 
   const onArrowLeftPress = () => {
@@ -47,12 +47,12 @@ const DefaultWrapper = ({
   const onNotificationPress = () => {
     navigation.navigate(ROUTES.MAIN.NOTIFICATIONS as never);
   };
-  const { theme } = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
   return (
     <ImageBackground
-      source={require("../../assets/images/background.png")}
+      source={require('../../assets/images/background.png')}
       style={[
         defaultWrapperStyles.container,
         // { backgroundColor: activeColor.primary },
@@ -83,16 +83,16 @@ const DefaultWrapper = ({
           <Text
             style={[
               defaultWrapperStyles.userText,
-              { color: activeColor.textColor2 },
+              {color: activeColor.textColor2},
             ]}>
             {account?.firstName} {account.lastName}
           </Text>
         )}
       </SafeAreaView>
       <LinearGradient
-        colors={["#3D7A88", "#367569"]}
-        start={{ x: 0, y: 1 }}
-        end={{ x: 1, y: 1 }}
+        colors={['#3D7A88', '#367569']}
+        start={{x: 0, y: 1}}
+        end={{x: 1, y: 1}}
         style={[
           defaultWrapperStyles.childrenContainer,
           // { backgroundColor: "rgba(61, 122, 136, 1)" },

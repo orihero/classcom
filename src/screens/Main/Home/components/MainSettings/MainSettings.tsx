@@ -1,20 +1,20 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { ScrollView, Text, TouchableOpacity, View, Animated } from 'react-native';
-import { IScheduleTemplateResponse } from '../../../../../api/types';
+import React, {useCallback, useContext, useEffect, useState} from 'react';
+import {ScrollView, Text, TouchableOpacity, View, Animated} from 'react-native';
+import {IScheduleTemplateResponse} from '../../../../../api/types';
 import Button from '../../../../../components/button';
 import Schedule from '../../../../../components/schedule';
-import { styles } from '../../styles';
-import { useNavigation } from '@react-navigation/native';
-import { ROUTES } from '../../../../../navigation/routes';
+import {styles} from '../../styles';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTES} from '../../../../../navigation/routes';
 import EmptySchedule from '../../../../../components/empty-schedule';
 import ReactNativeModal from 'react-native-modal';
 import DatePicker from 'react-native-date-picker';
-import { useCoursesHook } from '../../../../general-hooks/courses-hook';
+import {useCoursesHook} from '../../../../general-hooks/courses-hook';
 import Select from '../../../../../components/select';
-import { COLORS } from '../../../../../constants/COLORS';
+import {COLORS} from '../../../../../constants/COLORS';
 import UiText from '../../../../../components/text';
-import { ScrollViewPadding } from '../../../../../constants/constants';
-import { ThemeContext } from '../../../../../utils/themeContext';
+import {ScrollViewPadding} from '../../../../../constants/constants';
+import {ThemeContext} from '../../../../../utils/themeContext';
 
 const lessonMap = {
   1: true,
@@ -47,12 +47,12 @@ const MainSettings = ({
     weeklySchedule,
   } = useCoursesHook();
 
-  const { current: scrollY } = React.useRef(new Animated.Value(0))
+  const {current: scrollY} = React.useRef(new Animated.Value(0));
 
   const [lesson, setLesson] = useState(
     (data || {})[date.getDay() + 1]?.lessonTemplatesMap,
   );
-  const { theme } = useContext(ThemeContext);
+  const {theme} = useContext(ThemeContext);
   let activeColor = COLORS[theme];
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const MainSettings = ({
   const getWeekDay = useCallback(
     (date: Date) => {
       const day = date.getDay() + 1;
-      setValues(prev => ({ ...prev, weekday: day }));
+      setValues(prev => ({...prev, weekday: day}));
     },
     [setValues],
   );
@@ -91,7 +91,7 @@ const MainSettings = ({
 
   const onModalVisible = (item: number) => {
     setModalVisible(true);
-    setValues(prev => ({ ...prev, sorder: item }));
+    setValues(prev => ({...prev, sorder: item}));
   };
 
   const renderReactNativeModal = () => {
@@ -104,7 +104,7 @@ const MainSettings = ({
         <View
           style={[
             styles.modalContainer,
-            { backgroundColor: activeColor.primary },
+            {backgroundColor: activeColor.primary},
           ]}>
           <Text style={styles.modalTitle} />
           <UiText
@@ -125,7 +125,7 @@ const MainSettings = ({
                 onPress={onHourPress('start')}
                 style={[
                   styles.emptyInput,
-                  { backgroundColor: activeColor.selectedBack },
+                  {backgroundColor: activeColor.selectedBack},
                 ]}>
                 <Text style={styles.emptyInputText}>
                   {values.startTime as never}
@@ -144,7 +144,7 @@ const MainSettings = ({
                 onPress={onHourPress('end')}
                 style={[
                   styles.emptyInput,
-                  { backgroundColor: activeColor.selectedBack },
+                  {backgroundColor: activeColor.selectedBack},
                 ]}>
                 <Text style={styles.emptyInputText}>
                   {values.endTime as never}
@@ -196,15 +196,15 @@ const MainSettings = ({
           <View
             style={[
               styles.row,
-              { justifyContent: 'space-between', marginTop: 30 },
+              {justifyContent: 'space-between', marginTop: 30},
             ]}>
             <TouchableOpacity onPress={onModalDissmiss}>
-              <Text style={[styles.modalTitle, { color: COLORS.BLUISH_WHITE2 }]}>
+              <Text style={[styles.modalTitle, {color: COLORS.BLUISH_WHITE2}]}>
                 Отмена
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleAddNewLesson}>
-              <Text style={[styles.modalTitle, { color: COLORS.WHITE }]}>
+              <Text style={[styles.modalTitle, {color: COLORS.WHITE}]}>
                 Добавить
               </Text>
             </TouchableOpacity>
@@ -224,14 +224,20 @@ const MainSettings = ({
       </View> */}
 
       <ScrollView
-        onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } },], { useNativeDriver: false })}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {useNativeDriver: false},
+        )}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={ScrollViewPadding}
         style={styles.scroolViewStyle}>
         {Object.keys(lessonMap).map((e, i) => {
           const el = lesson ? lesson[e] : null;
-          const scale = scrollY.interpolate({ inputRange: [0, i * 100, Object.keys(lessonMap).length * 100], outputRange: [1, .7, 0] })
+          const scale = scrollY.interpolate({
+            inputRange: [0, i * 100, Object.keys(lessonMap).length * 100],
+            outputRange: [1, 0.7, 0],
+          });
           if (!el) {
             return (
               <EmptySchedule
@@ -270,7 +276,7 @@ const MainSettings = ({
       />
       <Button
         onPress={onSettingCalendarPress}
-        style={[styles.bottomBtn, { backgroundColor: activeColor.btnBackColor2 }]}
+        style={[styles.bottomBtn, {backgroundColor: activeColor.btnBackColor2}]}
         text="Настройка календарно-тематического плана"
         textColor={activeColor.activeTextColor}
         colors={["#4C849C", "#409788"]}
